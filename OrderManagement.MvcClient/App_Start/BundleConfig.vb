@@ -1,0 +1,33 @@
+﻿Imports System.Web.Optimization
+
+Public Module BundleConfig
+    ' For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
+    Public Sub RegisterBundles(ByVal bundles As BundleCollection)
+
+        bundles.Add(New ScriptBundle("~/bundles/lib").Include(
+                    "~/Scripts/jquery-{version}.js",
+                    "~/Scripts/jquery-ui-{version}.js",
+                    "~/Scripts/bootstrap.js",
+                    "~/Scripts/datatables/jquery.datatables.js",
+                    "~/Scripts/datatables/datatables.bootstrap.js",
+                    "~/Scripts/respond.js"))
+
+        bundles.Add(New ScriptBundle("~/bundles/jqueryval").Include(
+                    "~/Scripts/jquery.validate*"))
+
+        ' Use the development version of Modernizr to develop with and learn from. Then, when you're
+        ' ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
+        bundles.Add(New ScriptBundle("~/bundles/modernizr").Include(
+                    "~/Scripts/modernizr-*"))
+
+        bundles.Add(New ScriptBundle("~/bundles/bootstrap").Include(
+                 ))
+
+        bundles.Add(New StyleBundle("~/Content/css").Include(
+                  "~/Content/themes/base/jquery-ui.min.css",
+                  "~/Content/bootstrap-paper.css",
+                  "~/Content/datatables/css/datatables.bootstrap.css",
+                  "~/Content/site.css"))
+    End Sub
+End Module
+
