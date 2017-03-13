@@ -230,7 +230,6 @@
     <Compile Include="Controllers\CustomersController.vb" />
     <Compile Include="Controllers\ManageController.vb" />
     <Compile Include="Controllers\OrderDetailsController.vb" />
-    <Compile Include="Controllers\Orders1Controller.vb" />
     <Compile Include="Controllers\OrdersController.vb" />
     <Compile Include="Controllers\ProductsController.vb" />
     <Compile Include="Global.asax.vb">
@@ -602,11 +601,6 @@
     <Content Include="Views\Brands\Details.vbhtml" />
     <Content Include="Views\Brands\Edit.vbhtml" />
     <Content Include="Views\Brands\Index.vbhtml" />
-    <Content Include="Views\Orders1\Create.vbhtml" />
-    <Content Include="Views\Orders1\Delete.vbhtml" />
-    <Content Include="Views\Orders1\Details.vbhtml" />
-    <Content Include="Views\Orders1\Edit.vbhtml" />
-    <Content Include="Views\Orders1\Index.vbhtml" />
     <None Include="Views\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
