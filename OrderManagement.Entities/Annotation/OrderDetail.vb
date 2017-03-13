@@ -17,6 +17,8 @@ Public Class OrderDetailHelper
     Public Property PurchasePrice As Nullable(Of Decimal)
     <Display(Name:="售出价格")>
     Public Property SoldPrice As Nullable(Of Decimal)
+    <Display(Name:="订单状态")>
+    Public Property Status As OrderStatus
     <Display(Name:="采购链接")>
     Public Property Link As String
 End Class

@@ -43,7 +43,7 @@ Namespace Controllers
         'more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Create(<Bind(Include:="OrderId,CustomerId,OrderDate,ShipDate")> ByVal order As Order) As ActionResult
+        Function Create(<Bind(Include:="OrderId,CustomerId,OrderType,OrderDate,ShipDate")> ByVal order As Order) As ActionResult
             If ModelState.IsValid Then
                 db.Orders.Add(order)
                 db.SaveChanges()
@@ -71,7 +71,7 @@ Namespace Controllers
         'more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="OrderId,CustomerId,OrderDate,ShipDate")> ByVal order As Order) As ActionResult
+        Function Edit(<Bind(Include:="OrderId,CustomerId,OrderType,OrderDate,ShipDate")> ByVal order As Order) As ActionResult
             If ModelState.IsValid Then
                 db.Entry(order).State = EntityState.Modified
                 db.SaveChanges()

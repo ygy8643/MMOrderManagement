@@ -28,6 +28,14 @@ End Code
             </div>
         </div>
 
+         <div class="form-group">
+             @Html.LabelFor(Function(model) model.OrderType, htmlAttributes:=New With {.class = "control-label col-md-2"})
+             <div class="col-md-10">
+                 @Html.EnumDropDownListFor(Function(model) model.OrderType, htmlAttributes:=New With {.class = "form-control"})
+                 @Html.ValidationMessageFor(Function(model) model.OrderType, "", New With {.class = "text-danger"})
+             </div>
+         </div>
+
         <div class="form-group">
             @Html.LabelFor(Function(model) model.OrderDate, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">

@@ -26,6 +26,9 @@ End Code
             @Html.DisplayNameFor(Function(model) model.SoldPrice)
         </th>
         <th>
+            @Html.DisplayNameFor(Function(model) model.Status)
+        </th>
+        <th>
             @Html.DisplayNameFor(Function(model) model.Link)
         </th>
         <th></th>
@@ -48,6 +51,9 @@ End Code
             <td>
                 @Html.DisplayFor(Function(modelItem) item.SoldPrice)
             </td>
+             <td>
+                 @Html.DisplayFor(Function(modelItem) item.Status)
+             </td>
             <td>
                 @Html.DisplayFor(Function(modelItem) item.Link)
             </td>

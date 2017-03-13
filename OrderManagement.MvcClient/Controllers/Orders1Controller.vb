@@ -9,95 +9,97 @@ Imports System.Web.Mvc
 Imports OrderManagement.Entities
 
 Namespace Controllers
-    Public Class ProductsController
+    Public Class Orders1Controller
         Inherits System.Web.Mvc.Controller
 
         Private db As New OrderManagementEntities
 
-        ' GET: Products
+        ' GET: Orders1
         Function Index() As ActionResult
-            Return View(db.Products.ToList())
+            Dim orders = db.Orders.Include(Function(o) o.Customer)
+            Return View(orders.ToList())
         End Function
 
-        ' GET: Products/Details/5
+        ' GET: Orders1/Details/5
         Function Details(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim product As Product = db.Products.Find(id)
-            If IsNothing(product) Then
+            Dim order As Order = db.Orders.Find(id)
+            If IsNothing(order) Then
                 Return HttpNotFound()
             End If
-            Return View(product)
+            Return View(order)
         End Function
 
-        ' GET: Products/Create
+        ' GET: Orders1/Create
         Function Create() As ActionResult
-            ViewBag.BrandId = New SelectList(db.Brands, "BrandId", "BrandName")
-
+            ViewBag.CustomerId = New SelectList(db.Customers, "CustomerId", "Name")
             Return View()
         End Function
 
-        ' POST: Products/Create
+        ' POST: Orders1/Create
         'To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         'more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Create(<Bind(Include:="ProductId,BrandId,ProductName,ProductNameJp")> ByVal product As Product) As ActionResult
+        Function Create(<Bind(Include:="OrderId,CustomerId,OrderType,OrderDate,ShipDate")> ByVal order As Order) As ActionResult
             If ModelState.IsValid Then
-                db.Products.Add(product)
+                db.Orders.Add(order)
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            Return View(product)
+            ViewBag.CustomerId = New SelectList(db.Customers, "CustomerId", "Name", order.CustomerId)
+            Return View(order)
         End Function
 
-        ' GET: Products/Edit/5
+        ' GET: Orders1/Edit/5
         Function Edit(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim product As Product = db.Products.Find(id)
-            If IsNothing(product) Then
+            Dim order As Order = db.Orders.Find(id)
+            If IsNothing(order) Then
                 Return HttpNotFound()
             End If
-            ViewBag.BrandId = New SelectList(db.Brands, "BrandId", "BrandName", product.BrandId)
-            Return View(product)
+            ViewBag.CustomerId = New SelectList(db.Customers, "CustomerId", "Name", order.CustomerId)
+            Return View(order)
         End Function
 
-        ' POST: Products/Edit/5
+        ' POST: Orders1/Edit/5
         'To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         'more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="ProductId,BrandId,ProductName,ProductNameJp")> ByVal product As Product) As ActionResult
+        Function Edit(<Bind(Include:="OrderId,CustomerId,OrderType,OrderDate,ShipDate")> ByVal order As Order) As ActionResult
             If ModelState.IsValid Then
-                db.Entry(product).State = EntityState.Modified
+                db.Entry(order).State = EntityState.Modified
                 db.SaveChanges()
                 Return RedirectToAction("Index")
             End If
-            Return View(product)
+            ViewBag.CustomerId = New SelectList(db.Customers, "CustomerId", "Name", order.CustomerId)
+            Return View(order)
         End Function
 
-        ' GET: Products/Delete/5
+        ' GET: Orders1/Delete/5
         Function Delete(ByVal id As Integer?) As ActionResult
             If IsNothing(id) Then
                 Return New HttpStatusCodeResult(HttpStatusCode.BadRequest)
             End If
-            Dim product As Product = db.Products.Find(id)
-            If IsNothing(product) Then
+            Dim order As Order = db.Orders.Find(id)
+            If IsNothing(order) Then
                 Return HttpNotFound()
             End If
-            Return View(product)
+            Return View(order)
         End Function
 
-        ' POST: Products/Delete/5
+        ' POST: Orders1/Delete/5
         <HttpPost()>
         <ActionName("Delete")>
         <ValidateAntiForgeryToken()>
         Function DeleteConfirmed(ByVal id As Integer) As ActionResult
-            Dim product As Product = db.Products.Find(id)
-            db.Products.Remove(product)
+            Dim order As Order = db.Orders.Find(id)
+            db.Orders.Remove(order)
             db.SaveChanges()
             Return RedirectToAction("Index")
         End Function

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="OrderManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="OrderManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Brands">
           <Key>
             <PropertyRef Name="BrandId" />
@@ -33,6 +33,7 @@
           <Property Name="Quantity" Type="int" />
           <Property Name="PurchasePrice" Type="decimal" Precision="19" Scale="4" />
           <Property Name="SoldPrice" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="Link" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Orders">
@@ -41,6 +42,7 @@
           </Key>
           <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="OrderType" Type="int" Nullable="false" />
           <Property Name="OrderDate" Type="datetime" />
           <Property Name="ShipDate" Type="datetime" />
         </EntityType>
@@ -124,8 +126,7 @@
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OrderManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -159,6 +160,7 @@
           <Property Name="Quantity" Type="Int32" />
           <Property Name="PurchasePrice" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="SoldPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Status" Type="OrderManagementModel.OrderStatus" Nullable="false" />
           <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderDetail_Order" FromRole="OrderDetails" ToRole="Orders" />
           <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetail_Product" FromRole="OrderDetails" ToRole="Products" />
@@ -169,6 +171,7 @@
           </Key>
           <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="OrderType" Type="OrderManagementModel.OrderType" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Precision="3" />
           <Property Name="ShipDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer" FromRole="Orders" ToRole="Customers" />
@@ -256,6 +259,17 @@
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
         </EntityContainer>
+        <EnumType Name="OrderStatus">
+          <Member Name="Unconfirm" Value="0" />
+          <Member Name="Confirm" Value="1" />
+          <Member Name="Booked" Value="2" />
+          <Member Name="Recieved" Value="3" />
+          <Member Name="Complete" Value="4" />
+        </EnumType>
+        <EnumType Name="OrderType">
+          <Member Name="Normal" Value="0" />
+          <Member Name="Merge" Value="1" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -285,6 +299,7 @@
           <EntitySetMapping Name="OrderDetails">
             <EntityTypeMapping TypeName="OrderManagementModel.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetails">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -298,6 +313,7 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="OrderManagementModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />

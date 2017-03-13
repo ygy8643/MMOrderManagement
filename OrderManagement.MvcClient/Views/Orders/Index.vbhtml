@@ -18,6 +18,9 @@ End Code
                 @Html.DisplayNameFor(Function(model) model.Customer.Name)
             </th>
             <th>
+                @Html.DisplayNameFor(Function(model) model.OrderType)
+            </th>
+            <th>
                 @Html.DisplayNameFor(Function(model) model.ShipDate)
             </th>
 
@@ -34,6 +37,10 @@ End Code
                 <td>
                     @Html.DisplayFor(Function(modelItem) item.Customer.Name)
                 </td>
+
+                 <td>
+                     @Html.DisplayFor(Function(modelItem) item.OrderType)
+                 </td>
 
                 <td>
                     @Html.DisplayFor(Function(modelItem) item.ShipDate)
