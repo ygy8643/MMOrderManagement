@@ -35,6 +35,14 @@ End Code
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(Function(model) model.InvoiceNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Function(model) model.InvoiceNo)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(Function(model) model.Customer.Name)
         </dt>
 

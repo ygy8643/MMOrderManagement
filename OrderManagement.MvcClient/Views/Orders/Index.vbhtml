@@ -23,6 +23,9 @@ End Code
             <th>
                 @Html.DisplayNameFor(Function(model) model.ShipDate)
             </th>
+            <th>
+                @Html.DisplayNameFor(Function(model) model.InvoiceNo)
+            </th>
 
             <th></th>
         </tr>
@@ -45,6 +48,10 @@ End Code
                 <td>
                     @Html.DisplayFor(Function(modelItem) item.ShipDate)
                 </td>
+
+                 <td>
+                     @Html.DisplayFor(Function(modelItem) item.InvoiceNo)
+                 </td>
 
                 <td>
                     @Html.ActionLink("编辑", "Edit", New With {.id = item.OrderId}) |

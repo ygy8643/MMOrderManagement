@@ -42,6 +42,14 @@ End Code
             @Html.DisplayFor(Function(model) model.ShipDate)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(Function(model) model.InvoiceNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Function(model) model.InvoiceNo)
+        </dd>
+
     </dl>
 </div>
 

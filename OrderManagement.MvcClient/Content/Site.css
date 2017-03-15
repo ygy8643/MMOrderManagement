@@ -22,3 +22,17 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.header-block {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0 1%;
+	width: 30%;
+	padding: 30px;
+	background-color:#f5f5f5;
+    color: white;
+	border-radius: 10px;
+	flex: 1;
+	position: relative;
+	cursor: crosshair;
+}

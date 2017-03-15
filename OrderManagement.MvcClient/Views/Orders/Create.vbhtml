@@ -36,6 +36,14 @@ End Code
              </div>
          </div>
 
+         <div class="form-group">
+             @Html.LabelFor(Function(model) model.InvoiceNo, htmlAttributes:=New With {.class = "control-label col-md-2"})
+             <div class="col-md-10">
+                 @Html.TextBoxFor(Function(model) model.InvoiceNo, htmlAttributes:=New With {.class = "form-control date-picker"})
+                 @Html.ValidationMessageFor(Function(model) model.InvoiceNo, "", New With {.class = "text-danger"})
+             </div>
+         </div>
+
         <div class="form-group">
             @Html.LabelFor(Function(model) model.OrderDate, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">

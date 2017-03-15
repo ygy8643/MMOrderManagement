@@ -12,6 +12,8 @@ Public Class OrderHelper
     Public Property CustomerId As Integer
     <Display(Name:="订单类型")>
     Public Property OrderType As OrderType
+    <Display(Name:="发货单号")>
+    Public Property InvoiceNo As String
     <Display(Name:="订单日期")>
     Public Property OrderDate As Nullable(Of Date)
     <Display(Name:=“发货日期”)>
