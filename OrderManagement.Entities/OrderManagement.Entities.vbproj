@@ -165,12 +165,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="OrderInfo.edmx.sql" />
     <Content Include="OrderManagement.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OrderManagement.edmx</DependentUpon>
       <LastGenOutput>OrderManagement.Context.vb</LastGenOutput>
     </Content>
+    <Content Include="OrderManagement.edmx.sql" />
     <Content Include="OrderManagement.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OrderManagement.edmx</DependentUpon>
