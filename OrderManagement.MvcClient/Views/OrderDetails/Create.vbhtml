@@ -19,14 +19,22 @@ End Code
                     @Html.ValidationMessageFor(Function(model) model.OrderDetailId, "", New With { .class = "text-danger" })
                 </div>
             </div>*@
-
-        <div class="form-group">
+    @Html.HiddenFor(Function(model) model.OrderId) 
+        @*<div class="form-group">
             @Html.LabelFor(Function(model) model.OrderId, htmlAttributes:=New With {.class = "control-label col-md-2"})
             <div class="col-md-10">
                 @Html.DropDownList("OrderIdList", Nothing, htmlAttributes:=New With {.class = "form-control"})
                 @Html.ValidationMessageFor(Function(model) model.OrderId, "", New With {.class = "text-danger"})
             </div>
-        </div>
+        </div>*@
+
+         <div class="form-group">
+             @Html.LabelFor(Function(model) model.Status, htmlAttributes:=New With {.class = "control-label col-md-2"})
+             <div class="col-md-10">
+                 @Html.EnumDropDownListFor(Function(model) model.Status, htmlAttributes:=New With {.class = "form-control"})
+                 @Html.ValidationMessageFor(Function(model) model.Status, "", New With {.class = "text-danger"})
+             </div>
+         </div>
 
         <div class="form-group">
             @Html.LabelFor(Function(model) model.ProductId, htmlAttributes:=New With {.class = "control-label col-md-2"})

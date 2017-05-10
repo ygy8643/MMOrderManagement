@@ -18,7 +18,13 @@ End Code
                 @Html.DisplayNameFor(Function(model) model.Customer.Name)
             </th>
             <th>
+                @Html.DisplayNameFor(Function(model) model.OrderType)
+            </th>
+            <th>
                 @Html.DisplayNameFor(Function(model) model.ShipDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Function(model) model.InvoiceNo)
             </th>
 
             <th></th>
@@ -35,9 +41,17 @@ End Code
                     @Html.DisplayFor(Function(modelItem) item.Customer.Name)
                 </td>
 
+                 <td>
+                     @Html.DisplayFor(Function(modelItem) item.OrderType)
+                 </td>
+
                 <td>
                     @Html.DisplayFor(Function(modelItem) item.ShipDate)
                 </td>
+
+                 <td>
+                     @Html.DisplayFor(Function(modelItem) item.InvoiceNo)
+                 </td>
 
                 <td>
                     @Html.ActionLink("编辑", "Edit", New With {.id = item.OrderId}) |

@@ -10,6 +10,15 @@ End Code
     <h4>订单明细</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(Function(model) model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Function(model) model.Status)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(Function(model) model.Quantity)
         </dt>

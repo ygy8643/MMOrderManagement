@@ -33,7 +33,7 @@ Namespace Controllers
 
         ' GET: Products/Create
         Function Create() As ActionResult
-            ViewBag.BrandIdList = New SelectList(db.Brands, "BrandId", "BrandName")
+            ViewBag.BrandId = New SelectList(db.Brands, "BrandId", "BrandName")
 
             Return View()
         End Function
@@ -61,6 +61,7 @@ Namespace Controllers
             If IsNothing(product) Then
                 Return HttpNotFound()
             End If
+            ViewBag.BrandId = New SelectList(db.Brands, "BrandId", "BrandName", product.BrandId)
             Return View(product)
         End Function
 
@@ -69,7 +70,7 @@ Namespace Controllers
         'more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         <HttpPost()>
         <ValidateAntiForgeryToken()>
-        Function Edit(<Bind(Include:="ProductId,ProductName,ProductNameJp")> ByVal product As Product) As ActionResult
+        Function Edit(<Bind(Include:="ProductId,BrandId,ProductName,ProductNameJp")> ByVal product As Product) As ActionResult
             If ModelState.IsValid Then
                 db.Entry(product).State = EntityState.Modified
                 db.SaveChanges()

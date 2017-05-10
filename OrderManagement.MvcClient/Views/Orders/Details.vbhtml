@@ -9,13 +9,6 @@ End Code
     <h4>订单</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(Function(model) model.OrderDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(Function(model) model.OrderDate)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(Function(model) model.Customer.Name)
@@ -26,11 +19,35 @@ End Code
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(Function(model) model.OrderType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Function(model) model.OrderType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Function(model) model.OrderDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Function(model) model.OrderDate)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(Function(model) model.ShipDate)
         </dt>
 
         <dd>
             @Html.DisplayFor(Function(model) model.ShipDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Function(model) model.InvoiceNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Function(model) model.InvoiceNo)
         </dd>
 
     </dl>
@@ -53,6 +70,9 @@ End Code
             </th>
             <th>
                 @Html.DisplayNameFor(Function(model) model.OrderDetails.FirstOrDefault.SoldPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Function(model) model.OrderDetails.FirstOrDefault.Status)
             </th>
             <th>
                 @Html.DisplayNameFor(Function(model) model.OrderDetails.FirstOrDefault.Link)
@@ -79,6 +99,9 @@ End Code
                 <td>
                     @Html.DisplayFor(Function(modelItem) item.SoldPrice)
                 </td>
+                 <td>
+                     @Html.DisplayFor(Function(modelItem) item.Status)
+                 </td>
                 <td>
                     @Html.DisplayFor(Function(modelItem) item.Link)
                 </td>

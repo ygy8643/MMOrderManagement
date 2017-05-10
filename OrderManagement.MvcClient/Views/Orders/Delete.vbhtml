@@ -19,11 +19,27 @@ End Code
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(Function(model) model.OrderType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Function(model) model.OrderType)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(Function(model) model.ShipDate)
         </dt>
 
         <dd>
             @Html.DisplayFor(Function(model) model.ShipDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(Function(model) model.InvoiceNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(Function(model) model.InvoiceNo)
         </dd>
 
         <dt>
