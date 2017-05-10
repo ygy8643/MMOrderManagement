@@ -17,7 +17,6 @@ Partial Public Class OrderDetail
     Public Property Quantity As Nullable(Of Integer)
     Public Property PurchasePrice As Nullable(Of Decimal)
     Public Property SoldPrice As Nullable(Of Decimal)
-    Public Property Status As OrderStatus
     Public Property Link As String
     Public Property Status As Integer
 

@@ -119,12 +119,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrderStatus.vb">
-      <DependentUpon>OrderManagement.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrderType.vb">
-      <DependentUpon>OrderManagement.tt</DependentUpon>
-    </Compile>
     <Compile Include="Product.vb">
       <DependentUpon>OrderManagement.tt</DependentUpon>
     </Compile>

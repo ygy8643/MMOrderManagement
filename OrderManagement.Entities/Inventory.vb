@@ -13,4 +13,5 @@ Imports System.Collections.Generic
 Partial Public Class Inventory
     Public Property ProductId As Integer
     Public Property Quantity As Nullable(Of Integer)
+
 End Class
