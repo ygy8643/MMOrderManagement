@@ -646,9 +646,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OrderManagement.Entities\OrderManagement.Entities.vbproj">
+    <ProjectReference Include="..\OrderManagement.Entities\OrderManagement.Service.Entities.vbproj">
       <Project>{6bbffde5-2ce4-4acd-9ee3-f1d7c495b2e5}</Project>
-      <Name>OrderManagement.Entities</Name>
+      <Name>OrderManagement.Service.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

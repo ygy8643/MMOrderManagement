@@ -79,6 +79,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="OrderInfo\CustomerDto.vb" />
+    <Compile Include="OrderInfo\InventoryDto.vb" />
     <Compile Include="OrderInfo\OrderDetailDto.vb" />
     <Compile Include="OrderInfo\OrderDto.vb" />
     <Compile Include="OrderInfo\ProductDto.vb" />

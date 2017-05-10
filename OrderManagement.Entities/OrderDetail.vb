@@ -18,6 +18,7 @@ Partial Public Class OrderDetail
     Public Property PurchasePrice As Nullable(Of Decimal)
     Public Property SoldPrice As Nullable(Of Decimal)
     Public Property Link As String
+    Public Property Status As Integer
 
     Public Overridable Property Order As Order
     Public Overridable Property Product As Product
