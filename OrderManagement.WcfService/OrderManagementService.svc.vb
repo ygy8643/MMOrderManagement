@@ -11,15 +11,9 @@ Public Class OrderManagementService
     ''' <returns></returns>
     Public Function GetOrderDtoes() As List(Of OrderDto) Implements IOrderManagementService.GetOrderDtoes
 
-        Try
-            Using dbContext As New OrderManagementEntities
-
-                Return Mapper.Map(Of List(Of OrderDto))(dbContext.Orders.ToList)
-
-            End Using
-        Catch ex As Exception
-            Dim strError As String = ex.Message
-        End Try
+        Using dbContext As New OrderManagementEntities
+            Return Mapper.Map(Of List(Of OrderDto))(dbContext.Orders.ToList)
+        End Using
 
     End Function
 End Class

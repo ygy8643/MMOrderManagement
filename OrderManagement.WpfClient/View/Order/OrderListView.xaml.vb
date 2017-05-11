@@ -1,3 +1,7 @@
-﻿Public Class OrderListView
+﻿Namespace View
 
-End Class
+    Public Class OrderListView
+
+    End Class
+End Namespace
+
