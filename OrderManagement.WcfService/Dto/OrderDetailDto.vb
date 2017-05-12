@@ -11,5 +11,7 @@
         Public Property Link As String
         Public Property Status As Integer
 
+        Public Overridable Property ProductDto As ProductDto
+
     End Class
 End Namespace

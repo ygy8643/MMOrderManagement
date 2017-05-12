@@ -17,6 +17,7 @@ Partial Public Class Order
     Public Property ShipDate As Nullable(Of Date)
     Public Property OrderType As Integer
     Public Property InvoiceNo As String
+    Public Property Freight As Nullable(Of Decimal)
 
     Public Overridable Property Customer As Customer
     Public Overridable Property OrderDetails As ICollection(Of OrderDetail) = New HashSet(Of OrderDetail)

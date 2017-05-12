@@ -17,4 +17,6 @@ Public Class OrderDetailClient
     Public Property SoldPrice As Nullable(Of Decimal)
     <DisplayName("采购链接")>
     Public Property Link As String
+
+    Public Overridable Property ProductClient As ProductClient
 End Class

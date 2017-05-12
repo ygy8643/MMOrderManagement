@@ -16,6 +16,8 @@ Public Class OrderClient
     Public Property OrderType As Integer
     <DisplayName(“邮单编号”)>
     Public Property InvoiceNo As String
+    <DisplayName(“运费”)>
+    Public Property Freight As Nullable(Of Decimal)
 
     'Navigation Properties
     Public Property CustomerClient As CustomerClient

@@ -13,4 +13,8 @@ Public Class CustomerClient
     Public Property PostCode As String
     <DisplayName("电话号码")>
     Public Property Phone As String
+    <DisplayName("微信昵称")>
+    Public Property WechatName As String
+    <DisplayName("淘宝昵称")>
+    Public Property TaobaoName As String
 End Class

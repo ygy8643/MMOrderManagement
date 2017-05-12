@@ -40,6 +40,7 @@
       <xs:element minOccurs="0" name="Link" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OrderDetailId" type="xs:int" />
       <xs:element minOccurs="0" name="OrderId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductDto" nillable="true" type="tns:ProductDto" />
       <xs:element minOccurs="0" name="ProductId" type="xs:int" />
       <xs:element minOccurs="0" name="PurchasePrice" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="Quantity" nillable="true" type="xs:int" />
@@ -48,4 +49,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OrderDetailDto" nillable="true" type="tns:OrderDetailDto" />
+  <xs:complexType name="ProductDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ProductId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductNameJp" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductDto" nillable="true" type="tns:ProductDto" />
 </xs:schema>

@@ -27,7 +27,7 @@ Partial Public Class OrderManagementEntities
     Public Overridable Property OrderDetails() As DbSet(Of OrderDetail)
     Public Overridable Property Orders() As DbSet(Of Order)
     Public Overridable Property Products() As DbSet(Of Product)
-    Public Overridable Property Inventories() As DbSet(Of Inventory)
     Public Overridable Property Species() As DbSet(Of Species)
+    Public Overridable Property Inventories() As DbSet(Of Inventory)
 
 End Class

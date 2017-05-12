@@ -17,8 +17,10 @@ Namespace Config
             .ForMember("OrderDetails", Sub(opt) opt.MapFrom("OrderDetailDtoes")) _
             .ForMember("Customer", Sub(opt) opt.MapFrom("CustomerDto"))
 
-            CreateMap(GetType(OrderDetail), GetType(OrderDetailDto))
-            CreateMap(GetType(OrderDetailDto), GetType(OrderDetail))
+            CreateMap(GetType(OrderDetail), GetType(OrderDetailDto)) _
+                .ForMember("ProductDto", Sub(opt) opt.MapFrom("Product"))
+            CreateMap(GetType(OrderDetailDto), GetType(OrderDetail)) _
+                .ForMember("Product", Sub(opt) opt.MapFrom("ProductDto"))
 
             CreateMap(GetType(Customer), GetType(CustomerDto))
             CreateMap(GetType(CustomerDto), GetType(Customer))

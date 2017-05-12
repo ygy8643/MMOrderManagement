@@ -4,163 +4,150 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="OrderManagementModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="OrderManagementModelStoreContainer">
-    <EntitySet Name="Brands" EntityType="OrderManagementModel.Store.Brands" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Customers" EntityType="OrderManagementModel.Store.Customers" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="OrderDetails" EntityType="OrderManagementModel.Store.OrderDetails" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Orders" EntityType="OrderManagementModel.Store.Orders" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Products" EntityType="OrderManagementModel.Store.Products" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Inventories" EntityType="OrderManagementModel.Store.Inventories" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Species" EntityType="OrderManagementModel.Store.Species" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_Product_Brand" Association="OrderManagementModel.Store.FK_Product_Brand">
-      <End Role="Brands" EntitySet="Brands" />
-      <End Role="Products" EntitySet="Products" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Order_Customer" Association="OrderManagementModel.Store.FK_Order_Customer">
-      <End Role="Customers" EntitySet="Customers" />
-      <End Role="Orders" EntitySet="Orders" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderDetail_Order" Association="OrderManagementModel.Store.FK_OrderDetail_Order">
-      <End Role="Orders" EntitySet="Orders" />
-      <End Role="OrderDetails" EntitySet="OrderDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_OrderDetail_Product" Association="OrderManagementModel.Store.FK_OrderDetail_Product">
-      <End Role="Products" EntitySet="Products" />
-      <End Role="OrderDetails" EntitySet="OrderDetails" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Products_Species" Association="OrderManagementModel.Store.FK_Products_Species">
-      <End Role="Species" EntitySet="Species" />
-      <End Role="Product" EntitySet="Products" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Brands">
-    <Key>
-      <PropertyRef Name="BrandId" />
-    </Key>
-    <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BrandName" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="BrandNameJp" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <EntityType Name="Customers">
-    <Key>
-      <PropertyRef Name="CustomerId" />
-    </Key>
-    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Address" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="PostCode" Type="nchar" Nullable="true" MaxLength="20" />
-    <Property Name="Phone" Type="nchar" Nullable="true" MaxLength="20" />
-  </EntityType>
-  <EntityType Name="OrderDetails">
-    <Key>
-      <PropertyRef Name="OrderDetailId" />
-    </Key>
-    <Property Name="OrderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OrderId" Type="int" Nullable="false" />
-    <Property Name="ProductId" Type="int" Nullable="false" />
-    <Property Name="Quantity" Type="int" Nullable="true" />
-    <Property Name="PurchasePrice" Type="decimal" Nullable="true" Precision="19" Scale="4" />
-    <Property Name="SoldPrice" Type="decimal" Nullable="true" Precision="19" Scale="4" />
-    <Property Name="Link" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Status" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Orders">
-    <Key>
-      <PropertyRef Name="OrderId" />
-    </Key>
-    <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="CustomerId" Type="int" Nullable="false" />
-    <Property Name="OrderDate" Type="datetime" Nullable="true" />
-    <Property Name="ShipDate" Type="datetime" Nullable="true" />
-    <Property Name="OrderType" Type="int" Nullable="false" />
-    <Property Name="InvoiceNo" Type="nvarchar" Nullable="true" MaxLength="30" />
-  </EntityType>
-  <EntityType Name="Products">
-    <Key>
-      <PropertyRef Name="ProductId" />
-    </Key>
-    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BrandId" Type="int" Nullable="false" />
-    <Property Name="ProductName" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="ProductNameJp" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="SpeciesId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Inventories">
-    <Key>
-      <PropertyRef Name="ProductId" />
-    </Key>
-    <Property Name="ProductId" Type="int" Nullable="false" />
-    <Property Name="Quantity" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="Species">
-    <Key>
-      <PropertyRef Name="SpeciesId" />
-    </Key>
-    <Property Name="SpeciesId" Type="int" Nullable="false" />
-    <Property Name="SpeciesName" Type="nvarchar" Nullable="true" MaxLength="50" />
-  </EntityType>
-  <Association Name="FK_Product_Brand">
-    <End Role="Brands" Type="OrderManagementModel.Store.Brands" Multiplicity="1" />
-    <End Role="Products" Type="OrderManagementModel.Store.Products" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Brands">
-        <PropertyRef Name="BrandId" />
-      </Principal>
-      <Dependent Role="Products">
-        <PropertyRef Name="BrandId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Order_Customer">
-    <End Role="Customers" Type="OrderManagementModel.Store.Customers" Multiplicity="1" />
-    <End Role="Orders" Type="OrderManagementModel.Store.Orders" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customers">
-        <PropertyRef Name="CustomerId" />
-      </Principal>
-      <Dependent Role="Orders">
-        <PropertyRef Name="CustomerId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderDetail_Order">
-    <End Role="Orders" Type="OrderManagementModel.Store.Orders" Multiplicity="1" />
-    <End Role="OrderDetails" Type="OrderManagementModel.Store.OrderDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Orders">
-        <PropertyRef Name="OrderId" />
-      </Principal>
-      <Dependent Role="OrderDetails">
-        <PropertyRef Name="OrderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_OrderDetail_Product">
-    <End Role="Products" Type="OrderManagementModel.Store.Products" Multiplicity="1" />
-    <End Role="OrderDetails" Type="OrderManagementModel.Store.OrderDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Products">
-        <PropertyRef Name="ProductId" />
-      </Principal>
-      <Dependent Role="OrderDetails">
-        <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Products_Species">
-    <End Role="Species" Type="OrderManagementModel.Store.Species" Multiplicity="1" />
-    <End Role="Product" Type="OrderManagementModel.Store.Products" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Species">
-        <PropertyRef Name="SpeciesId" />
-      </Principal>
-      <Dependent Role="Product">
-        <PropertyRef Name="SpeciesId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="OrderManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrandNameJp" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="WechatName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaobaoName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar(max)" />
+          <Property Name="PostCode" Type="nchar" MaxLength="20" />
+          <Property Name="Phone" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderDetails">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="PurchasePrice" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="SoldPrice" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Link" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="OrderType" Type="int" Nullable="false" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="30" />
+          <Property Name="OrderDate" Type="datetime" />
+          <Property Name="ShipDate" Type="datetime" />
+          <Property Name="Freight" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpeciesId" Type="int" Nullable="false" />
+          <Property Name="BrandId" Type="int" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar(max)" />
+          <Property Name="ProductNameJp" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Species">
+          <Key>
+            <PropertyRef Name="SpeciesId" />
+          </Key>
+          <Property Name="SpeciesId" Type="int" Nullable="false" />
+          <Property Name="SpeciesName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Order">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Product">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="OrderDetails" Type="Self.OrderDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetails">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Species">
+          <End Role="Species" Type="Self.Species" Multiplicity="1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Species">
+              <PropertyRef Name="SpeciesId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="SpeciesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OrderManagementModelStoreContainer">
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetails" EntityType="Self.OrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Species" EntityType="Self.Species" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Order" Association="Self.FK_OrderDetail_Order">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Product" Association="Self.FK_OrderDetail_Product">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderDetails" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Species" Association="Self.FK_Products_Species">
+            <End Role="Species" EntitySet="Species" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="OrderManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -183,6 +170,8 @@
           <Property Name="PostCode" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Customer" FromRole="Customers" ToRole="Orders" />
+          <Property Name="WechatName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaobaoName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="OrderDetail">
           <Key>
@@ -211,6 +200,7 @@
           <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetail_Order" FromRole="Orders" ToRole="OrderDetails" />
           <Property Name="OrderType" Type="Int32" Nullable="false" />
           <Property Name="InvoiceNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Freight" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -295,20 +285,13 @@
             <End Role="Products" EntitySet="Products" />
             <End Role="OrderDetails" EntitySet="OrderDetails" />
           </AssociationSet>
-          <EntitySet Name="Inventories" EntityType="OrderManagementModel.Inventory" />
           <EntitySet Name="Species" EntityType="OrderManagementModel.Species" />
           <AssociationSet Name="FK_Products_Species" Association="OrderManagementModel.FK_Products_Species">
             <End Role="Species" EntitySet="Species" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="Inventories" EntityType="OrderManagementModel.Inventory" />
         </EntityContainer>
-        <EntityType Name="Inventory">
-          <Key>
-            <PropertyRef Name="ProductId" />
-          </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" />
-        </EntityType>
         <EntityType Name="Species">
           <Key>
             <PropertyRef Name="SpeciesId" />
@@ -329,6 +312,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -347,7 +337,9 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="IsTypeOf(OrderManagementModel.Customer)">
         <MappingFragment StoreEntitySet="Customers">
-          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="TaobaoName" ColumnName="TaobaoName" />
+                <ScalarProperty Name="WechatName" ColumnName="WechatName" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="PostCode" ColumnName="PostCode" />
@@ -372,7 +364,8 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="IsTypeOf(OrderManagementModel.Order)">
         <MappingFragment StoreEntitySet="Orders">
-          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Freight" ColumnName="Freight" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
           <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
@@ -392,14 +385,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Inventories">
-      <EntityTypeMapping TypeName="IsTypeOf(OrderManagementModel.Inventory)">
-        <MappingFragment StoreEntitySet="Inventories">
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Species">
       <EntityTypeMapping TypeName="IsTypeOf(OrderManagementModel.Species)">
         <MappingFragment StoreEntitySet="Species">
@@ -408,6 +393,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="OrderManagementModel.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

@@ -264,12 +264,28 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-        <Button x:Name="btnSave"
-                Content="保存"
-                HorizontalAlignment="Right"
-                Grid.Row="3"
-                Width="75"
-                Height="20" />
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="595*" />
+                <ColumnDefinition Width="116*" />
+                <ColumnDefinition Width="104*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnLoad"
+                    Content="读取"
+                    HorizontalAlignment="Right"
+                    Width="75"
+                    Height="20"
+                    Grid.Column="1"
+                    Margin="0,0,0,2"
+                    Command="{Binding LoadOrderCommand}" />
+            <Button x:Name="btnSave"
+                    Content="保存"
+                    HorizontalAlignment="Right"
+                    Width="75"
+                    Height="20"
+                    Grid.Column="2"
+                    Margin="0,0,0,2" />
+        </Grid>
 
     </Grid>
 </UserControl>

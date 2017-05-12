@@ -10,15 +10,17 @@ Namespace Config
         Protected Overrides Sub Configure()
 
             CreateMap(GetType(OrderClient), GetType(OrderDto)) _
-            .ForMember("OrderDetailDtoes", Sub(opt) opt.MapFrom("OrderDetailClients")) _
-            .ForMember("CustomerDto", Sub(opt) opt.MapFrom("CustomerClient"))
+                .ForMember("OrderDetailDtoes", Sub(opt) opt.MapFrom("OrderDetailClients")) _
+                .ForMember("CustomerDto", Sub(opt) opt.MapFrom("CustomerClient"))
 
             CreateMap(GetType(OrderDto), GetType(OrderClient)) _
                 .ForMember("OrderDetailClients", Sub(opt) opt.MapFrom("OrderDetailDtoes")) _
                 .ForMember("CustomerClient", Sub(opt) opt.MapFrom("CustomerDto"))
 
-            CreateMap(GetType(OrderDetailClient), GetType(OrderDetailDto))
-            CreateMap(GetType(OrderDetailDto), GetType(OrderDetailClient))
+            CreateMap(GetType(OrderDetailClient), GetType(OrderDetailDto)) _
+                .ForMember("ProductDto", Sub(opt) opt.MapFrom("ProductClient"))
+            CreateMap(GetType(OrderDetailDto), GetType(OrderDetailClient)) _
+                .ForMember("ProductClient", Sub(opt) opt.MapFrom("ProductDto"))
 
             CreateMap(GetType(CustomerClient), GetType(CustomerDto))
             CreateMap(GetType(CustomerDto), GetType(CustomerClient))
