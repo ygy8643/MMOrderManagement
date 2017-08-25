@@ -34,6 +34,9 @@ Namespace WcfService
         Private CustomerIdField As Integer
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private FreightField As System.Nullable(Of Decimal)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private InvoiceNoField As String
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
@@ -83,6 +86,19 @@ Namespace WcfService
                 If (Me.CustomerIdField.Equals(value) <> true) Then
                     Me.CustomerIdField = value
                     Me.RaisePropertyChanged("CustomerId")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Freight() As System.Nullable(Of Decimal)
+            Get
+                Return Me.FreightField
+            End Get
+            Set
+                If (Me.FreightField.Equals(value) <> true) Then
+                    Me.FreightField = value
+                    Me.RaisePropertyChanged("Freight")
                 End If
             End Set
         End Property
@@ -201,6 +217,12 @@ Namespace WcfService
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private PostCodeField As String
         
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TaobaoNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private WechatNameField As String
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -276,6 +298,32 @@ Namespace WcfService
             End Set
         End Property
         
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property TaobaoName() As String
+            Get
+                Return Me.TaobaoNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TaobaoNameField, value) <> true) Then
+                    Me.TaobaoNameField = value
+                    Me.RaisePropertyChanged("TaobaoName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property WechatName() As String
+            Get
+                Return Me.WechatNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.WechatNameField, value) <> true) Then
+                    Me.WechatNameField = value
+                    Me.RaisePropertyChanged("WechatName")
+                End If
+            End Set
+        End Property
+        
         Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
         
         Protected Sub RaisePropertyChanged(ByVal propertyName As String)
@@ -305,154 +353,154 @@ Namespace WcfService
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private OrderIdField As Integer
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProductDtoField As WcfService.ProductDto
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProductIdField As Integer
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private PurchasePriceField As System.Nullable(Of Decimal)
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private QuantityField As System.Nullable(Of Integer)
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private SoldPriceField As System.Nullable(Of Decimal)
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private StatusField As Integer
-
-        <Global.System.ComponentModel.BrowsableAttribute(False)>
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
                 Return Me.extensionDataField
             End Get
             Set
-                Me.extensionDataField = Value
+                Me.extensionDataField = value
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property Link() As String
             Get
                 Return Me.LinkField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.LinkField, Value) <> True) Then
-                    Me.LinkField = Value
+                If (Object.ReferenceEquals(Me.LinkField, value) <> true) Then
+                    Me.LinkField = value
                     Me.RaisePropertyChanged("Link")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property OrderDetailId() As Integer
             Get
                 Return Me.OrderDetailIdField
             End Get
             Set
-                If (Me.OrderDetailIdField.Equals(Value) <> True) Then
-                    Me.OrderDetailIdField = Value
+                If (Me.OrderDetailIdField.Equals(value) <> true) Then
+                    Me.OrderDetailIdField = value
                     Me.RaisePropertyChanged("OrderDetailId")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property OrderId() As Integer
             Get
                 Return Me.OrderIdField
             End Get
             Set
-                If (Me.OrderIdField.Equals(Value) <> True) Then
-                    Me.OrderIdField = Value
+                If (Me.OrderIdField.Equals(value) <> true) Then
+                    Me.OrderIdField = value
                     Me.RaisePropertyChanged("OrderId")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ProductDto() As WcfService.ProductDto
             Get
                 Return Me.ProductDtoField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ProductDtoField, Value) <> True) Then
-                    Me.ProductDtoField = Value
+                If (Object.ReferenceEquals(Me.ProductDtoField, value) <> true) Then
+                    Me.ProductDtoField = value
                     Me.RaisePropertyChanged("ProductDto")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ProductId() As Integer
             Get
                 Return Me.ProductIdField
             End Get
             Set
-                If (Me.ProductIdField.Equals(Value) <> True) Then
-                    Me.ProductIdField = Value
+                If (Me.ProductIdField.Equals(value) <> true) Then
+                    Me.ProductIdField = value
                     Me.RaisePropertyChanged("ProductId")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property PurchasePrice() As System.Nullable(Of Decimal)
             Get
                 Return Me.PurchasePriceField
             End Get
             Set
-                If (Me.PurchasePriceField.Equals(Value) <> True) Then
-                    Me.PurchasePriceField = Value
+                If (Me.PurchasePriceField.Equals(value) <> true) Then
+                    Me.PurchasePriceField = value
                     Me.RaisePropertyChanged("PurchasePrice")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property Quantity() As System.Nullable(Of Integer)
             Get
                 Return Me.QuantityField
             End Get
             Set
-                If (Me.QuantityField.Equals(Value) <> True) Then
-                    Me.QuantityField = Value
+                If (Me.QuantityField.Equals(value) <> true) Then
+                    Me.QuantityField = value
                     Me.RaisePropertyChanged("Quantity")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property SoldPrice() As System.Nullable(Of Decimal)
             Get
                 Return Me.SoldPriceField
             End Get
             Set
-                If (Me.SoldPriceField.Equals(Value) <> True) Then
-                    Me.SoldPriceField = Value
+                If (Me.SoldPriceField.Equals(value) <> true) Then
+                    Me.SoldPriceField = value
                     Me.RaisePropertyChanged("SoldPrice")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property Status() As Integer
             Get
                 Return Me.StatusField
             End Get
             Set
-                If (Me.StatusField.Equals(Value) <> True) Then
-                    Me.StatusField = Value
+                If (Me.StatusField.Equals(value) <> true) Then
+                    Me.StatusField = value
                     Me.RaisePropertyChanged("Status")
                 End If
             End Set
         End Property
-
+        
         Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-
+        
         Protected Sub RaisePropertyChanged(ByVal propertyName As String)
             Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
             If (Not (propertyChanged) Is Nothing) Then
@@ -460,78 +508,78 @@ Namespace WcfService
             End If
         End Sub
     End Class
-
-    <System.Diagnostics.DebuggerStepThroughAttribute(),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),
-     System.Runtime.Serialization.DataContractAttribute(Name:="ProductDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),
-     System.SerializableAttribute()>
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ProductDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.SerializableAttribute()>  _
     Partial Public Class ProductDto
         Inherits Object
         Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-
-        <System.NonSerializedAttribute()>
+        
+        <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProductIdField As Integer
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProductNameField As String
-
-        <System.Runtime.Serialization.OptionalFieldAttribute()>
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProductNameJpField As String
-
-        <Global.System.ComponentModel.BrowsableAttribute(False)>
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
                 Return Me.extensionDataField
             End Get
             Set
-                Me.extensionDataField = Value
+                Me.extensionDataField = value
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ProductId() As Integer
             Get
                 Return Me.ProductIdField
             End Get
             Set
-                If (Me.ProductIdField.Equals(Value) <> True) Then
-                    Me.ProductIdField = Value
+                If (Me.ProductIdField.Equals(value) <> true) Then
+                    Me.ProductIdField = value
                     Me.RaisePropertyChanged("ProductId")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ProductName() As String
             Get
                 Return Me.ProductNameField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ProductNameField, Value) <> True) Then
-                    Me.ProductNameField = Value
+                If (Object.ReferenceEquals(Me.ProductNameField, value) <> true) Then
+                    Me.ProductNameField = value
                     Me.RaisePropertyChanged("ProductName")
                 End If
             End Set
         End Property
-
-        <System.Runtime.Serialization.DataMemberAttribute()>
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property ProductNameJp() As String
             Get
                 Return Me.ProductNameJpField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.ProductNameJpField, Value) <> True) Then
-                    Me.ProductNameJpField = Value
+                If (Object.ReferenceEquals(Me.ProductNameJpField, value) <> true) Then
+                    Me.ProductNameJpField = value
                     Me.RaisePropertyChanged("ProductNameJp")
                 End If
             End Set
         End Property
-
+        
         Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-
+        
         Protected Sub RaisePropertyChanged(ByVal propertyName As String)
             Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
             If (Not (propertyChanged) Is Nothing) Then
@@ -539,18 +587,18 @@ Namespace WcfService
             End If
         End Sub
     End Class
-
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),
-     System.ServiceModel.ServiceContractAttribute(ConfigurationName:="WcfService.IOrderManagementService")>
+    
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
+     System.ServiceModel.ServiceContractAttribute(ConfigurationName:="WcfService.IOrderManagementService")>  _
     Public Interface IOrderManagementService
-
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesResponse")>
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesResponse")>  _
         Function GetOrderDtoes() As WcfService.OrderDto()
-
-        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesResponse")>
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesResponse")>  _
         Function GetOrderDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.OrderDto())
     End Interface
-
+    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
     Public Interface IOrderManagementServiceChannel
         Inherits WcfService.IOrderManagementService, System.ServiceModel.IClientChannel

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/11/2017 11:07:19
+-- Date Created: 08/25/2017 11:08:27
 -- Generated from EDMX file: D:\OrderManagement\OrderManagement.Entities\OrderManagement.edmx
 -- --------------------------------------------------
 
@@ -74,7 +74,9 @@ CREATE TABLE [dbo].[Customers] (
     [Name] nvarchar(50)  NULL,
     [Address] nvarchar(max)  NULL,
     [PostCode] nchar(20)  NULL,
-    [Phone] nchar(20)  NULL
+    [Phone] nchar(20)  NULL,
+    [WechatName] nvarchar(50)  NULL,
+    [TaobaoName] nvarchar(50)  NULL
 );
 GO
 
@@ -98,7 +100,8 @@ CREATE TABLE [dbo].[Orders] (
     [OrderDate] datetime  NULL,
     [ShipDate] datetime  NULL,
     [OrderType] int  NOT NULL,
-    [InvoiceNo] nvarchar(30)  NULL
+    [InvoiceNo] nvarchar(30)  NULL,
+    [Freight] decimal(18,0)  NULL
 );
 GO
 
@@ -112,17 +115,17 @@ CREATE TABLE [dbo].[Products] (
 );
 GO
 
--- Creating table 'Inventories'
-CREATE TABLE [dbo].[Inventories] (
-    [ProductId] int  NOT NULL,
-    [Quantity] int  NULL
-);
-GO
-
 -- Creating table 'Species'
 CREATE TABLE [dbo].[Species] (
     [SpeciesId] int  NOT NULL,
     [SpeciesName] nvarchar(50)  NULL
+);
+GO
+
+-- Creating table 'Inventories'
+CREATE TABLE [dbo].[Inventories] (
+    [ProductId] int  NOT NULL,
+    [Quantity] int  NULL
 );
 GO
 
@@ -160,16 +163,16 @@ ADD CONSTRAINT [PK_Products]
     PRIMARY KEY CLUSTERED ([ProductId] ASC);
 GO
 
--- Creating primary key on [ProductId] in table 'Inventories'
-ALTER TABLE [dbo].[Inventories]
-ADD CONSTRAINT [PK_Inventories]
-    PRIMARY KEY CLUSTERED ([ProductId] ASC);
-GO
-
 -- Creating primary key on [SpeciesId] in table 'Species'
 ALTER TABLE [dbo].[Species]
 ADD CONSTRAINT [PK_Species]
     PRIMARY KEY CLUSTERED ([SpeciesId] ASC);
+GO
+
+-- Creating primary key on [ProductId] in table 'Inventories'
+ALTER TABLE [dbo].[Inventories]
+ADD CONSTRAINT [PK_Inventories]
+    PRIMARY KEY CLUSTERED ([ProductId] ASC);
 GO
 
 -- --------------------------------------------------

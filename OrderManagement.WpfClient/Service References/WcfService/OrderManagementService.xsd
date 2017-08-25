@@ -10,6 +10,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="CustomerDto" nillable="true" type="tns:CustomerDto" />
       <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+      <xs:element minOccurs="0" name="Freight" nillable="true" type="xs:decimal" />
       <xs:element minOccurs="0" name="InvoiceNo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="OrderDate" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="OrderDetailDtoes" nillable="true" type="tns:ArrayOfOrderDetailDto" />
@@ -26,6 +27,8 @@
       <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaobaoName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WechatName" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CustomerDto" nillable="true" type="tns:CustomerDto" />
