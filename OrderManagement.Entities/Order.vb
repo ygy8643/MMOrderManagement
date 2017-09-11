@@ -13,10 +13,10 @@ Imports System.Collections.Generic
 Partial Public Class Order
     Public Property OrderId As Integer
     Public Property CustomerId As Integer
-    Public Property OrderDate As Nullable(Of Date)
-    Public Property ShipDate As Nullable(Of Date)
     Public Property OrderType As Integer
     Public Property InvoiceNo As String
+    Public Property OrderDate As Nullable(Of Date)
+    Public Property ShipDate As Nullable(Of Date)
     Public Property Freight As Nullable(Of Decimal)
 
     Public Overridable Property Customer As Customer

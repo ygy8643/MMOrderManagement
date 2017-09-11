@@ -10,7 +10,7 @@
         Public Property WechatName As String
         Public Property TaobaoName As String
 
-        Public Overridable Property OrderDtoes As ICollection(Of OrderDto) = New HashSet(Of OrderDto)
+        'Public Overridable Property OrderDtoes As ICollection(Of OrderDto) = New HashSet(Of OrderDto)
     End Class
 
 End Namespace

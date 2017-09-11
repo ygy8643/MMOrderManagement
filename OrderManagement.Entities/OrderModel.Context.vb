@@ -11,11 +11,11 @@ Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
 
-Partial Public Class Entities
+Partial Public Class OrderEntities
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=Entities")
+        MyBase.New("name=OrderEntities")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -24,10 +24,10 @@ Partial Public Class Entities
 
     Public Overridable Property Brands() As DbSet(Of Brand)
     Public Overridable Property Customers() As DbSet(Of Customer)
+    Public Overridable Property Inventories() As DbSet(Of Inventory)
     Public Overridable Property OrderDetails() As DbSet(Of OrderDetail)
     Public Overridable Property Orders() As DbSet(Of Order)
     Public Overridable Property Products() As DbSet(Of Product)
     Public Overridable Property Species() As DbSet(Of Species)
-    Public Overridable Property Inventories() As DbSet(Of Inventory)
 
 End Class

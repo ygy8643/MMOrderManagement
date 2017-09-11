@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 08/25/2017 11:08:27
--- Generated from EDMX file: D:\OrderManagement\OrderManagement.Entities\OrderManagement.edmx
+-- Date Created: 09/11/2017 16:30:17
+-- Generated from EDMX file: D:\OrderManagement\OrderManagement.Entities\OrderModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -72,11 +72,18 @@ GO
 CREATE TABLE [dbo].[Customers] (
     [CustomerId] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(50)  NULL,
+    [WechatName] nvarchar(50)  NULL,
+    [TaobaoName] nvarchar(50)  NULL,
     [Address] nvarchar(max)  NULL,
     [PostCode] nchar(20)  NULL,
-    [Phone] nchar(20)  NULL,
-    [WechatName] nvarchar(50)  NULL,
-    [TaobaoName] nvarchar(50)  NULL
+    [Phone] nchar(20)  NULL
+);
+GO
+
+-- Creating table 'Inventories'
+CREATE TABLE [dbo].[Inventories] (
+    [ProductId] int  NOT NULL,
+    [Quantity] int  NULL
 );
 GO
 
@@ -88,8 +95,8 @@ CREATE TABLE [dbo].[OrderDetails] (
     [Quantity] int  NULL,
     [PurchasePrice] decimal(19,4)  NULL,
     [SoldPrice] decimal(19,4)  NULL,
-    [Link] nvarchar(max)  NULL,
-    [Status] int  NOT NULL
+    [Status] int  NOT NULL,
+    [Link] nvarchar(max)  NULL
 );
 GO
 
@@ -97,10 +104,10 @@ GO
 CREATE TABLE [dbo].[Orders] (
     [OrderId] int IDENTITY(1,1) NOT NULL,
     [CustomerId] int  NOT NULL,
-    [OrderDate] datetime  NULL,
-    [ShipDate] datetime  NULL,
     [OrderType] int  NOT NULL,
     [InvoiceNo] nvarchar(30)  NULL,
+    [OrderDate] datetime  NULL,
+    [ShipDate] datetime  NULL,
     [Freight] decimal(18,0)  NULL
 );
 GO
@@ -108,10 +115,10 @@ GO
 -- Creating table 'Products'
 CREATE TABLE [dbo].[Products] (
     [ProductId] int IDENTITY(1,1) NOT NULL,
+    [SpeciesId] int  NOT NULL,
     [BrandId] int  NOT NULL,
     [ProductName] nvarchar(max)  NULL,
-    [ProductNameJp] nvarchar(max)  NULL,
-    [SpeciesId] int  NOT NULL
+    [ProductNameJp] nvarchar(max)  NULL
 );
 GO
 
@@ -119,13 +126,6 @@ GO
 CREATE TABLE [dbo].[Species] (
     [SpeciesId] int  NOT NULL,
     [SpeciesName] nvarchar(50)  NULL
-);
-GO
-
--- Creating table 'Inventories'
-CREATE TABLE [dbo].[Inventories] (
-    [ProductId] int  NOT NULL,
-    [Quantity] int  NULL
 );
 GO
 
@@ -143,6 +143,12 @@ GO
 ALTER TABLE [dbo].[Customers]
 ADD CONSTRAINT [PK_Customers]
     PRIMARY KEY CLUSTERED ([CustomerId] ASC);
+GO
+
+-- Creating primary key on [ProductId] in table 'Inventories'
+ALTER TABLE [dbo].[Inventories]
+ADD CONSTRAINT [PK_Inventories]
+    PRIMARY KEY CLUSTERED ([ProductId] ASC);
 GO
 
 -- Creating primary key on [OrderDetailId] in table 'OrderDetails'
@@ -169,30 +175,9 @@ ADD CONSTRAINT [PK_Species]
     PRIMARY KEY CLUSTERED ([SpeciesId] ASC);
 GO
 
--- Creating primary key on [ProductId] in table 'Inventories'
-ALTER TABLE [dbo].[Inventories]
-ADD CONSTRAINT [PK_Inventories]
-    PRIMARY KEY CLUSTERED ([ProductId] ASC);
-GO
-
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [BrandId] in table 'Products'
-ALTER TABLE [dbo].[Products]
-ADD CONSTRAINT [FK_Product_Brand]
-    FOREIGN KEY ([BrandId])
-    REFERENCES [dbo].[Brands]
-        ([BrandId])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_Product_Brand'
-CREATE INDEX [IX_FK_Product_Brand]
-ON [dbo].[Products]
-    ([BrandId]);
-GO
 
 -- Creating foreign key on [CustomerId] in table 'Orders'
 ALTER TABLE [dbo].[Orders]

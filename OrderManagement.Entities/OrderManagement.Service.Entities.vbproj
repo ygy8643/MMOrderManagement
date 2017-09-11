@@ -75,13 +75,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brand.vb">
-      <DependentUpon>OrderManagement.tt</DependentUpon>
+      <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Customer.vb">
-      <DependentUpon>OrderManagement.tt</DependentUpon>
+      <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Inventory.vb">
-      <DependentUpon>OrderManagement.tt</DependentUpon>
+      <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -99,31 +99,31 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Order.vb">
-      <DependentUpon>OrderManagement.tt</DependentUpon>
+      <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderDetail.vb">
-      <DependentUpon>OrderManagement.tt</DependentUpon>
+      <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrderManagement.Context.vb">
+    <Compile Include="OrderModel.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrderManagement.Context.tt</DependentUpon>
+      <DependentUpon>OrderModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrderManagement.Designer.vb">
+    <Compile Include="OrderModel.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrderManagement.edmx</DependentUpon>
+      <DependentUpon>OrderModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="OrderManagement.vb">
+    <Compile Include="OrderModel.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>OrderManagement.tt</DependentUpon>
+      <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.vb">
-      <DependentUpon>OrderManagement.tt</DependentUpon>
+      <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Species.vb">
-      <DependentUpon>OrderManagement.tt</DependentUpon>
+      <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -147,12 +147,12 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <EntityDeploy Include="OrderManagement.edmx">
+    <EntityDeploy Include="OrderModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OrderManagement.Designer.vb</LastGenOutput>
+      <LastGenOutput>OrderModel.Designer.vb</LastGenOutput>
     </EntityDeploy>
-    <None Include="OrderManagement.edmx.diagram">
-      <DependentUpon>OrderManagement.edmx</DependentUpon>
+    <None Include="OrderModel.edmx.diagram">
+      <DependentUpon>OrderModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -160,16 +160,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="OrderManagement.Context.tt">
+    <Content Include="OrderModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OrderManagement.edmx</DependentUpon>
-      <LastGenOutput>OrderManagement.Context.vb</LastGenOutput>
+      <DependentUpon>OrderModel.edmx</DependentUpon>
+      <LastGenOutput>OrderModel.Context.vb</LastGenOutput>
     </Content>
-    <Content Include="OrderManagement.edmx.sql" />
-    <Content Include="OrderManagement.tt">
+    <Content Include="OrderModel.edmx.sql" />
+    <Content Include="OrderModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OrderManagement.edmx</DependentUpon>
-      <LastGenOutput>OrderManagement.vb</LastGenOutput>
+      <DependentUpon>OrderModel.edmx</DependentUpon>
+      <LastGenOutput>OrderModel.vb</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

@@ -1,6 +1,6 @@
-﻿Imports OrderManagement.Entities
-Imports OrderManagement.WcfService.Dto
+﻿Imports OrderManagement.WcfService.Dto
 Imports AutoMapper
+Imports OrderManagement.Entities
 
 Public Class OrderManagementService
     Implements IOrderManagementService
@@ -11,7 +11,7 @@ Public Class OrderManagementService
     ''' <returns></returns>
     Public Function GetOrderDtoes() As List(Of OrderDto) Implements IOrderManagementService.GetOrderDtoes
 
-        Using dbContext As New OrderManagementEntities
+        Using dbContext As New OrderEntities
             Return Mapper.Map(Of List(Of OrderDto))(dbContext.Orders.ToList)
         End Using
 
