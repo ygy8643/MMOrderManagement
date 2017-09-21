@@ -1,10 +1,12 @@
 ﻿Imports System.Data
 Imports GalaSoft.MvvmLight.CommandWpf
 Imports Microsoft.Win32
-Imports OrderManagement.Client.Entities
+Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Client.Entities.SearchConditions
+Imports OrderManagement.Common
 Imports OrderManagement.WpfClient.Service
 
-Namespace ViewModel
+Namespace ViewModel.Order
 
     Public Class OrderListViewModel
         Inherits MyViewModelBase
@@ -21,7 +23,7 @@ Namespace ViewModel
 #Region "Properties"
 
         ''' <summary>
-        ''' Title
+        ''' 标题
         ''' </summary>
         ''' <returns></returns>
         Public Overrides ReadOnly Property Title As String
@@ -34,12 +36,27 @@ Namespace ViewModel
         ''' 订单信息
         ''' </summary>
         Private _orders As IEnumerable(Of OrderClient)
+
         Public Property Orders() As IEnumerable(Of OrderClient)
             Get
                 Return _orders
             End Get
             Set(ByVal value As IEnumerable(Of OrderClient))
                 [Set]("Orders", _orders, value)
+            End Set
+        End Property
+
+        ''' <summary>
+        ''' 检索条件
+        ''' </summary>
+        Private _searchCondition As OrderSearchConditionsClient
+
+        Public Property SearchCondition As OrderSearchConditionsClient
+            Get
+                Return _searchCondition
+            End Get
+            Set(value As OrderSearchConditionsClient)
+                [Set]("SearchCondition", _searchCondition, value)
             End Set
         End Property
 
@@ -56,6 +73,15 @@ Namespace ViewModel
                 [Set]("SelectedOrder", _selectedOrder, value)
             End Set
         End Property
+
+#Region "Lists"
+
+        ''' <summary>
+        ''' 顧客リスト
+        ''' </summary>
+        Public Property CustomerList As List(Of ValueNamePair)
+
+#End Region
 
 #End Region
 
@@ -84,6 +110,12 @@ Namespace ViewModel
 
             _orderService = orderService
 
+            SearchCondition = New OrderSearchConditionsClient()
+
+            With "Lists"
+                CustomerList = _orderService.GetCustomerComboBoxList()
+            End With
+
             With "Commands"
 
                 SearchOrderCommand = New RelayCommand(AddressOf SearchOrder)
@@ -100,7 +132,7 @@ Namespace ViewModel
         ''' </summary>
         Private Sub SearchOrder()
 
-            Orders = _orderService.GetOrders
+            Orders = _orderService.GetOrdersByConditions(SearchCondition)
 
         End Sub
 

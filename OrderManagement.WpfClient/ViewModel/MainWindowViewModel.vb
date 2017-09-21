@@ -1,5 +1,6 @@
 ﻿Imports GalaSoft.MvvmLight
 Imports OrderManagement.WpfClient.Service
+Imports OrderManagement.WpfClient.ViewModel.Order
 
 Namespace ViewModel
     Public Class MainWindowViewModel

@@ -2,289 +2,533 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:OrderManagement.WpfClient"
-             xmlns:Entities="clr-namespace:OrderManagement.Client.Entities;assembly=OrderManagement.Client.Entities"
+             xmlns:Models="clr-namespace:OrderManagement.Client.Entities.Models;assembly=OrderManagement.Client.Entities"
              x:Class="View.OrderListView"
              mc:Ignorable="d"
-             d:DesignHeight="700"
-             d:DesignWidth="815"
-             DataContext="{Binding OrderListViewModel, Source={StaticResource Locator}}">
+             d:DesignHeight="768"
+             d:DesignWidth="1024">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="OrderClientViewSource"
+                              d:DesignSource="{d:DesignInstance {x:Type Models:OrderClient}, CreateList=True}" />
+        <CollectionViewSource x:Key="OrderDetailClientViewSource"
+                              d:DesignSource="{d:DesignInstance {x:Type Models:OrderDetailClient}, CreateList=True}" />
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Path="OrderListViewModel"
+                 Source="{StaticResource Locator}" />
+    </UserControl.DataContext>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid x:Name="SearchConditionGrid"
-              DataContext="{Binding SelectedOrder}">
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+              DataContext="{Binding SearchCondition}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="217*" />
-                <ColumnDefinition Width="190*" />
-                <ColumnDefinition Width="184*" />
-                <ColumnDefinition Width="224*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Grid x:Name="Grid1"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top"
-                  Grid.Column="0"
-                  Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label Content="客户编号:"
-                       Grid.Column="0"
+            <WrapPanel Grid.Column="0"
+                       Grid.Row="0">
+                <Label Content="订单日期:"
                        HorizontalAlignment="Left"
                        Margin="3"
-                       Grid.Row="0"
                        VerticalAlignment="Center" />
-                <TextBox x:Name="CustomerIdTextBox"
-                         Grid.Column="1"
-                         HorizontalAlignment="Left"
-                         Height="23"
-                         Margin="3"
-                         Grid.Row="0"
-                         Text="{Binding CustomerClient.CustomerId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                         VerticalAlignment="Center"
-                         Width="120" />
-            </Grid>
-            <Grid x:Name="Grid2"
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Top"
-                  Grid.Column="1"
-                  Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                <DatePicker x:Name="OrderDateFromDatePicker"
+                            HorizontalAlignment="Left"
+                            Margin="3"
+                            SelectedDate="{Binding OrderDateFrom, Mode=TwoWay}"
+                            VerticalAlignment="Center" />
+                <DatePicker x:Name="OrderDateToDatePicker"
+                            HorizontalAlignment="Left"
+                            Margin="3"
+                            SelectedDate="{Binding OrderDateTo, Mode=TwoWay}"
+                            VerticalAlignment="Center" />
+            </WrapPanel>
+            <WrapPanel Grid.Column="1"
+                       Grid.Row="0">
                 <Label Content="客户姓名:"
-                       Grid.Column="0"
                        HorizontalAlignment="Left"
                        Margin="3"
-                       Grid.Row="0"
                        VerticalAlignment="Center" />
-                <TextBox x:Name="NameTextBox"
-                         Grid.Column="1"
-                         HorizontalAlignment="Left"
-                         Height="23"
-                         Margin="3"
-                         Grid.Row="0"
-                         Text="{Binding CustomerClient.Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                         VerticalAlignment="Center"
-                         Width="120" />
-            </Grid>
-            <Button x:Name="button"
+                <ComboBox x:Name="CustomerCode2ComboBox"
+                          DisplayMemberPath="DisplayName"
+                          SelectedValuePath="Value"
+                          HorizontalAlignment="Left"
+                          Width="120"
+                          VerticalAlignment="Center"
+                          SelectedValue="{Binding CustomerId}"
+                          IsSynchronizedWithCurrentItem="True"
+                          ItemsSource="{Binding OrderListViewModel.CustomerList, Source={StaticResource Locator}}" />
+            </WrapPanel>
+            <Button x:Name="SearchButton"
                     Content="查询"
                     Grid.Column="3"
                     HorizontalAlignment="Right"
-                    Grid.Row="1"
-                    VerticalAlignment="Top"
+                    Grid.Row="0"
+                    VerticalAlignment="Center"
                     Width="75"
                     Command="{Binding OrderListViewModel.SearchOrderCommand}"
                     DataContext="{Binding Source={StaticResource Locator}}" />
         </Grid>
-        <DataGrid x:Name="OrderClientDataGrid"
-                  AutoGenerateColumns="False"
-                  EnableRowVirtualization="True"
-                  ItemsSource="{Binding Orders}"
-                  SelectedItem="{Binding SelectedOrder}"
-                  Grid.Row="1"
-                  RowDetailsVisibilityMode="VisibleWhenSelected">
-            <DataGrid.Columns>
-                <DataGridTextColumn x:Name="CustomerIdColumn"
-                                    Binding="{Binding CustomerId}"
-                                    Header="客户编号"
-                                    Width="Auto" />
-                <DataGridTextColumn x:Name="InvoiceNoColumn"
-                                    Binding="{Binding InvoiceNo}"
-                                    Header="邮单编号"
-                                    Width="Auto" />
-                <DataGridTemplateColumn x:Name="OrderDateColumn"
-                                        Header="订单日期"
-                                        Width="Auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="OrderIdColumn1"
-                                    Binding="{Binding OrderId}"
-                                    Header="订单号码"
-                                    Width="Auto" />
-                <DataGridTextColumn x:Name="OrderTypeColumn"
-                                    Binding="{Binding OrderType}"
-                                    Header="种类"
-                                    Width="Auto" />
-                <DataGridTemplateColumn x:Name="ShipDateColumn"
-                                        Header="发货日期"
-                                        Width="Auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding ShipDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Grid x:Name="OrderDetailGrid"
-              Grid.Row="2">
+        <Grid x:Name="CustomerInfoGrid"
+              DataContext="{Binding SelectedOrder}"
+              Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="338*" />
-                <ColumnDefinition Width="477*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <Grid x:Name="CustomerInfoGrid"
-                  DataContext="{Binding SelectedItem, ElementName=OrderClientDataGrid}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Label Content="客户编号:"
-                       Grid.Column="0"
-                       HorizontalAlignment="Left"
-                       Margin="3"
-                       Grid.Row="1"
-                       VerticalAlignment="Center" />
-                <TextBlock x:Name="CustomerIdTextBlock"
-                           Grid.Column="1"
-                           HorizontalAlignment="Left"
-                           Margin="3"
-                           Grid.Row="1"
-                           Text="{Binding CustomerClient.CustomerId}"
-                           VerticalAlignment="Center" />
-                <Label Content="客户姓名:"
-                       Grid.Column="0"
-                       HorizontalAlignment="Left"
-                       Margin="3"
-                       Grid.Row="2"
-                       VerticalAlignment="Center" />
-                <TextBlock x:Name="NameTextBlock"
-                           Grid.Column="1"
-                           HorizontalAlignment="Left"
-                           Margin="3"
-                           Grid.Row="2"
-                           Text="{Binding CustomerClient.Name}"
-                           VerticalAlignment="Center" />
-                <Label Content="收货地址:"
-                       Grid.Column="0"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label Content="客户编号:"
+                   Grid.Column="0"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="0"
+                   VerticalAlignment="Center" />
+            <TextBlock x:Name="CustomerIdTextBlock"
+                       Grid.Column="1"
                        HorizontalAlignment="Left"
                        Margin="3"
                        Grid.Row="0"
+                       Text="{Binding CustomerClient.CustomerId}"
                        VerticalAlignment="Center" />
-                <TextBlock x:Name="AddressTextBlock"
-                           Grid.Column="1"
+            <Label Content="客户姓名:"
+                   Grid.Column="2"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="0"
+                   VerticalAlignment="Center" />
+            <TextBlock x:Name="NameTextBlock"
+                       Grid.Column="3"
+                       HorizontalAlignment="Left"
+                       Margin="3"
+                       Grid.Row="0"
+                       Text="{Binding CustomerClient.Name}"
+                       VerticalAlignment="Center" />
+            <Label Content="收货地址:"
+                   Grid.Column="4"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="0"
+                   VerticalAlignment="Center" />
+            <TextBlock x:Name="AddressTextBlock"
+                       Grid.Column="5"
+                       HorizontalAlignment="Left"
+                       Margin="3"
+                       Grid.Row="0"
+                       Text="{Binding CustomerClient.Address}"
+                       VerticalAlignment="Center" />
+            <Label Content="电话号码:"
+                   Grid.Column="6"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="0"
+                   VerticalAlignment="Center" />
+            <TextBlock x:Name="PhoneTextBlock"
+                       Grid.Column="7"
+                       HorizontalAlignment="Left"
+                       Margin="3"
+                       Grid.Row="0"
+                       Text="{Binding CustomerClient.Phone}"
+                       VerticalAlignment="Center" />
+            <Label Content="邮编:"
+                   Grid.Column="8"
+                   HorizontalAlignment="Left"
+                   Margin="3"
+                   Grid.Row="0"
+                   VerticalAlignment="Center" />
+            <TextBlock x:Name="PostCodeTextBlock"
+                       Grid.Column="9"
+                       HorizontalAlignment="Left"
+                       Margin="3"
+                       Grid.Row="0"
+                       Text="{Binding CustomerClient.PostCode}"
+                       VerticalAlignment="Center" />
+        </Grid>
+        <GroupBox Header="订单清单"
+                  Grid.Row="2">
+            <Grid Margin="0 10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <DataGrid x:Name="OrderClientDataGrid"
+                          AutoGenerateColumns="False"
+                          EnableRowVirtualization="True"
+                          ItemsSource="{Binding Orders}"
+                          SelectedItem="{Binding SelectedOrder}"
+                          RowDetailsVisibilityMode="VisibleWhenSelected"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto"
+                          IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="CustomerNameColumn"
+                                            Binding="{Binding CustomerClient.Name}"
+                                            Header="客户名称"
+                                            Width="Auto" />
+                        <DataGridTextColumn x:Name="OrderIdDataGridColumn"
+                                            Binding="{Binding OrderId}"
+                                            Header="订单号码"
+                                            Width="Auto" />
+                        <DataGridTemplateColumn x:Name="OrderDateColumn"
+                                                Header="订单日期"
+                                                Width="Auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn x:Name="OrderTypeColumn"
+                                            Binding="{Binding OrderType}"
+                                            Header="种类"
+                                            Width="Auto" />
+                        <DataGridTextColumn x:Name="InvoiceNoColumn"
+                                            Binding="{Binding InvoiceNo}"
+                                            Header="邮单编号"
+                                            Width="Auto" />
+                        <DataGridTemplateColumn x:Name="ShipDateColumn"
+                                                Header="发货日期"
+                                                Width="Auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <DatePicker SelectedDate="{Binding ShipDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid x:Name="OrderClientDataDetailGrid"
+                      Grid.Column="1"
+                      DataContext="{Binding SelectedOrder}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Content="客户编号:"
+                           Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
                            Grid.Row="0"
-                           Text="{Binding CustomerClient.Address}"
                            VerticalAlignment="Center" />
-                <Label Content="电话号码:"
-                       Grid.Column="0"
-                       HorizontalAlignment="Left"
-                       Margin="3"
-                       Grid.Row="3"
-                       VerticalAlignment="Center" />
-                <TextBlock x:Name="PhoneTextBlock"
-                           Grid.Column="1"
+                    <TextBox x:Name="CustomerIdTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="0"
+                             Text="{Binding CustomerId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="运费:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="1"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="FreightTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="1"
+                             Text="{Binding Freight, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="邮单编号:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="2"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="InvoiceNoTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="2"
+                             Text="{Binding InvoiceNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="订单日期:"
+                           Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
                            Grid.Row="3"
-                           Text="{Binding CustomerClient.Phone}"
                            VerticalAlignment="Center" />
-                <Label Content="邮编:"
-                       Grid.Column="0"
-                       HorizontalAlignment="Left"
-                       Margin="3"
-                       Grid.Row="4"
-                       VerticalAlignment="Center" />
-                <TextBlock x:Name="PostCodeTextBlock"
-                           Grid.Column="1"
+                    <DatePicker x:Name="OrderDateDatePicker"
+                                Grid.Column="1"
+                                HorizontalAlignment="Left"
+                                Margin="3"
+                                Grid.Row="3"
+                                SelectedDate="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                VerticalAlignment="Center" />
+                    <Label Content="订单号码:"
+                           Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
                            Grid.Row="4"
-                           Text="{Binding CustomerClient.PostCode}"
                            VerticalAlignment="Center" />
+                    <TextBox x:Name="OrderIdTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="4"
+                             Text="{Binding OrderId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="种类:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="5"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="OrderTypeTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="5"
+                             Text="{Binding OrderType, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="发货日期:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="6"
+                           VerticalAlignment="Center" />
+                    <DatePicker x:Name="ShipDateDatePicker"
+                                Grid.Column="1"
+                                HorizontalAlignment="Left"
+                                Margin="3"
+                                Grid.Row="6"
+                                SelectedDate="{Binding ShipDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                                VerticalAlignment="Center" />
+                </Grid>
             </Grid>
-            <DataGrid x:Name="OrderDetailClientsDataGrid"
-                      AutoGenerateColumns="False"
+        </GroupBox>
+        <GroupBox Header="订单明细"
+                  Grid.Row="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <DataGrid x:Name="OrderDetailClientsDataGrid"
+                          AutoGenerateColumns="False"
+                          EnableRowVirtualization="True"
+                          Margin="0 10"
+                          HorizontalScrollBarVisibility="Auto"
+                          VerticalScrollBarVisibility="Auto"
+                          ItemsSource="{Binding SelectedOrder.OrderDetailClients}"
+                          RowDetailsVisibilityMode="VisibleWhenSelected"
+                          IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn x:Name="OrderIdColumn"
+                                            Binding="{Binding OrderId}"
+                                            Header="订单编号"
+                                            Width="Auto" />
+                        <DataGridTextColumn x:Name="OrderDetailIdColumn"
+                                            Binding="{Binding OrderDetailId}"
+                                            Header="订单明细编号"
+                                            Width="Auto" />
+                        <DataGridTextColumn x:Name="ProductIdColumn"
+                                            Binding="{Binding ProductId}"
+                                            Header="产品编号"
+                                            Width="Auto" />
+                        <DataGridTextColumn x:Name="ProductNameColumn"
+                                            Binding="{Binding ProductClient.ProductName}"
+                                            Header="产品名称"
+                                            Width="Auto" />
+                        <DataGridTextColumn x:Name="PurchasePriceColumn"
+                                            Binding="{Binding PurchasePrice}"
+                                            Header="采购价格"
+                                            Width="Auto" />
+                        <DataGridTextColumn x:Name="QuantityColumn"
+                                            Binding="{Binding Quantity}"
+                                            Header="数量"
+                                            Width="Auto" />
+                        <DataGridTextColumn x:Name="SoldPriceColumn"
+                                            Binding="{Binding SoldPrice}"
+                                            Header="售出价格"
+                                            Width="Auto" />
+                        <DataGridTextColumn x:Name="LinkColumn"
+                                            Binding="{Binding Link}"
+                                            Header="采购链接"
+                                            Width="Auto" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid x:Name="OrderDetailClientsDetailGrid"
                       Grid.Column="1"
-                      EnableRowVirtualization="True"
-                      ItemsSource="{Binding SelectedOrder.OrderDetailClients}"
-                      RowDetailsVisibilityMode="VisibleWhenSelected">
-                <DataGrid.Columns>
-                    <DataGridTextColumn x:Name="LinkColumn"
-                                        Binding="{Binding Link}"
-                                        Header="采购链接"
-                                        Width="Auto" />
-                    <DataGridTextColumn x:Name="OrderDetailIdColumn"
-                                        Binding="{Binding OrderDetailId}"
-                                        Header="订单明细编号"
-                                        Width="Auto" />
-                    <DataGridTextColumn x:Name="OrderIdColumn"
-                                        Binding="{Binding OrderId}"
-                                        Header="订单编号"
-                                        Width="Auto" />
-                    <DataGridTextColumn x:Name="ProductIdColumn"
-                                        Binding="{Binding ProductId}"
-                                        Header="产品编号"
-                                        Width="Auto" />
-                    <DataGridTextColumn x:Name="PurchasePriceColumn"
-                                        Binding="{Binding PurchasePrice}"
-                                        Header="采购价格"
-                                        Width="Auto" />
-                    <DataGridTextColumn x:Name="QuantityColumn"
-                                        Binding="{Binding Quantity}"
-                                        Header="数量"
-                                        Width="Auto" />
-                    <DataGridTextColumn x:Name="SoldPriceColumn"
-                                        Binding="{Binding SoldPrice}"
-                                        Header="售出价格"
-                                        Width="Auto" />
-                </DataGrid.Columns>
-            </DataGrid>
-        </Grid>
-        <Grid Grid.Row="3">
+                      DataContext="{Binding SelectedValue, ElementName=OrderDetailClientsDataGrid}"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Content="采购链接:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="0"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="LinkTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="0"
+                             Text="{Binding Link, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="订单明细编号:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="1"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="OrderDetailIdTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="1"
+                             Text="{Binding OrderDetailId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="订单编号:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="2"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="OrderIdTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="2"
+                             Text="{Binding OrderId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="产品编号:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="3"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="ProductIdTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="3"
+                             Text="{Binding ProductId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="采购价格:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="4"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="PurchasePriceTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="4"
+                             Text="{Binding PurchasePrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="数量:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="5"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="QuantityTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="5"
+                             Text="{Binding Quantity, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="售出价格:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="6"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="SoldPriceTextBox"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="6"
+                             Text="{Binding SoldPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="595*" />
                 <ColumnDefinition Width="116*" />
                 <ColumnDefinition Width="104*" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnLoad"
+            <Button x:Name="BtnLoad"
                     Content="读取"
                     HorizontalAlignment="Right"
                     Width="75"
-                    Height="20"
                     Grid.Column="1"
-                    Margin="0,0,0,2"
                     Command="{Binding LoadOrderCommand}" />
-            <Button x:Name="btnSave"
+            <Button x:Name="BtnSave"
                     Content="保存"
                     HorizontalAlignment="Right"
                     Width="75"
-                    Height="20"
-                    Grid.Column="2"
-                    Margin="0,0,0,2" />
+                    Grid.Column="2" />
         </Grid>
 
     </Grid>

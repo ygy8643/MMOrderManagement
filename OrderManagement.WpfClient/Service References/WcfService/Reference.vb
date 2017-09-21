@@ -521,6 +521,9 @@ Namespace WcfService
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BrandIdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProductIdField As Integer
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
@@ -529,6 +532,9 @@ Namespace WcfService
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private ProductNameJpField As String
         
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SpeciesIdField As Integer
+        
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
             Get
@@ -536,6 +542,19 @@ Namespace WcfService
             End Get
             Set
                 Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BrandId() As Integer
+            Get
+                Return Me.BrandIdField
+            End Get
+            Set
+                If (Me.BrandIdField.Equals(value) <> true) Then
+                    Me.BrandIdField = value
+                    Me.RaisePropertyChanged("BrandId")
+                End If
             End Set
         End Property
         
@@ -578,6 +597,161 @@ Namespace WcfService
             End Set
         End Property
         
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SpeciesId() As Integer
+            Get
+                Return Me.SpeciesIdField
+            End Get
+            Set
+                If (Me.SpeciesIdField.Equals(value) <> true) Then
+                    Me.SpeciesIdField = value
+                    Me.RaisePropertyChanged("SpeciesId")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="OrderSearchConditionsDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class OrderSearchConditionsDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private CustomerIdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private OrderDateFromField As System.Nullable(Of Date)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private OrderDateToField As System.Nullable(Of Date)
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property CustomerId() As Integer
+            Get
+                Return Me.CustomerIdField
+            End Get
+            Set
+                If (Me.CustomerIdField.Equals(value) <> true) Then
+                    Me.CustomerIdField = value
+                    Me.RaisePropertyChanged("CustomerId")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property OrderDateFrom() As System.Nullable(Of Date)
+            Get
+                Return Me.OrderDateFromField
+            End Get
+            Set
+                If (Me.OrderDateFromField.Equals(value) <> true) Then
+                    Me.OrderDateFromField = value
+                    Me.RaisePropertyChanged("OrderDateFrom")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property OrderDateTo() As System.Nullable(Of Date)
+            Get
+                Return Me.OrderDateToField
+            End Get
+            Set
+                If (Me.OrderDateToField.Equals(value) <> true) Then
+                    Me.OrderDateToField = value
+                    Me.RaisePropertyChanged("OrderDateTo")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="DbProcessResult", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Results"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class DbProcessResult
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ErrorMessageField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IsSuccessField As Boolean
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ErrorMessage() As String
+            Get
+                Return Me.ErrorMessageField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ErrorMessageField, value) <> true) Then
+                    Me.ErrorMessageField = value
+                    Me.RaisePropertyChanged("ErrorMessage")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property IsSuccess() As Boolean
+            Get
+                Return Me.IsSuccessField
+            End Get
+            Set
+                If (Me.IsSuccessField.Equals(value) <> true) Then
+                    Me.IsSuccessField = value
+                    Me.RaisePropertyChanged("IsSuccess")
+                End If
+            End Set
+        End Property
+        
         Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
         
         Protected Sub RaisePropertyChanged(ByVal propertyName As String)
@@ -592,11 +766,65 @@ Namespace WcfService
      System.ServiceModel.ServiceContractAttribute(ConfigurationName:="WcfService.IOrderManagementService")>  _
     Public Interface IOrderManagementService
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoResponse")>  _
+        Function GetOrderDto(ByVal orderId As Integer) As WcfService.OrderDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoResponse")>  _
+        Function GetOrderDtoAsync(ByVal orderId As Integer) As System.Threading.Tasks.Task(Of WcfService.OrderDto)
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesResponse")>  _
         Function GetOrderDtoes() As WcfService.OrderDto()
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesResponse")>  _
         Function GetOrderDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.OrderDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditions", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditionsResponse")>  _
+        Function GetOrderDtoesByConditions(ByVal conditions As WcfService.OrderSearchConditionsDto) As WcfService.OrderDto()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditions", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditionsResponse")>  _
+        Function GetOrderDtoesByConditionsAsync(ByVal conditions As WcfService.OrderSearchConditionsDto) As System.Threading.Tasks.Task(Of WcfService.OrderDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoesResponse")>  _
+        Function GetCustomerDtoes() As WcfService.CustomerDto()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoesResponse")>  _
+        Function GetCustomerDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.CustomerDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoResponse")>  _
+        Function GetCustomerDto(ByVal customerId As String) As WcfService.CustomerDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoResponse")>  _
+        Function GetCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of WcfService.CustomerDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByConditionResponse")>  _
+        Function GetCustomerDtoByCondition(ByVal condition As WcfService.CustomerDto) As WcfService.CustomerDto()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByConditionResponse")>  _
+        Function GetCustomerDtoByConditionAsync(ByVal condition As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.CustomerDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddCustomerDtoResponse")>  _
+        Function AddCustomerDto(ByVal leadTimeDto As WcfService.CustomerDto) As WcfService.DbProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddCustomerDtoResponse")>  _
+        Function AddCustomerDtoAsync(ByVal leadTimeDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateCustomerDtoResponse")>  _
+        Function UpdateCustomerDto(ByVal leadTimeDto As WcfService.CustomerDto) As WcfService.DbProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateCustomerDtoResponse")>  _
+        Function UpdateCustomerDtoAsync(ByVal leadTimeDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteCustomerDtoResponse")>  _
+        Function DeleteCustomerDto(ByVal customerId As String) As WcfService.DbProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteCustomerDtoResponse")>  _
+        Function DeleteCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/CustomerDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/CustomerDtoExistsResponse")>  _
+        Function CustomerDtoExists(ByVal customerId As String) As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/CustomerDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/CustomerDtoExistsResponse")>  _
+        Function CustomerDtoExistsAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of Boolean)
     End Interface
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
@@ -630,12 +858,84 @@ Namespace WcfService
             MyBase.New(binding, remoteAddress)
         End Sub
         
+        Public Function GetOrderDto(ByVal orderId As Integer) As WcfService.OrderDto Implements WcfService.IOrderManagementService.GetOrderDto
+            Return MyBase.Channel.GetOrderDto(orderId)
+        End Function
+        
+        Public Function GetOrderDtoAsync(ByVal orderId As Integer) As System.Threading.Tasks.Task(Of WcfService.OrderDto) Implements WcfService.IOrderManagementService.GetOrderDtoAsync
+            Return MyBase.Channel.GetOrderDtoAsync(orderId)
+        End Function
+        
         Public Function GetOrderDtoes() As WcfService.OrderDto() Implements WcfService.IOrderManagementService.GetOrderDtoes
             Return MyBase.Channel.GetOrderDtoes
         End Function
         
         Public Function GetOrderDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.OrderDto()) Implements WcfService.IOrderManagementService.GetOrderDtoesAsync
             Return MyBase.Channel.GetOrderDtoesAsync
+        End Function
+        
+        Public Function GetOrderDtoesByConditions(ByVal conditions As WcfService.OrderSearchConditionsDto) As WcfService.OrderDto() Implements WcfService.IOrderManagementService.GetOrderDtoesByConditions
+            Return MyBase.Channel.GetOrderDtoesByConditions(conditions)
+        End Function
+        
+        Public Function GetOrderDtoesByConditionsAsync(ByVal conditions As WcfService.OrderSearchConditionsDto) As System.Threading.Tasks.Task(Of WcfService.OrderDto()) Implements WcfService.IOrderManagementService.GetOrderDtoesByConditionsAsync
+            Return MyBase.Channel.GetOrderDtoesByConditionsAsync(conditions)
+        End Function
+        
+        Public Function GetCustomerDtoes() As WcfService.CustomerDto() Implements WcfService.IOrderManagementService.GetCustomerDtoes
+            Return MyBase.Channel.GetCustomerDtoes
+        End Function
+        
+        Public Function GetCustomerDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.CustomerDto()) Implements WcfService.IOrderManagementService.GetCustomerDtoesAsync
+            Return MyBase.Channel.GetCustomerDtoesAsync
+        End Function
+        
+        Public Function GetCustomerDto(ByVal customerId As String) As WcfService.CustomerDto Implements WcfService.IOrderManagementService.GetCustomerDto
+            Return MyBase.Channel.GetCustomerDto(customerId)
+        End Function
+        
+        Public Function GetCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of WcfService.CustomerDto) Implements WcfService.IOrderManagementService.GetCustomerDtoAsync
+            Return MyBase.Channel.GetCustomerDtoAsync(customerId)
+        End Function
+        
+        Public Function GetCustomerDtoByCondition(ByVal condition As WcfService.CustomerDto) As WcfService.CustomerDto() Implements WcfService.IOrderManagementService.GetCustomerDtoByCondition
+            Return MyBase.Channel.GetCustomerDtoByCondition(condition)
+        End Function
+        
+        Public Function GetCustomerDtoByConditionAsync(ByVal condition As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.CustomerDto()) Implements WcfService.IOrderManagementService.GetCustomerDtoByConditionAsync
+            Return MyBase.Channel.GetCustomerDtoByConditionAsync(condition)
+        End Function
+        
+        Public Function AddCustomerDto(ByVal leadTimeDto As WcfService.CustomerDto) As WcfService.DbProcessResult Implements WcfService.IOrderManagementService.AddCustomerDto
+            Return MyBase.Channel.AddCustomerDto(leadTimeDto)
+        End Function
+        
+        Public Function AddCustomerDtoAsync(ByVal leadTimeDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult) Implements WcfService.IOrderManagementService.AddCustomerDtoAsync
+            Return MyBase.Channel.AddCustomerDtoAsync(leadTimeDto)
+        End Function
+        
+        Public Function UpdateCustomerDto(ByVal leadTimeDto As WcfService.CustomerDto) As WcfService.DbProcessResult Implements WcfService.IOrderManagementService.UpdateCustomerDto
+            Return MyBase.Channel.UpdateCustomerDto(leadTimeDto)
+        End Function
+        
+        Public Function UpdateCustomerDtoAsync(ByVal leadTimeDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult) Implements WcfService.IOrderManagementService.UpdateCustomerDtoAsync
+            Return MyBase.Channel.UpdateCustomerDtoAsync(leadTimeDto)
+        End Function
+        
+        Public Function DeleteCustomerDto(ByVal customerId As String) As WcfService.DbProcessResult Implements WcfService.IOrderManagementService.DeleteCustomerDto
+            Return MyBase.Channel.DeleteCustomerDto(customerId)
+        End Function
+        
+        Public Function DeleteCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult) Implements WcfService.IOrderManagementService.DeleteCustomerDtoAsync
+            Return MyBase.Channel.DeleteCustomerDtoAsync(customerId)
+        End Function
+        
+        Public Function CustomerDtoExists(ByVal customerId As String) As Boolean Implements WcfService.IOrderManagementService.CustomerDtoExists
+            Return MyBase.Channel.CustomerDtoExists(customerId)
+        End Function
+        
+        Public Function CustomerDtoExistsAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.CustomerDtoExistsAsync
+            Return MyBase.Channel.CustomerDtoExistsAsync(customerId)
         End Function
     End Class
 End Namespace

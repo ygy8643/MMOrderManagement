@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ArrayOfOrderDto">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDto" nillable="true" type="tns:OrderDto" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfOrderDto" nillable="true" type="tns:ArrayOfOrderDto" />
   <xs:complexType name="OrderDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="CustomerDto" nillable="true" type="tns:CustomerDto" />
@@ -54,10 +48,32 @@
   <xs:element name="OrderDetailDto" nillable="true" type="tns:OrderDetailDto" />
   <xs:complexType name="ProductDto">
     <xs:sequence>
+      <xs:element minOccurs="0" name="BrandId" type="xs:int" />
       <xs:element minOccurs="0" name="ProductId" type="xs:int" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductNameJp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpeciesId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProductDto" nillable="true" type="tns:ProductDto" />
+  <xs:complexType name="ArrayOfOrderDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDto" nillable="true" type="tns:OrderDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderDto" nillable="true" type="tns:ArrayOfOrderDto" />
+  <xs:complexType name="OrderSearchConditionsDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+      <xs:element minOccurs="0" name="OrderDateFrom" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OrderDateTo" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderSearchConditionsDto" nillable="true" type="tns:OrderSearchConditionsDto" />
+  <xs:complexType name="ArrayOfCustomerDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomerDto" nillable="true" type="tns:CustomerDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCustomerDto" nillable="true" type="tns:ArrayOfCustomerDto" />
 </xs:schema>

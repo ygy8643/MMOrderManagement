@@ -3,16 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:OrderManagement.WpfClient"
-        xmlns:orderListView="clr-namespace:OrderManagement.WpfClient.View" 
-        xmlns:orderListViewModel="clr-namespace:OrderManagement.WpfClient.ViewModel" 
+        xmlns:orderListView="clr-namespace:OrderManagement.WpfClient.View"
+        xmlns:order="clr-namespace:OrderManagement.WpfClient.ViewModel.Order"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="600"
-        Width="800"
+        Height="768"
+        Width="1080"
         DataContext="{Binding MainWindowViewModel, Source={StaticResource Locator}}">
     <Window.Resources>
-        <DataTemplate DataType="{x:Type orderListViewModel:OrderListViewModel}">
+        <DataTemplate DataType="{x:Type order:OrderListViewModel}">
             <orderListView:OrderListView />
         </DataTemplate>
     </Window.Resources>

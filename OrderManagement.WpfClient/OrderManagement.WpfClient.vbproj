@@ -187,15 +187,20 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
-    <None Include="My Project\DataSources\OrderManagement.Client.Entities.InventoryClient.datasource" />
-    <None Include="My Project\DataSources\OrderManagement.Client.Entities.OrderClient.datasource" />
-    <None Include="My Project\DataSources\OrderManagement.Client.Entities.OrderDetailClient.datasource" />
+    <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.OrderClient.datasource" />
+    <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.OrderDetailClient.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <AppDesigner Include="My Project\" />
     <None Include="packages.config" />
+    <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.CustomerDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.DbProcessResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.OrderDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -222,6 +227,10 @@
       <Project>{30e94ead-355b-49ac-97d6-ea90d840c5ba}</Project>
       <Name>OrderManagement.Client.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OrderManagement.Common\OrderManagement.Common.vbproj">
+      <Project>{7D4FB8FC-DCC1-4AA6-B14B-69C3B6435711}</Project>
+      <Name>OrderManagement.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -239,6 +248,9 @@
     <None Include="Service References\WcfService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\WcfService\OrderManagementService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\WcfService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>

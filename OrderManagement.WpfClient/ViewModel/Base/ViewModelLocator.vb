@@ -1,6 +1,7 @@
 ﻿Imports GalaSoft.MvvmLight.Ioc
 Imports Microsoft.Practices.ServiceLocation
 Imports OrderManagement.WpfClient.Service
+Imports OrderManagement.WpfClient.ViewModel.Order
 
 Namespace ViewModel.Base
 

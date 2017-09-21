@@ -140,6 +140,7 @@
     <Compile Include="Dto\InventoryDto.vb" />
     <Compile Include="Dto\OrderDetailDto.vb" />
     <Compile Include="Dto\OrderDto.vb" />
+    <Compile Include="Dto\OrderSearchConditionsDto.vb" />
     <Compile Include="Dto\ProductDto.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
@@ -165,6 +166,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Results\DbProcessResult.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
