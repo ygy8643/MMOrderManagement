@@ -1,10 +1,11 @@
-﻿Imports GalaSoft.MvvmLight.Ioc
+﻿Imports System.Diagnostics.CodeAnalysis
+Imports GalaSoft.MvvmLight.Ioc
+Imports GalaSoft.MvvmLight.Views
 Imports Microsoft.Practices.ServiceLocation
 Imports OrderManagement.WpfClient.Service
 Imports OrderManagement.WpfClient.ViewModel.Order
 
 Namespace ViewModel.Base
-
     Public Class ViewModelLocator
 
 #Region "Constructor"
@@ -13,11 +14,20 @@ Namespace ViewModel.Base
 
             ServiceLocator.SetLocatorProvider(Function() SimpleIoc.[Default])
 
-            SimpleIoc.Default.Register(Of IOrderService, OrderService)()
+            SimpleIoc.Default.Register(Of IOrderServiceAgent, OrderServiceAgent)()
+            SimpleIoc.Default.Register(Of ICustomerServiceAgent, CustomerServiceAgent)()
+
+            'Navigation Service
+            Dim frameNavigationService As New FrameNavigationService
+
+            frameNavigationService.Configure("OrderList", New Uri("../Views/Order/OrderListView.xaml", UriKind.Relative))
+            frameNavigationService.Configure("OrderDetail",
+                                             New Uri("../Views/Order/OrderDetailView.xaml", UriKind.Relative))
+            SimpleIoc.Default.Register(Of IFrameNavigationService)(Function() frameNavigationService)
 
             SimpleIoc.Default.Register(Of MainWindowViewModel)()
             SimpleIoc.Default.Register(Of OrderListViewModel)()
-
+            SimpleIoc.Default.Register(Of OrderDetailViewModel)()
         End Sub
 
 #End Region
@@ -25,12 +35,12 @@ Namespace ViewModel.Base
 #Region "MainWindow"
 
         ''' <summary>
-        ''' Gets the MainWindowViewModel property.
+        '''     Gets the MainWindowViewModel property.
         ''' </summary>
-        <System.Diagnostics.CodeAnalysis.SuppressMessage _
-                ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
-                 Justification:="This non-static member is needed for data binding purposes.")>
-        Public ReadOnly Property MainWindowViewModel() As MainWindowViewModel
+        <SuppressMessage _
+            ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
+             Justification:="This non-static member is needed for data binding purposes.")>
+        Public ReadOnly Property MainWindowViewModel As MainWindowViewModel
             Get
                 Return ServiceLocator.Current.GetInstance(Of MainWindowViewModel)()
             End Get
@@ -41,14 +51,26 @@ Namespace ViewModel.Base
 #Region "订单"
 
         ''' <summary>
-        ''' Gets the MainWindowViewModel property.
+        '''     Gets the OrderListViewModel property.
         ''' </summary>
-        <System.Diagnostics.CodeAnalysis.SuppressMessage _
-                ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
-                 Justification:="This non-static member is needed for data binding purposes.")>
-        Public ReadOnly Property OrderListViewModel() As OrderListViewModel
+        <SuppressMessage _
+            ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
+             Justification:="This non-static member is needed for data binding purposes.")>
+        Public ReadOnly Property OrderListViewModel As OrderListViewModel
             Get
                 Return ServiceLocator.Current.GetInstance(Of OrderListViewModel)()
+            End Get
+        End Property
+
+        ''' <summary>
+        '''     Gets the OrderDetailViewModel property.
+        ''' </summary>
+        <SuppressMessage _
+            ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
+             Justification:="This non-static member is needed for data binding purposes.")>
+        Public ReadOnly Property OrderDetailViewModel As OrderDetailViewModel
+            Get
+                Return ServiceLocator.Current.GetInstance(Of OrderDetailViewModel)()
             End Get
         End Property
 
@@ -60,6 +82,5 @@ Namespace ViewModel.Base
         End Sub
 
 #End Region
-
     End Class
 End Namespace

@@ -1,11 +1,14 @@
 ﻿Imports GalaSoft.MvvmLight
 
-Public MustInherit Class MyViewModelBase
-    Inherits ViewModelBase
+Namespace ViewModel.Base
 
-    ''' <summary>
-    ''' タイトル
-    ''' </summary>
-    Public MustOverride ReadOnly Property Title As String
+    Public MustInherit Class MyViewModelBase
+        Inherits ViewModelBase
 
-End Class
+        ''' <summary>
+        ''' タイトル
+        ''' </summary>
+        Public MustOverride ReadOnly Property Title As String
+
+    End Class
+End Namespace

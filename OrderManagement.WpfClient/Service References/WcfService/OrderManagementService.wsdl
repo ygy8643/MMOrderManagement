@@ -5,7 +5,7 @@
       <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" />
-      <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Results" />
+      <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.Common" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IOrderManagementService_GetOrderDto_InputMessage">
@@ -25,6 +25,30 @@
   </wsdl:message>
   <wsdl:message name="IOrderManagementService_GetOrderDtoesByConditions_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetOrderDtoesByConditionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddOrderDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrderDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddOrderDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddOrderDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateOrderDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateOrderDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateOrderDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteOrderDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrderDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteOrderDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteOrderDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_OrderDtoExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:OrderDtoExists" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_OrderDtoExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:OrderDtoExistsResponse" />
   </wsdl:message>
   <wsdl:message name="IOrderManagementService_GetCustomerDtoes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCustomerDtoes" />
@@ -81,6 +105,22 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditions" message="tns:IOrderManagementService_GetOrderDtoesByConditions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditionsResponse" message="tns:IOrderManagementService_GetOrderDtoesByConditions_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddOrderDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/AddOrderDto" message="tns:IOrderManagementService_AddOrderDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/AddOrderDtoResponse" message="tns:IOrderManagementService_AddOrderDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateOrderDto" message="tns:IOrderManagementService_UpdateOrderDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateOrderDtoResponse" message="tns:IOrderManagementService_UpdateOrderDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrderDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteOrderDto" message="tns:IOrderManagementService_DeleteOrderDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteOrderDtoResponse" message="tns:IOrderManagementService_DeleteOrderDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderDtoExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/OrderDtoExists" message="tns:IOrderManagementService_OrderDtoExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/OrderDtoExistsResponse" message="tns:IOrderManagementService_OrderDtoExists_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetCustomerDtoes">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetCustomerDtoes" message="tns:IOrderManagementService_GetCustomerDtoes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetCustomerDtoesResponse" message="tns:IOrderManagementService_GetCustomerDtoes_OutputMessage" />
@@ -132,6 +172,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetOrderDtoesByConditions">
       <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddOrderDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/AddOrderDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateOrderDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/UpdateOrderDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteOrderDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/DeleteOrderDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderDtoExists">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/OrderDtoExists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

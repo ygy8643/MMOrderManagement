@@ -699,69 +699,6 @@ Namespace WcfService
         End Sub
     End Class
     
-    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="DbProcessResult", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Results"),  _
-     System.SerializableAttribute()>  _
-    Partial Public Class DbProcessResult
-        Inherits Object
-        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-        
-        <System.NonSerializedAttribute()>  _
-        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private ErrorMessageField As String
-        
-        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private IsSuccessField As Boolean
-        
-        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
-        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
-            Get
-                Return Me.extensionDataField
-            End Get
-            Set
-                Me.extensionDataField = value
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property ErrorMessage() As String
-            Get
-                Return Me.ErrorMessageField
-            End Get
-            Set
-                If (Object.ReferenceEquals(Me.ErrorMessageField, value) <> true) Then
-                    Me.ErrorMessageField = value
-                    Me.RaisePropertyChanged("ErrorMessage")
-                End If
-            End Set
-        End Property
-        
-        <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property IsSuccess() As Boolean
-            Get
-                Return Me.IsSuccessField
-            End Get
-            Set
-                If (Me.IsSuccessField.Equals(value) <> true) Then
-                    Me.IsSuccessField = value
-                    Me.RaisePropertyChanged("IsSuccess")
-                End If
-            End Set
-        End Property
-        
-        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
-        
-        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
-            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
-            If (Not (propertyChanged) Is Nothing) Then
-                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
-            End If
-        End Sub
-    End Class
-    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.ServiceContractAttribute(ConfigurationName:="WcfService.IOrderManagementService")>  _
     Public Interface IOrderManagementService
@@ -784,6 +721,30 @@ Namespace WcfService
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditions", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditionsResponse")>  _
         Function GetOrderDtoesByConditionsAsync(ByVal conditions As WcfService.OrderSearchConditionsDto) As System.Threading.Tasks.Task(Of WcfService.OrderDto())
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddOrderDtoResponse")>  _
+        Function AddOrderDto(ByVal orderDto As WcfService.OrderDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddOrderDtoResponse")>  _
+        Function AddOrderDtoAsync(ByVal orderDto As WcfService.OrderDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateOrderDtoResponse")>  _
+        Function UpdateOrderDto(ByVal orderDto As WcfService.OrderDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateOrderDtoResponse")>  _
+        Function UpdateOrderDtoAsync(ByVal orderDto As WcfService.OrderDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteOrderDtoResponse")>  _
+        Function DeleteOrderDto(ByVal orderId As String) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteOrderDtoResponse")>  _
+        Function DeleteOrderDtoAsync(ByVal orderId As String) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/OrderDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/OrderDtoExistsResponse")>  _
+        Function OrderDtoExists(ByVal orderId As String) As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/OrderDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/OrderDtoExistsResponse")>  _
+        Function OrderDtoExistsAsync(ByVal orderId As String) As System.Threading.Tasks.Task(Of Boolean)
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoesResponse")>  _
         Function GetCustomerDtoes() As WcfService.CustomerDto()
         
@@ -791,10 +752,10 @@ Namespace WcfService
         Function GetCustomerDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.CustomerDto())
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoResponse")>  _
-        Function GetCustomerDto(ByVal customerId As String) As WcfService.CustomerDto
+        Function GetCustomerDto(ByVal customerId As Integer) As WcfService.CustomerDto
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoResponse")>  _
-        Function GetCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of WcfService.CustomerDto)
+        Function GetCustomerDtoAsync(ByVal customerId As Integer) As System.Threading.Tasks.Task(Of WcfService.CustomerDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByConditionResponse")>  _
         Function GetCustomerDtoByCondition(ByVal condition As WcfService.CustomerDto) As WcfService.CustomerDto()
@@ -803,22 +764,22 @@ Namespace WcfService
         Function GetCustomerDtoByConditionAsync(ByVal condition As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.CustomerDto())
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddCustomerDtoResponse")>  _
-        Function AddCustomerDto(ByVal leadTimeDto As WcfService.CustomerDto) As WcfService.DbProcessResult
+        Function AddCustomerDto(ByVal customerDto As WcfService.CustomerDto) As OrderManagement.Common.ProcessResult
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddCustomerDtoResponse")>  _
-        Function AddCustomerDtoAsync(ByVal leadTimeDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult)
+        Function AddCustomerDtoAsync(ByVal customerDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateCustomerDtoResponse")>  _
-        Function UpdateCustomerDto(ByVal leadTimeDto As WcfService.CustomerDto) As WcfService.DbProcessResult
+        Function UpdateCustomerDto(ByVal customerDto As WcfService.CustomerDto) As OrderManagement.Common.ProcessResult
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateCustomerDtoResponse")>  _
-        Function UpdateCustomerDtoAsync(ByVal leadTimeDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult)
+        Function UpdateCustomerDtoAsync(ByVal customerDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteCustomerDtoResponse")>  _
-        Function DeleteCustomerDto(ByVal customerId As String) As WcfService.DbProcessResult
+        Function DeleteCustomerDto(ByVal customerId As String) As OrderManagement.Common.ProcessResult
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteCustomerDtoResponse")>  _
-        Function DeleteCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult)
+        Function DeleteCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/CustomerDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/CustomerDtoExistsResponse")>  _
         Function CustomerDtoExists(ByVal customerId As String) As Boolean
@@ -882,6 +843,38 @@ Namespace WcfService
             Return MyBase.Channel.GetOrderDtoesByConditionsAsync(conditions)
         End Function
         
+        Public Function AddOrderDto(ByVal orderDto As WcfService.OrderDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.AddOrderDto
+            Return MyBase.Channel.AddOrderDto(orderDto)
+        End Function
+        
+        Public Function AddOrderDtoAsync(ByVal orderDto As WcfService.OrderDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.AddOrderDtoAsync
+            Return MyBase.Channel.AddOrderDtoAsync(orderDto)
+        End Function
+        
+        Public Function UpdateOrderDto(ByVal orderDto As WcfService.OrderDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.UpdateOrderDto
+            Return MyBase.Channel.UpdateOrderDto(orderDto)
+        End Function
+        
+        Public Function UpdateOrderDtoAsync(ByVal orderDto As WcfService.OrderDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.UpdateOrderDtoAsync
+            Return MyBase.Channel.UpdateOrderDtoAsync(orderDto)
+        End Function
+        
+        Public Function DeleteOrderDto(ByVal orderId As String) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteOrderDto
+            Return MyBase.Channel.DeleteOrderDto(orderId)
+        End Function
+        
+        Public Function DeleteOrderDtoAsync(ByVal orderId As String) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteOrderDtoAsync
+            Return MyBase.Channel.DeleteOrderDtoAsync(orderId)
+        End Function
+        
+        Public Function OrderDtoExists(ByVal orderId As String) As Boolean Implements WcfService.IOrderManagementService.OrderDtoExists
+            Return MyBase.Channel.OrderDtoExists(orderId)
+        End Function
+        
+        Public Function OrderDtoExistsAsync(ByVal orderId As String) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.OrderDtoExistsAsync
+            Return MyBase.Channel.OrderDtoExistsAsync(orderId)
+        End Function
+        
         Public Function GetCustomerDtoes() As WcfService.CustomerDto() Implements WcfService.IOrderManagementService.GetCustomerDtoes
             Return MyBase.Channel.GetCustomerDtoes
         End Function
@@ -890,11 +883,11 @@ Namespace WcfService
             Return MyBase.Channel.GetCustomerDtoesAsync
         End Function
         
-        Public Function GetCustomerDto(ByVal customerId As String) As WcfService.CustomerDto Implements WcfService.IOrderManagementService.GetCustomerDto
+        Public Function GetCustomerDto(ByVal customerId As Integer) As WcfService.CustomerDto Implements WcfService.IOrderManagementService.GetCustomerDto
             Return MyBase.Channel.GetCustomerDto(customerId)
         End Function
         
-        Public Function GetCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of WcfService.CustomerDto) Implements WcfService.IOrderManagementService.GetCustomerDtoAsync
+        Public Function GetCustomerDtoAsync(ByVal customerId As Integer) As System.Threading.Tasks.Task(Of WcfService.CustomerDto) Implements WcfService.IOrderManagementService.GetCustomerDtoAsync
             Return MyBase.Channel.GetCustomerDtoAsync(customerId)
         End Function
         
@@ -906,27 +899,27 @@ Namespace WcfService
             Return MyBase.Channel.GetCustomerDtoByConditionAsync(condition)
         End Function
         
-        Public Function AddCustomerDto(ByVal leadTimeDto As WcfService.CustomerDto) As WcfService.DbProcessResult Implements WcfService.IOrderManagementService.AddCustomerDto
-            Return MyBase.Channel.AddCustomerDto(leadTimeDto)
+        Public Function AddCustomerDto(ByVal customerDto As WcfService.CustomerDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.AddCustomerDto
+            Return MyBase.Channel.AddCustomerDto(customerDto)
         End Function
         
-        Public Function AddCustomerDtoAsync(ByVal leadTimeDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult) Implements WcfService.IOrderManagementService.AddCustomerDtoAsync
-            Return MyBase.Channel.AddCustomerDtoAsync(leadTimeDto)
+        Public Function AddCustomerDtoAsync(ByVal customerDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.AddCustomerDtoAsync
+            Return MyBase.Channel.AddCustomerDtoAsync(customerDto)
         End Function
         
-        Public Function UpdateCustomerDto(ByVal leadTimeDto As WcfService.CustomerDto) As WcfService.DbProcessResult Implements WcfService.IOrderManagementService.UpdateCustomerDto
-            Return MyBase.Channel.UpdateCustomerDto(leadTimeDto)
+        Public Function UpdateCustomerDto(ByVal customerDto As WcfService.CustomerDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.UpdateCustomerDto
+            Return MyBase.Channel.UpdateCustomerDto(customerDto)
         End Function
         
-        Public Function UpdateCustomerDtoAsync(ByVal leadTimeDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult) Implements WcfService.IOrderManagementService.UpdateCustomerDtoAsync
-            Return MyBase.Channel.UpdateCustomerDtoAsync(leadTimeDto)
+        Public Function UpdateCustomerDtoAsync(ByVal customerDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.UpdateCustomerDtoAsync
+            Return MyBase.Channel.UpdateCustomerDtoAsync(customerDto)
         End Function
         
-        Public Function DeleteCustomerDto(ByVal customerId As String) As WcfService.DbProcessResult Implements WcfService.IOrderManagementService.DeleteCustomerDto
+        Public Function DeleteCustomerDto(ByVal customerId As String) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteCustomerDto
             Return MyBase.Channel.DeleteCustomerDto(customerId)
         End Function
         
-        Public Function DeleteCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of WcfService.DbProcessResult) Implements WcfService.IOrderManagementService.DeleteCustomerDtoAsync
+        Public Function DeleteCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteCustomerDtoAsync
             Return MyBase.Channel.DeleteCustomerDtoAsync(customerId)
         End Function
         

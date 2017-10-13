@@ -1,6 +1,8 @@
 ﻿Imports GalaSoft.MvvmLight
 Imports OrderManagement.WpfClient.Service
+Imports OrderManagement.WpfClient.ViewModel.Base
 Imports OrderManagement.WpfClient.ViewModel.Order
+Imports OrderManagement.WpfClient.WcfService
 
 Namespace ViewModel
     Public Class MainWindowViewModel
@@ -16,15 +18,22 @@ Namespace ViewModel
             Get
                 Return _currentUserControlViewModel
             End Get
-            Set(value As MyViewModelBase)
-                [Set]("CurrentUserControlViewModel", _currentUserControlViewModel, value)
+            Set
+                [Set]("CurrentUserControlViewModel", _currentUserControlViewModel, Value)
             End Set
         End Property
 
-
+        ''' <summary>
+        ''' </summary>
         Public Sub New()
-            CurrentUserControlViewModel = New OrderListViewModel(New OrderService)
-        End Sub
 
+            Dim orderService = New OrderManagementServiceClient
+
+            CurrentUserControlViewModel = New OrderListViewModel(
+                New FrameNavigationService(),
+                New OrderServiceAgent(),
+                New CustomerServiceAgent()
+                )
+        End Sub
     End Class
 End Namespace

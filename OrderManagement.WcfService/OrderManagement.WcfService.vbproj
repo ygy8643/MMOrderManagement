@@ -166,7 +166,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Results\DbProcessResult.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -201,6 +200,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OrderManagement.Common\OrderManagement.Common.vbproj">
+      <Project>{7d4fb8fc-dcc1-4aa6-b14b-69c3b6435711}</Project>
+      <Name>OrderManagement.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OrderManagement.Entities\OrderManagement.Service.Entities.vbproj">
       <Project>{6bbffde5-2ce4-4acd-9ee3-f1d7c495b2e5}</Project>
       <Name>OrderManagement.Service.Entities</Name>

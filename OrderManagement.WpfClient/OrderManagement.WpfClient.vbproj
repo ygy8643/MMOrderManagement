@@ -114,17 +114,27 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Config\MappingProfile.vb" />
+    <Compile Include="Converters\ToName\OrderDetailNothingToEmptyConverter.vb" />
+    <Compile Include="Converters\ToName\CustomerCodeToNameConverter.vb" />
     <Compile Include="Service References\WcfService\Reference.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service\IOrderService.vb" />
-    <Compile Include="Service\OrderService.vb" />
+    <Compile Include="Service\CustomerServiceAgent.vb" />
+    <Compile Include="Service\FrameNavigationService.vb" />
+    <Compile Include="Service\ICustomerServiceAgent.vb" />
+    <Compile Include="Service\IFrameNavigationService.vb" />
+    <Compile Include="Service\IOrderServiceAgent.vb" />
+    <Compile Include="Service\OrderServiceAgent.vb" />
     <Compile Include="ViewModel\Base\MyViewModelBase.vb" />
     <Compile Include="ViewModel\MainWindowViewModel.vb" />
+    <Compile Include="ViewModel\Order\OrderDetailViewModel.vb" />
     <Compile Include="ViewModel\Order\OrderListViewModel.vb" />
     <Compile Include="ViewModel\Base\ViewModelLocator.vb" />
+    <Compile Include="View\Order\OrderDetailView.xaml.vb">
+      <DependentUpon>OrderDetailView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Order\OrderListView.xaml.vb">
       <DependentUpon>OrderListView.xaml</DependentUpon>
     </Compile>
@@ -140,6 +150,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Order\OrderDetailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Order\OrderListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -189,6 +203,7 @@
     </EmbeddedResource>
     <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.OrderClient.datasource" />
     <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.OrderDetailClient.datasource" />
+    <None Include="My Project\DataSources\OrderManagement.Common.ProcessResult.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
@@ -196,9 +211,6 @@
     <AppDesigner Include="My Project\" />
     <None Include="packages.config" />
     <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.CustomerDto.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.DbProcessResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.OrderDto.datasource">
@@ -219,6 +231,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Converters\ToEnable\" />
+    <Folder Include="Converters\ToVisibility\" />
     <Folder Include="ViewModel\Inventory\" />
     <Folder Include="View\Inventory\" />
   </ItemGroup>

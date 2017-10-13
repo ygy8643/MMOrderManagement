@@ -4,6 +4,11 @@ Imports PropertyChanged
 Namespace Models
     <ImplementPropertyChanged>
     Public Class OrderClient
+        Public Sub New()
+            Me.CustomerClient = New CustomerClient()
+            Me.OrderDetailClients = New List(Of OrderDetailClient)
+        End Sub
+
         <DisplayName("订单号码")>
         Public Property OrderId As Integer
 
