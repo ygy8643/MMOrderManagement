@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<log4net>
+
+  <!-- Rolling File Configuration -->
+  <appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+    <file value="ErrorMessages\ErrorMessages.log" />
+    <appendToFile value="true" />
+    <maximumFileSize value="100KB" />
+    <maxSizeRollBackups value="2" />
+
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%level %thread %logger - %messageEdi%newline" />
+    </layout>
+    <!-- Filter -->
+    <filter type="log4net.Filter.LevelMatchFilter">
+      <levelToMatch value="ERROR" />
+    </filter>
+  </appender>
+
+  <!-- ADO.Net Configuration -->
+  <appender name="AdoNetAppender" type="log4net.Appender.AdoNetAppender">
+    <bufferSize value="1" />
+    <connectionType
+      value="System.Data.SqlClient.SqlConnection, System.Data, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+    <connectionString
+      value="data source=PC3854\PC3854SQLSERVER; initial catalog=OrderManagement;integrated security=false; persist security info=True;User ID=sa;Password=ckd" />
+    <commandText
+      value="INSERT INTO T_Log ([Date],[Level],[Logger],[Message],[Exception]) VALUES (@log_date,@log_level,@logger,@messageEdi,@exception)" />
+    <parameter>
+      <parameterName value="@log_date" />
+      <dbType value="DateTime" />
+      <layout type="log4net.Layout.RawTimeStampLayout" />
+    </parameter>
+    <parameter>
+      <parameterName value="@log_level" />
+      <dbType value="String" />
+      <size value="50" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%level" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@logger" />
+      <dbType value="String" />
+      <size value="255" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%logger" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@messageEdi" />
+      <dbType value="String" />
+      <size value="4000" />
+      <layout type="log4net.Layout.PatternLayout">
+        <conversionPattern value="%messageEdi" />
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@exception" />
+      <dbType value="String" />
+      <size value="2000" />
+      <layout type="log4net.Layout.ExceptionLayout" />
+    </parameter>
+    <!-- Filter -->
+    <filter type="log4net.Filter.LevelRangeFilter">
+      <levelMin value="INFO" />
+      <levelMax value="FATAL" />
+    </filter>
+  </appender>
+
+  <root>
+    <level value="ALL" />
+    <appender-ref ref="RollingFileAppender" />
+    <appender-ref ref="AdoNetAppender" />
+  </root>
+</log4net>

@@ -1,0 +1,25 @@
+﻿<controls:MetroWindow x:Class="MasterWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:master="clr-namespace:OrderManagement.WpfClient.View.Master"
+                      mc:Ignorable="d"
+                      Title="MasterWindow"
+                      Height="768"
+                      Width="1080">
+    <dragablz:TabablzControl Margin="8">
+        <dragablz:TabablzControl.InterTabController>
+            <dragablz:InterTabController />
+        </dragablz:TabablzControl.InterTabController>
+        <TabItem Header="Tab No. 1"
+                 IsSelected="True">
+            <master:CustomerView />
+        </TabItem>
+        <TabItem Header="Tab No. 2">
+            <master:CustomerView />
+        </TabItem>
+    </dragablz:TabablzControl>
+</controls:MetroWindow>

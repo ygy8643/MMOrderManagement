@@ -29,7 +29,7 @@ Namespace ViewModel
 
             Dim orderService = New OrderManagementServiceClient
 
-            CurrentUserControlViewModel = New OrderListViewModel(
+            CurrentUserControlViewModel = New ListOrderViewModel(
                 New FrameNavigationService(),
                 New OrderServiceAgent(),
                 New CustomerServiceAgent()

@@ -12,15 +12,15 @@ Imports OrderManagement.WpfClient.Service
 Imports OrderManagement.WpfClient.ViewModel.Base
 
 Namespace ViewModel.Order
-    Public Class OrderListViewModel
+    Public Class AddOrderViewModel
         Inherits MyViewModelBase
 
 #Region "Fields"
 
         ''' <summary>
-        ''' 画面移动service
+        '''     画面移动service
         ''' </summary>
-        Private ReadOnly _navigationService As IFrameNavigationService
+        Private ReadOnly _navigationService As INavigationService
 
         ''' <summary>
         '''     订单service
@@ -168,7 +168,7 @@ Namespace ViewModel.Order
         ''' <summary>
         '''     Constructor
         ''' </summary>
-        Public Sub New(navigationService As IFrameNavigationService,
+        Public Sub New(navigationService As INavigationService,
                        orderServiceAgent As IOrderServiceAgent,
                        customerServiceAgent As ICustomerServiceAgent)
 

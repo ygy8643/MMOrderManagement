@@ -3,7 +3,6 @@ Imports System.Data.OleDb
 Imports System.Globalization
 Imports System.IO
 Imports GalaSoft.MvvmLight.CommandWpf
-Imports GalaSoft.MvvmLight.Views
 Imports Microsoft.Win32
 Imports OrderManagement.Client.Entities.Models
 Imports OrderManagement.Client.Entities.SearchConditions
@@ -12,15 +11,15 @@ Imports OrderManagement.WpfClient.Service
 Imports OrderManagement.WpfClient.ViewModel.Base
 
 Namespace ViewModel.Order
-    Public Class OrderDetailViewModel
+    Public Class ListOrderViewModel
         Inherits MyViewModelBase
 
 #Region "Fields"
 
         ''' <summary>
-        ''' 画面移动service
+        '''     画面移动service
         ''' </summary>
-        Private ReadOnly _navigationService As INavigationService
+        Private ReadOnly _navigationService As IFrameNavigationService
 
         ''' <summary>
         '''     订单service
@@ -85,6 +84,20 @@ Namespace ViewModel.Order
             End Get
             Set
                 [Set]("SelectedOrder", _selectedOrder, Value)
+            End Set
+        End Property
+
+        ''' <summary>
+        '''     用户信息
+        ''' </summary>
+        Private _customerInfo As CustomerClient
+
+        Public Property CustomerInfo As CustomerClient
+            Get
+                Return _customerInfo
+            End Get
+            Set
+                [Set]("CustomerInfo", _customerInfo, Value)
             End Set
         End Property
 
@@ -156,10 +169,16 @@ Namespace ViewModel.Order
         Public Property DeleteOrderDetailCommand As RelayCommand
 
         ''' <summary>
-        '''     入力情報を保存
+        '''     保存订单信息
         ''' </summary>
         ''' <returns></returns>
         Public Property SaveOrderAndDetailCommand As RelayCommand
+
+        ''' <summary>
+        '''     获取用户信息
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property SetCustomerInfoCommand As RelayCommand(Of String)
 
 #End Region
 
@@ -168,7 +187,7 @@ Namespace ViewModel.Order
         ''' <summary>
         '''     Constructor
         ''' </summary>
-        Public Sub New(navigationService As INavigationService,
+        Public Sub New(navigationService As IFrameNavigationService,
                        orderServiceAgent As IOrderServiceAgent,
                        customerServiceAgent As ICustomerServiceAgent)
 
@@ -203,6 +222,8 @@ Namespace ViewModel.Order
                 DeleteOrderDetailCommand = New RelayCommand(AddressOf DeleteOrderDetail)
 
                 SaveOrderAndDetailCommand = New RelayCommand(AddressOf SaveOrderAndDetail)
+
+                SetCustomerInfoCommand = New RelayCommand(Of String)(AddressOf SetCustomerInfo)
             End With
         End Sub
 
@@ -271,6 +292,13 @@ Namespace ViewModel.Order
         ''' </summary>
         Private Sub SaveOrderAndDetail()
             _orderServiceAgent.AddOrder(Me.SelectedOrder)
+        End Sub
+
+        ''' <summary>
+        '''     取得用户信息
+        ''' </summary>
+        Private Sub SetCustomerInfo(customerId As String)
+            CustomerInfo = _customerServiceAgent.GetCustomer(customerId)
         End Sub
 
         ''' <summary>

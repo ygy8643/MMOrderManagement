@@ -56,6 +56,10 @@
       <HintPath>..\packages\AutoMapper.5.2.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Dragablz, Version=0.0.3.197, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dragablz.0.0.3.197\lib\net45\Dragablz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="GalaSoft.MvvmLight, Version=5.3.0.19026, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
       <Private>True</Private>
@@ -68,8 +72,16 @@
       <HintPath>..\packages\MvvmLightLibs.5.3.0.0\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.5.0.23, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\MahApps.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MahApps.Metro.IconPacks, Version=1.9.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.IconPacks.1.9.1\lib\net45\MahApps.Metro.IconPacks.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MaterialDesignColors, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -92,7 +104,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\MahApps.Metro.1.5.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
@@ -116,6 +128,11 @@
     <Compile Include="Config\MappingProfile.vb" />
     <Compile Include="Converters\ToName\OrderDetailNothingToEmptyConverter.vb" />
     <Compile Include="Converters\ToName\CustomerCodeToNameConverter.vb" />
+    <Compile Include="Converters\ToVisibility\TrueToHiddenConverter.vb" />
+    <Compile Include="Converters\ToVisibility\TrueToVisibleConverter.vb" />
+    <Compile Include="MasterWindow.xaml.vb">
+      <DependentUpon>MasterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WcfService\Reference.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -129,14 +146,20 @@
     <Compile Include="Service\OrderServiceAgent.vb" />
     <Compile Include="ViewModel\Base\MyViewModelBase.vb" />
     <Compile Include="ViewModel\MainWindowViewModel.vb" />
-    <Compile Include="ViewModel\Order\OrderDetailViewModel.vb" />
-    <Compile Include="ViewModel\Order\OrderListViewModel.vb" />
+    <Compile Include="ViewModel\Master\BaseMasterViewModel.vb" />
+    <Compile Include="ViewModel\Master\CustomerViewModel.vb" />
+    <Compile Include="ViewModel\Master\IBaseMasterViewModel.vb" />
+    <Compile Include="ViewModel\Order\AddOrderViewModel.vb" />
+    <Compile Include="ViewModel\Order\ListOrderViewModel.vb" />
     <Compile Include="ViewModel\Base\ViewModelLocator.vb" />
-    <Compile Include="View\Order\OrderDetailView.xaml.vb">
-      <DependentUpon>OrderDetailView.xaml</DependentUpon>
+    <Compile Include="View\Master\CustomerView.xaml.vb">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Order\OrderListView.xaml.vb">
-      <DependentUpon>OrderListView.xaml</DependentUpon>
+    <Compile Include="View\Order\AddOrderView.xaml.vb">
+      <DependentUpon>AddOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Order\ListOrderView.xaml.vb">
+      <DependentUpon>ListOrderView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -150,11 +173,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\Order\OrderDetailView.xaml">
+    <Page Include="MasterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Order\OrderListView.xaml">
+    <Page Include="View\Master\CustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Order\AddOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Order\ListOrderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,6 +232,7 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.CustomerClient.datasource" />
     <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.OrderClient.datasource" />
     <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.OrderDetailClient.datasource" />
     <None Include="My Project\DataSources\OrderManagement.Common.ProcessResult.datasource" />
@@ -232,7 +264,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\ToEnable\" />
-    <Folder Include="Converters\ToVisibility\" />
     <Folder Include="ViewModel\Inventory\" />
     <Folder Include="View\Inventory\" />
   </ItemGroup>
@@ -269,6 +300,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Config\log4net.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

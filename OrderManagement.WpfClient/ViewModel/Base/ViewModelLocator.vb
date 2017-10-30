@@ -1,8 +1,8 @@
 ﻿Imports System.Diagnostics.CodeAnalysis
 Imports GalaSoft.MvvmLight.Ioc
-Imports GalaSoft.MvvmLight.Views
 Imports Microsoft.Practices.ServiceLocation
 Imports OrderManagement.WpfClient.Service
+Imports OrderManagement.WpfClient.ViewModel.Master
 Imports OrderManagement.WpfClient.ViewModel.Order
 
 Namespace ViewModel.Base
@@ -20,14 +20,15 @@ Namespace ViewModel.Base
             'Navigation Service
             Dim frameNavigationService As New FrameNavigationService
 
-            frameNavigationService.Configure("OrderList", New Uri("../Views/Order/OrderListView.xaml", UriKind.Relative))
+            frameNavigationService.Configure("OrderList", New Uri("../Views/Order/ListOrderView.xaml", UriKind.Relative))
             frameNavigationService.Configure("OrderDetail",
-                                             New Uri("../Views/Order/OrderDetailView.xaml", UriKind.Relative))
+                                             New Uri("../Views/Order/AddOrderView.xaml", UriKind.Relative))
             SimpleIoc.Default.Register(Of IFrameNavigationService)(Function() frameNavigationService)
 
             SimpleIoc.Default.Register(Of MainWindowViewModel)()
-            SimpleIoc.Default.Register(Of OrderListViewModel)()
-            SimpleIoc.Default.Register(Of OrderDetailViewModel)()
+            SimpleIoc.Default.Register(Of ListOrderViewModel)()
+            SimpleIoc.Default.Register(Of AddOrderViewModel)()
+            SimpleIoc.Default.Register(Of CustomerViewModel)()
         End Sub
 
 #End Region
@@ -51,26 +52,42 @@ Namespace ViewModel.Base
 #Region "订单"
 
         ''' <summary>
-        '''     Gets the OrderListViewModel property.
+        '''     Gets the ListOrderViewModel property.
         ''' </summary>
         <SuppressMessage _
             ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
              Justification:="This non-static member is needed for data binding purposes.")>
-        Public ReadOnly Property OrderListViewModel As OrderListViewModel
+        Public ReadOnly Property ListOrderViewModel As ListOrderViewModel
             Get
-                Return ServiceLocator.Current.GetInstance(Of OrderListViewModel)()
+                Return ServiceLocator.Current.GetInstance(Of ListOrderViewModel)()
             End Get
         End Property
 
         ''' <summary>
-        '''     Gets the OrderDetailViewModel property.
+        '''     Gets the AddOrderViewModel property.
         ''' </summary>
         <SuppressMessage _
             ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
              Justification:="This non-static member is needed for data binding purposes.")>
-        Public ReadOnly Property OrderDetailViewModel As OrderDetailViewModel
+        Public ReadOnly Property AddOrderViewModel As AddOrderViewModel
             Get
-                Return ServiceLocator.Current.GetInstance(Of OrderDetailViewModel)()
+                Return ServiceLocator.Current.GetInstance(Of AddOrderViewModel)()
+            End Get
+        End Property
+
+#End Region
+
+#Region "用户"
+
+        ''' <summary>
+        '''     Gets the CustomerViewModel property.
+        ''' </summary>
+        <SuppressMessage _
+            ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
+             Justification:="This non-static member is needed for data binding purposes.")>
+        Public ReadOnly Property CustomerViewModel As CustomerViewModel
+            Get
+                Return ServiceLocator.Current.GetInstance(Of CustomerViewModel)()
             End Get
         End Property
 

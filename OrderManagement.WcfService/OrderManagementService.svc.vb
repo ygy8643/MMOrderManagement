@@ -17,8 +17,9 @@ Public Class OrderManagementService
     ''' <returns></returns>
     Public Function GetOrderDto(orderId As Integer) As OrderDto Implements IOrderManagementService.GetOrderDto
         Using db As New OrderEntities
-            Return Mapper.Map(Of OrderDto)(db.Orders.Include("Customer").Include("OrderDetails").
-                                           SingleOrDefault(Function(o) o.OrderId = orderId))
+            Return Mapper.Map(Of OrderDto)(
+                db.Orders.Include("Customer").Include("OrderDetails").
+                                               SingleOrDefault(Function(o) o.OrderId = orderId))
         End Using
     End Function
 
@@ -265,34 +266,22 @@ Public Class OrderManagementService
     ''' <returns></returns>
     Public Function GetCustomerDtoByCondition(condition As CustomerDto) As IEnumerable(Of CustomerDto) _
         Implements IOrderManagementService.GetCustomerDtoByCondition
-        Dim result As New ProcessResult
 
         Using db As New OrderEntities
-
             With condition
-                Dim customers =
-                        db.Customers.Where(
-                            Function(c) (
-                                            String.IsNullOrEmpty(.CustomerId) OrElse c.CustomerId = .CustomerId) And
-                                        (String.IsNullOrEmpty(.Name) OrElse c.Name = .Name) And
-                                        (String.IsNullOrEmpty(.WechatName) OrElse c.Name = .WechatName) And
-                                        (String.IsNullOrEmpty(.TaobaoName) OrElse c.Name = .TaobaoName) And
-                                        (String.IsNullOrEmpty(.Address) OrElse c.Name = .Address) And
-                                        (String.IsNullOrEmpty(.PostCode) OrElse c.Name = .PostCode) And
-                                        (String.IsNullOrEmpty(.Phone) OrElse c.Name = .Phone))
-
-                db.Customers.RemoveRange(customers)
+                Dim result = Mapper.Map(Of List(Of CustomerDto))(
+                    db.Customers.Where(
+                        Function(c) (.CustomerId = 0 OrElse c.CustomerId = .CustomerId) And
+                                    (String.IsNullOrEmpty(.Name) OrElse c.Name = .Name) And
+                                    (String.IsNullOrEmpty(.WechatName) OrElse c.Name = .WechatName) And
+                                    (String.IsNullOrEmpty(.TaobaoName) OrElse c.Name = .TaobaoName) And
+                                    (String.IsNullOrEmpty(.Address) OrElse c.Name = .Address) And
+                                    (String.IsNullOrEmpty(.PostCode) OrElse c.Name = .PostCode) And
+                                    (String.IsNullOrEmpty(.Phone) OrElse c.Name = .Phone)).ToList()
+                    )
+                Return result
             End With
-
-            Try
-                db.SaveChanges()
-            Catch ex As Exception
-                result.IsSuccess = False
-                result.ErrorMessage = ex.Message
-            End Try
         End Using
-
-        Return result
     End Function
 
     Public Function GetCustomerDtoes() As IEnumerable(Of CustomerDto) _

@@ -1,0 +1,370 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:toVisibility="clr-namespace:OrderManagement.WpfClient.Converters.ToVisibility"
+             x:Class="View.Master.CustomerView"
+             mc:Ignorable="d"
+             d:DesignHeight="768"
+             d:DesignWidth="1080">
+    <UserControl.Resources>
+        <toVisibility:TrueToHiddenConverter x:Key="TrueToHiddenConverter" />
+        <toVisibility:TrueToVisibleConverter x:Key="TrueToVisibleConverter" />
+    </UserControl.Resources>
+    <UserControl.DataContext>
+        <Binding Path="CustomerViewModel"
+                 Source="{StaticResource Locator}" />
+    </UserControl.DataContext>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Expander HorizontalAlignment="Stretch"
+                  Header="查询条件"
+                  IsExpanded="True">
+
+            <Grid x:Name="Grid1"
+                  DataContext="{Binding SearchCondition}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Center"
+                       Grid.Row="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       Grid.Column="0"
+                       Content="收货地址:" />
+                <TextBox x:Name="AddressTextBox"
+                         Width="120"
+                         VerticalAlignment="Center"
+                         Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Grid.Row="0"
+                         Margin="3"
+                         Height="23"
+                         HorizontalAlignment="Left"
+                         Grid.Column="1" />
+                <Label VerticalAlignment="Center"
+                       Grid.Row="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       Grid.Column="2"
+                       Content="客户编号:" />
+                <TextBox x:Name="CustomerIdTextBox"
+                         Width="120"
+                         VerticalAlignment="Center"
+                         Text="{Binding CustomerId, Mode=TwoWay}"
+                         Grid.Row="0"
+                         Margin="3"
+                         Height="23"
+                         HorizontalAlignment="Left"
+                         Grid.Column="3" />
+                <Label VerticalAlignment="Center"
+                       Grid.Row="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       Grid.Column="4"
+                       Content="客户姓名:" />
+                <TextBox x:Name="NameTextBox"
+                         Width="120"
+                         VerticalAlignment="Center"
+                         Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Grid.Row="0"
+                         Margin="3"
+                         Height="23"
+                         HorizontalAlignment="Left"
+                         Grid.Column="5" />
+                <Label VerticalAlignment="Center"
+                       Grid.Row="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       Grid.Column="6"
+                       Content="电话号码:" />
+                <TextBox x:Name="PhoneTextBox"
+                         Width="120"
+                         VerticalAlignment="Center"
+                         Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Grid.Row="0"
+                         Margin="3"
+                         Height="23"
+                         HorizontalAlignment="Left"
+                         Grid.Column="7" />
+                <Label VerticalAlignment="Center"
+                       Grid.Row="1"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       Grid.Column="0"
+                       Content="邮编:" />
+                <TextBox x:Name="PostCodeTextBox"
+                         Width="120"
+                         VerticalAlignment="Center"
+                         Text="{Binding PostCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Grid.Row="1"
+                         Margin="3"
+                         Height="23"
+                         HorizontalAlignment="Left"
+                         Grid.Column="1" />
+                <Label VerticalAlignment="Center"
+                       Grid.Row="1"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       Grid.Column="2"
+                       Content="淘宝昵称:" />
+                <TextBox x:Name="TaobaoNameTextBox"
+                         Width="120"
+                         VerticalAlignment="Center"
+                         Text="{Binding TaobaoName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Grid.Row="1"
+                         Margin="3"
+                         Height="23"
+                         HorizontalAlignment="Left"
+                         Grid.Column="3" />
+                <Label VerticalAlignment="Center"
+                       Grid.Row="1"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       Grid.Column="4"
+                       Content="微信昵称:" />
+                <TextBox x:Name="WechatNameTextBox"
+                         Width="120"
+                         VerticalAlignment="Center"
+                         Text="{Binding WechatName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Grid.Row="1"
+                         Margin="3"
+                         Height="23"
+                         HorizontalAlignment="Left"
+                         Grid.Column="5" />
+                <Button x:Name="BtnSearch"
+                        Grid.Row="1"
+                        Grid.Column="8"
+                        Content="查询"
+                        Command="{Binding CustomerViewModel.SearchDataCommand, Source={StaticResource Locator}}" />
+            </Grid>
+
+        </Expander>
+        <DataGrid x:Name="CustomerClientDataGrid"
+                  AutoGenerateColumns="False"
+                  EnableRowVirtualization="True"
+                  ItemsSource="{Binding MasterData, Mode=OneWay}"
+                  SelectedItem="{Binding SelectedData}"
+                  IsReadOnly="True"
+                  Grid.Row="1"
+                  RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="AddressColumn"
+                                    Binding="{Binding Address}"
+                                    Header="收货地址"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="CustomerIdColumn"
+                                    Binding="{Binding CustomerId}"
+                                    Header="客户编号"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="NameColumn"
+                                    Binding="{Binding Name}"
+                                    Header="客户姓名"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="PhoneColumn"
+                                    Binding="{Binding Phone}"
+                                    Header="电话号码"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="PostCodeColumn"
+                                    Binding="{Binding PostCode}"
+                                    Header="邮编"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="TaobaoNameColumn"
+                                    Binding="{Binding TaobaoName}"
+                                    Header="淘宝昵称"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="WechatNameColumn"
+                                    Binding="{Binding WechatName}"
+                                    Header="微信昵称"
+                                    Width="SizeToHeader" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Expander Grid.Row="2"
+                  IsExpanded="True">
+            <Expander.HeaderTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Text="編集"
+                                   FontSize="16" />
+                        <Button HorizontalAlignment="Right"
+                                ToolTip="新規追加"
+                                Height="24"
+                                Width="24"
+                                Command="{Binding MLeadTimeViewModel.ClearDataCommand, Source={StaticResource Locator}}" />
+                    </DockPanel>
+                </DataTemplate>
+            </Expander.HeaderTemplate>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="Grid2"
+                      DataContext="{Binding DetailData}"
+                      Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Content="收货地址:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="0"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="AddressTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="0"
+                             Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="客户编号:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="1"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="CustomerIdTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="1"
+                             Text="{Binding CustomerId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="客户姓名:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="2"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="NameTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="2"
+                             Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="电话号码:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="3"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="PhoneTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="3"
+                             Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="邮编:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="4"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="PostCodeTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="4"
+                             Text="{Binding PostCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="淘宝昵称:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="5"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="TaobaoNameTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="5"
+                             Text="{Binding TaobaoName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="微信昵称:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="6"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="WechatNameTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="6"
+                             Text="{Binding WechatName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                </Grid>
+                <Button x:Name="AddButton"
+                        Content="新規"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="10,10,0,0"
+                        Width="75"
+                        Grid.Row="1"
+                        Command="{Binding AddDataCommand}"
+                        Visibility="{Binding IsCreateMaster, Converter={StaticResource TrueToVisibleConverter}}" />
+                <Button x:Name="UpdateButton"
+                        Content="更新"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="100,10,0,0"
+                        Width="75"
+                        Grid.Row="1"
+                        Command="{Binding UpdataDataCommand}"
+                        Visibility="{Binding IsCreateMaster, Converter={StaticResource TrueToHiddenConverter}}" />
+                <Button Content="削除"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Margin="190,10,0,0"
+                        Width="75"
+                        Grid.Row="1"
+                        Command="{Binding DeleteDataCommand}"
+                        Visibility="{Binding IsCreateMaster, Converter={StaticResource TrueToHiddenConverter}}" />
+            </Grid>
+
+        </Expander>
+    </Grid>
+</UserControl>
