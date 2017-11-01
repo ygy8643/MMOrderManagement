@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/11/2017 16:30:17
+-- Date Created: 11/01/2017 17:12:15
 -- Generated from EDMX file: D:\OrderManagement\OrderManagement.Entities\OrderModel.edmx
 -- --------------------------------------------------
 
@@ -25,9 +25,6 @@ IF OBJECT_ID(N'[dbo].[FK_OrderDetail_Order]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_OrderDetail_Product]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[OrderDetails] DROP CONSTRAINT [FK_OrderDetail_Product];
-GO
-IF OBJECT_ID(N'[dbo].[FK_Products_Species]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Products] DROP CONSTRAINT [FK_Products_Species];
 GO
 
 -- --------------------------------------------------

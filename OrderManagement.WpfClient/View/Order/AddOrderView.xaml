@@ -13,7 +13,9 @@
                            MinHeight="200" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Grid x:Name="OrderClientDataDetailGrid"
+        <Expander Header="订单清单"
+                  IsExpanded="True">
+            <Grid x:Name="OrderClientDataDetailGrid"
               DataContext="{Binding SelectedOrder}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -135,6 +137,8 @@
                      VerticalAlignment="Center"
                      Width="120" />
         </Grid>
+        </Expander>
+
         <DataGrid x:Name="OrderDetailClientsDataGrid"
                   AutoGenerateColumns="False"
                   EnableRowVirtualization="True"

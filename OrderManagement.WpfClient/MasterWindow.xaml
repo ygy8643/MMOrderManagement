@@ -14,12 +14,15 @@
         <dragablz:TabablzControl.InterTabController>
             <dragablz:InterTabController />
         </dragablz:TabablzControl.InterTabController>
-        <TabItem Header="Tab No. 1"
+        <TabItem Header="用户信息"
                  IsSelected="True">
             <master:CustomerView />
         </TabItem>
-        <TabItem Header="Tab No. 2">
-            <master:CustomerView />
+        <TabItem Header="产品信息">
+            <master:ProductView />
+        </TabItem>
+        <TabItem Header="种类信息">
+            <master:SpeciesView />
         </TabItem>
     </dragablz:TabablzControl>
 </controls:MetroWindow>

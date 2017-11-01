@@ -119,6 +119,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="OrderModel.Views.vb" />
     <Compile Include="Product.vb">
       <DependentUpon>OrderModel.tt</DependentUpon>
     </Compile>

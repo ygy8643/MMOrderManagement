@@ -3,15 +3,15 @@ Imports OrderManagement.Client.Entities.Models
 Imports OrderManagement.WpfClient.Service
 
 Namespace ViewModel.Master
-    Public Class CustomerViewModel
-        Inherits BaseMasterViewModel(Of CustomerClient)
+    Public Class SpeciesViewModel
+        Inherits BaseMasterViewModel(Of SpeciesClient)
 
 #Region "フィールド"
 
         ''' <summary>
         '''     サービス
         ''' </summary>
-        Private ReadOnly _customerService As ICustomerServiceAgent
+        Private ReadOnly _speciesService As ISpeciesServiceAgent
 
         ''' <summary>
         '''     ダイアログ
@@ -32,7 +32,7 @@ Namespace ViewModel.Master
         ''' </summary>
         Public ReadOnly Property Title As String
             Get
-                Return "用户信息"
+                Return "种类信息"
             End Get
         End Property
 
@@ -40,9 +40,9 @@ Namespace ViewModel.Master
         '''     選択したデータ
         ''' </summary>
         ''' <remarks></remarks>
-        Private _selectedData As CustomerClient
+        Private _selectedData As SpeciesClient
 
-        Public Property SelectedData As CustomerClient
+        Public Property SelectedData As SpeciesClient
             Get
                 Return _selectedData
             End Get
@@ -50,20 +50,15 @@ Namespace ViewModel.Master
                 [Set]("SelectedData", _selectedData, Value)
 
                 If Value Is Nothing OrElse
-                   String.IsNullOrEmpty(Value.CustomerId) OrElse Value.CustomerId = 0 Then
-                    DetailData = New CustomerClient
+                   String.IsNullOrEmpty(Value.SpeciesId) OrElse Value.SpeciesId = 0 Then
+                    DetailData = New SpeciesClient
                 Else
 
                     'リストからデータを選択する時には修正モードに切り替え、詳細をセット
                     IsCreateMaster = False
-                    DetailData = New CustomerClient With {
-                        .CustomerId = Value.CustomerId,
-                        .Name = Value.Name,
-                        .Address = Value.Address,
-                        .PostCode = Value.PostCode,
-                        .Phone = Value.Phone,
-                        .WechatName = Value.WechatName,
-                        .TaobaoName = Value.TaobaoName}
+                    DetailData = New SpeciesClient With {
+                        .SpeciesId = Value.SpeciesId,
+                        .SpeciesName = Value.SpeciesName}
                 End If
             End Set
         End Property
@@ -77,15 +72,15 @@ Namespace ViewModel.Master
         ''' </summary>
         ''' <param name="dataService"></param>
         ''' <remarks></remarks>
-        Public Sub New(dataService As ICustomerServiceAgent, dialogInstance As IDialogCoordinator)
+        Public Sub New(dataService As ISpeciesServiceAgent, dialogInstance As IDialogCoordinator)
 
             MyBase.New()
 
-            SelectedData = New CustomerClient()
-            SearchCondition = New CustomerClient()
+            SelectedData = New SpeciesClient()
+            SearchCondition = New SpeciesClient()
 
             'サービスの初期化
-            _customerService = dataService
+            _speciesService = dataService
             _dialogCoordinator = dialogInstance
 
             'リストの初期化
@@ -99,14 +94,16 @@ Namespace ViewModel.Master
         Public Overrides Sub AddMasterData()
 
             Try
+
                 '存在チェック
-                If _customerService.CustomerExists(DetailData.CustomerId) Then
+                If _
+                    _speciesService.SpeciesExists(DetailData.SpeciesId) Then
 
                     _dialogCoordinator.ShowMessageAsync(Me, "エラー", "データが重複しました")
                 Else
 
                     '新規追加
-                    Dim result = _customerService.CreateCustomer(DetailData)
+                    Dim result = _speciesService.CreateSpecies(DetailData)
 
                     If result.IsSuccess Then
                         'Show Success Message and add the data to list
@@ -117,7 +114,6 @@ Namespace ViewModel.Master
 
                     Else
                         _dialogCoordinator.ShowMessageAsync(Me, "エラー", "追加失敗しました")
-
                     End If
                 End If
 
@@ -134,8 +130,8 @@ Namespace ViewModel.Master
             IsCreateMaster = True
 
             '詳細をクリア
-            DetailData = New CustomerClient()
-            SelectedData = New CustomerClient()
+            DetailData = New SpeciesClient()
+            SelectedData = New SpeciesClient()
         End Sub
 
         ''' <summary>
@@ -145,7 +141,7 @@ Namespace ViewModel.Master
             Try
 
                 '削除
-                Dim result = _customerService.DeleteCustomer(DetailData.CustomerId)
+                Dim result = _SpeciesService.DeleteSpecies(DetailData.SpeciesId)
 
                 If result.IsSuccess Then
 
@@ -154,11 +150,10 @@ Namespace ViewModel.Master
                     '結果リストをリセット
                     SearchMasterData()
 
-                    SelectedData = New CustomerClient()
+                    SelectedData = New SpeciesClient()
                     IsCreateMaster = True
                 Else
                     _dialogCoordinator.ShowMessageAsync(Me, "エラー", "削除失敗しました")
-
                 End If
 
             Catch ex As Exception
@@ -186,7 +181,7 @@ Namespace ViewModel.Master
         Public Overrides Sub SearchMasterData()
             Try
                 '検索
-                MasterData = _customerService.GetCustomerByCondition(SearchCondition)
+                MasterData = _SpeciesService.GetSpeciesByCondition(SearchCondition)
 
             Catch ex As Exception
                 Log.Error(ex.Message & ex.StackTrace)
@@ -200,7 +195,7 @@ Namespace ViewModel.Master
             Try
 
                 '更新
-                Dim result = _customerService.UpdateCustomer(DetailData)
+                Dim result = _SpeciesService.UpdateSpecies(DetailData)
 
                 If result.IsSuccess Then
                     _dialogCoordinator.ShowMessageAsync(Me, "メッセージ", "更新しました")
@@ -208,7 +203,7 @@ Namespace ViewModel.Master
                     '結果リストをリセット
                     SearchMasterData()
 
-                    SelectedData = New CustomerClient()
+                    SelectedData = New SpeciesClient()
                     IsCreateMaster = True
                 Else
                     _dialogCoordinator.ShowMessageAsync(Me, "エラー", "更新失敗しました")

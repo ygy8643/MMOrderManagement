@@ -699,6 +699,69 @@ Namespace WcfService
         End Sub
     End Class
     
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="SpeciesDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class SpeciesDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SpeciesIdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SpeciesNameField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SpeciesId() As Integer
+            Get
+                Return Me.SpeciesIdField
+            End Get
+            Set
+                If (Me.SpeciesIdField.Equals(value) <> true) Then
+                    Me.SpeciesIdField = value
+                    Me.RaisePropertyChanged("SpeciesId")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SpeciesName() As String
+            Get
+                Return Me.SpeciesNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SpeciesNameField, value) <> true) Then
+                    Me.SpeciesNameField = value
+                    Me.RaisePropertyChanged("SpeciesName")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.ServiceContractAttribute(ConfigurationName:="WcfService.IOrderManagementService")>  _
     Public Interface IOrderManagementService
@@ -734,16 +797,16 @@ Namespace WcfService
         Function UpdateOrderDtoAsync(ByVal orderDto As WcfService.OrderDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteOrderDtoResponse")>  _
-        Function DeleteOrderDto(ByVal orderId As String) As OrderManagement.Common.ProcessResult
+        Function DeleteOrderDto(ByVal orderId As Integer) As OrderManagement.Common.ProcessResult
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteOrderDtoResponse")>  _
-        Function DeleteOrderDtoAsync(ByVal orderId As String) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        Function DeleteOrderDtoAsync(ByVal orderId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/OrderDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/OrderDtoExistsResponse")>  _
-        Function OrderDtoExists(ByVal orderId As String) As Boolean
+        Function OrderDtoExists(ByVal orderId As Integer) As Boolean
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/OrderDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/OrderDtoExistsResponse")>  _
-        Function OrderDtoExistsAsync(ByVal orderId As String) As System.Threading.Tasks.Task(Of Boolean)
+        Function OrderDtoExistsAsync(ByVal orderId As Integer) As System.Threading.Tasks.Task(Of Boolean)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoesResponse")>  _
         Function GetCustomerDtoes() As WcfService.CustomerDto()
@@ -776,16 +839,100 @@ Namespace WcfService
         Function UpdateCustomerDtoAsync(ByVal customerDto As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteCustomerDtoResponse")>  _
-        Function DeleteCustomerDto(ByVal customerId As String) As OrderManagement.Common.ProcessResult
+        Function DeleteCustomerDto(ByVal customerId As Integer) As OrderManagement.Common.ProcessResult
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteCustomerDtoResponse")>  _
-        Function DeleteCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        Function DeleteCustomerDtoAsync(ByVal customerId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/CustomerDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/CustomerDtoExistsResponse")>  _
-        Function CustomerDtoExists(ByVal customerId As String) As Boolean
+        Function CustomerDtoExists(ByVal customerId As Integer) As Boolean
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/CustomerDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/CustomerDtoExistsResponse")>  _
-        Function CustomerDtoExistsAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of Boolean)
+        Function CustomerDtoExistsAsync(ByVal customerId As Integer) As System.Threading.Tasks.Task(Of Boolean)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoesResponse")>  _
+        Function GetProductDtoes() As WcfService.ProductDto()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoesResponse")>  _
+        Function GetProductDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.ProductDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoResponse")>  _
+        Function GetProductDto(ByVal productId As Integer) As WcfService.ProductDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoResponse")>  _
+        Function GetProductDtoAsync(ByVal productId As Integer) As System.Threading.Tasks.Task(Of WcfService.ProductDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoByConditionResponse")>  _
+        Function GetProductDtoByCondition(ByVal condition As WcfService.ProductDto) As WcfService.ProductDto()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoByConditionResponse")>  _
+        Function GetProductDtoByConditionAsync(ByVal condition As WcfService.ProductDto) As System.Threading.Tasks.Task(Of WcfService.ProductDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddProductDtoResponse")>  _
+        Function AddProductDto(ByVal productDto As WcfService.ProductDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddProductDtoResponse")>  _
+        Function AddProductDtoAsync(ByVal productDto As WcfService.ProductDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateProductDtoResponse")>  _
+        Function UpdateProductDto(ByVal productDto As WcfService.ProductDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateProductDtoResponse")>  _
+        Function UpdateProductDtoAsync(ByVal productDto As WcfService.ProductDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteProductDtoResponse")>  _
+        Function DeleteProductDto(ByVal productId As Integer) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteProductDtoResponse")>  _
+        Function DeleteProductDtoAsync(ByVal productId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/ProductDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/ProductDtoExistsResponse")>  _
+        Function ProductDtoExists(ByVal productId As Integer) As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/ProductDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/ProductDtoExistsResponse")>  _
+        Function ProductDtoExistsAsync(ByVal productId As Integer) As System.Threading.Tasks.Task(Of Boolean)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoesResponse")>  _
+        Function GetSpeciesDtoes() As WcfService.SpeciesDto()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoesResponse")>  _
+        Function GetSpeciesDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.SpeciesDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoResponse")>  _
+        Function GetSpeciesDto(ByVal speciesId As Integer) As WcfService.SpeciesDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoResponse")>  _
+        Function GetSpeciesDtoAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of WcfService.SpeciesDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByConditionResponse")>  _
+        Function GetSpeciesDtoByCondition(ByVal condition As WcfService.SpeciesDto) As WcfService.SpeciesDto()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByConditionResponse")>  _
+        Function GetSpeciesDtoByConditionAsync(ByVal condition As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of WcfService.SpeciesDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddSpeciesDtoResponse")>  _
+        Function AddSpeciesDto(ByVal speciesDto As WcfService.SpeciesDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddSpeciesDtoResponse")>  _
+        Function AddSpeciesDtoAsync(ByVal speciesDto As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateSpeciesDtoResponse")>  _
+        Function UpdateSpeciesDto(ByVal speciesDto As WcfService.SpeciesDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateSpeciesDtoResponse")>  _
+        Function UpdateSpeciesDtoAsync(ByVal speciesDto As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteSpeciesDtoResponse")>  _
+        Function DeleteSpeciesDto(ByVal speciesId As Integer) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteSpeciesDtoResponse")>  _
+        Function DeleteSpeciesDtoAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/SpeciesDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/SpeciesDtoExistsResponse")>  _
+        Function SpeciesDtoExists(ByVal speciesId As Integer) As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/SpeciesDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/SpeciesDtoExistsResponse")>  _
+        Function SpeciesDtoExistsAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of Boolean)
     End Interface
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
@@ -859,19 +1006,19 @@ Namespace WcfService
             Return MyBase.Channel.UpdateOrderDtoAsync(orderDto)
         End Function
         
-        Public Function DeleteOrderDto(ByVal orderId As String) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteOrderDto
+        Public Function DeleteOrderDto(ByVal orderId As Integer) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteOrderDto
             Return MyBase.Channel.DeleteOrderDto(orderId)
         End Function
         
-        Public Function DeleteOrderDtoAsync(ByVal orderId As String) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteOrderDtoAsync
+        Public Function DeleteOrderDtoAsync(ByVal orderId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteOrderDtoAsync
             Return MyBase.Channel.DeleteOrderDtoAsync(orderId)
         End Function
         
-        Public Function OrderDtoExists(ByVal orderId As String) As Boolean Implements WcfService.IOrderManagementService.OrderDtoExists
+        Public Function OrderDtoExists(ByVal orderId As Integer) As Boolean Implements WcfService.IOrderManagementService.OrderDtoExists
             Return MyBase.Channel.OrderDtoExists(orderId)
         End Function
         
-        Public Function OrderDtoExistsAsync(ByVal orderId As String) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.OrderDtoExistsAsync
+        Public Function OrderDtoExistsAsync(ByVal orderId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.OrderDtoExistsAsync
             Return MyBase.Channel.OrderDtoExistsAsync(orderId)
         End Function
         
@@ -915,20 +1062,132 @@ Namespace WcfService
             Return MyBase.Channel.UpdateCustomerDtoAsync(customerDto)
         End Function
         
-        Public Function DeleteCustomerDto(ByVal customerId As String) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteCustomerDto
+        Public Function DeleteCustomerDto(ByVal customerId As Integer) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteCustomerDto
             Return MyBase.Channel.DeleteCustomerDto(customerId)
         End Function
         
-        Public Function DeleteCustomerDtoAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteCustomerDtoAsync
+        Public Function DeleteCustomerDtoAsync(ByVal customerId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteCustomerDtoAsync
             Return MyBase.Channel.DeleteCustomerDtoAsync(customerId)
         End Function
         
-        Public Function CustomerDtoExists(ByVal customerId As String) As Boolean Implements WcfService.IOrderManagementService.CustomerDtoExists
+        Public Function CustomerDtoExists(ByVal customerId As Integer) As Boolean Implements WcfService.IOrderManagementService.CustomerDtoExists
             Return MyBase.Channel.CustomerDtoExists(customerId)
         End Function
         
-        Public Function CustomerDtoExistsAsync(ByVal customerId As String) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.CustomerDtoExistsAsync
+        Public Function CustomerDtoExistsAsync(ByVal customerId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.CustomerDtoExistsAsync
             Return MyBase.Channel.CustomerDtoExistsAsync(customerId)
+        End Function
+        
+        Public Function GetProductDtoes() As WcfService.ProductDto() Implements WcfService.IOrderManagementService.GetProductDtoes
+            Return MyBase.Channel.GetProductDtoes
+        End Function
+        
+        Public Function GetProductDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.ProductDto()) Implements WcfService.IOrderManagementService.GetProductDtoesAsync
+            Return MyBase.Channel.GetProductDtoesAsync
+        End Function
+        
+        Public Function GetProductDto(ByVal productId As Integer) As WcfService.ProductDto Implements WcfService.IOrderManagementService.GetProductDto
+            Return MyBase.Channel.GetProductDto(productId)
+        End Function
+        
+        Public Function GetProductDtoAsync(ByVal productId As Integer) As System.Threading.Tasks.Task(Of WcfService.ProductDto) Implements WcfService.IOrderManagementService.GetProductDtoAsync
+            Return MyBase.Channel.GetProductDtoAsync(productId)
+        End Function
+        
+        Public Function GetProductDtoByCondition(ByVal condition As WcfService.ProductDto) As WcfService.ProductDto() Implements WcfService.IOrderManagementService.GetProductDtoByCondition
+            Return MyBase.Channel.GetProductDtoByCondition(condition)
+        End Function
+        
+        Public Function GetProductDtoByConditionAsync(ByVal condition As WcfService.ProductDto) As System.Threading.Tasks.Task(Of WcfService.ProductDto()) Implements WcfService.IOrderManagementService.GetProductDtoByConditionAsync
+            Return MyBase.Channel.GetProductDtoByConditionAsync(condition)
+        End Function
+        
+        Public Function AddProductDto(ByVal productDto As WcfService.ProductDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.AddProductDto
+            Return MyBase.Channel.AddProductDto(productDto)
+        End Function
+        
+        Public Function AddProductDtoAsync(ByVal productDto As WcfService.ProductDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.AddProductDtoAsync
+            Return MyBase.Channel.AddProductDtoAsync(productDto)
+        End Function
+        
+        Public Function UpdateProductDto(ByVal productDto As WcfService.ProductDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.UpdateProductDto
+            Return MyBase.Channel.UpdateProductDto(productDto)
+        End Function
+        
+        Public Function UpdateProductDtoAsync(ByVal productDto As WcfService.ProductDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.UpdateProductDtoAsync
+            Return MyBase.Channel.UpdateProductDtoAsync(productDto)
+        End Function
+        
+        Public Function DeleteProductDto(ByVal productId As Integer) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteProductDto
+            Return MyBase.Channel.DeleteProductDto(productId)
+        End Function
+        
+        Public Function DeleteProductDtoAsync(ByVal productId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteProductDtoAsync
+            Return MyBase.Channel.DeleteProductDtoAsync(productId)
+        End Function
+        
+        Public Function ProductDtoExists(ByVal productId As Integer) As Boolean Implements WcfService.IOrderManagementService.ProductDtoExists
+            Return MyBase.Channel.ProductDtoExists(productId)
+        End Function
+        
+        Public Function ProductDtoExistsAsync(ByVal productId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.ProductDtoExistsAsync
+            Return MyBase.Channel.ProductDtoExistsAsync(productId)
+        End Function
+        
+        Public Function GetSpeciesDtoes() As WcfService.SpeciesDto() Implements WcfService.IOrderManagementService.GetSpeciesDtoes
+            Return MyBase.Channel.GetSpeciesDtoes
+        End Function
+        
+        Public Function GetSpeciesDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.SpeciesDto()) Implements WcfService.IOrderManagementService.GetSpeciesDtoesAsync
+            Return MyBase.Channel.GetSpeciesDtoesAsync
+        End Function
+        
+        Public Function GetSpeciesDto(ByVal speciesId As Integer) As WcfService.SpeciesDto Implements WcfService.IOrderManagementService.GetSpeciesDto
+            Return MyBase.Channel.GetSpeciesDto(speciesId)
+        End Function
+        
+        Public Function GetSpeciesDtoAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of WcfService.SpeciesDto) Implements WcfService.IOrderManagementService.GetSpeciesDtoAsync
+            Return MyBase.Channel.GetSpeciesDtoAsync(speciesId)
+        End Function
+        
+        Public Function GetSpeciesDtoByCondition(ByVal condition As WcfService.SpeciesDto) As WcfService.SpeciesDto() Implements WcfService.IOrderManagementService.GetSpeciesDtoByCondition
+            Return MyBase.Channel.GetSpeciesDtoByCondition(condition)
+        End Function
+        
+        Public Function GetSpeciesDtoByConditionAsync(ByVal condition As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of WcfService.SpeciesDto()) Implements WcfService.IOrderManagementService.GetSpeciesDtoByConditionAsync
+            Return MyBase.Channel.GetSpeciesDtoByConditionAsync(condition)
+        End Function
+        
+        Public Function AddSpeciesDto(ByVal speciesDto As WcfService.SpeciesDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.AddSpeciesDto
+            Return MyBase.Channel.AddSpeciesDto(speciesDto)
+        End Function
+        
+        Public Function AddSpeciesDtoAsync(ByVal speciesDto As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.AddSpeciesDtoAsync
+            Return MyBase.Channel.AddSpeciesDtoAsync(speciesDto)
+        End Function
+        
+        Public Function UpdateSpeciesDto(ByVal speciesDto As WcfService.SpeciesDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.UpdateSpeciesDto
+            Return MyBase.Channel.UpdateSpeciesDto(speciesDto)
+        End Function
+        
+        Public Function UpdateSpeciesDtoAsync(ByVal speciesDto As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.UpdateSpeciesDtoAsync
+            Return MyBase.Channel.UpdateSpeciesDtoAsync(speciesDto)
+        End Function
+        
+        Public Function DeleteSpeciesDto(ByVal speciesId As Integer) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteSpeciesDto
+            Return MyBase.Channel.DeleteSpeciesDto(speciesId)
+        End Function
+        
+        Public Function DeleteSpeciesDtoAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteSpeciesDtoAsync
+            Return MyBase.Channel.DeleteSpeciesDtoAsync(speciesId)
+        End Function
+        
+        Public Function SpeciesDtoExists(ByVal speciesId As Integer) As Boolean Implements WcfService.IOrderManagementService.SpeciesDtoExists
+            Return MyBase.Channel.SpeciesDtoExists(speciesId)
+        End Function
+        
+        Public Function SpeciesDtoExistsAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.SpeciesDtoExistsAsync
+            Return MyBase.Channel.SpeciesDtoExistsAsync(speciesId)
         End Function
     End Class
 End Namespace

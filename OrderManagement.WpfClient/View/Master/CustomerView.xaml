@@ -3,6 +3,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:toVisibility="clr-namespace:OrderManagement.WpfClient.Converters.ToVisibility"
+             xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro" dialog:DialogParticipation.Register="{Binding}"
              x:Class="View.Master.CustomerView"
              mc:Ignorable="d"
              d:DesignHeight="768"
@@ -166,32 +167,25 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="AddressColumn"
                                     Binding="{Binding Address}"
-                                    Header="收货地址"
-                                    Width="SizeToHeader" />
+                                    Header="收货地址" />
                 <DataGridTextColumn x:Name="CustomerIdColumn"
                                     Binding="{Binding CustomerId}"
-                                    Header="客户编号"
-                                    Width="SizeToHeader" />
+                                    Header="客户编号" />
                 <DataGridTextColumn x:Name="NameColumn"
                                     Binding="{Binding Name}"
-                                    Header="客户姓名"
-                                    Width="SizeToHeader" />
+                                    Header="客户姓名" />
                 <DataGridTextColumn x:Name="PhoneColumn"
                                     Binding="{Binding Phone}"
-                                    Header="电话号码"
-                                    Width="SizeToHeader" />
+                                    Header="电话号码" />
                 <DataGridTextColumn x:Name="PostCodeColumn"
                                     Binding="{Binding PostCode}"
-                                    Header="邮编"
-                                    Width="SizeToHeader" />
+                                    Header="邮编" />
                 <DataGridTextColumn x:Name="TaobaoNameColumn"
                                     Binding="{Binding TaobaoName}"
-                                    Header="淘宝昵称"
-                                    Width="SizeToHeader" />
+                                    Header="淘宝昵称" />
                 <DataGridTextColumn x:Name="WechatNameColumn"
                                     Binding="{Binding WechatName}"
-                                    Header="微信昵称"
-                                    Width="SizeToHeader" />
+                                    Header="微信昵称" />
             </DataGrid.Columns>
         </DataGrid>
 
@@ -206,7 +200,7 @@
                                 ToolTip="新規追加"
                                 Height="24"
                                 Width="24"
-                                Command="{Binding MLeadTimeViewModel.ClearDataCommand, Source={StaticResource Locator}}" />
+                                Command="{Binding CustomerViewModel.ClearDataCommand, Source={StaticResource Locator}}" />
                     </DockPanel>
                 </DataTemplate>
             </Expander.HeaderTemplate>

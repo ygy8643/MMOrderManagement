@@ -4,7 +4,7 @@ Imports PropertyChanged
 Namespace Models
 
     <ImplementPropertyChanged>
-    Public Class Species
+    Public Class SpeciesClient
         <DisplayName("种类编号")>
         Public Property SpeciesId As Integer
 

@@ -22,13 +22,12 @@
             <!-- ViewModelLocator -->
             <base:ViewModelLocator x:Key="Locator"
                                    d:IsDataSource="True" />
-            <Style BasedOn="{StaticResource MetroButton}"
-                   TargetType="Button">
-                <Setter Property="FontSize"
-                        Value="16" />
+
+            <Style TargetType="{x:Type Window}">
                 <Setter Property="FontFamily"
-                        Value="Lucida Sans Unicode" />
+                        Value="Microsoft YaHei"></Setter>
             </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

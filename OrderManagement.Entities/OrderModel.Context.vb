@@ -16,8 +16,6 @@ Partial Public Class OrderEntities
 
     Public Sub New()
         MyBase.New("name=OrderEntities")
-        Me.Configuration.LazyLoadingEnabled = False
-        Me.Configuration.ProxyCreationEnabled = False
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)

@@ -138,8 +138,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service\ISpeciesServiceAgent.vb" />
+    <Compile Include="Service\SpeciesServiceAgent.vb" />
+    <Compile Include="Service\ProductServiceAgent.vb" />
     <Compile Include="Service\CustomerServiceAgent.vb" />
     <Compile Include="Service\FrameNavigationService.vb" />
+    <Compile Include="Service\IProductServiceAgent.vb" />
     <Compile Include="Service\ICustomerServiceAgent.vb" />
     <Compile Include="Service\IFrameNavigationService.vb" />
     <Compile Include="Service\IOrderServiceAgent.vb" />
@@ -147,11 +151,19 @@
     <Compile Include="ViewModel\Base\MyViewModelBase.vb" />
     <Compile Include="ViewModel\MainWindowViewModel.vb" />
     <Compile Include="ViewModel\Master\BaseMasterViewModel.vb" />
+    <Compile Include="ViewModel\Master\SpeciesViewModel.vb" />
+    <Compile Include="ViewModel\Master\ProductViewModel.vb" />
     <Compile Include="ViewModel\Master\CustomerViewModel.vb" />
     <Compile Include="ViewModel\Master\IBaseMasterViewModel.vb" />
     <Compile Include="ViewModel\Order\AddOrderViewModel.vb" />
     <Compile Include="ViewModel\Order\ListOrderViewModel.vb" />
     <Compile Include="ViewModel\Base\ViewModelLocator.vb" />
+    <Compile Include="View\Master\SpeciesView.xaml.vb">
+      <DependentUpon>SpeciesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Master\ProductView.xaml.vb">
+      <DependentUpon>ProductView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Master\CustomerView.xaml.vb">
       <DependentUpon>CustomerView.xaml</DependentUpon>
     </Compile>
@@ -176,6 +188,14 @@
     <Page Include="MasterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Master\SpeciesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Master\ProductView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Master\CustomerView.xaml">
       <SubType>Designer</SubType>
@@ -232,9 +252,13 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.BrandClient.datasource" />
     <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.CustomerClient.datasource" />
+    <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.InventoryClient.datasource" />
     <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.OrderClient.datasource" />
     <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.OrderDetailClient.datasource" />
+    <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.ProductClient.datasource" />
+    <None Include="My Project\DataSources\OrderManagement.Client.Entities.Models.SpeciesClient.datasource" />
     <None Include="My Project\DataSources\OrderManagement.Common.ProcessResult.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -246,6 +270,12 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.OrderDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.ProductDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.SpeciesDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\WcfService\OrderManagementService.wsdl" />

@@ -298,7 +298,9 @@ Namespace ViewModel.Order
         '''     取得用户信息
         ''' </summary>
         Private Sub SetCustomerInfo(customerId As String)
-            CustomerInfo = _customerServiceAgent.GetCustomer(customerId)
+            If Not String.IsNullOrEmpty(customerId) Then
+                CustomerInfo = _customerServiceAgent.GetCustomer(customerId)
+            End If
         End Sub
 
         ''' <summary>

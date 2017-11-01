@@ -9,8 +9,6 @@
                       Title="MainWindow"
                       Height="768"
                       Width="1080"
-                      FontSize="14"
-                      FontFamily="SimSun"
                       DataContext="{Binding MainWindowViewModel, Source={StaticResource Locator}}">
     <!-- Windows Buttons -->
     <controls:MetroWindow.RightWindowCommands>

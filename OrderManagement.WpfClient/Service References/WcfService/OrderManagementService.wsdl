@@ -92,6 +92,90 @@
   <wsdl:message name="IOrderManagementService_CustomerDtoExists_OutputMessage">
     <wsdl:part name="parameters" element="tns:CustomerDtoExistsResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetProductDtoes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductDtoes" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetProductDtoes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductDtoesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetProductDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetProductDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetProductDtoByCondition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductDtoByCondition" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetProductDtoByCondition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductDtoByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddProductDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddProductDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateProductDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateProductDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateProductDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteProductDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteProductDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteProductDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ProductDtoExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductDtoExists" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_ProductDtoExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductDtoExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetSpeciesDtoes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeciesDtoes" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetSpeciesDtoes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeciesDtoesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetSpeciesDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeciesDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetSpeciesDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeciesDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetSpeciesDtoByCondition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeciesDtoByCondition" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetSpeciesDtoByCondition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpeciesDtoByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddSpeciesDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSpeciesDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddSpeciesDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSpeciesDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateSpeciesDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSpeciesDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateSpeciesDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSpeciesDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteSpeciesDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSpeciesDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteSpeciesDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteSpeciesDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_SpeciesDtoExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:SpeciesDtoExists" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_SpeciesDtoExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SpeciesDtoExistsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOrderManagementService">
     <wsdl:operation name="GetOrderDto">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderDto" message="tns:IOrderManagementService_GetOrderDto_InputMessage" />
@@ -148,6 +232,62 @@
     <wsdl:operation name="CustomerDtoExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/CustomerDtoExists" message="tns:IOrderManagementService_CustomerDtoExists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/CustomerDtoExistsResponse" message="tns:IOrderManagementService_CustomerDtoExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductDtoes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetProductDtoes" message="tns:IOrderManagementService_GetProductDtoes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetProductDtoesResponse" message="tns:IOrderManagementService_GetProductDtoes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetProductDto" message="tns:IOrderManagementService_GetProductDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetProductDtoResponse" message="tns:IOrderManagementService_GetProductDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProductDtoByCondition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetProductDtoByCondition" message="tns:IOrderManagementService_GetProductDtoByCondition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetProductDtoByConditionResponse" message="tns:IOrderManagementService_GetProductDtoByCondition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProductDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/AddProductDto" message="tns:IOrderManagementService_AddProductDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/AddProductDtoResponse" message="tns:IOrderManagementService_AddProductDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateProductDto" message="tns:IOrderManagementService_UpdateProductDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateProductDtoResponse" message="tns:IOrderManagementService_UpdateProductDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProductDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteProductDto" message="tns:IOrderManagementService_DeleteProductDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteProductDtoResponse" message="tns:IOrderManagementService_DeleteProductDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductDtoExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/ProductDtoExists" message="tns:IOrderManagementService_ProductDtoExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/ProductDtoExistsResponse" message="tns:IOrderManagementService_ProductDtoExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeciesDtoes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetSpeciesDtoes" message="tns:IOrderManagementService_GetSpeciesDtoes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetSpeciesDtoesResponse" message="tns:IOrderManagementService_GetSpeciesDtoes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeciesDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetSpeciesDto" message="tns:IOrderManagementService_GetSpeciesDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetSpeciesDtoResponse" message="tns:IOrderManagementService_GetSpeciesDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeciesDtoByCondition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByCondition" message="tns:IOrderManagementService_GetSpeciesDtoByCondition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByConditionResponse" message="tns:IOrderManagementService_GetSpeciesDtoByCondition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSpeciesDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/AddSpeciesDto" message="tns:IOrderManagementService_AddSpeciesDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/AddSpeciesDtoResponse" message="tns:IOrderManagementService_AddSpeciesDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSpeciesDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateSpeciesDto" message="tns:IOrderManagementService_UpdateSpeciesDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateSpeciesDtoResponse" message="tns:IOrderManagementService_UpdateSpeciesDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSpeciesDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteSpeciesDto" message="tns:IOrderManagementService_DeleteSpeciesDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteSpeciesDtoResponse" message="tns:IOrderManagementService_DeleteSpeciesDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SpeciesDtoExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/SpeciesDtoExists" message="tns:IOrderManagementService_SpeciesDtoExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/SpeciesDtoExistsResponse" message="tns:IOrderManagementService_SpeciesDtoExists_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderManagementService" type="tns:IOrderManagementService">
@@ -271,6 +411,132 @@
     </wsdl:operation>
     <wsdl:operation name="CustomerDtoExists">
       <soap:operation soapAction="http://tempuri.org/IOrderManagementService/CustomerDtoExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductDtoes">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetProductDtoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetProductDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProductDtoByCondition">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetProductDtoByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddProductDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/AddProductDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateProductDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/UpdateProductDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProductDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/DeleteProductDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductDtoExists">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/ProductDtoExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeciesDtoes">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetSpeciesDtoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeciesDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetSpeciesDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpeciesDtoByCondition">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSpeciesDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/AddSpeciesDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSpeciesDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/UpdateSpeciesDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSpeciesDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/DeleteSpeciesDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SpeciesDtoExists">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/SpeciesDtoExists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

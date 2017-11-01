@@ -1,5 +1,6 @@
 ﻿Imports System.Diagnostics.CodeAnalysis
 Imports GalaSoft.MvvmLight.Ioc
+Imports MahApps.Metro.Controls.Dialogs
 Imports Microsoft.Practices.ServiceLocation
 Imports OrderManagement.WpfClient.Service
 Imports OrderManagement.WpfClient.ViewModel.Master
@@ -14,8 +15,12 @@ Namespace ViewModel.Base
 
             ServiceLocator.SetLocatorProvider(Function() SimpleIoc.[Default])
 
+            SimpleIoc.Default.Register(Of IDialogCoordinator, DialogCoordinator)()
+
             SimpleIoc.Default.Register(Of IOrderServiceAgent, OrderServiceAgent)()
             SimpleIoc.Default.Register(Of ICustomerServiceAgent, CustomerServiceAgent)()
+            SimpleIoc.Default.Register(Of IProductServiceAgent, ProductServiceAgent)()
+            SimpleIoc.Default.Register(Of ISpeciesServiceAgent, SpeciesServiceAgent)()
 
             'Navigation Service
             Dim frameNavigationService As New FrameNavigationService
@@ -29,6 +34,8 @@ Namespace ViewModel.Base
             SimpleIoc.Default.Register(Of ListOrderViewModel)()
             SimpleIoc.Default.Register(Of AddOrderViewModel)()
             SimpleIoc.Default.Register(Of CustomerViewModel)()
+            SimpleIoc.Default.Register(Of ProductViewModel)()
+            SimpleIoc.Default.Register(Of SpeciesViewModel)()
         End Sub
 
 #End Region
@@ -88,6 +95,38 @@ Namespace ViewModel.Base
         Public ReadOnly Property CustomerViewModel As CustomerViewModel
             Get
                 Return ServiceLocator.Current.GetInstance(Of CustomerViewModel)()
+            End Get
+        End Property
+
+#End Region
+
+#Region "产品"
+
+        ''' <summary>
+        '''     Gets the ProductViewModel property.
+        ''' </summary>
+        <SuppressMessage _
+            ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
+             Justification:="This non-static member is needed for data binding purposes.")>
+        Public ReadOnly Property ProductViewModel As ProductViewModel
+            Get
+                Return ServiceLocator.Current.GetInstance(Of ProductViewModel)()
+            End Get
+        End Property
+
+#End Region
+
+#Region "种类"
+
+        ''' <summary>
+        '''     Gets the SpeciesViewModel property.
+        ''' </summary>
+        <SuppressMessage _
+            ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
+             Justification:="This non-static member is needed for data binding purposes.")>
+        Public ReadOnly Property SpeciesViewModel As SpeciesViewModel
+            Get
+                Return ServiceLocator.Current.GetInstance(Of SpeciesViewModel)()
             End Get
         End Property
 

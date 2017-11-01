@@ -76,4 +76,23 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfCustomerDto" nillable="true" type="tns:ArrayOfCustomerDto" />
+  <xs:complexType name="ArrayOfProductDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductDto" nillable="true" type="tns:ProductDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductDto" nillable="true" type="tns:ArrayOfProductDto" />
+  <xs:complexType name="ArrayOfSpeciesDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpeciesDto" nillable="true" type="tns:SpeciesDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpeciesDto" nillable="true" type="tns:ArrayOfSpeciesDto" />
+  <xs:complexType name="SpeciesDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SpeciesId" type="xs:int" />
+      <xs:element minOccurs="0" name="SpeciesName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpeciesDto" nillable="true" type="tns:SpeciesDto" />
 </xs:schema>

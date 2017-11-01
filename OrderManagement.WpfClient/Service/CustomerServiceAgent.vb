@@ -44,7 +44,7 @@ Namespace Service
 
             result = query.ToList()
 
-            result.Insert(0, New ValueNamePair With {.Value = String.Empty, .DisplayName = String.Empty})
+            result.Insert(0, New ValueNamePair With {.Value = 0, .DisplayName = String.Empty})
 
             Return result
         End Function

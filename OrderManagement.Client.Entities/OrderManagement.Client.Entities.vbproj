@@ -71,12 +71,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\BrandClient.vb" />
-    <Compile Include="Models\Customer.vb" />
-    <Compile Include="Models\Inventory.vb" />
-    <Compile Include="Models\Order.vb" />
-    <Compile Include="Models\OrderDetail.vb" />
-    <Compile Include="Models\Product.vb" />
-    <Compile Include="Models\Species.vb" />
+    <Compile Include="Models\CustomerClient.vb" />
+    <Compile Include="Models\InventoryClient.vb" />
+    <Compile Include="Models\OrderClient.vb" />
+    <Compile Include="Models\OrderDetailClient.vb" />
+    <Compile Include="Models\ProductClient.vb" />
+    <Compile Include="Models\SpeciesClient.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
