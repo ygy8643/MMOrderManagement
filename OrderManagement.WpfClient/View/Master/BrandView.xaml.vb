@@ -1,4 +1,4 @@
 ﻿Namespace View.Master
-    Public Class SpeciesView
+    Public Class BrandView
     End Class
 End Namespace

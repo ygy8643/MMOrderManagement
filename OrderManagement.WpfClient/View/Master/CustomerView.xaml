@@ -197,9 +197,8 @@
                         <TextBlock Text="編集"
                                    FontSize="16" />
                         <Button HorizontalAlignment="Right"
+                                Content="添加"
                                 ToolTip="新規追加"
-                                Height="24"
-                                Width="24"
                                 Command="{Binding CustomerViewModel.ClearDataCommand, Source={StaticResource Locator}}" />
                     </DockPanel>
                 </DataTemplate>

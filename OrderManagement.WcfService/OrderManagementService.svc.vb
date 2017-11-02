@@ -55,12 +55,12 @@ Public Class OrderManagementService
 
         Using db As New OrderEntities
 
-            Dim result = Mapper.Map(Of List(Of OrderDto))(db.Orders.Include("Customer").Include("OrderDetails").Where(
-                Function(order) (
-                                    (conditions.CustomerId = 0 OrElse order.CustomerId = conditions.CustomerId) AndAlso
-                                order.OrderDate >= conditions.OrderDateFrom AndAlso
-                                order.OrderDate.Value < conditions.OrderDateTo)).ToList())
-
+            Dim result = Mapper.Map(Of List(Of OrderDto))(
+                db.Orders.Include("Customer").Include("OrderDetails").Where(
+                Function(order) ((conditions.CustomerId =0 OrElse 
+                order.CustomerId =conditions.CustomerId) AndAlso
+                order.OrderDate >=conditions.OrderDateFrom AndAlso
+                order.OrderDate.Value <conditions.OrderDateTo)).ToList())
 
             Return result
         End Using
@@ -416,7 +416,8 @@ Public Class OrderManagementService
                                     (.SpeciesId = 0 OrElse c.SpeciesId = .SpeciesId) AndAlso
                                     (.BrandId = 0 OrElse c.BrandId = .BrandId) AndAlso
                                     (String.IsNullOrEmpty(.ProductName) OrElse c.ProductName = .ProductName) AndAlso
-                                    (String.IsNullOrEmpty(.ProductNameJp) OrElse c.ProductNameJp = .ProductNameJp)).ToList()
+                                    (String.IsNullOrEmpty(.ProductNameJp) OrElse c.ProductNameJp = .ProductNameJp)).
+                                                                    ToList()
                     )
                 Return result
             End With
@@ -578,6 +579,144 @@ Public Class OrderManagementService
 
             db.Species.Attach(Mapper.Map(Of Species)(speciesDto))
             db.Entry(Mapper.Map(Of Species)(speciesDto)).State = EntityState.Modified
+
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.ToString()
+            End Try
+        End Using
+
+        Return result
+    End Function
+
+#End Region
+
+#Region "Brand"
+
+    ''' <summary>
+    '''     追加
+    ''' </summary>
+    ''' <param name="brandDto"></param>
+    ''' <returns></returns>
+    Public Function AddBrandDto(brandDto As BrandDto) As ProcessResult _
+        Implements IOrderManagementService.AddBrandDto
+        Dim result As New ProcessResult
+
+        Using db As New OrderEntities
+            db.Brands.Add(Mapper.Map(Of Brand)(brandDto))
+
+            Try
+                db.SaveChanges()
+            Catch ex As DbUpdateException
+                result.IsSuccess = False
+
+                If BrandDtoExists(brandDto.BrandId) Then
+                    result.ErrorMessage = "データ重複"
+                Else
+                    result.ErrorMessage = ex.Message
+                End If
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.Message
+            End Try
+        End Using
+        Return result
+    End Function
+
+    ''' <summary>
+    '''     存在チェック
+    ''' </summary>
+    ''' <param name="brandId"></param>
+    ''' <returns></returns>
+    Public Function BrandDtoExists(brandId As Integer) As Boolean _
+        Implements IOrderManagementService.BrandDtoExists
+        Using db As New OrderEntities
+            Return db.Brands.Count(Function(brand) brand.BrandId = brandId) > 0
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     削除
+    ''' </summary>
+    ''' <param name="brandId"></param>
+    ''' <returns></returns>
+    Public Function DeleteBrandDto(brandId As Integer) As ProcessResult _
+        Implements IOrderManagementService.DeleteBrandDto
+        Dim result As New ProcessResult
+
+        Using db As New OrderEntities
+            Dim brand = db.Brands.Find(brandId)
+
+            If IsNothing(brand) Then
+                result.IsSuccess = False
+                result.ErrorMessage = "无此数据"
+                Return result
+            End If
+
+            db.Brands.Remove(brand)
+
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.Message
+            End Try
+        End Using
+        Return result
+    End Function
+
+    ''' <summary>
+    '''     取得
+    ''' </summary>
+    ''' <param name="brandId"></param>
+    ''' <returns></returns>
+    Public Function GetBrandDto(brandId As Integer) As BrandDto _
+        Implements IOrderManagementService.GetBrandDto
+        Using db As New OrderEntities
+            Dim brand = db.Brands.Find(brandId)
+            Return Mapper.Map(Of BrandDto)(brand)
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     取得
+    ''' </summary>
+    ''' <param name="condition"></param>
+    ''' <returns></returns>
+    Public Function GetBrandDtoByCondition(condition As BrandDto) As IEnumerable(Of BrandDto) _
+        Implements IOrderManagementService.GetBrandDtoByCondition
+
+        Using db As New OrderEntities
+            With condition
+                Dim result = Mapper.Map(Of List(Of BrandDto))(
+                    db.Brands.Where(
+                        Function(c) (.BrandId = 0 OrElse c.BrandId = .BrandId) AndAlso
+                                    (String.IsNullOrEmpty(.BrandName) OrElse c.BrandName = .BrandName)).ToList()
+                    )
+                Return result
+            End With
+        End Using
+    End Function
+
+    Public Function GetBrandDtoes() As IEnumerable(Of BrandDto) _
+        Implements IOrderManagementService.GetBrandDtoes
+
+        Using db As New OrderEntities
+            Return Mapper.Map(Of List(Of BrandDto))(db.Brands.ToList)
+        End Using
+    End Function
+
+    Public Function UpdateBrandDto(brandDto As BrandDto) As ProcessResult _
+        Implements IOrderManagementService.UpdateBrandDto
+
+        Dim result As New ProcessResult
+
+        Using db As New OrderEntities
+
+            db.Brands.Attach(Mapper.Map(Of Brand)(brandDto))
+            db.Entry(Mapper.Map(Of Brand)(brandDto)).State = EntityState.Modified
 
             Try
                 db.SaveChanges()

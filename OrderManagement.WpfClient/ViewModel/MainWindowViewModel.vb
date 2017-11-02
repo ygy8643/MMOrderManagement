@@ -32,7 +32,8 @@ Namespace ViewModel
             CurrentUserControlViewModel = New ListOrderViewModel(
                 New FrameNavigationService(),
                 New OrderServiceAgent(),
-                New CustomerServiceAgent()
+                New CustomerServiceAgent(),
+                New ListServiceAgent ()
                 )
         End Sub
     End Class

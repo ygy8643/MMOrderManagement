@@ -138,19 +138,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service\ISpeciesServiceAgent.vb" />
+    <Compile Include="Service\Interfaces\IListServiceAgent.vb" />
+    <Compile Include="Service\Interfaces\IBrandServiceAgent.vb" />
+    <Compile Include="Service\Interfaces\ISpeciesServiceAgent.vb" />
+    <Compile Include="Service\ListServiceAgent.vb" />
+    <Compile Include="Service\BrandServiceAgent.vb" />
     <Compile Include="Service\SpeciesServiceAgent.vb" />
     <Compile Include="Service\ProductServiceAgent.vb" />
     <Compile Include="Service\CustomerServiceAgent.vb" />
     <Compile Include="Service\FrameNavigationService.vb" />
-    <Compile Include="Service\IProductServiceAgent.vb" />
-    <Compile Include="Service\ICustomerServiceAgent.vb" />
-    <Compile Include="Service\IFrameNavigationService.vb" />
-    <Compile Include="Service\IOrderServiceAgent.vb" />
+    <Compile Include="Service\Interfaces\IProductServiceAgent.vb" />
+    <Compile Include="Service\Interfaces\ICustomerServiceAgent.vb" />
+    <Compile Include="Service\Interfaces\IFrameNavigationService.vb" />
+    <Compile Include="Service\Interfaces\IOrderServiceAgent.vb" />
     <Compile Include="Service\OrderServiceAgent.vb" />
     <Compile Include="ViewModel\Base\MyViewModelBase.vb" />
     <Compile Include="ViewModel\MainWindowViewModel.vb" />
     <Compile Include="ViewModel\Master\BaseMasterViewModel.vb" />
+    <Compile Include="ViewModel\Master\BrandViewModel.vb" />
     <Compile Include="ViewModel\Master\SpeciesViewModel.vb" />
     <Compile Include="ViewModel\Master\ProductViewModel.vb" />
     <Compile Include="ViewModel\Master\CustomerViewModel.vb" />
@@ -158,6 +163,9 @@
     <Compile Include="ViewModel\Order\AddOrderViewModel.vb" />
     <Compile Include="ViewModel\Order\ListOrderViewModel.vb" />
     <Compile Include="ViewModel\Base\ViewModelLocator.vb" />
+    <Compile Include="View\Master\BrandView.xaml.vb">
+      <DependentUpon>BrandView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Master\SpeciesView.xaml.vb">
       <DependentUpon>SpeciesView.xaml</DependentUpon>
     </Compile>
@@ -188,6 +196,10 @@
     <Page Include="MasterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Master\BrandView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Master\SpeciesView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -266,6 +278,9 @@
     </None>
     <AppDesigner Include="My Project\" />
     <None Include="packages.config" />
+    <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.BrandDto.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\WcfService\OrderManagement.WpfClient.WcfService.CustomerDto.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

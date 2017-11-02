@@ -203,9 +203,12 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn x:Name="OrderTypeColumn"
-                                        Binding="{Binding OrderType}"
-                                        Header="种类"
+                    <DataGridComboBoxColumn x:Name="OrderTypeColumn"
+                                            ItemsSource="{Binding ListOrderViewModel.OrderTypeList, Source={StaticResource Locator}}"
+                                            DisplayMemberPath="DisplayName"
+                                            SelectedValuePath="Value"
+                                            SelectedValueBinding="{Binding OrderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                            Header="订单类型"
                                         Width="Auto" />
                     <DataGridTextColumn x:Name="CustomerNameColumn"
                                         Binding="{Binding CustomerClient.CustomerId, Converter={StaticResource CustomerCodeToNameConverter}}"

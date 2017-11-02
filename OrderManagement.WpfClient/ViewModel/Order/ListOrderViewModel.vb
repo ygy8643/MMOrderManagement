@@ -8,6 +8,7 @@ Imports OrderManagement.Client.Entities.Models
 Imports OrderManagement.Client.Entities.SearchConditions
 Imports OrderManagement.Common
 Imports OrderManagement.WpfClient.Service
+Imports OrderManagement.WpfClient.Service.Interfaces
 Imports OrderManagement.WpfClient.ViewModel.Base
 
 Namespace ViewModel.Order
@@ -101,15 +102,19 @@ Namespace ViewModel.Order
             End Set
         End Property
 
+#End Region
+
 #Region "Lists"
 
         ''' <summary>
-        '''     顧客リスト
+        '''     用户列表
         ''' </summary>
         Public Property CustomerList As List(Of ValueNamePair)
 
-#End Region
-
+        ''' <summary>
+        '''     订单类型列表
+        ''' </summary>
+        Public Property OrderTypeList As List(Of ValueNamePair)
 #End Region
 
 #Region "Commands"
@@ -189,7 +194,8 @@ Namespace ViewModel.Order
         ''' </summary>
         Public Sub New(navigationService As IFrameNavigationService,
                        orderServiceAgent As IOrderServiceAgent,
-                       customerServiceAgent As ICustomerServiceAgent)
+                       customerServiceAgent As ICustomerServiceAgent,
+                       listServiceAgent As IListServiceAgent)
 
             _navigationService = navigationService
             _orderServiceAgent = orderServiceAgent
@@ -198,7 +204,8 @@ Namespace ViewModel.Order
             SearchCondition = New OrderSearchConditionsClient()
 
             With "Lists"
-                CustomerList = _customerServiceAgent.GetCustomerComboBoxList()
+                CustomerList = listServiceAgent.GetCustomerList()
+                OrderTypeList = define.ConstantLists.OrderTypeList
             End With
 
             With "Commands"

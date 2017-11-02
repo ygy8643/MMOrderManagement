@@ -95,4 +95,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="SpeciesDto" nillable="true" type="tns:SpeciesDto" />
+  <xs:complexType name="ArrayOfBrandDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BrandDto" nillable="true" type="tns:BrandDto" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBrandDto" nillable="true" type="tns:ArrayOfBrandDto" />
+  <xs:complexType name="BrandDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BrandId" type="xs:int" />
+      <xs:element minOccurs="0" name="BrandName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BrandNameJp" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BrandDto" nillable="true" type="tns:BrandDto" />
 </xs:schema>

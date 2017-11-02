@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\MappingProfile.vb" />
+    <Compile Include="Dto\BrandDto.vb" />
     <Compile Include="Dto\CustomerDto.vb" />
     <Compile Include="Dto\InventoryDto.vb" />
     <Compile Include="Dto\OrderDetailDto.vb" />

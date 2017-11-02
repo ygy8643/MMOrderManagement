@@ -3,6 +3,7 @@ Imports GalaSoft.MvvmLight.Ioc
 Imports MahApps.Metro.Controls.Dialogs
 Imports Microsoft.Practices.ServiceLocation
 Imports OrderManagement.WpfClient.Service
+Imports OrderManagement.WpfClient.Service.Interfaces
 Imports OrderManagement.WpfClient.ViewModel.Master
 Imports OrderManagement.WpfClient.ViewModel.Order
 
@@ -17,10 +18,13 @@ Namespace ViewModel.Base
 
             SimpleIoc.Default.Register(Of IDialogCoordinator, DialogCoordinator)()
 
+            SimpleIoc.Default.Register(Of IListServiceAgent, ListServiceAgent)()
+
             SimpleIoc.Default.Register(Of IOrderServiceAgent, OrderServiceAgent)()
             SimpleIoc.Default.Register(Of ICustomerServiceAgent, CustomerServiceAgent)()
             SimpleIoc.Default.Register(Of IProductServiceAgent, ProductServiceAgent)()
             SimpleIoc.Default.Register(Of ISpeciesServiceAgent, SpeciesServiceAgent)()
+            SimpleIoc.Default.Register(Of IBrandServiceAgent, BrandServiceAgent)()
 
             'Navigation Service
             Dim frameNavigationService As New FrameNavigationService
@@ -36,6 +40,7 @@ Namespace ViewModel.Base
             SimpleIoc.Default.Register(Of CustomerViewModel)()
             SimpleIoc.Default.Register(Of ProductViewModel)()
             SimpleIoc.Default.Register(Of SpeciesViewModel)()
+            SimpleIoc.Default.Register(Of BrandViewModel)()
         End Sub
 
 #End Region
@@ -127,6 +132,22 @@ Namespace ViewModel.Base
         Public ReadOnly Property SpeciesViewModel As SpeciesViewModel
             Get
                 Return ServiceLocator.Current.GetInstance(Of SpeciesViewModel)()
+            End Get
+        End Property
+
+#End Region
+        
+#Region "品牌"
+
+        ''' <summary>
+        '''     Gets the BrandViewModel property.
+        ''' </summary>
+        <SuppressMessage _
+            ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
+             Justification:="This non-static member is needed for data binding purposes.")>
+        Public ReadOnly Property BrandViewModel As BrandViewModel
+            Get
+                Return ServiceLocator.Current.GetInstance(Of BrandViewModel)()
             End Get
         End Property
 

@@ -3,10 +3,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:toVisibility="clr-namespace:OrderManagement.WpfClient.Converters.ToVisibility"
-             xmlns:models="clr-namespace:OrderManagement.Client.Entities.Models;assembly=OrderManagement.Client.Entities"
              xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              dialog:DialogParticipation.Register="{Binding}"
-             x:Class="View.Master.SpeciesView"
+             x:Class="View.Master.BrandView"
              mc:Ignorable="d"
              d:DesignHeight="768"
              d:DesignWidth="1080">
@@ -15,7 +14,7 @@
         <toVisibility:TrueToVisibleConverter x:Key="TrueToVisibleConverter" />
     </UserControl.Resources>
     <UserControl.DataContext>
-        <Binding Path="SpeciesViewModel"
+        <Binding Path="BrandViewModel"
                  Source="{StaticResource Locator}" />
     </UserControl.DataContext>
     <Grid Margin="10">
@@ -38,6 +37,8 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Label VerticalAlignment="Center"
                        Grid.Row="0"
@@ -45,10 +46,10 @@
                        HorizontalAlignment="Left"
                        Grid.Column="0"
                        Content="种类编号:" />
-                <TextBox x:Name="SpeciesIdTextBox"
+                <TextBox x:Name="BrandIdTextBox"
                          Width="120"
                          VerticalAlignment="Center"
-                         Text="{Binding SpeciesId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Text="{Binding BrandId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                          Grid.Row="0"
                          Margin="3"
                          Height="23"
@@ -60,23 +61,38 @@
                        HorizontalAlignment="Left"
                        Grid.Column="2"
                        Content="种类名称:" />
-                <TextBox x:Name="SpeciesNameTextBox"
+                <TextBox x:Name="BrandNameTextBox"
                          Width="120"
                          VerticalAlignment="Center"
-                         Text="{Binding SpeciesName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Text="{Binding BrandName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                          Grid.Row="0"
                          Margin="3"
                          Height="23"
                          HorizontalAlignment="Left"
                          Grid.Column="3" />
+                <Label VerticalAlignment="Center"
+                       Grid.Row="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       Grid.Column="4"
+                       Content="种类名称(日文):" />
+                <TextBox x:Name="BrandNameJpTextBox"
+                         Width="120"
+                         VerticalAlignment="Center"
+                         Text="{Binding BrandNameJp, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Grid.Row="0"
+                         Margin="3"
+                         Height="23"
+                         HorizontalAlignment="Left"
+                         Grid.Column="5" />
                 <Button x:Name="BtnSearch"
                         Grid.Row="0"
-                        Grid.Column="4"
+                        Grid.Column="6"
                         Content="查询"
-                        Command="{Binding SpeciesViewModel.SearchDataCommand, Source={StaticResource Locator}}" />
+                        Command="{Binding BrandViewModel.SearchDataCommand, Source={StaticResource Locator}}" />
             </Grid>
         </Expander>
-        <DataGrid x:Name="SpeciesClientDataGrid"
+        <DataGrid x:Name="BrandClientDataGrid"
                   AutoGenerateColumns="False"
                   EnableRowVirtualization="True"
                   ItemsSource="{Binding MasterData, Mode=OneWay}"
@@ -85,13 +101,17 @@
                   RowDetailsVisibilityMode="VisibleWhenSelected"
                   Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="SpeciesIdColumn"
-                                    Binding="{Binding SpeciesId}"
+                <DataGridTextColumn x:Name="BrandIdColumn"
+                                    Binding="{Binding BrandId}"
                                     Header="种类编号"
                                     Width="SizeToHeader" />
-                <DataGridTextColumn x:Name="SpeciesNameColumn"
-                                    Binding="{Binding SpeciesName}"
+                <DataGridTextColumn x:Name="BrandNameColumn"
+                                    Binding="{Binding BrandName}"
                                     Header="种类名称"
+                                    Width="SizeToHeader" />
+                <DataGridTextColumn x:Name="BrandNameJpColumn"
+                                    Binding="{Binding BrandNameJp}"
+                                    Header="种类名称(日文)"
                                     Width="SizeToHeader" />
             </DataGrid.Columns>
         </DataGrid>
@@ -105,7 +125,7 @@
                         <Button HorizontalAlignment="Right"
                                 Content="添加"
                                 ToolTip="新規追加"
-                                Command="{Binding SpeciesViewModel.ClearDataCommand, Source={StaticResource Locator}}" />
+                                Command="{Binding BrandViewModel.ClearDataCommand, Source={StaticResource Locator}}" />
                     </DockPanel>
                 </DataTemplate>
             </Expander.HeaderTemplate>
@@ -120,6 +140,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -131,13 +153,28 @@
                            Margin="3"
                            Grid.Row="1"
                            VerticalAlignment="Center" />
-                    <TextBox x:Name="SpeciesNameTextBox1"
+                    <TextBox x:Name="BrandNameTextBox1"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
                              Height="23"
                              Margin="3"
                              Grid.Row="1"
-                             Text="{Binding SpeciesName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             Text="{Binding BrandName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
+                    <Label Content="种类名称(日文):"
+                           Grid.Column="2"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="1"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="BrandNameJpTextBox1"
+                             Grid.Column="3"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="1"
+                             Text="{Binding BrandNameJp, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
                              Width="120" />
                 </Grid>

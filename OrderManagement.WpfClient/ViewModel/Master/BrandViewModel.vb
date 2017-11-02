@@ -1,29 +1,22 @@
 ﻿Imports MahApps.Metro.Controls.Dialogs
 Imports OrderManagement.Client.Entities.Models
-Imports OrderManagement.Common
 Imports OrderManagement.WpfClient.Service
-Imports OrderManagement.WpfClient.Service.Interfaces
 
 Namespace ViewModel.Master
-    Public Class ProductViewModel
-        Inherits BaseMasterViewModel(Of ProductClient)
+    Public Class BrandViewModel
+        Inherits BaseMasterViewModel(Of BrandClient)
 
 #Region "フィールド"
 
         ''' <summary>
         '''     サービス
         ''' </summary>
-        Private ReadOnly _productService As IProductServiceAgent
+        Private ReadOnly _brandService As IBrandServiceAgent
 
         ''' <summary>
         '''     ダイアログ
         ''' </summary>
         Private ReadOnly _dialogCoordinator As IDialogCoordinator
-
-        ''' <summary>
-        ''' リストサービス
-        ''' </summary>
-        Private ReadOnly _listService As IListServiceAgent
 
         ''' <summary>
         '''     エラー件数
@@ -39,7 +32,7 @@ Namespace ViewModel.Master
         ''' </summary>
         Public ReadOnly Property Title As String
             Get
-                Return "用户信息"
+                Return "种类信息"
             End Get
         End Property
 
@@ -47,9 +40,9 @@ Namespace ViewModel.Master
         '''     選択したデータ
         ''' </summary>
         ''' <remarks></remarks>
-        Private _selectedData As ProductClient
+        Private _selectedData As BrandClient
 
-        Public Property SelectedData As ProductClient
+        Public Property SelectedData As BrandClient
             Get
                 Return _selectedData
             End Get
@@ -57,30 +50,19 @@ Namespace ViewModel.Master
                 [Set]("SelectedData", _selectedData, Value)
 
                 If Value Is Nothing OrElse
-                   String.IsNullOrEmpty(Value.ProductId) OrElse Value.ProductId = 0 Then
-                    DetailData = New ProductClient
+                   String.IsNullOrEmpty(Value.BrandId) OrElse Value.BrandId = 0 Then
+                    DetailData = New BrandClient
                 Else
 
                     'リストからデータを選択する時には修正モードに切り替え、詳細をセット
                     IsCreateMaster = False
-                    DetailData = New ProductClient With {
-                        .ProductId = Value.ProductId,
-                        .SpeciesId = Value.SpeciesId,
+                    DetailData = New BrandClient With {
                         .BrandId = Value.BrandId,
-                        .ProductName = Value.ProductName,
-                        .ProductNameJp = Value.ProductNameJp}
+                        .BrandName = Value.BrandName,
+                        .BrandNameJp = Value.BrandNameJp}
                 End If
             End Set
         End Property
-
-#End Region
-
-#Region "リスト"
-
-        ''' <summary>
-        '''     种类列表
-        ''' </summary>
-        Public Property SpeciesList As List(Of ValueNamePair)
 
 #End Region
 
@@ -91,21 +73,18 @@ Namespace ViewModel.Master
         ''' </summary>
         ''' <param name="dataService"></param>
         ''' <remarks></remarks>
-        Public Sub New(dataService As IProductServiceAgent, dialogInstance As IDialogCoordinator, listService As IListServiceAgent)
+        Public Sub New(dataService As IBrandServiceAgent, dialogInstance As IDialogCoordinator)
 
             MyBase.New()
 
-            SelectedData = New ProductClient()
-            SearchCondition = New ProductClient()
+            SelectedData = New BrandClient()
+            SearchCondition = New BrandClient()
 
             'サービスの初期化
-            _productService = dataService
+            _brandService = dataService
             _dialogCoordinator = dialogInstance
-            _listService = listService
 
             'リストの初期化
-            SpeciesList = listService.GetSpeciesList()
-
         End Sub
 
 #End Region
@@ -116,15 +95,16 @@ Namespace ViewModel.Master
         Public Overrides Sub AddMasterData()
 
             Try
+
                 '存在チェック
                 If _
-                    _productService.ProductExists(DetailData.ProductId) Then
+                    _brandService.BrandExists(DetailData.BrandId) Then
 
                     _dialogCoordinator.ShowMessageAsync(Me, "エラー", "データが重複しました")
                 Else
 
                     '新規追加
-                    Dim result = _productService.CreateProduct(DetailData)
+                    Dim result = _brandService.CreateBrand(DetailData)
 
                     If result.IsSuccess Then
                         'Show Success Message and add the data to list
@@ -151,8 +131,8 @@ Namespace ViewModel.Master
             IsCreateMaster = True
 
             '詳細をクリア
-            DetailData = New ProductClient()
-            SelectedData = New ProductClient()
+            DetailData = New BrandClient()
+            SelectedData = New BrandClient()
         End Sub
 
         ''' <summary>
@@ -162,7 +142,7 @@ Namespace ViewModel.Master
             Try
 
                 '削除
-                Dim result = _productService.DeleteProduct(DetailData.ProductId)
+                Dim result = _brandService.DeleteBrand(DetailData.BrandId)
 
                 If result.IsSuccess Then
 
@@ -171,7 +151,7 @@ Namespace ViewModel.Master
                     '結果リストをリセット
                     SearchMasterData()
 
-                    SelectedData = New ProductClient()
+                    SelectedData = New BrandClient()
                     IsCreateMaster = True
                 Else
                     _dialogCoordinator.ShowMessageAsync(Me, "エラー", "削除失敗しました")
@@ -202,7 +182,7 @@ Namespace ViewModel.Master
         Public Overrides Sub SearchMasterData()
             Try
                 '検索
-                MasterData = _productService.GetProductByCondition(SearchCondition)
+                MasterData = _brandService.GetBrandByCondition(SearchCondition)
 
             Catch ex As Exception
                 Log.Error(ex.Message & ex.StackTrace)
@@ -216,7 +196,7 @@ Namespace ViewModel.Master
             Try
 
                 '更新
-                Dim result = _productService.UpdateProduct(DetailData)
+                Dim result = _brandService.UpdateBrand(DetailData)
 
                 If result.IsSuccess Then
                     _dialogCoordinator.ShowMessageAsync(Me, "メッセージ", "更新しました")
@@ -224,7 +204,7 @@ Namespace ViewModel.Master
                     '結果リストをリセット
                     SearchMasterData()
 
-                    SelectedData = New ProductClient()
+                    SelectedData = New BrandClient()
                     IsCreateMaster = True
                 Else
                     _dialogCoordinator.ShowMessageAsync(Me, "エラー", "更新失敗しました")

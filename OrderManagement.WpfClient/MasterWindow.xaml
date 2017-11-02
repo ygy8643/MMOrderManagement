@@ -24,5 +24,8 @@
         <TabItem Header="种类信息">
             <master:SpeciesView />
         </TabItem>
+        <TabItem Header="品牌信息">
+            <master:BrandView />
+        </TabItem>
     </dragablz:TabablzControl>
 </controls:MetroWindow>

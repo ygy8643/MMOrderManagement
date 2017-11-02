@@ -96,7 +96,7 @@
     <Key>
       <PropertyRef Name="SpeciesId" />
     </Key>
-    <Property Name="SpeciesId" Type="int" Nullable="false" />
+    <Property Name="SpeciesId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="SpeciesName" Type="nvarchar" Nullable="true" MaxLength="50" />
   </EntityType>
   <Association Name="FK_Order_Customer">
@@ -224,7 +224,7 @@
           <Key>
             <PropertyRef Name="SpeciesId" />
           </Key>
-          <Property Name="SpeciesId" Type="Int32" Nullable="false" />
+          <Property Name="SpeciesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SpeciesName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Products_Species" FromRole="Species" ToRole="Products" />
         </EntityType>

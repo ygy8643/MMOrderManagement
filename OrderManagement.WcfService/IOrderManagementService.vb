@@ -103,5 +103,30 @@ Public Interface IOrderManagementService
     Function SpeciesDtoExists(speciesId As Integer) As Boolean
 
 #End Region
+    
+#Region "Brand"
+
+    <OperationContract>
+    Function GetBrandDtoes() As IEnumerable(Of BrandDto)
+
+    <OperationContract>
+    Function GetBrandDto(brandId As Integer) As BrandDto
+
+    <OperationContract>
+    Function GetBrandDtoByCondition(condition As BrandDto) As IEnumerable(Of BrandDto)
+
+    <OperationContract>
+    Function AddBrandDto(brandDto As BrandDto) As ProcessResult
+
+    <OperationContract>
+    Function UpdateBrandDto(brandDto As BrandDto) As ProcessResult
+
+    <OperationContract>
+    Function DeleteBrandDto(brandId As Integer) As ProcessResult
+
+    <OperationContract>
+    Function BrandDtoExists(brandId As Integer) As Boolean
+
+#End Region
 End Interface
 

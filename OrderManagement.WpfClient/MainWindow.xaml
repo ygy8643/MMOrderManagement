@@ -67,14 +67,15 @@
         </Grid.Resources>
 
         <controls:HamburgerMenu x:Name="HamburgerMenuControl"
-                                Foreground="White"
-                                PaneBackground="#FF444444"
+                                Background="#F2F2F2"
+                                PaneBackground="Teal"
                                 IsPaneOpen="False"
                                 ItemTemplate="{StaticResource MenuItemTemplate}"
                                 OptionsItemTemplate="{StaticResource OptionsMenuItemTemplate}"
                                 ItemClick="HamburgerMenuControl_OnItemClick"
                                 OptionsItemClick="HamburgerMenuControl_OnItemClick"
-                                DisplayMode="CompactInline">
+                                DisplayMode="CompactInline"
+                                SelectedIndex="0">
 
             <!--  Items  -->
             <controls:HamburgerMenu.ItemsSource>
@@ -82,14 +83,14 @@
                     <controls:HamburgerMenuGlyphItem Glyph=""
                                                      Label="查询订单">
                         <controls:HamburgerMenuGlyphItem.Tag>
-                            <views:ListOrderView />
+                            <views:ListOrderView Margin="10"/>
                         </controls:HamburgerMenuGlyphItem.Tag>
                     </controls:HamburgerMenuGlyphItem>
 
                     <controls:HamburgerMenuGlyphItem Glyph=""
                                                      Label="添加订单">
                         <controls:HamburgerMenuGlyphItem.Tag>
-                            <views:AddOrderView />
+                            <views:AddOrderView Margin="10"/>
                         </controls:HamburgerMenuGlyphItem.Tag>
                     </controls:HamburgerMenuGlyphItem>
 
@@ -123,7 +124,7 @@
                             <RowDefinition />
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0"
-                                Background="#FF444444">
+                                Background="Teal">
                             <TextBlock x:Name="Header"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"

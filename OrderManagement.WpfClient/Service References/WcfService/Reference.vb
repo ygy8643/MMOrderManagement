@@ -762,6 +762,85 @@ Namespace WcfService
         End Sub
     End Class
     
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="BrandDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class BrandDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BrandIdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BrandNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BrandNameJpField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BrandId() As Integer
+            Get
+                Return Me.BrandIdField
+            End Get
+            Set
+                If (Me.BrandIdField.Equals(value) <> true) Then
+                    Me.BrandIdField = value
+                    Me.RaisePropertyChanged("BrandId")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BrandName() As String
+            Get
+                Return Me.BrandNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.BrandNameField, value) <> true) Then
+                    Me.BrandNameField = value
+                    Me.RaisePropertyChanged("BrandName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BrandNameJp() As String
+            Get
+                Return Me.BrandNameJpField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.BrandNameJpField, value) <> true) Then
+                    Me.BrandNameJpField = value
+                    Me.RaisePropertyChanged("BrandNameJp")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0"),  _
      System.ServiceModel.ServiceContractAttribute(ConfigurationName:="WcfService.IOrderManagementService")>  _
     Public Interface IOrderManagementService
@@ -933,6 +1012,48 @@ Namespace WcfService
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/SpeciesDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/SpeciesDtoExistsResponse")>  _
         Function SpeciesDtoExistsAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of Boolean)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoesResponse")>  _
+        Function GetBrandDtoes() As WcfService.BrandDto()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoesResponse")>  _
+        Function GetBrandDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.BrandDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoResponse")>  _
+        Function GetBrandDto(ByVal brandId As Integer) As WcfService.BrandDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoResponse")>  _
+        Function GetBrandDtoAsync(ByVal brandId As Integer) As System.Threading.Tasks.Task(Of WcfService.BrandDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoByConditionResponse")>  _
+        Function GetBrandDtoByCondition(ByVal condition As WcfService.BrandDto) As WcfService.BrandDto()
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoByConditionResponse")>  _
+        Function GetBrandDtoByConditionAsync(ByVal condition As WcfService.BrandDto) As System.Threading.Tasks.Task(Of WcfService.BrandDto())
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddBrandDtoResponse")>  _
+        Function AddBrandDto(ByVal brandDto As WcfService.BrandDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddBrandDtoResponse")>  _
+        Function AddBrandDtoAsync(ByVal brandDto As WcfService.BrandDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateBrandDtoResponse")>  _
+        Function UpdateBrandDto(ByVal brandDto As WcfService.BrandDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateBrandDtoResponse")>  _
+        Function UpdateBrandDtoAsync(ByVal brandDto As WcfService.BrandDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteBrandDtoResponse")>  _
+        Function DeleteBrandDto(ByVal brandId As Integer) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteBrandDtoResponse")>  _
+        Function DeleteBrandDtoAsync(ByVal brandId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/BrandDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/BrandDtoExistsResponse")>  _
+        Function BrandDtoExists(ByVal brandId As Integer) As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/BrandDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/BrandDtoExistsResponse")>  _
+        Function BrandDtoExistsAsync(ByVal brandId As Integer) As System.Threading.Tasks.Task(Of Boolean)
     End Interface
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
@@ -1188,6 +1309,62 @@ Namespace WcfService
         
         Public Function SpeciesDtoExistsAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.SpeciesDtoExistsAsync
             Return MyBase.Channel.SpeciesDtoExistsAsync(speciesId)
+        End Function
+        
+        Public Function GetBrandDtoes() As WcfService.BrandDto() Implements WcfService.IOrderManagementService.GetBrandDtoes
+            Return MyBase.Channel.GetBrandDtoes
+        End Function
+        
+        Public Function GetBrandDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.BrandDto()) Implements WcfService.IOrderManagementService.GetBrandDtoesAsync
+            Return MyBase.Channel.GetBrandDtoesAsync
+        End Function
+        
+        Public Function GetBrandDto(ByVal brandId As Integer) As WcfService.BrandDto Implements WcfService.IOrderManagementService.GetBrandDto
+            Return MyBase.Channel.GetBrandDto(brandId)
+        End Function
+        
+        Public Function GetBrandDtoAsync(ByVal brandId As Integer) As System.Threading.Tasks.Task(Of WcfService.BrandDto) Implements WcfService.IOrderManagementService.GetBrandDtoAsync
+            Return MyBase.Channel.GetBrandDtoAsync(brandId)
+        End Function
+        
+        Public Function GetBrandDtoByCondition(ByVal condition As WcfService.BrandDto) As WcfService.BrandDto() Implements WcfService.IOrderManagementService.GetBrandDtoByCondition
+            Return MyBase.Channel.GetBrandDtoByCondition(condition)
+        End Function
+        
+        Public Function GetBrandDtoByConditionAsync(ByVal condition As WcfService.BrandDto) As System.Threading.Tasks.Task(Of WcfService.BrandDto()) Implements WcfService.IOrderManagementService.GetBrandDtoByConditionAsync
+            Return MyBase.Channel.GetBrandDtoByConditionAsync(condition)
+        End Function
+        
+        Public Function AddBrandDto(ByVal brandDto As WcfService.BrandDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.AddBrandDto
+            Return MyBase.Channel.AddBrandDto(brandDto)
+        End Function
+        
+        Public Function AddBrandDtoAsync(ByVal brandDto As WcfService.BrandDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.AddBrandDtoAsync
+            Return MyBase.Channel.AddBrandDtoAsync(brandDto)
+        End Function
+        
+        Public Function UpdateBrandDto(ByVal brandDto As WcfService.BrandDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.UpdateBrandDto
+            Return MyBase.Channel.UpdateBrandDto(brandDto)
+        End Function
+        
+        Public Function UpdateBrandDtoAsync(ByVal brandDto As WcfService.BrandDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.UpdateBrandDtoAsync
+            Return MyBase.Channel.UpdateBrandDtoAsync(brandDto)
+        End Function
+        
+        Public Function DeleteBrandDto(ByVal brandId As Integer) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteBrandDto
+            Return MyBase.Channel.DeleteBrandDto(brandId)
+        End Function
+        
+        Public Function DeleteBrandDtoAsync(ByVal brandId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteBrandDtoAsync
+            Return MyBase.Channel.DeleteBrandDtoAsync(brandId)
+        End Function
+        
+        Public Function BrandDtoExists(ByVal brandId As Integer) As Boolean Implements WcfService.IOrderManagementService.BrandDtoExists
+            Return MyBase.Channel.BrandDtoExists(brandId)
+        End Function
+        
+        Public Function BrandDtoExistsAsync(ByVal brandId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.BrandDtoExistsAsync
+            Return MyBase.Channel.BrandDtoExistsAsync(brandId)
         End Function
     End Class
 End Namespace

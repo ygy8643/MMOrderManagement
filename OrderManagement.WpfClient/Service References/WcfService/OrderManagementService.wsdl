@@ -176,6 +176,48 @@
   <wsdl:message name="IOrderManagementService_SpeciesDtoExists_OutputMessage">
     <wsdl:part name="parameters" element="tns:SpeciesDtoExistsResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetBrandDtoes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBrandDtoes" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetBrandDtoes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBrandDtoesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetBrandDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBrandDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetBrandDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBrandDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetBrandDtoByCondition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBrandDtoByCondition" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetBrandDtoByCondition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBrandDtoByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddBrandDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddBrandDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddBrandDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddBrandDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateBrandDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBrandDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateBrandDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBrandDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteBrandDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBrandDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteBrandDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteBrandDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_BrandDtoExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:BrandDtoExists" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_BrandDtoExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BrandDtoExistsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOrderManagementService">
     <wsdl:operation name="GetOrderDto">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderDto" message="tns:IOrderManagementService_GetOrderDto_InputMessage" />
@@ -288,6 +330,34 @@
     <wsdl:operation name="SpeciesDtoExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/SpeciesDtoExists" message="tns:IOrderManagementService_SpeciesDtoExists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/SpeciesDtoExistsResponse" message="tns:IOrderManagementService_SpeciesDtoExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBrandDtoes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetBrandDtoes" message="tns:IOrderManagementService_GetBrandDtoes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetBrandDtoesResponse" message="tns:IOrderManagementService_GetBrandDtoes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBrandDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetBrandDto" message="tns:IOrderManagementService_GetBrandDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetBrandDtoResponse" message="tns:IOrderManagementService_GetBrandDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBrandDtoByCondition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetBrandDtoByCondition" message="tns:IOrderManagementService_GetBrandDtoByCondition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetBrandDtoByConditionResponse" message="tns:IOrderManagementService_GetBrandDtoByCondition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddBrandDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/AddBrandDto" message="tns:IOrderManagementService_AddBrandDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/AddBrandDtoResponse" message="tns:IOrderManagementService_AddBrandDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBrandDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateBrandDto" message="tns:IOrderManagementService_UpdateBrandDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateBrandDtoResponse" message="tns:IOrderManagementService_UpdateBrandDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBrandDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteBrandDto" message="tns:IOrderManagementService_DeleteBrandDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteBrandDtoResponse" message="tns:IOrderManagementService_DeleteBrandDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BrandDtoExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/BrandDtoExists" message="tns:IOrderManagementService_BrandDtoExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/BrandDtoExistsResponse" message="tns:IOrderManagementService_BrandDtoExists_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderManagementService" type="tns:IOrderManagementService">
@@ -537,6 +607,69 @@
     </wsdl:operation>
     <wsdl:operation name="SpeciesDtoExists">
       <soap:operation soapAction="http://tempuri.org/IOrderManagementService/SpeciesDtoExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBrandDtoes">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetBrandDtoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBrandDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetBrandDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBrandDtoByCondition">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetBrandDtoByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddBrandDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/AddBrandDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBrandDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/UpdateBrandDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteBrandDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/DeleteBrandDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BrandDtoExists">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/BrandDtoExists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
