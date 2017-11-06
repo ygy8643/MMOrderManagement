@@ -4,6 +4,13 @@ Imports OrderManagement.Common
 
 Namespace Service
     Public Interface IOrderServiceAgent
+        
+        ''' <summary>
+        '''     检索订单信息
+        ''' </summary>
+        ''' <returns></returns>
+        Function GetOrder(orderId As Integer) As OrderClient
+
         ''' <summary>
         '''     检索订单信息
         ''' </summary>

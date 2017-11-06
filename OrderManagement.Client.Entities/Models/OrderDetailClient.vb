@@ -5,6 +5,8 @@ Namespace Models
 
     <ImplementPropertyChanged>
     Public Class OrderDetailClient
+        Implements ICloneable
+
         <DisplayName("订单明细编号")>
         Public Property OrderDetailId As Integer
 
@@ -27,5 +29,10 @@ Namespace Models
         Public Property Link As String
 
         Public Overridable Property ProductClient As ProductClient
+
+        Public Function Clone() As Object Implements ICloneable.Clone
+            Dim newOrderDetailClient = CType(Me.MemberwiseClone, OrderDetailClient)
+            Return newOrderDetailClient
+        End Function
     End Class
 End Namespace

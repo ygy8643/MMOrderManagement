@@ -31,12 +31,16 @@ Namespace ViewModel.Base
 
             frameNavigationService.Configure("OrderList", New Uri("../Views/Order/ListOrderView.xaml", UriKind.Relative))
             frameNavigationService.Configure("OrderDetail",
-                                             New Uri("../Views/Order/AddOrderView.xaml", UriKind.Relative))
+                                             New Uri("../Views/Order/AddOrUpdateOrderView.xaml", UriKind.Relative))
             SimpleIoc.Default.Register(Of IFrameNavigationService)(Function() frameNavigationService)
 
+            'View Model of List
+            SimpleIoc.Default.Register(Of ConstantListsViewModel)()
+
+            'View Models of View
             SimpleIoc.Default.Register(Of MainWindowViewModel)()
             SimpleIoc.Default.Register(Of ListOrderViewModel)()
-            SimpleIoc.Default.Register(Of AddOrderViewModel)()
+            SimpleIoc.Default.Register(Of AddOrUpdateOrderViewModel)()
             SimpleIoc.Default.Register(Of CustomerViewModel)()
             SimpleIoc.Default.Register(Of ProductViewModel)()
             SimpleIoc.Default.Register(Of SpeciesViewModel)()
@@ -61,6 +65,22 @@ Namespace ViewModel.Base
 
 #End Region
 
+#Region "列表"
+
+        ''' <summary>
+        '''     Gets the ConstantListsViewModel property.
+        ''' </summary>
+        <SuppressMessage _
+            ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
+             Justification:="This non-static member is needed for data binding purposes.")>
+        Public ReadOnly Property ConstantListsViewModel As ConstantListsViewModel
+            Get
+                Return ServiceLocator.Current.GetInstance(Of ConstantListsViewModel)()
+            End Get
+        End Property
+
+#End Region
+
 #Region "订单"
 
         ''' <summary>
@@ -76,14 +96,14 @@ Namespace ViewModel.Base
         End Property
 
         ''' <summary>
-        '''     Gets the AddOrderViewModel property.
+        '''     Gets the AddOrUpdateOrderViewModel property.
         ''' </summary>
         <SuppressMessage _
             ("Microsoft.Performance", "CA1822:MarkMembersAsStatic",
              Justification:="This non-static member is needed for data binding purposes.")>
-        Public ReadOnly Property AddOrderViewModel As AddOrderViewModel
+        Public ReadOnly Property AddOrUpdateOrderViewModel As AddOrUpdateOrderViewModel
             Get
-                Return ServiceLocator.Current.GetInstance(Of AddOrderViewModel)()
+                Return ServiceLocator.Current.GetInstance(Of AddOrUpdateOrderViewModel)()
             End Get
         End Property
 
@@ -136,7 +156,7 @@ Namespace ViewModel.Base
         End Property
 
 #End Region
-        
+
 #Region "品牌"
 
         ''' <summary>

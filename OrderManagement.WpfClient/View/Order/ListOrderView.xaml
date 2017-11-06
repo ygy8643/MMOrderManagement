@@ -56,7 +56,7 @@
                                 VerticalAlignment="Center" />
                 </StackPanel>
                 <StackPanel Grid.Column="0"
-                           Grid.Row="1"
+                            Grid.Row="1"
                             Orientation="Horizontal">
                     <Label Content="客户姓名:"
                            HorizontalAlignment="Left"
@@ -70,11 +70,11 @@
                               VerticalAlignment="Center"
                               SelectedValue="{Binding CustomerId}"
                               IsSynchronizedWithCurrentItem="True"
-                              ItemsSource="{Binding ListOrderViewModel.CustomerList, Source={StaticResource Locator}}" >
+                              ItemsSource="{Binding ConstantListsViewModel.CustomerList, Source={StaticResource Locator}}">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding ListOrderViewModel.SetCustomerInfoCommand, Source={StaticResource Locator}}"
-                                                       CommandParameter="{Binding SelectedValue, ElementName=CustomerCode2ComboBox}"/>
+                                                       CommandParameter="{Binding SelectedValue, ElementName=CustomerCode2ComboBox}" />
                             </i:EventTrigger>
                         </i:Interaction.Triggers>
                     </ComboBox>
@@ -204,12 +204,12 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridComboBoxColumn x:Name="OrderTypeColumn"
-                                            ItemsSource="{Binding ListOrderViewModel.OrderTypeList, Source={StaticResource Locator}}"
+                                            ItemsSource="{Binding ConstantListsViewModel.OrderTypeList, Source={StaticResource Locator}}"
                                             DisplayMemberPath="DisplayName"
                                             SelectedValuePath="Value"
                                             SelectedValueBinding="{Binding OrderType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                             Header="订单类型"
-                                        Width="Auto" />
+                                            Width="Auto" />
                     <DataGridTextColumn x:Name="CustomerNameColumn"
                                         Binding="{Binding CustomerClient.CustomerId, Converter={StaticResource CustomerCodeToNameConverter}}"
                                         Header="客户名称"
@@ -282,11 +282,6 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="BtnDeleteOrder"
-                    Content="删除订单"
-                    HorizontalAlignment="Right"
-                    Grid.Column="2" 
-                    Command="{Binding LoadOrderCommand}" />
             <Button x:Name="BtnLoad"
                     Content="读取"
                     HorizontalAlignment="Right"

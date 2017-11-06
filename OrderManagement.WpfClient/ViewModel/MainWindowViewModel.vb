@@ -30,10 +30,8 @@ Namespace ViewModel
             Dim orderService = New OrderManagementServiceClient
 
             CurrentUserControlViewModel = New ListOrderViewModel(
-                New FrameNavigationService(),
                 New OrderServiceAgent(),
-                New CustomerServiceAgent(),
-                New ListServiceAgent ()
+                New CustomerServiceAgent()
                 )
         End Sub
     End Class

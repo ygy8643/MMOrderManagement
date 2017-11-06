@@ -1,5 +1,5 @@
 ﻿Namespace View.Order
-    Public Class AddOrderView
+    Public Class AddOrUpdateOrderView
 
     End Class
 End Namespace

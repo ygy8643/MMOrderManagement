@@ -90,7 +90,7 @@
                     <controls:HamburgerMenuGlyphItem Glyph=""
                                                      Label="添加订单">
                         <controls:HamburgerMenuGlyphItem.Tag>
-                            <views:AddOrderView Margin="10"/>
+                            <views:AddOrUpdateOrderView Margin="10"/>
                         </controls:HamburgerMenuGlyphItem.Tag>
                     </controls:HamburgerMenuGlyphItem>
 

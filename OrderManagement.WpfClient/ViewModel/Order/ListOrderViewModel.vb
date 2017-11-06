@@ -6,9 +6,7 @@ Imports GalaSoft.MvvmLight.CommandWpf
 Imports Microsoft.Win32
 Imports OrderManagement.Client.Entities.Models
 Imports OrderManagement.Client.Entities.SearchConditions
-Imports OrderManagement.Common
 Imports OrderManagement.WpfClient.Service
-Imports OrderManagement.WpfClient.Service.Interfaces
 Imports OrderManagement.WpfClient.ViewModel.Base
 
 Namespace ViewModel.Order
@@ -16,11 +14,6 @@ Namespace ViewModel.Order
         Inherits MyViewModelBase
 
 #Region "Fields"
-
-        ''' <summary>
-        '''     画面移动service
-        ''' </summary>
-        Private ReadOnly _navigationService As IFrameNavigationService
 
         ''' <summary>
         '''     订单service
@@ -42,7 +35,7 @@ Namespace ViewModel.Order
         ''' <returns></returns>
         Public Overrides ReadOnly Property Title As String
             Get
-                Return "订单管理"
+                Return "订单查询"
             End Get
         End Property
 
@@ -104,19 +97,6 @@ Namespace ViewModel.Order
 
 #End Region
 
-#Region "Lists"
-
-        ''' <summary>
-        '''     用户列表
-        ''' </summary>
-        Public Property CustomerList As List(Of ValueNamePair)
-
-        ''' <summary>
-        '''     订单类型列表
-        ''' </summary>
-        Public Property OrderTypeList As List(Of ValueNamePair)
-#End Region
-
 #Region "Commands"
 
         ''' <summary>
@@ -126,52 +106,10 @@ Namespace ViewModel.Order
         Public Property SearchOrderCommand As RelayCommand
 
         ''' <summary>
-        '''     移动到详细画面
-        ''' </summary>
-        ''' <returns></returns>
-        Public Property NavigateToDetailCommand As RelayCommand
-
-        ''' <summary>
         '''     读取订单信息
         ''' </summary>
         ''' <returns></returns>
         Public Property LoadOrderCommand As RelayCommand
-
-        ''' <summary>
-        '''     保存订单信息
-        ''' </summary>
-        ''' <returns></returns>
-        Public Property SaveOrderCommand As RelayCommand
-
-        ''' <summary>
-        '''     添加订单信息
-        ''' </summary>
-        ''' <returns></returns>
-        Public Property AddOrderCommand As RelayCommand
-
-        ''' <summary>
-        '''     删除订单信息
-        ''' </summary>
-        ''' <returns></returns>
-        Public Property DeleteOrderCommand As RelayCommand
-
-        ''' <summary>
-        '''     保存订单明细信息
-        ''' </summary>
-        ''' <returns></returns>
-        Public Property SaveOrderDetailCommand As RelayCommand
-
-        ''' <summary>
-        '''     添加订单明细信息
-        ''' </summary>
-        ''' <returns></returns>
-        Public Property AddOrderDetailCommand As RelayCommand
-
-        ''' <summary>
-        '''     删除订单明细信息
-        ''' </summary>
-        ''' <returns></returns>
-        Public Property DeleteOrderDetailCommand As RelayCommand
 
         ''' <summary>
         '''     保存订单信息
@@ -185,6 +123,12 @@ Namespace ViewModel.Order
         ''' <returns></returns>
         Public Property SetCustomerInfoCommand As RelayCommand(Of String)
 
+        ''' <summary>
+        '''     終了
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property ExitSystemCommand As RelayCommand
+
 #End Region
 
 #Region "Constructors"
@@ -192,45 +136,25 @@ Namespace ViewModel.Order
         ''' <summary>
         '''     Constructor
         ''' </summary>
-        Public Sub New(navigationService As IFrameNavigationService,
-                       orderServiceAgent As IOrderServiceAgent,
-                       customerServiceAgent As ICustomerServiceAgent,
-                       listServiceAgent As IListServiceAgent)
+        Public Sub New(orderServiceAgent As IOrderServiceAgent,
+                       customerServiceAgent As ICustomerServiceAgent)
 
-            _navigationService = navigationService
             _orderServiceAgent = orderServiceAgent
             _customerServiceAgent = customerServiceAgent
 
             SearchCondition = New OrderSearchConditionsClient()
 
-            With "Lists"
-                CustomerList = listServiceAgent.GetCustomerList()
-                OrderTypeList = define.ConstantLists.OrderTypeList
-            End With
-
             With "Commands"
 
                 SearchOrderCommand = New RelayCommand(AddressOf SearchOrder)
 
-                NavigateToDetailCommand = New RelayCommand(AddressOf NavigateToDetail)
-
                 LoadOrderCommand = New RelayCommand(AddressOf LoadOrder)
-
-                SaveOrderCommand = New RelayCommand(AddressOf SaveOrder)
-
-                AddOrderCommand = New RelayCommand(AddressOf AddOrder)
-
-                DeleteOrderCommand = New RelayCommand(AddressOf DeleteOrder)
-
-                SaveOrderDetailCommand = New RelayCommand(AddressOf SaveOrderDetail)
-
-                AddOrderDetailCommand = New RelayCommand(AddressOf AddOrderDetail)
-
-                DeleteOrderDetailCommand = New RelayCommand(AddressOf DeleteOrderDetail)
 
                 SaveOrderAndDetailCommand = New RelayCommand(AddressOf SaveOrderAndDetail)
 
                 SetCustomerInfoCommand = New RelayCommand(Of String)(AddressOf SetCustomerInfo)
+
+                ExitSystemCommand = New RelayCommand(AddressOf ExitSystem)
             End With
         End Sub
 
@@ -243,55 +167,6 @@ Namespace ViewModel.Order
         ''' </summary>
         Private Sub SearchOrder()
             Orders = _orderServiceAgent.GetOrdersByConditions(SearchCondition)
-        End Sub
-
-        ''' <summary>
-        '''     详细画面移动
-        ''' </summary>
-        Private Sub NavigateToDetail()
-            _navigationService.NavigateTo("OrderDetail")
-        End Sub
-
-        ''' <summary>
-        '''     删除订单明细
-        ''' </summary>
-        Private Sub DeleteOrderDetail()
-            Throw New NotImplementedException
-        End Sub
-
-        ''' <summary>
-        '''     添加订单明细
-        ''' </summary>
-        Private Sub AddOrderDetail()
-            Throw New NotImplementedException
-        End Sub
-
-        ''' <summary>
-        '''     保存订单明细
-        ''' </summary>
-        Private Sub SaveOrderDetail()
-            Throw New NotImplementedException
-        End Sub
-
-        ''' <summary>
-        '''     删除订单
-        ''' </summary>
-        Private Sub DeleteOrder()
-            Throw New NotImplementedException
-        End Sub
-
-        ''' <summary>
-        '''     添加订单
-        ''' </summary>
-        Private Sub AddOrder()
-            Throw New NotImplementedException
-        End Sub
-
-        ''' <summary>
-        '''     保存订单
-        ''' </summary>
-        Private Sub SaveOrder()
-            Throw New NotImplementedException
         End Sub
 
         ''' <summary>
@@ -329,6 +204,17 @@ Namespace ViewModel.Order
 
             End If
         End Sub
+
+        ''' <summary>
+        '''     添加订单明细
+        ''' </summary>
+        Private Sub ExitSystem()
+            Application.Current.Shutdown()
+        End Sub
+
+#End Region
+
+#Region "Sub Methods"
 
         ''' <summary>
         '''     Load Excel file
@@ -410,9 +296,8 @@ Namespace ViewModel.Order
         ''' <returns></returns>
         Private Function ConvertExcelData(dsExcel As DataSet) As List(Of OrderClient)
 
+            Dim result As New List(Of OrderClient)
             Try
-                Dim result As New List(Of OrderClient)
-
                 'Excel Data
                 Dim dtExcel As DataTable = dsExcel.Tables(0)
 
@@ -465,10 +350,11 @@ Namespace ViewModel.Order
 
                 Next
 
-                Return result
             Catch ex As Exception
                 Dim strError = ex.Message
             End Try
+
+            Return result
         End Function
 
 #End Region

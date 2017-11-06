@@ -16,7 +16,11 @@ Namespace Service
         End Function
 
         Public Function DeleteOrder(order As OrderClient) As ProcessResult Implements IOrderServiceAgent.DeleteOrder
-            Throw New NotImplementedException()
+            Return _service.DeleteOrderDto(order.OrderId)
+        End Function
+
+        Public Function GetOrder(orderId As Integer) As OrderClient Implements IOrderServiceAgent.GetOrder
+            Return Mapper.Map(Of OrderClient)(_service.GetOrderDto(orderId))
         End Function
 
         ''' <summary>
