@@ -45,7 +45,7 @@
                        Margin="3"
                        HorizontalAlignment="Left"
                        Grid.Column="0"
-                       Content="种类编号:" />
+                       Content="品牌编号:" />
                 <TextBox x:Name="BrandIdTextBox"
                          Width="120"
                          VerticalAlignment="Center"
@@ -60,7 +60,7 @@
                        Margin="3"
                        HorizontalAlignment="Left"
                        Grid.Column="2"
-                       Content="种类名称:" />
+                       Content="品牌名称:" />
                 <TextBox x:Name="BrandNameTextBox"
                          Width="120"
                          VerticalAlignment="Center"
@@ -75,7 +75,7 @@
                        Margin="3"
                        HorizontalAlignment="Left"
                        Grid.Column="4"
-                       Content="种类名称(日文):" />
+                       Content="品牌名称(日文):" />
                 <TextBox x:Name="BrandNameJpTextBox"
                          Width="120"
                          VerticalAlignment="Center"
@@ -103,15 +103,15 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="BrandIdColumn"
                                     Binding="{Binding BrandId}"
-                                    Header="种类编号"
+                                    Header="品牌编号"
                                     Width="SizeToHeader" />
                 <DataGridTextColumn x:Name="BrandNameColumn"
                                     Binding="{Binding BrandName}"
-                                    Header="种类名称"
+                                    Header="品牌名称"
                                     Width="SizeToHeader" />
                 <DataGridTextColumn x:Name="BrandNameJpColumn"
                                     Binding="{Binding BrandNameJp}"
-                                    Header="种类名称(日文)"
+                                    Header="品牌名称(日文)"
                                     Width="SizeToHeader" />
             </DataGrid.Columns>
         </DataGrid>
@@ -147,7 +147,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Label Content="种类名称:"
+                    <Label Content="品牌名称:"
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
@@ -162,7 +162,7 @@
                              Text="{Binding BrandName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
                              Width="120" />
-                    <Label Content="种类名称(日文):"
+                    <Label Content="品牌名称(日文):"
                            Grid.Column="2"
                            HorizontalAlignment="Left"
                            Margin="3"

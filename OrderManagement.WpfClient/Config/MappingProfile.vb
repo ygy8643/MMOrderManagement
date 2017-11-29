@@ -38,6 +38,10 @@ Namespace Config
             CreateMap(GetType(SpeciesClient), GetType(SpeciesDto))
             CreateMap(GetType(SpeciesDto), GetType(SpeciesClient))
 
+            'Brand
+            CreateMap(GetType(BrandClient), GetType(BrandDto))
+            CreateMap(GetType(BrandDto), GetType(BrandClient))
+
             'Search Conditions
             CreateMap(GetType(OrderSearchConditionsClient), GetType(OrderSearchConditionsDto))
             CreateMap(GetType(OrderSearchConditionsDto), GetType(OrderSearchConditionsClient))

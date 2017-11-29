@@ -36,6 +36,10 @@ Namespace Config
             'Species
             CreateMap(GetType(Species), GetType(SpeciesDto))
             CreateMap(GetType(SpeciesDto), GetType(Species))
+            
+            'Brand
+            CreateMap(GetType(Brand), GetType(BrandDto))
+            CreateMap(GetType(BrandDto), GetType(Brand))
 
             'Inventory
             CreateMap(GetType(Inventory), GetType(InventoryDto))

@@ -114,7 +114,6 @@ Public Class OrderManagementService
 
         Using db As New OrderManagementDbEntities
 
-            db.Orders.Attach(Mapper.Map (Of Order)(orderDto))
             db.Entry(Mapper.Map (Of Order)(orderDto)).State = EntityState.Modified
 
             Try
@@ -377,7 +376,6 @@ Public Class OrderManagementService
 
         Using db As New OrderManagementDbEntities
 
-            db.Customers.Attach(Mapper.Map (Of Customer)(customerDto))
             db.Entry(Mapper.Map (Of Customer)(customerDto)).State = EntityState.Modified
 
             Try
@@ -519,7 +517,6 @@ Public Class OrderManagementService
 
         Using db As New OrderManagementDbEntities
 
-            db.Products.Attach(Mapper.Map (Of Product)(productDto))
             db.Entry(Mapper.Map (Of Product)(productDto)).State = EntityState.Modified
 
             Try
@@ -657,7 +654,6 @@ Public Class OrderManagementService
 
         Using db As New OrderManagementDbEntities
 
-            db.Species.Attach(Mapper.Map (Of Species)(speciesDto))
             db.Entry(Mapper.Map (Of Species)(speciesDto)).State = EntityState.Modified
 
             Try
@@ -795,7 +791,6 @@ Public Class OrderManagementService
 
         Using db As New OrderManagementDbEntities
 
-            db.Brands.Attach(Mapper.Map (Of Brand)(brandDto))
             db.Entry(Mapper.Map (Of Brand)(brandDto)).State = EntityState.Modified
 
             Try

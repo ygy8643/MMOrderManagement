@@ -3,7 +3,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:toVisibility="clr-namespace:OrderManagement.WpfClient.Converters.ToVisibility"
-             xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro" dialog:DialogParticipation.Register="{Binding}"
+             xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             dialog:DialogParticipation.Register="{Binding}"
              x:Class="View.Master.CustomerView"
              mc:Ignorable="d"
              d:DesignHeight="768"
@@ -43,21 +44,6 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <Label VerticalAlignment="Center"
-                       Grid.Row="0"
-                       Margin="3"
-                       HorizontalAlignment="Left"
-                       Grid.Column="0"
-                       Content="收货地址:" />
-                <TextBox x:Name="AddressTextBox"
-                         Width="120"
-                         VerticalAlignment="Center"
-                         Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                         Grid.Row="0"
-                         Margin="3"
-                         Height="23"
-                         HorizontalAlignment="Left"
-                         Grid.Column="1" />
                 <Label VerticalAlignment="Center"
                        Grid.Row="0"
                        Margin="3"
@@ -119,6 +105,21 @@
                          HorizontalAlignment="Left"
                          Grid.Column="1" />
                 <Label VerticalAlignment="Center"
+                       Grid.Row="0"
+                       Margin="3"
+                       HorizontalAlignment="Left"
+                       Grid.Column="0"
+                       Content="收货地址:" />
+                <TextBox x:Name="AddressTextBox"
+                         Width="120"
+                         VerticalAlignment="Center"
+                         Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                         Grid.Row="0"
+                         Margin="3"
+                         Height="23"
+                         HorizontalAlignment="Left"
+                         Grid.Column="1" />
+                <Label VerticalAlignment="Center"
                        Grid.Row="1"
                        Margin="3"
                        HorizontalAlignment="Left"
@@ -165,9 +166,6 @@
                   Grid.Row="1"
                   RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="AddressColumn"
-                                    Binding="{Binding Address}"
-                                    Header="收货地址" />
                 <DataGridTextColumn x:Name="CustomerIdColumn"
                                     Binding="{Binding CustomerId}"
                                     Header="客户编号" />
@@ -180,6 +178,9 @@
                 <DataGridTextColumn x:Name="PostCodeColumn"
                                     Binding="{Binding PostCode}"
                                     Header="邮编" />
+                <DataGridTextColumn x:Name="AddressColumn"
+                                    Binding="{Binding Address}"
+                                    Header="收货地址" />
                 <DataGridTextColumn x:Name="TaobaoNameColumn"
                                     Binding="{Binding TaobaoName}"
                                     Header="淘宝昵称" />
@@ -222,24 +223,8 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Label Content="收货地址:"
-                           Grid.Column="0"
-                           HorizontalAlignment="Left"
-                           Margin="3"
-                           Grid.Row="0"
-                           VerticalAlignment="Center" />
-                    <TextBox x:Name="AddressTextBox1"
-                             Grid.Column="1"
-                             HorizontalAlignment="Left"
-                             Height="23"
-                             Margin="3"
-                             Grid.Row="0"
-                             Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                             VerticalAlignment="Center"
-                             Width="120" />
-                    <Label Content="客户编号:"
+                    <!--<Label Content="客户编号:"
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
@@ -253,19 +238,19 @@
                              Grid.Row="1"
                              Text="{Binding CustomerId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
-                             Width="120" />
+                             Width="120" />-->
                     <Label Content="客户姓名:"
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
-                           Grid.Row="2"
+                           Grid.Row="0"
                            VerticalAlignment="Center" />
                     <TextBox x:Name="NameTextBox1"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
                              Height="23"
                              Margin="3"
-                             Grid.Row="2"
+                             Grid.Row="0"
                              Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
                              Width="120" />
@@ -273,14 +258,14 @@
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
-                           Grid.Row="3"
+                           Grid.Row="1"
                            VerticalAlignment="Center" />
                     <TextBox x:Name="PhoneTextBox1"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
                              Height="23"
                              Margin="3"
-                             Grid.Row="3"
+                             Grid.Row="1"
                              Text="{Binding Phone, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
                              Width="120" />
@@ -288,14 +273,29 @@
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
-                           Grid.Row="4"
+                           Grid.Row="2"
                            VerticalAlignment="Center" />
+                    <Label Content="收货地址:"
+                           Grid.Column="0"
+                           HorizontalAlignment="Left"
+                           Margin="3"
+                           Grid.Row="3"
+                           VerticalAlignment="Center" />
+                    <TextBox x:Name="AddressTextBox1"
+                             Grid.Column="1"
+                             HorizontalAlignment="Left"
+                             Height="23"
+                             Margin="3"
+                             Grid.Row="3"
+                             Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                             VerticalAlignment="Center"
+                             Width="120" />
                     <TextBox x:Name="PostCodeTextBox1"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
                              Height="23"
                              Margin="3"
-                             Grid.Row="4"
+                             Grid.Row="2"
                              Text="{Binding PostCode, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
                              Width="120" />
@@ -303,14 +303,14 @@
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
-                           Grid.Row="5"
+                           Grid.Row="4"
                            VerticalAlignment="Center" />
                     <TextBox x:Name="TaobaoNameTextBox1"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
                              Height="23"
                              Margin="3"
-                             Grid.Row="5"
+                             Grid.Row="4"
                              Text="{Binding TaobaoName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
                              Width="120" />
@@ -318,14 +318,14 @@
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
-                           Grid.Row="6"
+                           Grid.Row="5"
                            VerticalAlignment="Center" />
                     <TextBox x:Name="WechatNameTextBox1"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
                              Height="23"
                              Margin="3"
-                             Grid.Row="6"
+                             Grid.Row="5"
                              Text="{Binding WechatName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
                              Width="120" />

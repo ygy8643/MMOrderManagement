@@ -21,7 +21,7 @@ Namespace ViewModel.Master
         Private ReadOnly _dialogCoordinator As IDialogCoordinator
 
         ''' <summary>
-        ''' リストサービス
+        '''     リストサービス
         ''' </summary>
         Private ReadOnly _listService As IListServiceAgent
 
@@ -82,6 +82,12 @@ Namespace ViewModel.Master
         ''' </summary>
         Public Property SpeciesList As List(Of ValueNamePair)
 
+        ''' <summary>
+        '''     品牌列表
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property BrandList as list(of ValueNamePair )
+
 #End Region
 
 #Region "コンストラクター"
@@ -91,7 +97,8 @@ Namespace ViewModel.Master
         ''' </summary>
         ''' <param name="dataService"></param>
         ''' <remarks></remarks>
-        Public Sub New(dataService As IProductServiceAgent, dialogInstance As IDialogCoordinator, listService As IListServiceAgent)
+        Public Sub New(dataService As IProductServiceAgent, dialogInstance As IDialogCoordinator,
+                       listService As IListServiceAgent)
 
             MyBase.New()
 
@@ -105,6 +112,7 @@ Namespace ViewModel.Master
 
             'リストの初期化
             SpeciesList = listService.GetSpeciesList()
+            BrandList = listService.GetBrandList()
 
         End Sub
 

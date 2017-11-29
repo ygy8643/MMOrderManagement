@@ -13,7 +13,16 @@ Namespace Service
         ''' </summary>
         ''' <returns></returns>
         Public Function GetBrandList() As IEnumerable(Of ValueNamePair) Implements IListServiceAgent.GetBrandList
-            Throw New NotImplementedException()
+            Dim brandDtos = _orderManagementService.GetBrandDtoes ()
+
+            Dim query = From ctx In brandDtos
+                        Select New ValueNamePair With {.Value = ctx.BrandId , .DisplayName = ctx.BrandName}
+
+            Dim result = query.ToList()
+
+            result.Insert(0, New ValueNamePair With {.Value = 0, .DisplayName = String.Empty})
+
+            Return result
         End Function
 
         ''' <summary>

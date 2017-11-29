@@ -156,65 +156,53 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <Label Content="产品编号:"
+                    <Label Content="种类编号:"
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
                            Grid.Row="0"
                            VerticalAlignment="Center" />
-                    <TextBox x:Name="ProductIdTextBox1"
-                             Grid.Column="1"
-                             HorizontalAlignment="Left"
-                             Height="23"
-                             Margin="3"
-                             Grid.Row="0"
-                             Text="{Binding ProductId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                             VerticalAlignment="Center"
-                             Width="120" />
-                    <Label Content="种类编号:"
+                    <ComboBox x:Name="SpeciesIdComboBoxEdit"
+                              DisplayMemberPath="DisplayName"
+                              SelectedValuePath="Value"
+                              HorizontalAlignment="Left"
+                              Grid.Row="0"
+                              Margin="3"
+                              Grid.Column="1"
+                              Width="120"
+                              VerticalAlignment="Center"
+                              SelectedValue="{Binding SpeciesId}"
+                              ItemsSource="{Binding ProductViewModel.SpeciesList, Source={StaticResource Locator}}" />
+                    <Label Content="品牌编号:"
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
                            Grid.Row="1"
                            VerticalAlignment="Center" />
-                    <TextBox x:Name="SpeciesIdTextBox1"
-                             Grid.Column="1"
-                             HorizontalAlignment="Left"
-                             Height="23"
-                             Margin="3"
-                             Grid.Row="1"
-                             Text="{Binding SpeciesId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                             VerticalAlignment="Center"
-                             Width="120" />
-                    <Label Content="品牌编号:"
-                           Grid.Column="0"
-                           HorizontalAlignment="Left"
-                           Margin="3"
-                           Grid.Row="2"
-                           VerticalAlignment="Center" />
-                    <TextBox x:Name="BrandIdTextBox1"
-                             Grid.Column="1"
-                             HorizontalAlignment="Left"
-                             Height="23"
-                             Margin="3"
-                             Grid.Row="2"
-                             Text="{Binding BrandId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                             VerticalAlignment="Center"
-                             Width="120" />
+                    <ComboBox x:Name="BrandIdComboBoxEdit"
+                              DisplayMemberPath="DisplayName"
+                              SelectedValuePath="Value"
+                              HorizontalAlignment="Left"
+                              Grid.Row="1"
+                              Margin="3"
+                              Grid.Column="1"
+                              Width="120"
+                              VerticalAlignment="Center"
+                              SelectedValue="{Binding BrandId}"
+                              ItemsSource="{Binding ProductViewModel.BrandList, Source={StaticResource Locator}}" />
                     <Label Content="产品中文名称:"
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
-                           Grid.Row="3"
+                           Grid.Row="2"
                            VerticalAlignment="Center" />
                     <TextBox x:Name="ProductNameTextBox1"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
                              Height="23"
                              Margin="3"
-                             Grid.Row="3"
+                             Grid.Row="2"
                              Text="{Binding ProductName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
                              Width="120" />
@@ -222,14 +210,14 @@
                            Grid.Column="0"
                            HorizontalAlignment="Left"
                            Margin="3"
-                           Grid.Row="4"
+                           Grid.Row="3"
                            VerticalAlignment="Center" />
                     <TextBox x:Name="ProductNameJpTextBox1"
                              Grid.Column="1"
                              HorizontalAlignment="Left"
                              Height="23"
                              Margin="3"
-                             Grid.Row="4"
+                             Grid.Row="3"
                              Text="{Binding ProductNameJp, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                              VerticalAlignment="Center"
                              Width="120" />
@@ -272,10 +260,6 @@
                   RowDetailsVisibilityMode="VisibleWhenSelected"
                   Grid.Row="1">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="BrandIdColumn"
-                                    Binding="{Binding BrandId}"
-                                    Header="品牌编号"
-                                    Width="SizeToHeader" />
                 <DataGridTextColumn x:Name="ProductIdColumn"
                                     Binding="{Binding ProductId}"
                                     Header="产品编号"
@@ -288,10 +272,20 @@
                                     Binding="{Binding ProductNameJp}"
                                     Header="产品日文名称"
                                     Width="SizeToHeader" />
-                <DataGridTextColumn x:Name="SpeciesIdColumn"
-                                    Binding="{Binding SpeciesId}"
-                                    Header="种类编号"
-                                    Width="SizeToHeader" />
+                <DataGridComboBoxColumn x:Name="SpeciesIdColumn"
+                                        ItemsSource="{Binding ProductViewModel.SpeciesList, Source={StaticResource Locator}}"
+                                        DisplayMemberPath="DisplayName"
+                                        SelectedValuePath="Value"
+                                        SelectedValueBinding="{Binding SpeciesId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="Auto"
+                                        Header="种类编号" />
+                <DataGridComboBoxColumn x:Name="BrandIdColumn"
+                                        ItemsSource="{Binding ProductViewModel.BrandList, Source={StaticResource Locator}}"
+                                        DisplayMemberPath="DisplayName"
+                                        SelectedValuePath="Value"
+                                        SelectedValueBinding="{Binding SpeciesId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        Width="Auto"
+                                        Header="品牌编号" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
