@@ -22,6 +22,9 @@ Public Interface IOrderManagementService
     Function UpdateOrderDto(orderDto As OrderDto) As ProcessResult
 
     <OperationContract>
+    Function AddOrUpdateOrderDto(orderDto As OrderDto) As ProcessResult
+
+    <OperationContract>
     Function DeleteOrderDto(orderId As Integer) As ProcessResult
 
     <OperationContract>

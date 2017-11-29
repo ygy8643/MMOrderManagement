@@ -11,11 +11,11 @@ Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
 
-Partial Public Class OrderEntities
+Partial Public Class OrderManagementDbEntities
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=OrderEntities")
+        MyBase.New("name=OrderManagementDbEntities")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)

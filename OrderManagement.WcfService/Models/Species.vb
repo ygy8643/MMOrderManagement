@@ -14,6 +14,4 @@ Partial Public Class Species
     Public Property SpeciesId As Integer
     Public Property SpeciesName As String
 
-    Public Overridable Property Products As ICollection(Of Product) = New HashSet(Of Product)
-
 End Class

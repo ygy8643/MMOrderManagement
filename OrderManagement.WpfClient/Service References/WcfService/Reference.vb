@@ -875,6 +875,12 @@ Namespace WcfService
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateOrderDtoResponse")>  _
         Function UpdateOrderDtoAsync(ByVal orderDto As WcfService.OrderDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
         
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddOrUpdateOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddOrUpdateOrderDtoResponse")>  _
+        Function AddOrUpdateOrderDto(ByVal orderDto As WcfService.OrderDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddOrUpdateOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddOrUpdateOrderDtoResponse")>  _
+        Function AddOrUpdateOrderDtoAsync(ByVal orderDto As WcfService.OrderDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteOrderDtoResponse")>  _
         Function DeleteOrderDto(ByVal orderId As Integer) As OrderManagement.Common.ProcessResult
         
@@ -1125,6 +1131,14 @@ Namespace WcfService
         
         Public Function UpdateOrderDtoAsync(ByVal orderDto As WcfService.OrderDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.UpdateOrderDtoAsync
             Return MyBase.Channel.UpdateOrderDtoAsync(orderDto)
+        End Function
+        
+        Public Function AddOrUpdateOrderDto(ByVal orderDto As WcfService.OrderDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.AddOrUpdateOrderDto
+            Return MyBase.Channel.AddOrUpdateOrderDto(orderDto)
+        End Function
+        
+        Public Function AddOrUpdateOrderDtoAsync(ByVal orderDto As WcfService.OrderDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.AddOrUpdateOrderDtoAsync
+            Return MyBase.Channel.AddOrUpdateOrderDtoAsync(orderDto)
         End Function
         
         Public Function DeleteOrderDto(ByVal orderId As Integer) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteOrderDto

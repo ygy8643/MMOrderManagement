@@ -11,6 +11,21 @@
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,15 +89,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Brand.vb">
-      <DependentUpon>OrderModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customer.vb">
-      <DependentUpon>OrderModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Inventory.vb">
-      <DependentUpon>OrderModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -98,34 +104,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Order.vb">
-      <DependentUpon>OrderModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrderDetail.vb">
-      <DependentUpon>OrderModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrderModel.Context.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrderModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrderModel.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrderModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="OrderModel.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OrderModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrderModel.Views.vb" />
-    <Compile Include="Product.vb">
-      <DependentUpon>OrderModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Species.vb">
-      <DependentUpon>OrderModel.tt</DependentUpon>
-    </Compile>
+    <Compile Include="OrderManagementModel.Views.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -148,30 +127,22 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <EntityDeploy Include="OrderModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OrderModel.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <None Include="OrderModel.edmx.diagram">
-      <DependentUpon>OrderModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="OrderModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OrderModel.edmx</DependentUpon>
-      <LastGenOutput>OrderModel.Context.vb</LastGenOutput>
-    </Content>
-    <Content Include="OrderModel.edmx.sql" />
-    <Content Include="OrderModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>OrderModel.edmx</DependentUpon>
-      <LastGenOutput>OrderModel.vb</LastGenOutput>
-    </Content>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

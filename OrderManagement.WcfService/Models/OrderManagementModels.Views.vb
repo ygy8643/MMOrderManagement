@@ -16,8 +16,8 @@ Imports System.Data.Entity.Core.Metadata.Edm
 Imports System.Data.Entity.Infrastructure.MappingViews
 
 <Assembly: DbMappingViewCacheTypeAttribute(
-    GetType(OrderManagement.Entities.OrderEntities),
-    GetType(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsfea830eef2c9c2a41e111a2273307b0c9d9dd7eb955411e34332bed71f9d3144))>
+    GetType(OrderManagement.WcfService.OrderManagementDbEntities),
+    GetType(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets5c6bd023212745842cd3ad8203a14133c042f6b59bfd96baaa75a274de2041dd))>
 
 Namespace Edm_EntityMappingGeneratedViews
 
@@ -25,7 +25,7 @@ Namespace Edm_EntityMappingGeneratedViews
     ''' Implements a mapping view cache.
     ''' </summary>
     <GeneratedCode("Entity Framework 6 Power Tools", "0.9.2.0")>
-    Friend NotInheritable Class ViewsForBaseEntitySetsfea830eef2c9c2a41e111a2273307b0c9d9dd7eb955411e34332bed71f9d3144
+    Friend NotInheritable Class ViewsForBaseEntitySets5c6bd023212745842cd3ad8203a14133c042f6b59bfd96baaa75a274de2041dd
         Inherits DbMappingViewCache
 
         ''' <summary>
@@ -33,7 +33,7 @@ Namespace Edm_EntityMappingGeneratedViews
         ''' </summary>
         Public Overrides ReadOnly Property MappingHashValue As String
             Get
-                Return "fea830eef2c9c2a41e111a2273307b0c9d9dd7eb955411e34332bed71f9d3144"
+                Return "5c6bd023212745842cd3ad8203a14133c042f6b59bfd96baaa75a274de2041dd"
             End Get
         End Property
 
@@ -49,59 +49,59 @@ Namespace Edm_EntityMappingGeneratedViews
 
             Dim extentName = extent.EntityContainer.Name & "." & extent.Name
 
-            If extentName = "OrderModelStoreContainer.Brands" Then
+            If extentName = "OrderManagementDbModelsStoreContainer.Brands" Then
                 Return GetView0()
             End If
 
-            If extentName = "OrderEntities.Brands" Then
+            If extentName = "OrderManagementDbEntities.Brands" Then
                 Return GetView1()
             End If
 
-            If extentName = "OrderModelStoreContainer.Customers" Then
+            If extentName = "OrderManagementDbModelsStoreContainer.Customers" Then
                 Return GetView2()
             End If
 
-            If extentName = "OrderModelStoreContainer.OrderDetails" Then
+            If extentName = "OrderManagementDbModelsStoreContainer.OrderDetails" Then
                 Return GetView3()
             End If
 
-            If extentName = "OrderModelStoreContainer.Orders" Then
+            If extentName = "OrderManagementDbModelsStoreContainer.Orders" Then
                 Return GetView4()
             End If
 
-            If extentName = "OrderModelStoreContainer.Products" Then
+            If extentName = "OrderManagementDbModelsStoreContainer.Products" Then
                 Return GetView5()
             End If
 
-            If extentName = "OrderModelStoreContainer.Species" Then
+            If extentName = "OrderManagementDbEntities.Customers" Then
                 Return GetView6()
             End If
 
-            If extentName = "OrderEntities.Customers" Then
+            If extentName = "OrderManagementDbEntities.OrderDetails" Then
                 Return GetView7()
             End If
 
-            If extentName = "OrderEntities.OrderDetails" Then
+            If extentName = "OrderManagementDbEntities.Orders" Then
                 Return GetView8()
             End If
 
-            If extentName = "OrderEntities.Orders" Then
+            If extentName = "OrderManagementDbEntities.Products" Then
                 Return GetView9()
             End If
 
-            If extentName = "OrderEntities.Products" Then
+            If extentName = "OrderManagementDbModelsStoreContainer.Inventory" Then
                 Return GetView10()
             End If
 
-            If extentName = "OrderEntities.Species" Then
+            If extentName = "OrderManagementDbEntities.Inventories" Then
                 Return GetView11()
             End If
 
-            If extentName = "OrderModelStoreContainer.Inventories" Then
+            If extentName = "OrderManagementDbModelsStoreContainer.Species" Then
                 Return GetView12()
             End If
 
-            If extentName = "OrderEntities.Inventories" Then
+            If extentName = "OrderManagementDbEntities.Species" Then
                 Return GetView13()
             End If
 
@@ -109,52 +109,52 @@ Namespace Edm_EntityMappingGeneratedViews
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderModelStoreContainer.Brands.
+        ''' Gets the view for OrderManagementDbModelsStoreContainer.Brands.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
         Private Shared Function GetView0() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing Brands" & vbCrLf &
-                "        [OrderModel.Store.Brands](T1.Brands_BrandId, T1.Brands_BrandName, T1.Brands_BrandNameJp)" & vbCrLf &
+                "        [OrderManagementDbModels.Store.Brands](T1.Brands_BrandId, T1.Brands_BrandName, T1.Brands_BrandNameJp)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.BrandId AS Brands_BrandId, " & vbCrLf &
                 "            T.BrandName AS Brands_BrandName, " & vbCrLf &
                 "            T.BrandNameJp AS Brands_BrandNameJp, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderEntities.Brands AS T" & vbCrLf &
+                "        FROM OrderManagementDbEntities.Brands AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderEntities.Brands.
+        ''' Gets the view for OrderManagementDbEntities.Brands.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
         Private Shared Function GetView1() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing Brands" & vbCrLf &
-                "        [OrderModel.Brand](T1.Brand_BrandId, T1.Brand_BrandName, T1.Brand_BrandNameJp)" & vbCrLf &
+                "        [OrderManagementDbModels.Brand](T1.Brand_BrandId, T1.Brand_BrandName, T1.Brand_BrandNameJp)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.BrandId AS Brand_BrandId, " & vbCrLf &
                 "            T.BrandName AS Brand_BrandName, " & vbCrLf &
                 "            T.BrandNameJp AS Brand_BrandNameJp, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderModelStoreContainer.Brands AS T" & vbCrLf &
+                "        FROM OrderManagementDbModelsStoreContainer.Brands AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderModelStoreContainer.Customers.
+        ''' Gets the view for OrderManagementDbModelsStoreContainer.Customers.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
         Private Shared Function GetView2() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing Customers" & vbCrLf &
-                "        [OrderModel.Store.Customers](T1.Customers_CustomerId, T1.Customers_Name, T1.Customers_WechatName, T1.Customers_TaobaoName, T1.Customers_Address, T1.Customers_PostCode, T1.Customers_Phone)" & vbCrLf &
+                "        [OrderManagementDbModels.Store.Customers](T1.Customers_CustomerId, T1.Customers_Name, T1.Customers_WechatName, T1.Customers_TaobaoName, T1.Customers_Address, T1.Customers_PostCode, T1.Customers_Phone)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.CustomerId AS Customers_CustomerId, " & vbCrLf &
@@ -165,19 +165,19 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.PostCode AS Customers_PostCode, " & vbCrLf &
                 "            T.Phone AS Customers_Phone, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderEntities.Customers AS T" & vbCrLf &
+                "        FROM OrderManagementDbEntities.Customers AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderModelStoreContainer.OrderDetails.
+        ''' Gets the view for OrderManagementDbModelsStoreContainer.OrderDetails.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
         Private Shared Function GetView3() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing OrderDetails" & vbCrLf &
-                "        [OrderModel.Store.OrderDetails](T1.OrderDetails_OrderDetailId, T1.OrderDetails_OrderId, T1.OrderDetails_ProductId, T1.OrderDetails_Quantity, T1.OrderDetails_PurchasePrice, T1.OrderDetails_SoldPrice, T1.OrderDetails_Status, T1.OrderDetails_Link)" & vbCrLf &
+                "        [OrderManagementDbModels.Store.OrderDetails](T1.OrderDetails_OrderDetailId, T1.OrderDetails_OrderId, T1.OrderDetails_ProductId, T1.OrderDetails_Quantity, T1.OrderDetails_PurchasePrice, T1.OrderDetails_SoldPrice, T1.OrderDetails_Status, T1.OrderDetails_Link)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.OrderDetailId AS OrderDetails_OrderDetailId, " & vbCrLf &
@@ -189,19 +189,19 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.Status AS OrderDetails_Status, " & vbCrLf &
                 "            T.Link AS OrderDetails_Link, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderEntities.OrderDetails AS T" & vbCrLf &
+                "        FROM OrderManagementDbEntities.OrderDetails AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderModelStoreContainer.Orders.
+        ''' Gets the view for OrderManagementDbModelsStoreContainer.Orders.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
         Private Shared Function GetView4() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing Orders" & vbCrLf &
-                "        [OrderModel.Store.Orders](T1.Orders_OrderId, T1.Orders_CustomerId, T1.Orders_OrderType, T1.Orders_InvoiceNo, T1.Orders_OrderDate, T1.Orders_ShipDate, T1.Orders_Freight)" & vbCrLf &
+                "        [OrderManagementDbModels.Store.Orders](T1.Orders_OrderId, T1.Orders_CustomerId, T1.Orders_OrderType, T1.Orders_InvoiceNo, T1.Orders_OrderDate, T1.Orders_ShipDate, T1.Orders_Freight)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.OrderId AS Orders_OrderId, " & vbCrLf &
@@ -212,19 +212,19 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.ShipDate AS Orders_ShipDate, " & vbCrLf &
                 "            T.Freight AS Orders_Freight, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderEntities.Orders AS T" & vbCrLf &
+                "        FROM OrderManagementDbEntities.Orders AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderModelStoreContainer.Products.
+        ''' Gets the view for OrderManagementDbModelsStoreContainer.Products.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
         Private Shared Function GetView5() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing Products" & vbCrLf &
-                "        [OrderModel.Store.Products](T1.Products_ProductId, T1.Products_SpeciesId, T1.Products_BrandId, T1.Products_ProductName, T1.Products_ProductNameJp)" & vbCrLf &
+                "        [OrderManagementDbModels.Store.Products](T1.Products_ProductId, T1.Products_SpeciesId, T1.Products_BrandId, T1.Products_ProductName, T1.Products_ProductNameJp)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.ProductId AS Products_ProductId, " & vbCrLf &
@@ -233,37 +233,19 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.ProductName AS Products_ProductName, " & vbCrLf &
                 "            T.ProductNameJp AS Products_ProductNameJp, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderEntities.Products AS T" & vbCrLf &
+                "        FROM OrderManagementDbEntities.Products AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderModelStoreContainer.Species.
+        ''' Gets the view for OrderManagementDbEntities.Customers.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
         Private Shared Function GetView6() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
-                "    SELECT VALUE -- Constructing Species" & vbCrLf &
-                "        [OrderModel.Store.Species](T1.Species_SpeciesId, T1.Species_SpeciesName)" & vbCrLf &
-                "    FROM (" & vbCrLf &
-                "        SELECT " & vbCrLf &
-                "            T.SpeciesId AS Species_SpeciesId, " & vbCrLf &
-                "            T.SpeciesName AS Species_SpeciesName, " & vbCrLf &
-                "            True AS _from0" & vbCrLf &
-                "        FROM OrderEntities.Species AS T" & vbCrLf &
-                "    ) AS T1")
-        End Function
-
-        ''' <summary>
-        ''' Gets the view for OrderEntities.Customers.
-        ''' </summary>
-        ''' <returns>The mapping view.</returns>
-        Private Shared Function GetView7() As DbMappingView
-            Return New DbMappingView(
-                "" & vbCrLf &
                 "    SELECT VALUE -- Constructing Customers" & vbCrLf &
-                "        [OrderModel.Customer](T1.Customer_CustomerId, T1.Customer_Name, T1.Customer_WechatName, T1.Customer_TaobaoName, T1.Customer_Address, T1.Customer_PostCode, T1.Customer_Phone)" & vbCrLf &
+                "        [OrderManagementDbModels.Customer](T1.Customer_CustomerId, T1.Customer_Name, T1.Customer_WechatName, T1.Customer_TaobaoName, T1.Customer_Address, T1.Customer_PostCode, T1.Customer_Phone)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.CustomerId AS Customer_CustomerId, " & vbCrLf &
@@ -274,19 +256,19 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.PostCode AS Customer_PostCode, " & vbCrLf &
                 "            T.Phone AS Customer_Phone, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderModelStoreContainer.Customers AS T" & vbCrLf &
+                "        FROM OrderManagementDbModelsStoreContainer.Customers AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderEntities.OrderDetails.
+        ''' Gets the view for OrderManagementDbEntities.OrderDetails.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
-        Private Shared Function GetView8() As DbMappingView
+        Private Shared Function GetView7() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing OrderDetails" & vbCrLf &
-                "        [OrderModel.OrderDetail](T1.OrderDetail_OrderDetailId, T1.OrderDetail_OrderId, T1.OrderDetail_ProductId, T1.OrderDetail_Quantity, T1.OrderDetail_PurchasePrice, T1.OrderDetail_SoldPrice, T1.OrderDetail_Status, T1.OrderDetail_Link)" & vbCrLf &
+                "        [OrderManagementDbModels.OrderDetail](T1.OrderDetail_OrderDetailId, T1.OrderDetail_OrderId, T1.OrderDetail_ProductId, T1.OrderDetail_Quantity, T1.OrderDetail_PurchasePrice, T1.OrderDetail_SoldPrice, T1.OrderDetail_Status, T1.OrderDetail_Link)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.OrderDetailId AS OrderDetail_OrderDetailId, " & vbCrLf &
@@ -298,19 +280,19 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.Status AS OrderDetail_Status, " & vbCrLf &
                 "            T.Link AS OrderDetail_Link, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderModelStoreContainer.OrderDetails AS T" & vbCrLf &
+                "        FROM OrderManagementDbModelsStoreContainer.OrderDetails AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderEntities.Orders.
+        ''' Gets the view for OrderManagementDbEntities.Orders.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
-        Private Shared Function GetView9() As DbMappingView
+        Private Shared Function GetView8() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing Orders" & vbCrLf &
-                "        [OrderModel.Order](T1.Order_OrderId, T1.Order_CustomerId, T1.Order_OrderType, T1.Order_InvoiceNo, T1.Order_OrderDate, T1.Order_ShipDate, T1.Order_Freight)" & vbCrLf &
+                "        [OrderManagementDbModels.Order](T1.Order_OrderId, T1.Order_CustomerId, T1.Order_OrderType, T1.Order_InvoiceNo, T1.Order_OrderDate, T1.Order_ShipDate, T1.Order_Freight)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.OrderId AS Order_OrderId, " & vbCrLf &
@@ -321,19 +303,19 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.ShipDate AS Order_ShipDate, " & vbCrLf &
                 "            T.Freight AS Order_Freight, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderModelStoreContainer.Orders AS T" & vbCrLf &
+                "        FROM OrderManagementDbModelsStoreContainer.Orders AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderEntities.Products.
+        ''' Gets the view for OrderManagementDbEntities.Products.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
-        Private Shared Function GetView10() As DbMappingView
+        Private Shared Function GetView9() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
                 "    SELECT VALUE -- Constructing Products" & vbCrLf &
-                "        [OrderModel.Product](T1.Product_ProductId, T1.Product_SpeciesId, T1.Product_BrandId, T1.Product_ProductName, T1.Product_ProductNameJp)" & vbCrLf &
+                "        [OrderManagementDbModels.Product](T1.Product_ProductId, T1.Product_SpeciesId, T1.Product_BrandId, T1.Product_ProductName, T1.Product_ProductNameJp)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.ProductId AS Product_ProductId, " & vbCrLf &
@@ -342,61 +324,79 @@ Namespace Edm_EntityMappingGeneratedViews
                 "            T.ProductName AS Product_ProductName, " & vbCrLf &
                 "            T.ProductNameJp AS Product_ProductNameJp, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderModelStoreContainer.Products AS T" & vbCrLf &
+                "        FROM OrderManagementDbModelsStoreContainer.Products AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
 
         ''' <summary>
-        ''' Gets the view for OrderEntities.Species.
+        ''' Gets the view for OrderManagementDbModelsStoreContainer.Inventory.
         ''' </summary>
         ''' <returns>The mapping view.</returns>
-        Private Shared Function GetView11() As DbMappingView
+        Private Shared Function GetView10() As DbMappingView
             Return New DbMappingView(
                 "" & vbCrLf &
-                "    SELECT VALUE -- Constructing Species" & vbCrLf &
-                "        [OrderModel.Species](T1.Species_SpeciesId, T1.Species_SpeciesName)" & vbCrLf &
-                "    FROM (" & vbCrLf &
-                "        SELECT " & vbCrLf &
-                "            T.SpeciesId AS Species_SpeciesId, " & vbCrLf &
-                "            T.SpeciesName AS Species_SpeciesName, " & vbCrLf &
-                "            True AS _from0" & vbCrLf &
-                "        FROM OrderModelStoreContainer.Species AS T" & vbCrLf &
-                "    ) AS T1")
-        End Function
-
-        ''' <summary>
-        ''' Gets the view for OrderModelStoreContainer.Inventories.
-        ''' </summary>
-        ''' <returns>The mapping view.</returns>
-        Private Shared Function GetView12() As DbMappingView
-            Return New DbMappingView(
-                "" & vbCrLf &
-                "    SELECT VALUE -- Constructing Inventories" & vbCrLf &
-                "        [OrderModel.Store.Inventories](T1.Inventories_ProductId, T1.Inventories_Quantity)" & vbCrLf &
-                "    FROM (" & vbCrLf &
-                "        SELECT " & vbCrLf &
-                "            T.ProductId AS Inventories_ProductId, " & vbCrLf &
-                "            T.Quantity AS Inventories_Quantity, " & vbCrLf &
-                "            True AS _from0" & vbCrLf &
-                "        FROM OrderEntities.Inventories AS T" & vbCrLf &
-                "    ) AS T1")
-        End Function
-
-        ''' <summary>
-        ''' Gets the view for OrderEntities.Inventories.
-        ''' </summary>
-        ''' <returns>The mapping view.</returns>
-        Private Shared Function GetView13() As DbMappingView
-            Return New DbMappingView(
-                "" & vbCrLf &
-                "    SELECT VALUE -- Constructing Inventories" & vbCrLf &
-                "        [OrderModel.Inventory](T1.Inventory_ProductId, T1.Inventory_Quantity)" & vbCrLf &
+                "    SELECT VALUE -- Constructing Inventory" & vbCrLf &
+                "        [OrderManagementDbModels.Store.Inventory](T1.Inventory_ProductId, T1.Inventory_Quantity)" & vbCrLf &
                 "    FROM (" & vbCrLf &
                 "        SELECT " & vbCrLf &
                 "            T.ProductId AS Inventory_ProductId, " & vbCrLf &
                 "            T.Quantity AS Inventory_Quantity, " & vbCrLf &
                 "            True AS _from0" & vbCrLf &
-                "        FROM OrderModelStoreContainer.Inventories AS T" & vbCrLf &
+                "        FROM OrderManagementDbEntities.Inventories AS T" & vbCrLf &
+                "    ) AS T1")
+        End Function
+
+        ''' <summary>
+        ''' Gets the view for OrderManagementDbEntities.Inventories.
+        ''' </summary>
+        ''' <returns>The mapping view.</returns>
+        Private Shared Function GetView11() As DbMappingView
+            Return New DbMappingView(
+                "" & vbCrLf &
+                "    SELECT VALUE -- Constructing Inventories" & vbCrLf &
+                "        [OrderManagementDbModels.Inventory](T1.Inventory_ProductId, T1.Inventory_Quantity)" & vbCrLf &
+                "    FROM (" & vbCrLf &
+                "        SELECT " & vbCrLf &
+                "            T.ProductId AS Inventory_ProductId, " & vbCrLf &
+                "            T.Quantity AS Inventory_Quantity, " & vbCrLf &
+                "            True AS _from0" & vbCrLf &
+                "        FROM OrderManagementDbModelsStoreContainer.Inventory AS T" & vbCrLf &
+                "    ) AS T1")
+        End Function
+
+        ''' <summary>
+        ''' Gets the view for OrderManagementDbModelsStoreContainer.Species.
+        ''' </summary>
+        ''' <returns>The mapping view.</returns>
+        Private Shared Function GetView12() As DbMappingView
+            Return New DbMappingView(
+                "" & vbCrLf &
+                "    SELECT VALUE -- Constructing Species" & vbCrLf &
+                "        [OrderManagementDbModels.Store.Species](T1.Species_SpeciesId, T1.Species_SpeciesName)" & vbCrLf &
+                "    FROM (" & vbCrLf &
+                "        SELECT " & vbCrLf &
+                "            T.SpeciesId AS Species_SpeciesId, " & vbCrLf &
+                "            T.SpeciesName AS Species_SpeciesName, " & vbCrLf &
+                "            True AS _from0" & vbCrLf &
+                "        FROM OrderManagementDbEntities.Species AS T" & vbCrLf &
+                "    ) AS T1")
+        End Function
+
+        ''' <summary>
+        ''' Gets the view for OrderManagementDbEntities.Species.
+        ''' </summary>
+        ''' <returns>The mapping view.</returns>
+        Private Shared Function GetView13() As DbMappingView
+            Return New DbMappingView(
+                "" & vbCrLf &
+                "    SELECT VALUE -- Constructing Species" & vbCrLf &
+                "        [OrderManagementDbModels.Species](T1.Species_SpeciesId, T1.Species_SpeciesName)" & vbCrLf &
+                "    FROM (" & vbCrLf &
+                "        SELECT " & vbCrLf &
+                "            T.SpeciesId AS Species_SpeciesId, " & vbCrLf &
+                "            T.SpeciesName AS Species_SpeciesName, " & vbCrLf &
+                "            True AS _from0" & vbCrLf &
+                "        FROM OrderManagementDbModelsStoreContainer.Species AS T" & vbCrLf &
                 "    ) AS T1")
         End Function
     End Class

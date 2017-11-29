@@ -1,8 +1,7 @@
 ﻿Imports GalaSoft.MvvmLight.CommandWpf
+Imports MahApps.Metro.Controls.Dialogs
 Imports OrderManagement.Client.Entities.Models
-Imports OrderManagement.Common
 Imports OrderManagement.WpfClient.Service
-Imports OrderManagement.WpfClient.Service.Interfaces
 Imports OrderManagement.WpfClient.ViewModel.Base
 
 Namespace ViewModel.Order
@@ -15,6 +14,16 @@ Namespace ViewModel.Order
         '''     订单service
         ''' </summary>
         Private ReadOnly _orderServiceAgent As IOrderServiceAgent
+
+        ''' <summary>
+        '''     用户service
+        ''' </summary>
+        Private ReadOnly _customerServiceAgent As ICustomerServiceAgent
+
+        ''' <summary>
+        '''     dialog
+        ''' </summary>
+        Private ReadOnly _dialogCoordinator As IDialogCoordinator
 
 #End Region
 
@@ -113,9 +122,11 @@ Namespace ViewModel.Order
         ''' <summary>
         '''     Constructor
         ''' </summary>
-        Public Sub New(orderServiceAgent As IOrderServiceAgent)
+        Public Sub New(orderServiceAgent As IOrderServiceAgent, customerServiceAgent As ICustomerServiceAgent, dialogInstance As IDialogCoordinator)
 
             _orderServiceAgent = orderServiceAgent
+            _dialogCoordinator = dialogInstance
+            _customerServiceAgent = customerServiceAgent
 
             With "Commands"
 
@@ -155,7 +166,22 @@ Namespace ViewModel.Order
         '''     保存订单信息
         ''' </summary>
         Private Sub AddOrUpdateOrder()
-            Throw New NotImplementedException
+
+            'Set Order ID
+            For Each detail In Order.OrderDetailClients
+                detail.OrderId = Order.OrderId
+            Next
+
+            'Set Customer
+            Order.CustomerClient = _customerServiceAgent.GetCustomer(Order.CustomerId)
+
+            Dim result = _orderServiceAgent.AddOrUpdateOrder(Order)
+
+            If result.IsSuccess Then
+                _dialogCoordinator.ShowMessageAsync(Me, "メッセージ", "保存しました")
+            Else
+                _dialogCoordinator.ShowMessageAsync(Me, "エラー", "失敗しました")
+            End If
         End Sub
 
         ''' <summary>

@@ -3,6 +3,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+             dialog:DialogParticipation.Register="{Binding}"
              x:Class="View.Order.AddOrUpdateOrderView"
              mc:Ignorable="d"
              d:DesignHeight="768"
@@ -15,8 +17,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
-            <RowDefinition />
-            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         <Expander Header="订单清单"
                   IsExpanded="True">
@@ -67,6 +67,7 @@
                           HorizontalAlignment="Left"
                           Grid.Row="0"
                           Grid.Column="3"
+                          Margin="3"
                           Width="120"
                           VerticalAlignment="Center"
                           SelectedValue="{Binding OrderType}"
@@ -83,7 +84,8 @@
                             Margin="3"
                             Grid.Row="0"
                             SelectedDate="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                            VerticalAlignment="Center" />
+                            VerticalAlignment="Center"
+                            controls:TextBoxHelper.Watermark="请选择" />
                 <Label Content="客户名称:"
                        Grid.Column="6"
                        HorizontalAlignment="Left"
@@ -95,10 +97,11 @@
                           SelectedValuePath="Value"
                           HorizontalAlignment="Left"
                           Grid.Row="0"
+                          Margin="3"
                           Grid.Column="7"
                           Width="120"
                           VerticalAlignment="Center"
-                          SelectedValue="{Binding CustomerClient.CustomerId}"
+                          SelectedValue="{Binding CustomerId}"
                           ItemsSource="{Binding ConstantListsViewModel.CustomerList, Source={StaticResource Locator}}" />
                 <Label Content="发货日期:"
                        Grid.Column="8"
@@ -112,7 +115,8 @@
                             Margin="3"
                             Grid.Row="0"
                             SelectedDate="{Binding ShipDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                            VerticalAlignment="Center" />
+                            VerticalAlignment="Center"
+                            controls:TextBoxHelper.Watermark="请选择" />
                 <Label Content="邮单编号:"
                        Grid.Column="0"
                        HorizontalAlignment="Left"
@@ -143,6 +147,15 @@
                          Text="{Binding Freight, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                          VerticalAlignment="Center"
                          Width="120" />
+                <Button x:Name="AddOrUpdateOrderButton"
+                        Content="保存"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Grid.Column="9"
+                        Grid.Row="1"
+                        Width="75"
+                        Command="{Binding AddOrUpdateOrderViewModel.AddOrUpdateOrderCommand}"
+                        DataContext="{Binding Source={StaticResource Locator}}" />
             </Grid>
         </Expander>
 
@@ -182,7 +195,7 @@
                                     Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
-        <Grid x:Name="Grid1"
+        <!--<Grid x:Name="Grid1"
               DataContext="{Binding EditingOrderDetail}"
               Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -201,14 +214,12 @@
             <Label Content="订单编号:"
                    Grid.Column="0"
                    HorizontalAlignment="Left"
-                   Margin="3"
                    Grid.Row="0"
                    VerticalAlignment="Center" />
             <TextBox x:Name="OrderIdTextBox1"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      Height="23"
-                     Margin="3"
                      Grid.Row="0"
                      Text="{Binding OrderId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                      VerticalAlignment="Center"
@@ -217,14 +228,12 @@
             <Label Content="订单明细编号:"
                    Grid.Column="0"
                    HorizontalAlignment="Left"
-                   Margin="3"
                    Grid.Row="1"
                    VerticalAlignment="Center" />
             <TextBox x:Name="OrderDetailIdTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      Height="23"
-                     Margin="3"
                      Grid.Row="1"
                      Text="{Binding OrderDetailId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                      VerticalAlignment="Center"
@@ -233,7 +242,6 @@
             <Label Content="产品:"
                    Grid.Column="0"
                    HorizontalAlignment="Left"
-                   Margin="3"
                    Grid.Row="2"
                    VerticalAlignment="Center" />
             <ComboBox x:Name="ProductIdComboBox"
@@ -249,14 +257,12 @@
             <Label Content="采购价格:"
                    Grid.Column="0"
                    HorizontalAlignment="Left"
-                   Margin="3"
                    Grid.Row="3"
                    VerticalAlignment="Center" />
             <TextBox x:Name="PurchasePriceTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      Height="23"
-                     Margin="3"
                      Grid.Row="3"
                      Text="{Binding PurchasePrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                      VerticalAlignment="Center"
@@ -264,14 +270,12 @@
             <Label Content="数量:"
                    Grid.Column="0"
                    HorizontalAlignment="Left"
-                   Margin="3"
                    Grid.Row="4"
                    VerticalAlignment="Center" />
             <TextBox x:Name="QuantityTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      Height="23"
-                     Margin="3"
                      Grid.Row="4"
                      Text="{Binding Quantity, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                      VerticalAlignment="Center"
@@ -279,14 +283,12 @@
             <Label Content="售出价格:"
                    Grid.Column="0"
                    HorizontalAlignment="Left"
-                   Margin="3"
                    Grid.Row="5"
                    VerticalAlignment="Center" />
             <TextBox x:Name="SoldPriceTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      Height="23"
-                     Margin="3"
                      Grid.Row="5"
                      Text="{Binding SoldPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                      VerticalAlignment="Center"
@@ -294,14 +296,12 @@
             <Label Content="采购链接:"
                    Grid.Column="0"
                    HorizontalAlignment="Left"
-                   Margin="3"
                    Grid.Row="6"
                    VerticalAlignment="Center" />
             <TextBox x:Name="LinkTextBox"
                      Grid.Column="1"
                      HorizontalAlignment="Left"
                      Height="23"
-                     Margin="3"
                      Grid.Row="6"
                      Text="{Binding Link, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                      VerticalAlignment="Center"
@@ -331,6 +331,6 @@
                     Grid.Column="3"
                     Width="75"
                     Command="{Binding DeleteOrderDetailCommand, Mode=OneWay}"/>
-        </Grid>
+        </Grid>-->
     </Grid>
 </UserControl>

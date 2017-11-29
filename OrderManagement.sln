@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OrderManagement.Service.Entities", "OrderManagement.Entities\OrderManagement.Service.Entities.vbproj", "{6BBFFDE5-2CE4-4ACD-9EE3-F1D7C495B2E5}"
-EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OrderManagement.WpfClient", "OrderManagement.WpfClient\OrderManagement.WpfClient.vbproj", "{10F3615F-6CF3-4DB9-88C9-B9AEDF5F31A6}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6623C6D8-A93F-492C-8DC7-8264DEAD5E64} = {6623C6D8-A93F-492C-8DC7-8264DEAD5E64}
@@ -24,10 +22,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6BBFFDE5-2CE4-4ACD-9EE3-F1D7C495B2E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BBFFDE5-2CE4-4ACD-9EE3-F1D7C495B2E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BBFFDE5-2CE4-4ACD-9EE3-F1D7C495B2E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BBFFDE5-2CE4-4ACD-9EE3-F1D7C495B2E5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{10F3615F-6CF3-4DB9-88C9-B9AEDF5F31A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{10F3615F-6CF3-4DB9-88C9-B9AEDF5F31A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10F3615F-6CF3-4DB9-88C9-B9AEDF5F31A6}.Release|Any CPU.ActiveCfg = Release|Any CPU

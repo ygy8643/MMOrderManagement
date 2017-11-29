@@ -90,6 +90,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
@@ -128,7 +129,21 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\OrderManagementDb.mdf" />
+    <Content Include="App_Data\OrderManagementDb_log.ldf">
+      <DependentUpon>OrderManagementDb.mdf</DependentUpon>
+    </Content>
     <Content Include="Global.asax" />
+    <Content Include="Models\OrderManagementModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrderManagementModels.edmx</DependentUpon>
+      <LastGenOutput>OrderManagementModels.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Models\OrderManagementModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrderManagementModels.edmx</DependentUpon>
+      <LastGenOutput>OrderManagementModels.vb</LastGenOutput>
+    </Content>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="OrderManagementService.svc" />
@@ -148,6 +163,43 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Core\IRepository.vb" />
+    <Compile Include="Models\Brand.vb">
+      <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Customer.vb">
+      <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Inventory.vb">
+      <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.vb">
+      <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderDetail.vb">
+      <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderManagementModels.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderManagementModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderManagementModels.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderManagementModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderManagementModels.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderManagementModels.Views.vb" />
+    <Compile Include="Models\Product.vb">
+      <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Species.vb">
+      <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\Core\Repository.vb" />
     <Compile Include="OrderManagementService.svc.vb">
       <DependentUpon>OrderManagementService.svc</DependentUpon>
@@ -181,6 +233,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EntityDeploy Include="Models\OrderManagementModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OrderManagementModels.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\OrderManagementModels.edmx.diagram">
+      <DependentUpon>OrderManagementModels.edmx</DependentUpon>
+    </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -199,17 +258,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrderManagement.Common\OrderManagement.Common.vbproj">
       <Project>{7d4fb8fc-dcc1-4aa6-b14b-69c3b6435711}</Project>
       <Name>OrderManagement.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OrderManagement.Entities\OrderManagement.Service.Entities.vbproj">
-      <Project>{6bbffde5-2ce4-4acd-9ee3-f1d7c495b2e5}</Project>
-      <Name>OrderManagement.Service.Entities</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
