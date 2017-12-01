@@ -1,15 +1,13 @@
 ﻿Imports AutoMapper
-Imports OrderManagement.Client.Entities
 Imports OrderManagement.Client.Entities.Models
 Imports OrderManagement.Client.Entities.SearchConditions
 Imports OrderManagement.WpfClient.WcfService
 
 Namespace Config
-
     Public Class MappingProfile
         Inherits Profile
 
-        Protected Overrides Sub Configure()
+        Public Sub New()
 
             'Order
             CreateMap(GetType(OrderClient), GetType(OrderDto)) _
@@ -45,9 +43,9 @@ Namespace Config
             'Search Conditions
             CreateMap(GetType(OrderSearchConditionsClient), GetType(OrderSearchConditionsDto))
             CreateMap(GetType(OrderSearchConditionsDto), GetType(OrderSearchConditionsClient))
+
         End Sub
-
+        
     End Class
-
 End Namespace
 

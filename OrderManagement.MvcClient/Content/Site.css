@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
 }
 
@@ -9,13 +9,6 @@
     padding-right: 15px;
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -23,16 +16,49 @@ textarea {
     max-width: 280px;
 }
 
-.header-block {
-	display: inline-block;
-	vertical-align: top;
-	margin: 0 1%;
-	width: 30%;
-	padding: 30px;
-	background-color:#f5f5f5;
-    color: white;
-	border-radius: 10px;
-	flex: 1;
-	position: relative;
-	cursor: crosshair;
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.logo {
+    height: 185px;
+    background: transparent url(images/logo.jpg) no-repeat;
+}
+
+.logotext {
+    position: absolute;
+    top: 47px;
+    left: 100px;
+}
+
+.logotext h1{
+    color: green;
+    font-family: Impact;
+    font-size: 54px;
+}
+
+.logotext h2{
+    color: green;
+    font-family: Avant Garde;
 }
