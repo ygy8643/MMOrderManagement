@@ -194,6 +194,7 @@
     <Compile Include="App_Start\RouteConfig.vb" />
     <Compile Include="Config\MappingProfile.vb" />
     <Compile Include="Controllers\BrandController.vb" />
+    <Compile Include="Controllers\OrderController.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -265,6 +266,11 @@
     <Content Include="Views\Brand\Create.vbhtml" />
     <Content Include="Views\Brand\Edit.vbhtml" />
     <Content Include="Views\Brand\Delete.vbhtml" />
+    <Content Include="Views\Order\Index.vbhtml" />
+    <Content Include="Views\Order\Details.vbhtml" />
+    <Content Include="Views\Order\Create.vbhtml" />
+    <Content Include="Views\Order\Edit.vbhtml" />
+    <Content Include="Views\Order\Delete.vbhtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
