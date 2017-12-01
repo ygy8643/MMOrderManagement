@@ -172,8 +172,8 @@ Namespace ViewModel.Order
                 detail.OrderId = Order.OrderId
             Next
 
-            'Set Customer
-            Order.CustomerClient = _customerServiceAgent.GetCustomer(Order.CustomerId)
+            'Set Customer to nothing for not adding new customer
+            Order.CustomerClient = nothing
 
             Dim result = _orderServiceAgent.AddOrUpdateOrder(Order)
 

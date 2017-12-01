@@ -17,7 +17,7 @@ Imports System.Data.Entity.Infrastructure.MappingViews
 
 <Assembly: DbMappingViewCacheTypeAttribute(
     GetType(OrderManagement.WcfService.OrderManagementDbEntities),
-    GetType(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySets5c6bd023212745842cd3ad8203a14133c042f6b59bfd96baaa75a274de2041dd))>
+    GetType(Edm_EntityMappingGeneratedViews.ViewsForBaseEntitySetsc3254017b9ed00cdc3670e353f25b73a41c40bced2d1110d53890211a5c9262b))>
 
 Namespace Edm_EntityMappingGeneratedViews
 
@@ -25,7 +25,7 @@ Namespace Edm_EntityMappingGeneratedViews
     ''' Implements a mapping view cache.
     ''' </summary>
     <GeneratedCode("Entity Framework 6 Power Tools", "0.9.2.0")>
-    Friend NotInheritable Class ViewsForBaseEntitySets5c6bd023212745842cd3ad8203a14133c042f6b59bfd96baaa75a274de2041dd
+    Friend NotInheritable Class ViewsForBaseEntitySetsc3254017b9ed00cdc3670e353f25b73a41c40bced2d1110d53890211a5c9262b
         Inherits DbMappingViewCache
 
         ''' <summary>
@@ -33,7 +33,7 @@ Namespace Edm_EntityMappingGeneratedViews
         ''' </summary>
         Public Overrides ReadOnly Property MappingHashValue As String
             Get
-                Return "5c6bd023212745842cd3ad8203a14133c042f6b59bfd96baaa75a274de2041dd"
+                Return "c3254017b9ed00cdc3670e353f25b73a41c40bced2d1110d53890211a5c9262b"
             End Get
         End Property
 

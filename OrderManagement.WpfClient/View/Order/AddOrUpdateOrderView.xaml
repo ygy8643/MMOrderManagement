@@ -17,6 +17,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Expander Header="订单清单"
                   IsExpanded="True">
@@ -30,11 +31,10 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
@@ -56,64 +56,64 @@
                          controls:TextBoxHelper.ButtonCommand="{Binding AddOrUpdateOrderViewModel.SearchOrderCommand, Source={StaticResource Locator}}"
                          Style="{DynamicResource ResourceKey=SearchMetroTextBox}" />
                 <Label Content="订单类型:"
-                       Grid.Column="2"
+                       Grid.Column="0"
                        HorizontalAlignment="Left"
                        Margin="3"
-                       Grid.Row="0"
+                       Grid.Row="1"
                        VerticalAlignment="Center" />
                 <ComboBox x:Name="OrderTypeComboBox"
                           DisplayMemberPath="DisplayName"
                           SelectedValuePath="Value"
                           HorizontalAlignment="Left"
-                          Grid.Row="0"
-                          Grid.Column="3"
+                          Grid.Row="1"
+                          Grid.Column="1"
                           Margin="3"
                           Width="120"
                           VerticalAlignment="Center"
                           SelectedValue="{Binding OrderType}"
                           ItemsSource="{Binding ConstantListsViewModel.OrderTypeList, Source={StaticResource Locator}}" />
                 <Label Content="订单日期:"
-                       Grid.Column="4"
+                       Grid.Column="2"
                        HorizontalAlignment="Left"
                        Margin="3"
-                       Grid.Row="0"
+                       Grid.Row="1"
                        VerticalAlignment="Center" />
                 <DatePicker x:Name="OrderDateDatePicker"
-                            Grid.Column="5"
+                            Grid.Column="3"
                             HorizontalAlignment="Left"
                             Margin="3"
-                            Grid.Row="0"
+                            Grid.Row="1"
                             SelectedDate="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                             VerticalAlignment="Center"
                             controls:TextBoxHelper.Watermark="请选择" />
                 <Label Content="客户名称:"
-                       Grid.Column="6"
+                       Grid.Column="4"
                        HorizontalAlignment="Left"
                        Margin="3"
-                       Grid.Row="0"
+                       Grid.Row="1"
                        VerticalAlignment="Center" />
                 <ComboBox x:Name="CustomerCodeComboBox"
                           DisplayMemberPath="DisplayName"
                           SelectedValuePath="Value"
                           HorizontalAlignment="Left"
-                          Grid.Row="0"
+                          Grid.Row="1"
                           Margin="3"
-                          Grid.Column="7"
+                          Grid.Column="5"
                           Width="120"
                           VerticalAlignment="Center"
                           SelectedValue="{Binding CustomerId, Mode=TwoWay}"
                           ItemsSource="{Binding ConstantListsViewModel.CustomerList, Source={StaticResource Locator}}" />
                 <Label Content="发货日期:"
-                       Grid.Column="8"
+                       Grid.Column="6"
                        HorizontalAlignment="Left"
                        Margin="3"
-                       Grid.Row="0"
+                       Grid.Row="1"
                        VerticalAlignment="Center" />
                 <DatePicker x:Name="ShipDateDatePicker"
-                            Grid.Column="9"
+                            Grid.Column="7"
                             HorizontalAlignment="Left"
                             Margin="3"
-                            Grid.Row="0"
+                            Grid.Row="1"
                             SelectedDate="{Binding ShipDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                             VerticalAlignment="Center"
                             controls:TextBoxHelper.Watermark="请选择" />
@@ -121,14 +121,14 @@
                        Grid.Column="0"
                        HorizontalAlignment="Left"
                        Margin="3"
-                       Grid.Row="1"
+                       Grid.Row="2"
                        VerticalAlignment="Center" />
                 <TextBox x:Name="InvoiceNoTextBox"
                          Grid.Column="1"
                          HorizontalAlignment="Left"
                          Height="23"
                          Margin="3"
-                         Grid.Row="1"
+                         Grid.Row="2"
                          Text="{Binding InvoiceNo, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                          VerticalAlignment="Center"
                          Width="120" />
@@ -136,26 +136,17 @@
                        Grid.Column="2"
                        HorizontalAlignment="Left"
                        Margin="3"
-                       Grid.Row="1"
+                       Grid.Row="2"
                        VerticalAlignment="Center" />
                 <TextBox x:Name="FreightTextBox"
                          Grid.Column="3"
                          HorizontalAlignment="Left"
                          Height="23"
                          Margin="3"
-                         Grid.Row="1"
+                         Grid.Row="2"
                          Text="{Binding Freight, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
                          VerticalAlignment="Center"
                          Width="120" />
-                <Button x:Name="AddOrUpdateOrderButton"
-                        Content="保存"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Grid.Column="9"
-                        Grid.Row="1"
-                        Width="75"
-                        Command="{Binding AddOrUpdateOrderViewModel.AddOrUpdateOrderCommand}"
-                        DataContext="{Binding Source={StaticResource Locator}}" />
             </Grid>
         </Expander>
 
@@ -195,6 +186,18 @@
                                     Width="Auto" />
             </DataGrid.Columns>
         </DataGrid>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button x:Name="AddOrUpdateOrderButton"
+                    Content="保存"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Width="75"
+                    Margin="10"
+                    Command="{Binding AddOrUpdateOrderViewModel.AddOrUpdateOrderCommand}"
+                    DataContext="{Binding Source={StaticResource Locator}}" />
+        </StackPanel>
+
         <!--<Grid x:Name="Grid1"
               DataContext="{Binding EditingOrderDetail}"
               Grid.Row="2">
