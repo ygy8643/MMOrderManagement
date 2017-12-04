@@ -25,6 +25,9 @@ Namespace Models
         <DisplayName("售出价格")>
         Public Property SoldPrice As Nullable(Of Decimal)
 
+        <DisplayName("状态")>
+        Public Property Status As Integer
+
         <DisplayName("采购链接")>
         Public Property Link As String
 

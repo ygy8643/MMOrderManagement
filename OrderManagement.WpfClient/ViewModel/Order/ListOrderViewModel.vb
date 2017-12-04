@@ -1,11 +1,9 @@
 ﻿Imports System.Data
-Imports System.Data.OleDb
-Imports System.Globalization
-Imports System.IO
 Imports GalaSoft.MvvmLight.CommandWpf
 Imports Microsoft.Win32
 Imports OrderManagement.Client.Entities.Models
 Imports OrderManagement.Client.Entities.SearchConditions
+Imports OrderManagement.Common.ExcelExport
 Imports OrderManagement.WpfClient.Service
 Imports OrderManagement.WpfClient.ViewModel.Base
 
@@ -223,70 +221,11 @@ Namespace ViewModel.Order
         ''' <returns></returns>
         Public Function Import(strImportFile As String) As DataSet
 
-            Dim dsResult As New DataSet
-            Dim strConn As String = String.Empty
+            dim excelImport as new ExcelHelper(strImportFile)
 
-            'EXCEL接続文字列
-            If Path.GetExtension(strImportFile).ToLower.Equals(".xls") Then
-                strConn =
-                    String.Format(
-                        "Provider=Microsoft.Jet.OLEDB.4.0;Data Source={0};Extended Properties='Excel 8.0;HDR=NO;IMEX=1;'",
-                        strImportFile)
-            Else
-                strConn =
-                    String.Format(
-                        "Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties='Excel 12.0 Xml;HDR=NO;IMEX=1;'",
-                        strImportFile)
-            End If
+            excelImport.Import()
 
-            'ファイルを開く
-            Dim connExcel As New OleDbConnection(strConn)
-            connExcel.Open()
-
-            'ファイルを読取
-            Dim schemaTable As DataTable = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, Nothing)
-
-            '各シートを取得
-            For Each schemaRow As DataRow In schemaTable.Rows
-                Dim dtExcel As New DataTable
-                Dim strSheetName As String = schemaRow.Item("TABLE_NAME")
-
-                If strSheetName.EndsWith("$") Then
-                    Dim query As String = "SELECT * FROM [" & strSheetName & "]"
-                    Dim daExcel As New OleDbDataAdapter(query, connExcel)
-
-                    dtExcel.Locale = CultureInfo.CurrentCulture
-                    dtExcel.TableName = strSheetName.Replace("$", "")
-                    daExcel.Fill(dtExcel)
-
-                    If dtExcel.Rows.Count > 1 Then
-                        '第一行を列名に変換する
-                        Dim dr As DataRow = dtExcel.Rows(0)
-
-                        For Each dc As DataColumn In dtExcel.Columns
-                            Dim strhead As String = String.Empty
-
-                            strhead = IIf(dr.Item(dc.ColumnName).Equals(DBNull.Value) _
-                                          Or dr.Item(dc.ColumnName) Is Nothing, String.Empty,
-                                          dr.Item(dc.ColumnName).ToString.Trim)
-                            If Not strhead.Equals(String.Empty) Then
-                                dc.ColumnName = strhead
-                            End If
-                        Next
-
-                        dtExcel.Rows.RemoveAt(0)
-
-                        '情報を追加
-                        dsResult.Tables.Add(dtExcel)
-
-                    End If
-
-                End If
-            Next
-
-            connExcel.Close()
-
-            Return dsResult
+            return excelImport.DsExcel
         End Function
 
         ''' <summary>

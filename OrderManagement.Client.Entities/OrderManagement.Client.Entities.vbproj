@@ -52,6 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -72,6 +73,11 @@
   <ItemGroup>
     <Compile Include="Models\BrandClient.vb" />
     <Compile Include="Models\CustomerClient.vb" />
+    <Compile Include="Models\DsClient.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DsClient.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Models\InventoryClient.vb" />
     <Compile Include="Models\OrderClient.vb" />
     <Compile Include="Models\OrderDetailClient.vb" />
@@ -103,6 +109,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Models\DsClient.xsc">
+      <DependentUpon>DsClient.xsd</DependentUpon>
+    </None>
+    <None Include="Models\DsClient.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DsClient.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Models\DsClient.xss">
+      <DependentUpon>DsClient.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

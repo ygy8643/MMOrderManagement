@@ -1,6 +1,11 @@
-﻿Imports GalaSoft.MvvmLight.CommandWpf
+﻿Imports System.Data
+Imports System.Reflection
+Imports GalaSoft.MvvmLight.CommandWpf
 Imports MahApps.Metro.Controls.Dialogs
+Imports Microsoft.Win32
+Imports OrderManagement.Client.Entities
 Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Common.ExcelExport
 Imports OrderManagement.WpfClient.Service
 Imports OrderManagement.WpfClient.ViewModel.Base
 
@@ -115,6 +120,12 @@ Namespace ViewModel.Order
         ''' <returns></returns>
         Public Property DeleteOrderDetailCommand As RelayCommand
 
+        ''' <summary>
+        '''     导出订单信息
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property ExportOrderCommand As RelayCommand
+
 #End Region
 
 #Region "Constructors"
@@ -122,7 +133,8 @@ Namespace ViewModel.Order
         ''' <summary>
         '''     Constructor
         ''' </summary>
-        Public Sub New(orderServiceAgent As IOrderServiceAgent, customerServiceAgent As ICustomerServiceAgent, dialogInstance As IDialogCoordinator)
+        Public Sub New(orderServiceAgent As IOrderServiceAgent, customerServiceAgent As ICustomerServiceAgent,
+                       dialogInstance As IDialogCoordinator)
 
             _orderServiceAgent = orderServiceAgent
             _dialogCoordinator = dialogInstance
@@ -137,6 +149,8 @@ Namespace ViewModel.Order
                 DeleteOrderCommand = New RelayCommand(AddressOf DeleteOrder)
 
                 DeleteOrderDetailCommand = New RelayCommand(AddressOf DeleteOrderDetail)
+
+                ExportOrderCommand = New RelayCommand(AddressOf ExportOrder)
 
             End With
 
@@ -173,7 +187,7 @@ Namespace ViewModel.Order
             Next
 
             'Set Customer to nothing for not adding new customer
-            Order.CustomerClient = nothing
+            Order.CustomerClient = Nothing
 
             Dim result = _orderServiceAgent.AddOrUpdateOrder(Order)
 
@@ -181,6 +195,40 @@ Namespace ViewModel.Order
                 _dialogCoordinator.ShowMessageAsync(Me, "メッセージ", "保存しました")
             Else
                 _dialogCoordinator.ShowMessageAsync(Me, "エラー", "失敗しました")
+            End If
+        End Sub
+
+        ''' <summary>
+        '''     导出订单信息
+        ''' </summary>
+        Private Sub ExportOrder()
+            Dim openFileSelector As New OpenFileDialog
+
+            openFileSelector.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+            If openFileSelector.ShowDialog() = True Then
+                Dim fileName As String = openFileSelector.FileName
+
+                'Change Entity to Datatable
+                Dim dtExport as new DsClient.OrderDetailsDataTable 
+
+                for each detail in Order.OrderDetailClients
+                    Dim row = dtExport.NewOrderDetailsRow()
+
+                    row.OrderDetailId = detail.OrderDetailId 
+                    row.OrderId = detail.OrderId
+                    row.ProductId = detail.ProductId
+                    row.Quantity = detail.Quantity 
+                    row.PurchasePrice = detail.PurchasePrice 
+                    row.SoldPrice = detail.SoldPrice 
+                    row.Status = detail.Status 
+                    row.Link = detail.Link 
+
+                    dtExport.Rows.Add(row )
+                Next
+
+                Dim excelHelper As New ExcelHelper(fileName, "OrderDetails", dtExport)
+
+                excelHelper.Export()
             End If
         End Sub
 

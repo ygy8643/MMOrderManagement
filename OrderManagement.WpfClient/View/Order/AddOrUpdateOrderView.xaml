@@ -196,6 +196,14 @@
                     Margin="10"
                     Command="{Binding AddOrUpdateOrderViewModel.AddOrUpdateOrderCommand}"
                     DataContext="{Binding Source={StaticResource Locator}}" />
+            <Button x:Name="ExportOrderButton"
+                    Content="导出"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Width="75"
+                    Margin="10"
+                    Command="{Binding AddOrUpdateOrderViewModel.ExportOrderCommand}"
+                    DataContext="{Binding Source={StaticResource Locator}}" />
         </StackPanel>
 
         <!--<Grid x:Name="Grid1"

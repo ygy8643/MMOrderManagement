@@ -15,4 +15,6 @@ Partial Public Class Brand
     Public Property BrandName As String
     Public Property BrandNameJp As String
 
+    Public Overridable Property Products As ICollection(Of Product) = New HashSet(Of Product)
+
 End Class

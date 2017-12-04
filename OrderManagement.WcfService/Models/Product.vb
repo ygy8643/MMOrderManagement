@@ -18,5 +18,7 @@ Partial Public Class Product
     Public Property ProductNameJp As String
 
     Public Overridable Property OrderDetails As ICollection(Of OrderDetail) = New HashSet(Of OrderDetail)
+    Public Overridable Property Brand As Brand
+    Public Overridable Property Species As Species
 
 End Class
