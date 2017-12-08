@@ -141,33 +141,44 @@
                              VerticalAlignment="Center"
                              Width="120" />
                 </Grid>
-
-                <Button x:Name="AddButton"
-                        Content="新規"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="10,10,0,0"
-                        Width="75"
-                        Grid.Row="1"
-                        Command="{Binding AddDataCommand}"
-                        Visibility="{Binding IsCreateMaster, Converter={StaticResource TrueToVisibleConverter}}" />
-                <Button x:Name="UpdateButton"
-                        Content="更新"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="100,10,0,0"
-                        Width="75"
-                        Grid.Row="1"
-                        Command="{Binding UpdataDataCommand}"
-                        Visibility="{Binding IsCreateMaster, Converter={StaticResource TrueToHiddenConverter}}" />
-                <Button Content="削除"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Margin="190,10,0,0"
-                        Width="75"
-                        Grid.Row="1"
-                        Command="{Binding DeleteDataCommand}"
-                        Visibility="{Binding IsCreateMaster, Converter={StaticResource TrueToHiddenConverter}}" />
+                <StackPanel Grid.Row="1"
+                            Orientation="Horizontal">
+                    <Button x:Name="AddButton"
+                            Content="新規"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10"
+                            Width="75"
+                            Command="{Binding AddDataCommand}"
+                            Visibility="{Binding IsCreateMaster, Converter={StaticResource TrueToVisibleConverter}}" />
+                    <Button x:Name="UpdateButton"
+                            Content="更新"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10"
+                            Width="75"
+                            Command="{Binding UpdataDataCommand}"
+                            Visibility="{Binding IsCreateMaster, Converter={StaticResource TrueToHiddenConverter}}" />
+                    <Button Content="削除"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10"
+                            Width="75"
+                            Command="{Binding DeleteDataCommand}"
+                            Visibility="{Binding IsCreateMaster, Converter={StaticResource TrueToHiddenConverter}}" />
+                    <Button Content="导入"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10"
+                            Width="75"
+                            Command="{Binding ImportDataCommand}" />
+                    <Button Content="导出"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10"
+                            Width="75"
+                            Command="{Binding ExportDataCommand}" />
+                </StackPanel>
             </Grid>
 
         </Expander>

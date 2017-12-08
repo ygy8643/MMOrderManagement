@@ -30,8 +30,13 @@ Namespace Config
             CreateMap(GetType(CustomerDto), GetType(Customer))
 
             'Product
-            CreateMap(GetType(Product), GetType(ProductDto))
-            CreateMap(GetType(ProductDto), GetType(Product))
+            CreateMap(GetType(Product), GetType(ProductDto)) _
+                .ForMember("BrandDto",Sub(opt) opt.MapFrom("Brand")) _
+                .ForMember("SpeciesDto",Sub(opt) opt.MapFrom("Species"))
+
+            CreateMap(GetType(ProductDto), GetType(Product)) _
+                .ForMember("Brand",Sub(opt) opt.MapFrom("BrandDto")) _
+                .ForMember("Species",Sub(opt) opt.MapFrom("SpeciesDto"))
 
             'Species
             CreateMap(GetType(Species), GetType(SpeciesDto))

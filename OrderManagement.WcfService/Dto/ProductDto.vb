@@ -8,5 +8,9 @@
         Public Property ProductNameJp As String
         Public Property SpeciesId As Integer
 
+        'Navigation Properties
+        Public Property BrandDto As BrandDto 
+        Public Property SpeciesDto As SpeciesDto 
+
     End Class
 End Namespace

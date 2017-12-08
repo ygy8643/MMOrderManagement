@@ -1,6 +1,10 @@
-﻿Imports MahApps.Metro.Controls.Dialogs
+﻿Imports System.Data
+Imports MahApps.Metro.Controls.Dialogs
+Imports Microsoft.Win32
+Imports OrderManagement.Client.Entities
 Imports OrderManagement.Client.Entities.Models
 Imports OrderManagement.Common
+Imports OrderManagement.Common.ExcelExport.Interop
 Imports OrderManagement.WpfClient.Service
 Imports OrderManagement.WpfClient.Service.Interfaces
 
@@ -86,7 +90,7 @@ Namespace ViewModel.Master
         '''     品牌列表
         ''' </summary>
         ''' <returns></returns>
-        Public Property BrandList as list(of ValueNamePair )
+        Public Property BrandList As List(Of ValueNamePair)
 
 #End Region
 
@@ -113,7 +117,6 @@ Namespace ViewModel.Master
             'リストの初期化
             SpeciesList = listService.GetSpeciesList()
             BrandList = listService.GetBrandList()
-
         End Sub
 
 #End Region
@@ -253,6 +256,84 @@ Namespace ViewModel.Master
             Else
                 Return False
             End If
+        End Function
+
+        Public Overrides Sub ImportMasterData()
+            Dim openFileSelector As New OpenFileDialog
+
+            openFileSelector.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+            If openFileSelector.ShowDialog() = True Then
+
+                Dim filePath As String = openFileSelector.FileName
+
+                'Load Excel file
+                Dim excelImport As New ExcelHelperInterop(filePath)
+                'Import
+                excelImport.Import()
+
+                Dim dsExcel As DataSet = excelImport.DsExcel
+
+                'Convert Excel data to Entities
+                Dim productClients As List(Of ProductClient) = Dataset2Entities(dsExcel)
+
+                For Each product In productClients
+                    'Add to database
+                    _productService.CreateProduct(product)
+                Next
+            End If
+        End Sub
+
+        Public Overrides Sub ExportMasterData()
+            Dim openFileSelector As New OpenFileDialog
+
+            openFileSelector.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+            If openFileSelector.ShowDialog() = True Then
+                Dim fileName As String = openFileSelector.FileName
+
+                'Change Entity to Datatable
+                Dim dtExport As New DsClient.ProductsDataTable
+
+                For Each product In MasterData
+                    Dim row = dtExport.NewProductsRow()
+
+                    row.SpeciesId = product.SpeciesId
+                    row.BrandId = product.BrandId
+                    row.ProductName = product.ProductName
+                    row.ProductNameJp = product.ProductNameJp
+
+                    dtExport.Rows.Add(row)
+                Next
+
+                Dim excelHelper As New ExcelHelperInterop(fileName, "Products", dtExport)
+
+                excelHelper.Export()
+            End If
+        End Sub
+
+        ''' <summary>
+        '''     Convert to entities
+        ''' </summary>
+        ''' <param name="ds"></param>
+        ''' <returns></returns>
+        Private Function Dataset2Entities(ds As DataSet) As List(Of ProductClient)
+            Dim result As New List(Of ProductClient)
+
+            If ds.Tables.Count > 0 Then
+
+                For Each row As DataRow In ds.Tables(0).Rows
+                    Dim client As New ProductClient
+
+                    client.SpeciesId = row.Item("SpeciesId").ToString()
+                    client.BrandId = row.Item("BrandId").ToString()
+                    client.ProductName = row.Item("ProductName").ToString()
+                    client.ProductNameJp = row.Item("ProductNameJp").ToString()
+
+                    result.Add(client)
+                Next
+
+            End If
+
+            Return result
         End Function
     End Class
 End Namespace

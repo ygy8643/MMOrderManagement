@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
@@ -66,8 +67,15 @@
   <ItemGroup>
     <Compile Include="Define\ConstantLists.vb" />
     <Compile Include="Define\Constants.vb" />
-    <Compile Include="ExcelExport\ExcelHelper.vb" />
-    <Compile Include="ExcelExport\IExcelHelper.vb" />
+    <Compile Include="Define\MyControlChars.vb" />
+    <Compile Include="ExcelExport\Interop\ExcelHelperInterop.vb" />
+    <Compile Include="ExcelExport\OleDb\CreateResult.vb" />
+    <Compile Include="ExcelExport\OleDb\DataAccess.vb" />
+    <Compile Include="ExcelExport\OleDb\DbMethods.vb" />
+    <Compile Include="ExcelExport\OleDb\ExcelCell.vb" />
+    <Compile Include="ExcelExport\OleDb\ExcelDal.vb" />
+    <Compile Include="ExcelExport\OleDb\ExcelHelperOleDb.vb" />
+    <Compile Include="ExcelExport\Interop\IExcelHelperInterop.vb" />
     <Compile Include="ProcessResult.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

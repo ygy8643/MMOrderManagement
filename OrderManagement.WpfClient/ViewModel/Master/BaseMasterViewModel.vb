@@ -137,6 +137,18 @@ Namespace ViewModel.Master
         Public Property SearchDataCommand As RelayCommand
 
         ''' <summary>
+        ''' 导入
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property ImportDataCommand As RelayCommand
+
+        ''' <summary>
+        ''' 导出
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property ExportDataCommand As RelayCommand
+
+        ''' <summary>
         '''     クリア
         ''' </summary>
         Public Property ClearDataCommand As RelayCommand
@@ -177,6 +189,12 @@ Namespace ViewModel.Master
 
                 '検索
                 SearchDataCommand = New RelayCommand(AddressOf SearchMasterData)
+
+                '导入
+                ImportDataCommand = New RelayCommand(AddressOf ImportMasterData)
+
+                '导出
+                ExportDataCommand = New RelayCommand(AddressOf ExportMasterData)
 
                 'クリア
                 ClearDataCommand = New RelayCommand(AddressOf ClearDetail)
@@ -220,6 +238,16 @@ Namespace ViewModel.Master
         ''' </summary>
         ''' <remarks></remarks>
         Public MustOverride Sub SearchMasterData() Implements IBaseMasterViewModel(Of TMasterType).SearchMasterData
+
+        ''' <summary>
+        ''' インポート
+        ''' </summary>
+        Public MustOverride Sub ImportMasterData() Implements IBaseMasterViewModel(Of TMasterType).ImportMasterData
+
+        ''' <summary>
+        ''' エクスポート
+        ''' </summary>
+        Public MustOverride Sub ExportMasterData() Implements IBaseMasterViewModel(Of TMasterType).ExportMasterData
 
         ''' <summary>
         '''     更新

@@ -33,6 +33,18 @@
         Sub SearchMasterData()
 
         ''' <summary>
+        '''     マスタデータをインポート
+        ''' </summary>
+        ''' <remarks></remarks>
+        Sub ImportMasterData()
+
+        ''' <summary>
+        '''     マスタデータをエクスポート
+        ''' </summary>
+        ''' <remarks></remarks>
+        Sub ExportMasterData()
+
+        ''' <summary>
         '''     画面入力内容をクリア
         ''' </summary>
         ''' <remarks></remarks>

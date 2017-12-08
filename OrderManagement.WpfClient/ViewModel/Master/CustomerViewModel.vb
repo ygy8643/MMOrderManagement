@@ -1,5 +1,9 @@
-﻿Imports MahApps.Metro.Controls.Dialogs
+﻿Imports System.Data
+Imports MahApps.Metro.Controls.Dialogs
+Imports Microsoft.Win32
+Imports OrderManagement.Client.Entities
 Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Common.ExcelExport.Interop
 Imports OrderManagement.WpfClient.Service
 
 Namespace ViewModel.Master
@@ -229,6 +233,88 @@ Namespace ViewModel.Master
             Else
                 Return False
             End If
+        End Function
+
+        Public Overrides Sub ImportMasterData()
+            Dim openFileSelector As New OpenFileDialog
+
+            openFileSelector.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+            If openFileSelector.ShowDialog() = True Then
+
+                Dim filePath As String = openFileSelector.FileName
+
+                'Load Excel file
+                Dim excelImport As New ExcelHelperInterop(filePath)
+                'Import
+                excelImport.Import()
+
+                Dim dsExcel As DataSet = excelImport.DsExcel
+
+                'Convert Excel data to Entities
+                Dim customerClients As List(Of CustomerClient) = Dataset2Entities(dsExcel)
+
+                For Each customer In customerClients
+                    'Add to database
+                    _customerService.CreateCustomer(customer)
+                Next
+            End If
+        End Sub
+
+        Public Overrides Sub ExportMasterData()
+            Dim openFileSelector As New OpenFileDialog
+
+            openFileSelector.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+            If openFileSelector.ShowDialog() = True Then
+                Dim fileName As String = openFileSelector.FileName
+
+                'Change Entity to Datatable
+                Dim dtExport As New DsClient.CustomersDataTable 
+
+                For Each customer In MasterData
+                    Dim row = dtExport.NewCustomersRow()
+
+                    row.Name  = customer.Name
+                    row.WechatName = customer.WechatName
+                    row.TaobaoName  = customer.TaobaoName
+                    row.Address = customer.Address
+                    row.PostCode  = customer.PostCode
+                    row.Phone = customer.Phone
+
+                    dtExport.Rows.Add(row)
+                Next
+
+                Dim excelHelper As New ExcelHelperInterop(fileName, "Customers", dtExport)
+
+                excelHelper.Export()
+            End If
+        End Sub
+
+        ''' <summary>
+        ''' Convert to entities
+        ''' </summary>
+        ''' <param name="ds"></param>
+        ''' <returns></returns>
+        Private Function Dataset2Entities(ds As DataSet) As List(Of CustomerClient)
+            Dim result As New List(Of CustomerClient)
+
+            If ds.Tables.Count > 0 Then
+
+                For Each row As DataRow In ds.Tables(0).Rows
+                    Dim client As New CustomerClient
+
+                    client.Name = row.Item("Name").ToString()
+                    client.WechatName = row.Item("WechatName").ToString()
+                    client.TaobaoName = row.Item("TaobaoName").ToString()
+                    client.Address = row.Item("Address").ToString()
+                    client.PostCode = row.Item("PostCode").ToString()
+                    client.Phone = row.Item("Phone").ToString()
+
+                    result.Add(client)
+                Next
+
+            End If
+
+            Return result
         End Function
     End Class
 End Namespace

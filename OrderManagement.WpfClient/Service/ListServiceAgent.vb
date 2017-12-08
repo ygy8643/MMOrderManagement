@@ -1,4 +1,5 @@
 ﻿Imports OrderManagement.Common
+Imports OrderManagement.Common.Define
 Imports OrderManagement.WpfClient.Service.Interfaces
 Imports OrderManagement.WpfClient.WcfService
 
@@ -13,10 +14,10 @@ Namespace Service
         ''' </summary>
         ''' <returns></returns>
         Public Function GetBrandList() As IEnumerable(Of ValueNamePair) Implements IListServiceAgent.GetBrandList
-            Dim brandDtos = _orderManagementService.GetBrandDtoes ()
+            Dim brandDtos = _orderManagementService.GetBrandDtoes()
 
             Dim query = From ctx In brandDtos
-                        Select New ValueNamePair With {.Value = ctx.BrandId , .DisplayName = ctx.BrandName}
+                        Select New ValueNamePair With {.Value = ctx.BrandId, .DisplayName = ctx.BrandName}
 
             Dim result = query.ToList()
 
@@ -51,7 +52,10 @@ Namespace Service
             Dim productDtos = _orderManagementService.GetProductDtoes()
 
             Dim query = From ctx In productDtos
-                        Select New ValueNamePair With {.Value = ctx.ProductId, .DisplayName = ctx.ProductName}
+                        Select New ValueNamePair With {.Value = ctx.ProductId,
+                            .DisplayName = ctx.SpeciesDto.SpeciesName &
+                            MyControlChars.UnderBar & ctx.BrandDto.BrandName &
+                            MyControlChars.UnderBar & ctx.ProductName}
 
             Dim result = query.ToList()
 

@@ -19,5 +19,9 @@ Namespace Models
 
         <DisplayName("产品日文名称")>
         Public Property ProductNameJp As String
+                
+        'Navigation Properties
+        Public Property BrandClient As BrandClient 
+        Public Property SpeciesClient As SpeciesClient
     End Class
 End Namespace

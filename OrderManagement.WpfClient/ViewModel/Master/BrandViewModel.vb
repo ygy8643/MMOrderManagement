@@ -1,5 +1,9 @@
-﻿Imports MahApps.Metro.Controls.Dialogs
+﻿Imports System.Data
+Imports MahApps.Metro.Controls.Dialogs
+Imports Microsoft.Win32
+Imports OrderManagement.Client.Entities
 Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Common.ExcelExport.Interop
 Imports OrderManagement.WpfClient.Service
 
 Namespace ViewModel.Master
@@ -216,6 +220,62 @@ Namespace ViewModel.Master
         End Sub
 
         ''' <summary>
+        ''' インポート
+        ''' </summary>
+        Public Overrides Sub ImportMasterData()
+            Dim openFileSelector As New OpenFileDialog
+
+            openFileSelector.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+            If openFileSelector.ShowDialog() = True Then
+
+                Dim filePath As String = openFileSelector.FileName
+
+                'Load Excel file
+                Dim excelImport As New ExcelHelperInterop(filePath)
+                'Import
+                excelImport.Import()
+
+                Dim dsExcel As DataSet = excelImport.DsExcel
+
+                'Convert Excel data to Entities
+                Dim brandClients As List(Of BrandClient) = Dataset2Entities(dsExcel)
+
+                For Each brand In brandClients
+                    'Add to database
+                    _brandService.CreateBrand(brand)
+                Next
+            End If
+        End Sub
+
+        ''' <summary>
+        ''' エクスポート
+        ''' </summary>
+        Public Overrides Sub ExportMasterData()
+            Dim openFileSelector As New OpenFileDialog
+
+            openFileSelector.Filter = "Excel Files|*.xls;*.xlsx;*.xlsm"
+            If openFileSelector.ShowDialog() = True Then
+                Dim fileName As String = openFileSelector.FileName
+
+                'Change Entity to Datatable
+                Dim dtExport As New DsClient.BrandsDataTable
+
+                For Each brand In MasterData
+                    Dim row = dtExport.NewBrandsRow()
+
+                    row.BrandName = brand.BrandName
+                    row.BrandNameJp = brand.BrandNameJp
+
+                    dtExport.Rows.Add(row)
+                Next
+
+                Dim excelHelper As New ExcelHelperInterop(fileName, "Brands", dtExport)
+
+                excelHelper.Export()
+            End If
+        End Sub
+
+        ''' <summary>
         '''     保存可能判断
         ''' </summary>
         ''' <returns></returns>
@@ -226,5 +286,30 @@ Namespace ViewModel.Master
                 Return False
             End If
         End Function
+
+        ''' <summary>
+        ''' Convert to entities
+        ''' </summary>
+        ''' <param name="ds"></param>
+        ''' <returns></returns>
+        Private Function Dataset2Entities(ds As DataSet) As List(Of BrandClient)
+            Dim result As New List(Of BrandClient)
+
+            If ds.Tables.Count > 0 Then
+
+                For Each row As DataRow In ds.Tables(0).Rows
+                    Dim brand As New BrandClient
+
+                    brand.BrandName = row.Item("BrandName").ToString()
+                    brand.BrandNameJp = row.Item("BrandNameJp").ToString()
+
+                    result.Add(brand)
+                Next
+
+            End If
+
+            Return result
+        End Function
+
     End Class
 End Namespace

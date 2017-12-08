@@ -1,11 +1,9 @@
-﻿Imports System.Data
-Imports System.Reflection
-Imports GalaSoft.MvvmLight.CommandWpf
+﻿Imports GalaSoft.MvvmLight.CommandWpf
 Imports MahApps.Metro.Controls.Dialogs
 Imports Microsoft.Win32
 Imports OrderManagement.Client.Entities
 Imports OrderManagement.Client.Entities.Models
-Imports OrderManagement.Common.ExcelExport
+Imports OrderManagement.Common.ExcelExport.Interop
 Imports OrderManagement.WpfClient.Service
 Imports OrderManagement.WpfClient.ViewModel.Base
 
@@ -183,7 +181,7 @@ Namespace ViewModel.Order
 
             'Set Order ID
             For Each detail In Order.OrderDetailClients
-                detail.OrderId = Order.OrderId
+                detail.OrderId = Order.CustomerId
             Next
 
             'Set Customer to nothing for not adding new customer
@@ -209,24 +207,24 @@ Namespace ViewModel.Order
                 Dim fileName As String = openFileSelector.FileName
 
                 'Change Entity to Datatable
-                Dim dtExport as new DsClient.OrderDetailsDataTable 
+                Dim dtExport as new DsClient.OrderDetailsDataTable
 
                 for each detail in Order.OrderDetailClients
                     Dim row = dtExport.NewOrderDetailsRow()
 
-                    row.OrderDetailId = detail.OrderDetailId 
+                    row.OrderDetailId = detail.OrderDetailId
                     row.OrderId = detail.OrderId
                     row.ProductId = detail.ProductId
-                    row.Quantity = detail.Quantity 
-                    row.PurchasePrice = detail.PurchasePrice 
-                    row.SoldPrice = detail.SoldPrice 
-                    row.Status = detail.Status 
-                    row.Link = detail.Link 
+                    row.Quantity = detail.Quantity
+                    row.PurchasePrice = detail.PurchasePrice
+                    row.SoldPrice = detail.SoldPrice
+                    row.Status = detail.Status
+                    row.Link = detail.Link
 
-                    dtExport.Rows.Add(row )
+                    dtExport.Rows.Add(row)
                 Next
 
-                Dim excelHelper As New ExcelHelper(fileName, "OrderDetails", dtExport)
+                Dim excelHelper As New ExcelHelperInterop(fileName, "OrderDetails", dtExport)
 
                 excelHelper.Export()
             End If
