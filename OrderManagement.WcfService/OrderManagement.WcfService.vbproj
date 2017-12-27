@@ -129,11 +129,25 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\OrderBlogDb.mdf" />
+    <Content Include="App_Data\OrderBlogDb_log.ldf">
+      <DependentUpon>OrderBlogDb.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\OrderManagementDb.mdf" />
     <Content Include="App_Data\OrderManagementDb_log.ldf">
       <DependentUpon>OrderManagementDb.mdf</DependentUpon>
     </Content>
     <Content Include="Global.asax" />
+    <Content Include="Models\OrderBlogModels.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrderBlogModels.edmx</DependentUpon>
+      <LastGenOutput>OrderBlogModels.Context.vb</LastGenOutput>
+    </Content>
+    <Content Include="Models\OrderBlogModels.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OrderBlogModels.edmx</DependentUpon>
+      <LastGenOutput>OrderBlogModels.vb</LastGenOutput>
+    </Content>
     <Content Include="Models\OrderManagementModels.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>OrderManagementModels.edmx</DependentUpon>
@@ -151,20 +165,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\MappingProfile.vb" />
-    <Compile Include="Dto\BrandDto.vb" />
-    <Compile Include="Dto\CustomerDto.vb" />
-    <Compile Include="Dto\InventoryDto.vb" />
-    <Compile Include="Dto\OrderDetailDto.vb" />
-    <Compile Include="Dto\OrderDto.vb" />
-    <Compile Include="Dto\OrderSearchConditionsDto.vb" />
-    <Compile Include="Dto\SpeciesDto.vb" />
-    <Compile Include="Dto\ProductDto.vb" />
+    <Compile Include="Dto\OrderBlog\CategoryDto.vb" />
+    <Compile Include="Dto\OrderBlog\PostDto.vb" />
+    <Compile Include="Dto\OrderBlog\TagDto.vb" />
+    <Compile Include="Dto\OrderManagement\BrandDto.vb" />
+    <Compile Include="Dto\OrderManagement\CustomerDto.vb" />
+    <Compile Include="Dto\OrderManagement\InventoryDto.vb" />
+    <Compile Include="Dto\OrderManagement\OrderDetailDto.vb" />
+    <Compile Include="Dto\OrderManagement\OrderDto.vb" />
+    <Compile Include="Dto\OrderManagement\OrderSearchConditionsDto.vb" />
+    <Compile Include="Dto\OrderManagement\SpeciesDto.vb" />
+    <Compile Include="Dto\OrderManagement\ProductDto.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\Core\IRepository.vb" />
     <Compile Include="Models\Brand.vb">
       <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.vb">
+      <DependentUpon>OrderBlogModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.vb">
       <DependentUpon>OrderManagementModels.tt</DependentUpon>
@@ -174,6 +194,21 @@
     </Compile>
     <Compile Include="Models\Order.vb">
       <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderBlogModels.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderBlogModels.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderBlogModels.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderBlogModels.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderBlogModels.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderBlogModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderDetail.vb">
       <DependentUpon>OrderManagementModels.tt</DependentUpon>
@@ -194,11 +229,17 @@
       <DependentUpon>OrderManagementModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\OrderManagementModels.Views.vb" />
+    <Compile Include="Models\Post.vb">
+      <DependentUpon>OrderBlogModels.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Product.vb">
       <DependentUpon>OrderManagementModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Species.vb">
       <DependentUpon>OrderManagementModels.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tag.vb">
+      <DependentUpon>OrderBlogModels.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\Core\Repository.vb" />
     <Compile Include="OrderManagementService.svc.vb">
@@ -240,6 +281,13 @@
     <Content Include="Models\OrderManagementModels.edmx.diagram">
       <DependentUpon>OrderManagementModels.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\OrderBlogModels.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OrderBlogModels.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\OrderBlogModels.edmx.diagram">
+      <DependentUpon>OrderBlogModels.edmx</DependentUpon>
+    </Content>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -269,6 +317,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

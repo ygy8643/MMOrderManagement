@@ -1,8 +1,7 @@
 ﻿Imports System.Data
 Imports MahApps.Metro.Controls.Dialogs
 Imports Microsoft.Win32
-Imports OrderManagement.Client.Entities
-Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Client.Entities.Models.OrderManagement
 Imports OrderManagement.Common.ExcelExport.Interop
 Imports OrderManagement.WpfClient.Service
 
@@ -268,7 +267,7 @@ Namespace ViewModel.Master
                 Dim fileName As String = openFileSelector.FileName
 
                 'Change Entity to Datatable
-                Dim dtExport As New DsClient.CustomersDataTable 
+                Dim dtExport As New DsExport.CustomersDataTable 
 
                 For Each customer In MasterData
                     Dim row = dtExport.NewCustomersRow()

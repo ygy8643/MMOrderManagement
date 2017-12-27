@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" />
+  <xs:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" />
   <xs:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.Common" />
+  <xs:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" />
   <xs:element name="GetOrderDto">
     <xs:complexType>
       <xs:sequence>
@@ -12,7 +13,7 @@
   <xs:element name="GetOrderDtoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetOrderDtoResult" nillable="true" type="q1:OrderDto" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetOrderDtoResult" nillable="true" type="q1:OrderDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -24,28 +25,28 @@
   <xs:element name="GetOrderDtoesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetOrderDtoesResult" nillable="true" type="q2:ArrayOfOrderDto" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetOrderDtoesResult" nillable="true" type="q2:ArrayOfOrderDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetOrderDtoesByConditions">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="conditions" nillable="true" type="q3:OrderSearchConditionsDto" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="conditions" nillable="true" type="q3:OrderSearchConditionsDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetOrderDtoesByConditionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetOrderDtoesByConditionsResult" nillable="true" type="q4:ArrayOfOrderDto" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetOrderDtoesByConditionsResult" nillable="true" type="q4:ArrayOfOrderDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddOrderDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="orderDto" nillable="true" type="q5:OrderDto" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="orderDto" nillable="true" type="q5:OrderDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -59,7 +60,7 @@
   <xs:element name="UpdateOrderDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="orderDto" nillable="true" type="q7:OrderDto" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="orderDto" nillable="true" type="q7:OrderDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -73,7 +74,7 @@
   <xs:element name="AddOrUpdateOrderDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="orderDto" nillable="true" type="q9:OrderDto" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="orderDto" nillable="true" type="q9:OrderDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -120,7 +121,7 @@
   <xs:element name="GetCustomerDtoesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetCustomerDtoesResult" nillable="true" type="q12:ArrayOfCustomerDto" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetCustomerDtoesResult" nillable="true" type="q12:ArrayOfCustomerDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -134,28 +135,28 @@
   <xs:element name="GetCustomerDtoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetCustomerDtoResult" nillable="true" type="q13:CustomerDto" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetCustomerDtoResult" nillable="true" type="q13:CustomerDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCustomerDtoByCondition">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="condition" nillable="true" type="q14:CustomerDto" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="condition" nillable="true" type="q14:CustomerDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetCustomerDtoByConditionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetCustomerDtoByConditionResult" nillable="true" type="q15:ArrayOfCustomerDto" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetCustomerDtoByConditionResult" nillable="true" type="q15:ArrayOfCustomerDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddCustomerDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="customerDto" nillable="true" type="q16:CustomerDto" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="customerDto" nillable="true" type="q16:CustomerDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -169,7 +170,7 @@
   <xs:element name="UpdateCustomerDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="customerDto" nillable="true" type="q18:CustomerDto" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="customerDto" nillable="true" type="q18:CustomerDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -216,7 +217,7 @@
   <xs:element name="GetProductDtoesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetProductDtoesResult" nillable="true" type="q21:ArrayOfProductDto" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetProductDtoesResult" nillable="true" type="q21:ArrayOfProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -230,28 +231,28 @@
   <xs:element name="GetProductDtoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetProductDtoResult" nillable="true" type="q22:ProductDto" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetProductDtoResult" nillable="true" type="q22:ProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetProductDtoByCondition">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="condition" nillable="true" type="q23:ProductDto" />
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="condition" nillable="true" type="q23:ProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetProductDtoByConditionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetProductDtoByConditionResult" nillable="true" type="q24:ArrayOfProductDto" />
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetProductDtoByConditionResult" nillable="true" type="q24:ArrayOfProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddProductDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="productDto" nillable="true" type="q25:ProductDto" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="productDto" nillable="true" type="q25:ProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -265,7 +266,7 @@
   <xs:element name="UpdateProductDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="productDto" nillable="true" type="q27:ProductDto" />
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="productDto" nillable="true" type="q27:ProductDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -312,7 +313,7 @@
   <xs:element name="GetSpeciesDtoesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetSpeciesDtoesResult" nillable="true" type="q30:ArrayOfSpeciesDto" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetSpeciesDtoesResult" nillable="true" type="q30:ArrayOfSpeciesDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -326,28 +327,28 @@
   <xs:element name="GetSpeciesDtoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetSpeciesDtoResult" nillable="true" type="q31:SpeciesDto" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetSpeciesDtoResult" nillable="true" type="q31:SpeciesDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetSpeciesDtoByCondition">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="condition" nillable="true" type="q32:SpeciesDto" />
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="condition" nillable="true" type="q32:SpeciesDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetSpeciesDtoByConditionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetSpeciesDtoByConditionResult" nillable="true" type="q33:ArrayOfSpeciesDto" />
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetSpeciesDtoByConditionResult" nillable="true" type="q33:ArrayOfSpeciesDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddSpeciesDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="speciesDto" nillable="true" type="q34:SpeciesDto" />
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="speciesDto" nillable="true" type="q34:SpeciesDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -361,7 +362,7 @@
   <xs:element name="UpdateSpeciesDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="speciesDto" nillable="true" type="q36:SpeciesDto" />
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="speciesDto" nillable="true" type="q36:SpeciesDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -408,7 +409,7 @@
   <xs:element name="GetBrandDtoesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetBrandDtoesResult" nillable="true" type="q39:ArrayOfBrandDto" />
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetBrandDtoesResult" nillable="true" type="q39:ArrayOfBrandDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -422,28 +423,28 @@
   <xs:element name="GetBrandDtoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetBrandDtoResult" nillable="true" type="q40:BrandDto" />
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetBrandDtoResult" nillable="true" type="q40:BrandDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetBrandDtoByCondition">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="condition" nillable="true" type="q41:BrandDto" />
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="condition" nillable="true" type="q41:BrandDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetBrandDtoByConditionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="GetBrandDtoByConditionResult" nillable="true" type="q42:ArrayOfBrandDto" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="GetBrandDtoByConditionResult" nillable="true" type="q42:ArrayOfBrandDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddBrandDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="brandDto" nillable="true" type="q43:BrandDto" />
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="brandDto" nillable="true" type="q43:BrandDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -457,7 +458,7 @@
   <xs:element name="UpdateBrandDto">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" minOccurs="0" name="brandDto" nillable="true" type="q45:BrandDto" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" minOccurs="0" name="brandDto" nillable="true" type="q45:BrandDto" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -493,6 +494,336 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="BrandDtoExistsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoryDtoes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoryDtoesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetCategoryDtoesResult" nillable="true" type="q48:ArrayOfCategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoryDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoryDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetCategoryDtoResult" nillable="true" type="q49:CategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoryDtoByCondition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="condition" nillable="true" type="q50:CategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoryDtoByConditionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetCategoryDtoByConditionResult" nillable="true" type="q51:ArrayOfCategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCategoryDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="categoryDto" nillable="true" type="q52:CategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCategoryDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/OrderManagement.Common" minOccurs="0" name="AddCategoryDtoResult" nillable="true" type="q53:ProcessResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCategoryDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="categoryDto" nillable="true" type="q54:CategoryDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateCategoryDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/OrderManagement.Common" minOccurs="0" name="UpdateCategoryDtoResult" nillable="true" type="q55:ProcessResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCategoryDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCategoryDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/OrderManagement.Common" minOccurs="0" name="DeleteCategoryDtoResult" nillable="true" type="q56:ProcessResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CategoryDtoExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CategoryDtoExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CategoryDtoExistsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDtoes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDtoesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetPostDtoesResult" nillable="true" type="q57:ArrayOfPostDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="postId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetPostDtoResult" nillable="true" type="q58:PostDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDtoByCondition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="condition" nillable="true" type="q59:PostDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDtoByConditionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetPostDtoByConditionResult" nillable="true" type="q60:ArrayOfPostDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLatestPostDtoes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="size" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLatestPostDtoesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetLatestPostDtoesResult" nillable="true" type="q61:ArrayOfPostDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDtoesByCategory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDtoesByCategoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetPostDtoesByCategoryResult" nillable="true" type="q62:ArrayOfPostDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDtoesByTitle">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="searchString" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPostDtoesByTitleResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetPostDtoesByTitleResult" nillable="true" type="q63:ArrayOfPostDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPostDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="postDto" nillable="true" type="q64:PostDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddPostDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/OrderManagement.Common" minOccurs="0" name="AddPostDtoResult" nillable="true" type="q65:ProcessResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePostDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="postDto" nillable="true" type="q66:PostDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdatePostDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/OrderManagement.Common" minOccurs="0" name="UpdatePostDtoResult" nillable="true" type="q67:ProcessResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletePostDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="postId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeletePostDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/OrderManagement.Common" minOccurs="0" name="DeletePostDtoResult" nillable="true" type="q68:ProcessResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PostDtoExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="postId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PostDtoExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PostDtoExistsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagDtoes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagDtoesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetTagDtoesResult" nillable="true" type="q69:ArrayOfTagDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tagId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetTagDtoResult" nillable="true" type="q70:TagDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagDtoByCondition">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="condition" nillable="true" type="q71:TagDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTagDtoByConditionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="GetTagDtoByConditionResult" nillable="true" type="q72:ArrayOfTagDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddTagDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="tagDto" nillable="true" type="q73:TagDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddTagDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/OrderManagement.Common" minOccurs="0" name="AddTagDtoResult" nillable="true" type="q74:ProcessResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTagDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" minOccurs="0" name="tagDto" nillable="true" type="q75:TagDto" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTagDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/OrderManagement.Common" minOccurs="0" name="UpdateTagDtoResult" nillable="true" type="q76:ProcessResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTagDto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tagId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteTagDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/OrderManagement.Common" minOccurs="0" name="DeleteTagDtoResult" nillable="true" type="q77:ProcessResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TagDtoExists">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tagId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TagDtoExistsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TagDtoExistsResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

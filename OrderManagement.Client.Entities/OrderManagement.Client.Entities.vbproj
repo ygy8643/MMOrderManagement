@@ -45,6 +45,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PropertyChanged, Version=1.53.0.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\packages\PropertyChanged.Fody.1.53.0\lib\netstandard10\PropertyChanged.dll</HintPath>
       <Private>False</Private>
@@ -52,7 +56,31 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -71,18 +99,23 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\BrandClient.vb" />
-    <Compile Include="Models\CustomerClient.vb" />
-    <Compile Include="Models\DsClient.Designer.vb">
+    <Compile Include="Models\OrderBlog\CategoryClient.vb" />
+    <Compile Include="Models\OrderBlog\PostClient.vb" />
+    <Compile Include="Models\OrderManagement\BrandClient.vb" />
+    <Compile Include="Models\OrderManagement\CustomerClient.vb" />
+    <Compile Include="Models\OrderManagement\DsExport.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DsClient.xsd</DependentUpon>
+      <DependentUpon>DsExport.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Models\InventoryClient.vb" />
-    <Compile Include="Models\OrderClient.vb" />
-    <Compile Include="Models\OrderDetailClient.vb" />
-    <Compile Include="Models\ProductClient.vb" />
-    <Compile Include="Models\SpeciesClient.vb" />
+    <Compile Include="Models\OrderManagement\DsExport.vb">
+      <DependentUpon>DsExport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OrderManagement\InventoryClient.vb" />
+    <Compile Include="Models\OrderManagement\OrderClient.vb" />
+    <Compile Include="Models\OrderManagement\OrderDetailClient.vb" />
+    <Compile Include="Models\OrderManagement\ProductClient.vb" />
+    <Compile Include="Models\OrderManagement\SpeciesClient.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -109,16 +142,16 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Models\DsClient.xsc">
-      <DependentUpon>DsClient.xsd</DependentUpon>
+    <None Include="Models\OrderManagement\DsExport.xsc">
+      <DependentUpon>DsExport.xsd</DependentUpon>
     </None>
-    <None Include="Models\DsClient.xsd">
+    <None Include="Models\OrderManagement\DsExport.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DsClient.Designer.vb</LastGenOutput>
+      <LastGenOutput>DsExport.Designer.vb</LastGenOutput>
     </None>
-    <None Include="Models\DsClient.xss">
-      <DependentUpon>DsClient.xsd</DependentUpon>
+    <None Include="Models\OrderManagement\DsExport.xss">
+      <DependentUpon>DsExport.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -134,6 +167,7 @@
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="..\packages\Fody.2.0.0\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.2.0.0\build\dotnet\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

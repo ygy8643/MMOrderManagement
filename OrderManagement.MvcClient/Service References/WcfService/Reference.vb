@@ -18,7 +18,8 @@ Namespace WcfService
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="OrderDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="OrderDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManag"& _ 
+        "ement"),  _
      System.SerializableAttribute()>  _
     Partial Public Class OrderDto
         Inherits Object
@@ -43,7 +44,7 @@ Namespace WcfService
         Private OrderDateField As System.Nullable(Of Date)
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private OrderDetailDtoesField() As WcfService.OrderDetailDto
+        Private OrderDetailDtoesField As System.Collections.Generic.List(Of WcfService.OrderDetailDto)
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private OrderIdField As Integer
@@ -130,7 +131,7 @@ Namespace WcfService
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property OrderDetailDtoes() As WcfService.OrderDetailDto()
+        Public Property OrderDetailDtoes() As System.Collections.Generic.List(Of WcfService.OrderDetailDto)
             Get
                 Return Me.OrderDetailDtoesField
             End Get
@@ -193,7 +194,8 @@ Namespace WcfService
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="CustomerDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="CustomerDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManag"& _ 
+        "ement"),  _
      System.SerializableAttribute()>  _
     Partial Public Class CustomerDto
         Inherits Object
@@ -336,7 +338,8 @@ Namespace WcfService
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="OrderDetailDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="OrderDetailDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManag"& _ 
+        "ement"),  _
      System.SerializableAttribute()>  _
     Partial Public Class OrderDetailDto
         Inherits Object
@@ -511,7 +514,8 @@ Namespace WcfService
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="ProductDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="ProductDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManag"& _ 
+        "ement"),  _
      System.SerializableAttribute()>  _
     Partial Public Class ProductDto
         Inherits Object
@@ -519,6 +523,9 @@ Namespace WcfService
         
         <System.NonSerializedAttribute()>  _
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BrandDtoField As WcfService.BrandDto
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private BrandIdField As Integer
@@ -533,6 +540,9 @@ Namespace WcfService
         Private ProductNameJpField As String
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SpeciesDtoField As WcfService.SpeciesDto
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
         Private SpeciesIdField As Integer
         
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
@@ -542,6 +552,19 @@ Namespace WcfService
             End Get
             Set
                 Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BrandDto() As WcfService.BrandDto
+            Get
+                Return Me.BrandDtoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.BrandDtoField, value) <> true) Then
+                    Me.BrandDtoField = value
+                    Me.RaisePropertyChanged("BrandDto")
+                End If
             End Set
         End Property
         
@@ -598,6 +621,19 @@ Namespace WcfService
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SpeciesDto() As WcfService.SpeciesDto
+            Get
+                Return Me.SpeciesDtoField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SpeciesDtoField, value) <> true) Then
+                    Me.SpeciesDtoField = value
+                    Me.RaisePropertyChanged("SpeciesDto")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
         Public Property SpeciesId() As Integer
             Get
                 Return Me.SpeciesIdField
@@ -622,7 +658,152 @@ Namespace WcfService
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="OrderSearchConditionsDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="BrandDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManag"& _ 
+        "ement"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class BrandDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BrandIdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BrandNameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private BrandNameJpField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BrandId() As Integer
+            Get
+                Return Me.BrandIdField
+            End Get
+            Set
+                If (Me.BrandIdField.Equals(value) <> true) Then
+                    Me.BrandIdField = value
+                    Me.RaisePropertyChanged("BrandId")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BrandName() As String
+            Get
+                Return Me.BrandNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.BrandNameField, value) <> true) Then
+                    Me.BrandNameField = value
+                    Me.RaisePropertyChanged("BrandName")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property BrandNameJp() As String
+            Get
+                Return Me.BrandNameJpField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.BrandNameJpField, value) <> true) Then
+                    Me.BrandNameJpField = value
+                    Me.RaisePropertyChanged("BrandNameJp")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="SpeciesDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManag"& _ 
+        "ement"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class SpeciesDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SpeciesIdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private SpeciesNameField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SpeciesId() As Integer
+            Get
+                Return Me.SpeciesIdField
+            End Get
+            Set
+                If (Me.SpeciesIdField.Equals(value) <> true) Then
+                    Me.SpeciesIdField = value
+                    Me.RaisePropertyChanged("SpeciesId")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property SpeciesName() As String
+            Get
+                Return Me.SpeciesNameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.SpeciesNameField, value) <> true) Then
+                    Me.SpeciesNameField = value
+                    Me.RaisePropertyChanged("SpeciesName")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="OrderSearchConditionsDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManag"& _ 
+        "ement"),  _
      System.SerializableAttribute()>  _
     Partial Public Class OrderSearchConditionsDto
         Inherits Object
@@ -701,9 +882,9 @@ Namespace WcfService
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="SpeciesDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="CategoryDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog"),  _
      System.SerializableAttribute()>  _
-    Partial Public Class SpeciesDto
+    Partial Public Class CategoryDto
         Inherits Object
         Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
         
@@ -711,10 +892,16 @@ Namespace WcfService
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private SpeciesIdField As Integer
+        Private DescriptionField As String
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private SpeciesNameField As String
+        Private IdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UrlSlugField As String
         
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
@@ -727,27 +914,53 @@ Namespace WcfService
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property SpeciesId() As Integer
+        Public Property Description() As String
             Get
-                Return Me.SpeciesIdField
+                Return Me.DescriptionField
             End Get
             Set
-                If (Me.SpeciesIdField.Equals(value) <> true) Then
-                    Me.SpeciesIdField = value
-                    Me.RaisePropertyChanged("SpeciesId")
+                If (Object.ReferenceEquals(Me.DescriptionField, value) <> true) Then
+                    Me.DescriptionField = value
+                    Me.RaisePropertyChanged("Description")
                 End If
             End Set
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property SpeciesName() As String
+        Public Property Id() As Integer
             Get
-                Return Me.SpeciesNameField
+                Return Me.IdField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.SpeciesNameField, value) <> true) Then
-                    Me.SpeciesNameField = value
-                    Me.RaisePropertyChanged("SpeciesName")
+                If (Me.IdField.Equals(value) <> true) Then
+                    Me.IdField = value
+                    Me.RaisePropertyChanged("Id")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Name() As String
+            Get
+                Return Me.NameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NameField, value) <> true) Then
+                    Me.NameField = value
+                    Me.RaisePropertyChanged("Name")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UrlSlug() As String
+            Get
+                Return Me.UrlSlugField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UrlSlugField, value) <> true) Then
+                    Me.UrlSlugField = value
+                    Me.RaisePropertyChanged("UrlSlug")
                 End If
             End Set
         End Property
@@ -764,9 +977,9 @@ Namespace WcfService
     
     <System.Diagnostics.DebuggerStepThroughAttribute(),  _
      System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
-     System.Runtime.Serialization.DataContractAttribute(Name:="BrandDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="PostDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog"),  _
      System.SerializableAttribute()>  _
-    Partial Public Class BrandDto
+    Partial Public Class PostDto
         Inherits Object
         Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
         
@@ -774,13 +987,37 @@ Namespace WcfService
         Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private BrandIdField As Integer
+        Private AuthorField As String
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private BrandNameField As String
+        Private CategoryIdField As Integer
         
         <System.Runtime.Serialization.OptionalFieldAttribute()>  _
-        Private BrandNameJpField As String
+        Private DescriptionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private MetaField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ModifiedField As System.Nullable(Of Date)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PostedOnField As System.Nullable(Of Date)
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private PublishedField As Boolean
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private ShortDescriptionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private TitleField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UrlSlugField As String
         
         <Global.System.ComponentModel.BrowsableAttribute(false)>  _
         Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
@@ -793,40 +1030,239 @@ Namespace WcfService
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property BrandId() As Integer
+        Public Property Author() As String
             Get
-                Return Me.BrandIdField
+                Return Me.AuthorField
             End Get
             Set
-                If (Me.BrandIdField.Equals(value) <> true) Then
-                    Me.BrandIdField = value
-                    Me.RaisePropertyChanged("BrandId")
+                If (Object.ReferenceEquals(Me.AuthorField, value) <> true) Then
+                    Me.AuthorField = value
+                    Me.RaisePropertyChanged("Author")
                 End If
             End Set
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property BrandName() As String
+        Public Property CategoryId() As Integer
             Get
-                Return Me.BrandNameField
+                Return Me.CategoryIdField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.BrandNameField, value) <> true) Then
-                    Me.BrandNameField = value
-                    Me.RaisePropertyChanged("BrandName")
+                If (Me.CategoryIdField.Equals(value) <> true) Then
+                    Me.CategoryIdField = value
+                    Me.RaisePropertyChanged("CategoryId")
                 End If
             End Set
         End Property
         
         <System.Runtime.Serialization.DataMemberAttribute()>  _
-        Public Property BrandNameJp() As String
+        Public Property Description() As String
             Get
-                Return Me.BrandNameJpField
+                Return Me.DescriptionField
             End Get
             Set
-                If (Object.ReferenceEquals(Me.BrandNameJpField, value) <> true) Then
-                    Me.BrandNameJpField = value
-                    Me.RaisePropertyChanged("BrandNameJp")
+                If (Object.ReferenceEquals(Me.DescriptionField, value) <> true) Then
+                    Me.DescriptionField = value
+                    Me.RaisePropertyChanged("Description")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Id() As Integer
+            Get
+                Return Me.IdField
+            End Get
+            Set
+                If (Me.IdField.Equals(value) <> true) Then
+                    Me.IdField = value
+                    Me.RaisePropertyChanged("Id")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Meta() As String
+            Get
+                Return Me.MetaField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.MetaField, value) <> true) Then
+                    Me.MetaField = value
+                    Me.RaisePropertyChanged("Meta")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Modified() As System.Nullable(Of Date)
+            Get
+                Return Me.ModifiedField
+            End Get
+            Set
+                If (Me.ModifiedField.Equals(value) <> true) Then
+                    Me.ModifiedField = value
+                    Me.RaisePropertyChanged("Modified")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property PostedOn() As System.Nullable(Of Date)
+            Get
+                Return Me.PostedOnField
+            End Get
+            Set
+                If (Me.PostedOnField.Equals(value) <> true) Then
+                    Me.PostedOnField = value
+                    Me.RaisePropertyChanged("PostedOn")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Published() As Boolean
+            Get
+                Return Me.PublishedField
+            End Get
+            Set
+                If (Me.PublishedField.Equals(value) <> true) Then
+                    Me.PublishedField = value
+                    Me.RaisePropertyChanged("Published")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property ShortDescription() As String
+            Get
+                Return Me.ShortDescriptionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.ShortDescriptionField, value) <> true) Then
+                    Me.ShortDescriptionField = value
+                    Me.RaisePropertyChanged("ShortDescription")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Title() As String
+            Get
+                Return Me.TitleField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.TitleField, value) <> true) Then
+                    Me.TitleField = value
+                    Me.RaisePropertyChanged("Title")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UrlSlug() As String
+            Get
+                Return Me.UrlSlugField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UrlSlugField, value) <> true) Then
+                    Me.UrlSlugField = value
+                    Me.RaisePropertyChanged("UrlSlug")
+                End If
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
+    End Class
+    
+    <System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0"),  _
+     System.Runtime.Serialization.DataContractAttribute(Name:="TagDto", [Namespace]:="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog"),  _
+     System.SerializableAttribute()>  _
+    Partial Public Class TagDto
+        Inherits Object
+        Implements System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
+        
+        <System.NonSerializedAttribute()>  _
+        Private extensionDataField As System.Runtime.Serialization.ExtensionDataObject
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private DescriptionField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private IdField As Integer
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private NameField As String
+        
+        <System.Runtime.Serialization.OptionalFieldAttribute()>  _
+        Private UrlSlugField As String
+        
+        <Global.System.ComponentModel.BrowsableAttribute(false)>  _
+        Public Property ExtensionData() As System.Runtime.Serialization.ExtensionDataObject Implements System.Runtime.Serialization.IExtensibleDataObject.ExtensionData
+            Get
+                Return Me.extensionDataField
+            End Get
+            Set
+                Me.extensionDataField = value
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Description() As String
+            Get
+                Return Me.DescriptionField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.DescriptionField, value) <> true) Then
+                    Me.DescriptionField = value
+                    Me.RaisePropertyChanged("Description")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Id() As Integer
+            Get
+                Return Me.IdField
+            End Get
+            Set
+                If (Me.IdField.Equals(value) <> true) Then
+                    Me.IdField = value
+                    Me.RaisePropertyChanged("Id")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property Name() As String
+            Get
+                Return Me.NameField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.NameField, value) <> true) Then
+                    Me.NameField = value
+                    Me.RaisePropertyChanged("Name")
+                End If
+            End Set
+        End Property
+        
+        <System.Runtime.Serialization.DataMemberAttribute()>  _
+        Public Property UrlSlug() As String
+            Get
+                Return Me.UrlSlugField
+            End Get
+            Set
+                If (Object.ReferenceEquals(Me.UrlSlugField, value) <> true) Then
+                    Me.UrlSlugField = value
+                    Me.RaisePropertyChanged("UrlSlug")
                 End If
             End Set
         End Property
@@ -852,16 +1288,16 @@ Namespace WcfService
         Function GetOrderDtoAsync(ByVal orderId As Integer) As System.Threading.Tasks.Task(Of WcfService.OrderDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesResponse")>  _
-        Function GetOrderDtoes() As WcfService.OrderDto()
+        Function GetOrderDtoes() As System.Collections.Generic.List(Of WcfService.OrderDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesResponse")>  _
-        Function GetOrderDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.OrderDto())
+        Function GetOrderDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.OrderDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditions", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditionsResponse")>  _
-        Function GetOrderDtoesByConditions(ByVal conditions As WcfService.OrderSearchConditionsDto) As WcfService.OrderDto()
+        Function GetOrderDtoesByConditions(ByVal conditions As WcfService.OrderSearchConditionsDto) As System.Collections.Generic.List(Of WcfService.OrderDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditions", ReplyAction:="http://tempuri.org/IOrderManagementService/GetOrderDtoesByConditionsResponse")>  _
-        Function GetOrderDtoesByConditionsAsync(ByVal conditions As WcfService.OrderSearchConditionsDto) As System.Threading.Tasks.Task(Of WcfService.OrderDto())
+        Function GetOrderDtoesByConditionsAsync(ByVal conditions As WcfService.OrderSearchConditionsDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.OrderDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddOrderDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddOrderDtoResponse")>  _
         Function AddOrderDto(ByVal orderDto As WcfService.OrderDto) As OrderManagement.Common.ProcessResult
@@ -894,10 +1330,10 @@ Namespace WcfService
         Function OrderDtoExistsAsync(ByVal orderId As Integer) As System.Threading.Tasks.Task(Of Boolean)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoesResponse")>  _
-        Function GetCustomerDtoes() As WcfService.CustomerDto()
+        Function GetCustomerDtoes() As System.Collections.Generic.List(Of WcfService.CustomerDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoesResponse")>  _
-        Function GetCustomerDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.CustomerDto())
+        Function GetCustomerDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.CustomerDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoResponse")>  _
         Function GetCustomerDto(ByVal customerId As Integer) As WcfService.CustomerDto
@@ -906,10 +1342,10 @@ Namespace WcfService
         Function GetCustomerDtoAsync(ByVal customerId As Integer) As System.Threading.Tasks.Task(Of WcfService.CustomerDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByConditionResponse")>  _
-        Function GetCustomerDtoByCondition(ByVal condition As WcfService.CustomerDto) As WcfService.CustomerDto()
+        Function GetCustomerDtoByCondition(ByVal condition As WcfService.CustomerDto) As System.Collections.Generic.List(Of WcfService.CustomerDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCustomerDtoByConditionResponse")>  _
-        Function GetCustomerDtoByConditionAsync(ByVal condition As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.CustomerDto())
+        Function GetCustomerDtoByConditionAsync(ByVal condition As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.CustomerDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddCustomerDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddCustomerDtoResponse")>  _
         Function AddCustomerDto(ByVal customerDto As WcfService.CustomerDto) As OrderManagement.Common.ProcessResult
@@ -936,10 +1372,10 @@ Namespace WcfService
         Function CustomerDtoExistsAsync(ByVal customerId As Integer) As System.Threading.Tasks.Task(Of Boolean)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoesResponse")>  _
-        Function GetProductDtoes() As WcfService.ProductDto()
+        Function GetProductDtoes() As System.Collections.Generic.List(Of WcfService.ProductDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoesResponse")>  _
-        Function GetProductDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.ProductDto())
+        Function GetProductDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.ProductDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoResponse")>  _
         Function GetProductDto(ByVal productId As Integer) As WcfService.ProductDto
@@ -948,10 +1384,10 @@ Namespace WcfService
         Function GetProductDtoAsync(ByVal productId As Integer) As System.Threading.Tasks.Task(Of WcfService.ProductDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoByConditionResponse")>  _
-        Function GetProductDtoByCondition(ByVal condition As WcfService.ProductDto) As WcfService.ProductDto()
+        Function GetProductDtoByCondition(ByVal condition As WcfService.ProductDto) As System.Collections.Generic.List(Of WcfService.ProductDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetProductDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetProductDtoByConditionResponse")>  _
-        Function GetProductDtoByConditionAsync(ByVal condition As WcfService.ProductDto) As System.Threading.Tasks.Task(Of WcfService.ProductDto())
+        Function GetProductDtoByConditionAsync(ByVal condition As WcfService.ProductDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.ProductDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddProductDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddProductDtoResponse")>  _
         Function AddProductDto(ByVal productDto As WcfService.ProductDto) As OrderManagement.Common.ProcessResult
@@ -978,10 +1414,10 @@ Namespace WcfService
         Function ProductDtoExistsAsync(ByVal productId As Integer) As System.Threading.Tasks.Task(Of Boolean)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoesResponse")>  _
-        Function GetSpeciesDtoes() As WcfService.SpeciesDto()
+        Function GetSpeciesDtoes() As System.Collections.Generic.List(Of WcfService.SpeciesDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoesResponse")>  _
-        Function GetSpeciesDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.SpeciesDto())
+        Function GetSpeciesDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.SpeciesDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoResponse")>  _
         Function GetSpeciesDto(ByVal speciesId As Integer) As WcfService.SpeciesDto
@@ -990,10 +1426,10 @@ Namespace WcfService
         Function GetSpeciesDtoAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of WcfService.SpeciesDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByConditionResponse")>  _
-        Function GetSpeciesDtoByCondition(ByVal condition As WcfService.SpeciesDto) As WcfService.SpeciesDto()
+        Function GetSpeciesDtoByCondition(ByVal condition As WcfService.SpeciesDto) As System.Collections.Generic.List(Of WcfService.SpeciesDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetSpeciesDtoByConditionResponse")>  _
-        Function GetSpeciesDtoByConditionAsync(ByVal condition As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of WcfService.SpeciesDto())
+        Function GetSpeciesDtoByConditionAsync(ByVal condition As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.SpeciesDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddSpeciesDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddSpeciesDtoResponse")>  _
         Function AddSpeciesDto(ByVal speciesDto As WcfService.SpeciesDto) As OrderManagement.Common.ProcessResult
@@ -1020,10 +1456,10 @@ Namespace WcfService
         Function SpeciesDtoExistsAsync(ByVal speciesId As Integer) As System.Threading.Tasks.Task(Of Boolean)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoesResponse")>  _
-        Function GetBrandDtoes() As WcfService.BrandDto()
+        Function GetBrandDtoes() As System.Collections.Generic.List(Of WcfService.BrandDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoesResponse")>  _
-        Function GetBrandDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.BrandDto())
+        Function GetBrandDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.BrandDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoResponse")>  _
         Function GetBrandDto(ByVal brandId As Integer) As WcfService.BrandDto
@@ -1032,10 +1468,10 @@ Namespace WcfService
         Function GetBrandDtoAsync(ByVal brandId As Integer) As System.Threading.Tasks.Task(Of WcfService.BrandDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoByConditionResponse")>  _
-        Function GetBrandDtoByCondition(ByVal condition As WcfService.BrandDto) As WcfService.BrandDto()
+        Function GetBrandDtoByCondition(ByVal condition As WcfService.BrandDto) As System.Collections.Generic.List(Of WcfService.BrandDto)
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetBrandDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetBrandDtoByConditionResponse")>  _
-        Function GetBrandDtoByConditionAsync(ByVal condition As WcfService.BrandDto) As System.Threading.Tasks.Task(Of WcfService.BrandDto())
+        Function GetBrandDtoByConditionAsync(ByVal condition As WcfService.BrandDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.BrandDto))
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddBrandDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddBrandDtoResponse")>  _
         Function AddBrandDto(ByVal brandDto As WcfService.BrandDto) As OrderManagement.Common.ProcessResult
@@ -1060,6 +1496,150 @@ Namespace WcfService
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/BrandDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/BrandDtoExistsResponse")>  _
         Function BrandDtoExistsAsync(ByVal brandId As Integer) As System.Threading.Tasks.Task(Of Boolean)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCategoryDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCategoryDtoesResponse")>  _
+        Function GetCategoryDtoes() As System.Collections.Generic.List(Of WcfService.CategoryDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCategoryDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCategoryDtoesResponse")>  _
+        Function GetCategoryDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.CategoryDto))
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCategoryDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCategoryDtoResponse")>  _
+        Function GetCategoryDto(ByVal categoryId As Integer) As WcfService.CategoryDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCategoryDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCategoryDtoResponse")>  _
+        Function GetCategoryDtoAsync(ByVal categoryId As Integer) As System.Threading.Tasks.Task(Of WcfService.CategoryDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCategoryDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCategoryDtoByConditionResponse")>  _
+        Function GetCategoryDtoByCondition(ByVal condition As WcfService.CategoryDto) As System.Collections.Generic.List(Of WcfService.CategoryDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetCategoryDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetCategoryDtoByConditionResponse")>  _
+        Function GetCategoryDtoByConditionAsync(ByVal condition As WcfService.CategoryDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.CategoryDto))
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddCategoryDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddCategoryDtoResponse")>  _
+        Function AddCategoryDto(ByVal categoryDto As WcfService.CategoryDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddCategoryDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddCategoryDtoResponse")>  _
+        Function AddCategoryDtoAsync(ByVal categoryDto As WcfService.CategoryDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateCategoryDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateCategoryDtoResponse")>  _
+        Function UpdateCategoryDto(ByVal categoryDto As WcfService.CategoryDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateCategoryDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateCategoryDtoResponse")>  _
+        Function UpdateCategoryDtoAsync(ByVal categoryDto As WcfService.CategoryDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteCategoryDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteCategoryDtoResponse")>  _
+        Function DeleteCategoryDto(ByVal categoryId As Integer) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteCategoryDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteCategoryDtoResponse")>  _
+        Function DeleteCategoryDtoAsync(ByVal categoryId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/CategoryDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/CategoryDtoExistsResponse")>  _
+        Function CategoryDtoExists(ByVal categoryId As Integer) As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/CategoryDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/CategoryDtoExistsResponse")>  _
+        Function CategoryDtoExistsAsync(ByVal categoryId As Integer) As System.Threading.Tasks.Task(Of Boolean)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoesResponse")>  _
+        Function GetPostDtoes() As System.Collections.Generic.List(Of WcfService.PostDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoesResponse")>  _
+        Function GetPostDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto))
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoResponse")>  _
+        Function GetPostDto(ByVal postId As Integer) As WcfService.PostDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoResponse")>  _
+        Function GetPostDtoAsync(ByVal postId As Integer) As System.Threading.Tasks.Task(Of WcfService.PostDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoByConditionResponse")>  _
+        Function GetPostDtoByCondition(ByVal condition As WcfService.PostDto) As System.Collections.Generic.List(Of WcfService.PostDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoByConditionResponse")>  _
+        Function GetPostDtoByConditionAsync(ByVal condition As WcfService.PostDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto))
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetLatestPostDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetLatestPostDtoesResponse")>  _
+        Function GetLatestPostDtoes(ByVal size As Integer) As System.Collections.Generic.List(Of WcfService.PostDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetLatestPostDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetLatestPostDtoesResponse")>  _
+        Function GetLatestPostDtoesAsync(ByVal size As Integer) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto))
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDtoesByCategory", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoesByCategoryResponse")>  _
+        Function GetPostDtoesByCategory(ByVal categoryId As Integer) As System.Collections.Generic.List(Of WcfService.PostDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDtoesByCategory", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoesByCategoryResponse")>  _
+        Function GetPostDtoesByCategoryAsync(ByVal categoryId As Integer) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto))
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDtoesByTitle", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoesByTitleResponse")>  _
+        Function GetPostDtoesByTitle(ByVal searchString As String) As System.Collections.Generic.List(Of WcfService.PostDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetPostDtoesByTitle", ReplyAction:="http://tempuri.org/IOrderManagementService/GetPostDtoesByTitleResponse")>  _
+        Function GetPostDtoesByTitleAsync(ByVal searchString As String) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto))
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddPostDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddPostDtoResponse")>  _
+        Function AddPostDto(ByVal postDto As WcfService.PostDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddPostDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddPostDtoResponse")>  _
+        Function AddPostDtoAsync(ByVal postDto As WcfService.PostDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdatePostDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdatePostDtoResponse")>  _
+        Function UpdatePostDto(ByVal postDto As WcfService.PostDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdatePostDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdatePostDtoResponse")>  _
+        Function UpdatePostDtoAsync(ByVal postDto As WcfService.PostDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeletePostDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeletePostDtoResponse")>  _
+        Function DeletePostDto(ByVal postId As Integer) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeletePostDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeletePostDtoResponse")>  _
+        Function DeletePostDtoAsync(ByVal postId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/PostDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/PostDtoExistsResponse")>  _
+        Function PostDtoExists(ByVal postId As Integer) As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/PostDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/PostDtoExistsResponse")>  _
+        Function PostDtoExistsAsync(ByVal postId As Integer) As System.Threading.Tasks.Task(Of Boolean)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetTagDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetTagDtoesResponse")>  _
+        Function GetTagDtoes() As System.Collections.Generic.List(Of WcfService.TagDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetTagDtoes", ReplyAction:="http://tempuri.org/IOrderManagementService/GetTagDtoesResponse")>  _
+        Function GetTagDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.TagDto))
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetTagDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetTagDtoResponse")>  _
+        Function GetTagDto(ByVal tagId As Integer) As WcfService.TagDto
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetTagDto", ReplyAction:="http://tempuri.org/IOrderManagementService/GetTagDtoResponse")>  _
+        Function GetTagDtoAsync(ByVal tagId As Integer) As System.Threading.Tasks.Task(Of WcfService.TagDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetTagDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetTagDtoByConditionResponse")>  _
+        Function GetTagDtoByCondition(ByVal condition As WcfService.TagDto) As System.Collections.Generic.List(Of WcfService.TagDto)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/GetTagDtoByCondition", ReplyAction:="http://tempuri.org/IOrderManagementService/GetTagDtoByConditionResponse")>  _
+        Function GetTagDtoByConditionAsync(ByVal condition As WcfService.TagDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.TagDto))
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddTagDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddTagDtoResponse")>  _
+        Function AddTagDto(ByVal tagDto As WcfService.TagDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/AddTagDto", ReplyAction:="http://tempuri.org/IOrderManagementService/AddTagDtoResponse")>  _
+        Function AddTagDtoAsync(ByVal tagDto As WcfService.TagDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateTagDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateTagDtoResponse")>  _
+        Function UpdateTagDto(ByVal tagDto As WcfService.TagDto) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/UpdateTagDto", ReplyAction:="http://tempuri.org/IOrderManagementService/UpdateTagDtoResponse")>  _
+        Function UpdateTagDtoAsync(ByVal tagDto As WcfService.TagDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteTagDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteTagDtoResponse")>  _
+        Function DeleteTagDto(ByVal tagId As Integer) As OrderManagement.Common.ProcessResult
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/DeleteTagDto", ReplyAction:="http://tempuri.org/IOrderManagementService/DeleteTagDtoResponse")>  _
+        Function DeleteTagDtoAsync(ByVal tagId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/TagDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/TagDtoExistsResponse")>  _
+        Function TagDtoExists(ByVal tagId As Integer) As Boolean
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/IOrderManagementService/TagDtoExists", ReplyAction:="http://tempuri.org/IOrderManagementService/TagDtoExistsResponse")>  _
+        Function TagDtoExistsAsync(ByVal tagId As Integer) As System.Threading.Tasks.Task(Of Boolean)
     End Interface
     
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")>  _
@@ -1101,19 +1681,19 @@ Namespace WcfService
             Return MyBase.Channel.GetOrderDtoAsync(orderId)
         End Function
         
-        Public Function GetOrderDtoes() As WcfService.OrderDto() Implements WcfService.IOrderManagementService.GetOrderDtoes
+        Public Function GetOrderDtoes() As System.Collections.Generic.List(Of WcfService.OrderDto) Implements WcfService.IOrderManagementService.GetOrderDtoes
             Return MyBase.Channel.GetOrderDtoes
         End Function
         
-        Public Function GetOrderDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.OrderDto()) Implements WcfService.IOrderManagementService.GetOrderDtoesAsync
+        Public Function GetOrderDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.OrderDto)) Implements WcfService.IOrderManagementService.GetOrderDtoesAsync
             Return MyBase.Channel.GetOrderDtoesAsync
         End Function
         
-        Public Function GetOrderDtoesByConditions(ByVal conditions As WcfService.OrderSearchConditionsDto) As WcfService.OrderDto() Implements WcfService.IOrderManagementService.GetOrderDtoesByConditions
+        Public Function GetOrderDtoesByConditions(ByVal conditions As WcfService.OrderSearchConditionsDto) As System.Collections.Generic.List(Of WcfService.OrderDto) Implements WcfService.IOrderManagementService.GetOrderDtoesByConditions
             Return MyBase.Channel.GetOrderDtoesByConditions(conditions)
         End Function
         
-        Public Function GetOrderDtoesByConditionsAsync(ByVal conditions As WcfService.OrderSearchConditionsDto) As System.Threading.Tasks.Task(Of WcfService.OrderDto()) Implements WcfService.IOrderManagementService.GetOrderDtoesByConditionsAsync
+        Public Function GetOrderDtoesByConditionsAsync(ByVal conditions As WcfService.OrderSearchConditionsDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.OrderDto)) Implements WcfService.IOrderManagementService.GetOrderDtoesByConditionsAsync
             Return MyBase.Channel.GetOrderDtoesByConditionsAsync(conditions)
         End Function
         
@@ -1157,11 +1737,11 @@ Namespace WcfService
             Return MyBase.Channel.OrderDtoExistsAsync(orderId)
         End Function
         
-        Public Function GetCustomerDtoes() As WcfService.CustomerDto() Implements WcfService.IOrderManagementService.GetCustomerDtoes
+        Public Function GetCustomerDtoes() As System.Collections.Generic.List(Of WcfService.CustomerDto) Implements WcfService.IOrderManagementService.GetCustomerDtoes
             Return MyBase.Channel.GetCustomerDtoes
         End Function
         
-        Public Function GetCustomerDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.CustomerDto()) Implements WcfService.IOrderManagementService.GetCustomerDtoesAsync
+        Public Function GetCustomerDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.CustomerDto)) Implements WcfService.IOrderManagementService.GetCustomerDtoesAsync
             Return MyBase.Channel.GetCustomerDtoesAsync
         End Function
         
@@ -1173,11 +1753,11 @@ Namespace WcfService
             Return MyBase.Channel.GetCustomerDtoAsync(customerId)
         End Function
         
-        Public Function GetCustomerDtoByCondition(ByVal condition As WcfService.CustomerDto) As WcfService.CustomerDto() Implements WcfService.IOrderManagementService.GetCustomerDtoByCondition
+        Public Function GetCustomerDtoByCondition(ByVal condition As WcfService.CustomerDto) As System.Collections.Generic.List(Of WcfService.CustomerDto) Implements WcfService.IOrderManagementService.GetCustomerDtoByCondition
             Return MyBase.Channel.GetCustomerDtoByCondition(condition)
         End Function
         
-        Public Function GetCustomerDtoByConditionAsync(ByVal condition As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of WcfService.CustomerDto()) Implements WcfService.IOrderManagementService.GetCustomerDtoByConditionAsync
+        Public Function GetCustomerDtoByConditionAsync(ByVal condition As WcfService.CustomerDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.CustomerDto)) Implements WcfService.IOrderManagementService.GetCustomerDtoByConditionAsync
             Return MyBase.Channel.GetCustomerDtoByConditionAsync(condition)
         End Function
         
@@ -1213,11 +1793,11 @@ Namespace WcfService
             Return MyBase.Channel.CustomerDtoExistsAsync(customerId)
         End Function
         
-        Public Function GetProductDtoes() As WcfService.ProductDto() Implements WcfService.IOrderManagementService.GetProductDtoes
+        Public Function GetProductDtoes() As System.Collections.Generic.List(Of WcfService.ProductDto) Implements WcfService.IOrderManagementService.GetProductDtoes
             Return MyBase.Channel.GetProductDtoes
         End Function
         
-        Public Function GetProductDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.ProductDto()) Implements WcfService.IOrderManagementService.GetProductDtoesAsync
+        Public Function GetProductDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.ProductDto)) Implements WcfService.IOrderManagementService.GetProductDtoesAsync
             Return MyBase.Channel.GetProductDtoesAsync
         End Function
         
@@ -1229,11 +1809,11 @@ Namespace WcfService
             Return MyBase.Channel.GetProductDtoAsync(productId)
         End Function
         
-        Public Function GetProductDtoByCondition(ByVal condition As WcfService.ProductDto) As WcfService.ProductDto() Implements WcfService.IOrderManagementService.GetProductDtoByCondition
+        Public Function GetProductDtoByCondition(ByVal condition As WcfService.ProductDto) As System.Collections.Generic.List(Of WcfService.ProductDto) Implements WcfService.IOrderManagementService.GetProductDtoByCondition
             Return MyBase.Channel.GetProductDtoByCondition(condition)
         End Function
         
-        Public Function GetProductDtoByConditionAsync(ByVal condition As WcfService.ProductDto) As System.Threading.Tasks.Task(Of WcfService.ProductDto()) Implements WcfService.IOrderManagementService.GetProductDtoByConditionAsync
+        Public Function GetProductDtoByConditionAsync(ByVal condition As WcfService.ProductDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.ProductDto)) Implements WcfService.IOrderManagementService.GetProductDtoByConditionAsync
             Return MyBase.Channel.GetProductDtoByConditionAsync(condition)
         End Function
         
@@ -1269,11 +1849,11 @@ Namespace WcfService
             Return MyBase.Channel.ProductDtoExistsAsync(productId)
         End Function
         
-        Public Function GetSpeciesDtoes() As WcfService.SpeciesDto() Implements WcfService.IOrderManagementService.GetSpeciesDtoes
+        Public Function GetSpeciesDtoes() As System.Collections.Generic.List(Of WcfService.SpeciesDto) Implements WcfService.IOrderManagementService.GetSpeciesDtoes
             Return MyBase.Channel.GetSpeciesDtoes
         End Function
         
-        Public Function GetSpeciesDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.SpeciesDto()) Implements WcfService.IOrderManagementService.GetSpeciesDtoesAsync
+        Public Function GetSpeciesDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.SpeciesDto)) Implements WcfService.IOrderManagementService.GetSpeciesDtoesAsync
             Return MyBase.Channel.GetSpeciesDtoesAsync
         End Function
         
@@ -1285,11 +1865,11 @@ Namespace WcfService
             Return MyBase.Channel.GetSpeciesDtoAsync(speciesId)
         End Function
         
-        Public Function GetSpeciesDtoByCondition(ByVal condition As WcfService.SpeciesDto) As WcfService.SpeciesDto() Implements WcfService.IOrderManagementService.GetSpeciesDtoByCondition
+        Public Function GetSpeciesDtoByCondition(ByVal condition As WcfService.SpeciesDto) As System.Collections.Generic.List(Of WcfService.SpeciesDto) Implements WcfService.IOrderManagementService.GetSpeciesDtoByCondition
             Return MyBase.Channel.GetSpeciesDtoByCondition(condition)
         End Function
         
-        Public Function GetSpeciesDtoByConditionAsync(ByVal condition As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of WcfService.SpeciesDto()) Implements WcfService.IOrderManagementService.GetSpeciesDtoByConditionAsync
+        Public Function GetSpeciesDtoByConditionAsync(ByVal condition As WcfService.SpeciesDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.SpeciesDto)) Implements WcfService.IOrderManagementService.GetSpeciesDtoByConditionAsync
             Return MyBase.Channel.GetSpeciesDtoByConditionAsync(condition)
         End Function
         
@@ -1325,11 +1905,11 @@ Namespace WcfService
             Return MyBase.Channel.SpeciesDtoExistsAsync(speciesId)
         End Function
         
-        Public Function GetBrandDtoes() As WcfService.BrandDto() Implements WcfService.IOrderManagementService.GetBrandDtoes
+        Public Function GetBrandDtoes() As System.Collections.Generic.List(Of WcfService.BrandDto) Implements WcfService.IOrderManagementService.GetBrandDtoes
             Return MyBase.Channel.GetBrandDtoes
         End Function
         
-        Public Function GetBrandDtoesAsync() As System.Threading.Tasks.Task(Of WcfService.BrandDto()) Implements WcfService.IOrderManagementService.GetBrandDtoesAsync
+        Public Function GetBrandDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.BrandDto)) Implements WcfService.IOrderManagementService.GetBrandDtoesAsync
             Return MyBase.Channel.GetBrandDtoesAsync
         End Function
         
@@ -1341,11 +1921,11 @@ Namespace WcfService
             Return MyBase.Channel.GetBrandDtoAsync(brandId)
         End Function
         
-        Public Function GetBrandDtoByCondition(ByVal condition As WcfService.BrandDto) As WcfService.BrandDto() Implements WcfService.IOrderManagementService.GetBrandDtoByCondition
+        Public Function GetBrandDtoByCondition(ByVal condition As WcfService.BrandDto) As System.Collections.Generic.List(Of WcfService.BrandDto) Implements WcfService.IOrderManagementService.GetBrandDtoByCondition
             Return MyBase.Channel.GetBrandDtoByCondition(condition)
         End Function
         
-        Public Function GetBrandDtoByConditionAsync(ByVal condition As WcfService.BrandDto) As System.Threading.Tasks.Task(Of WcfService.BrandDto()) Implements WcfService.IOrderManagementService.GetBrandDtoByConditionAsync
+        Public Function GetBrandDtoByConditionAsync(ByVal condition As WcfService.BrandDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.BrandDto)) Implements WcfService.IOrderManagementService.GetBrandDtoByConditionAsync
             Return MyBase.Channel.GetBrandDtoByConditionAsync(condition)
         End Function
         
@@ -1379,6 +1959,198 @@ Namespace WcfService
         
         Public Function BrandDtoExistsAsync(ByVal brandId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.BrandDtoExistsAsync
             Return MyBase.Channel.BrandDtoExistsAsync(brandId)
+        End Function
+        
+        Public Function GetCategoryDtoes() As System.Collections.Generic.List(Of WcfService.CategoryDto) Implements WcfService.IOrderManagementService.GetCategoryDtoes
+            Return MyBase.Channel.GetCategoryDtoes
+        End Function
+        
+        Public Function GetCategoryDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.CategoryDto)) Implements WcfService.IOrderManagementService.GetCategoryDtoesAsync
+            Return MyBase.Channel.GetCategoryDtoesAsync
+        End Function
+        
+        Public Function GetCategoryDto(ByVal categoryId As Integer) As WcfService.CategoryDto Implements WcfService.IOrderManagementService.GetCategoryDto
+            Return MyBase.Channel.GetCategoryDto(categoryId)
+        End Function
+        
+        Public Function GetCategoryDtoAsync(ByVal categoryId As Integer) As System.Threading.Tasks.Task(Of WcfService.CategoryDto) Implements WcfService.IOrderManagementService.GetCategoryDtoAsync
+            Return MyBase.Channel.GetCategoryDtoAsync(categoryId)
+        End Function
+        
+        Public Function GetCategoryDtoByCondition(ByVal condition As WcfService.CategoryDto) As System.Collections.Generic.List(Of WcfService.CategoryDto) Implements WcfService.IOrderManagementService.GetCategoryDtoByCondition
+            Return MyBase.Channel.GetCategoryDtoByCondition(condition)
+        End Function
+        
+        Public Function GetCategoryDtoByConditionAsync(ByVal condition As WcfService.CategoryDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.CategoryDto)) Implements WcfService.IOrderManagementService.GetCategoryDtoByConditionAsync
+            Return MyBase.Channel.GetCategoryDtoByConditionAsync(condition)
+        End Function
+        
+        Public Function AddCategoryDto(ByVal categoryDto As WcfService.CategoryDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.AddCategoryDto
+            Return MyBase.Channel.AddCategoryDto(categoryDto)
+        End Function
+        
+        Public Function AddCategoryDtoAsync(ByVal categoryDto As WcfService.CategoryDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.AddCategoryDtoAsync
+            Return MyBase.Channel.AddCategoryDtoAsync(categoryDto)
+        End Function
+        
+        Public Function UpdateCategoryDto(ByVal categoryDto As WcfService.CategoryDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.UpdateCategoryDto
+            Return MyBase.Channel.UpdateCategoryDto(categoryDto)
+        End Function
+        
+        Public Function UpdateCategoryDtoAsync(ByVal categoryDto As WcfService.CategoryDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.UpdateCategoryDtoAsync
+            Return MyBase.Channel.UpdateCategoryDtoAsync(categoryDto)
+        End Function
+        
+        Public Function DeleteCategoryDto(ByVal categoryId As Integer) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteCategoryDto
+            Return MyBase.Channel.DeleteCategoryDto(categoryId)
+        End Function
+        
+        Public Function DeleteCategoryDtoAsync(ByVal categoryId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteCategoryDtoAsync
+            Return MyBase.Channel.DeleteCategoryDtoAsync(categoryId)
+        End Function
+        
+        Public Function CategoryDtoExists(ByVal categoryId As Integer) As Boolean Implements WcfService.IOrderManagementService.CategoryDtoExists
+            Return MyBase.Channel.CategoryDtoExists(categoryId)
+        End Function
+        
+        Public Function CategoryDtoExistsAsync(ByVal categoryId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.CategoryDtoExistsAsync
+            Return MyBase.Channel.CategoryDtoExistsAsync(categoryId)
+        End Function
+        
+        Public Function GetPostDtoes() As System.Collections.Generic.List(Of WcfService.PostDto) Implements WcfService.IOrderManagementService.GetPostDtoes
+            Return MyBase.Channel.GetPostDtoes
+        End Function
+        
+        Public Function GetPostDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto)) Implements WcfService.IOrderManagementService.GetPostDtoesAsync
+            Return MyBase.Channel.GetPostDtoesAsync
+        End Function
+        
+        Public Function GetPostDto(ByVal postId As Integer) As WcfService.PostDto Implements WcfService.IOrderManagementService.GetPostDto
+            Return MyBase.Channel.GetPostDto(postId)
+        End Function
+        
+        Public Function GetPostDtoAsync(ByVal postId As Integer) As System.Threading.Tasks.Task(Of WcfService.PostDto) Implements WcfService.IOrderManagementService.GetPostDtoAsync
+            Return MyBase.Channel.GetPostDtoAsync(postId)
+        End Function
+        
+        Public Function GetPostDtoByCondition(ByVal condition As WcfService.PostDto) As System.Collections.Generic.List(Of WcfService.PostDto) Implements WcfService.IOrderManagementService.GetPostDtoByCondition
+            Return MyBase.Channel.GetPostDtoByCondition(condition)
+        End Function
+        
+        Public Function GetPostDtoByConditionAsync(ByVal condition As WcfService.PostDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto)) Implements WcfService.IOrderManagementService.GetPostDtoByConditionAsync
+            Return MyBase.Channel.GetPostDtoByConditionAsync(condition)
+        End Function
+        
+        Public Function GetLatestPostDtoes(ByVal size As Integer) As System.Collections.Generic.List(Of WcfService.PostDto) Implements WcfService.IOrderManagementService.GetLatestPostDtoes
+            Return MyBase.Channel.GetLatestPostDtoes(size)
+        End Function
+        
+        Public Function GetLatestPostDtoesAsync(ByVal size As Integer) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto)) Implements WcfService.IOrderManagementService.GetLatestPostDtoesAsync
+            Return MyBase.Channel.GetLatestPostDtoesAsync(size)
+        End Function
+        
+        Public Function GetPostDtoesByCategory(ByVal categoryId As Integer) As System.Collections.Generic.List(Of WcfService.PostDto) Implements WcfService.IOrderManagementService.GetPostDtoesByCategory
+            Return MyBase.Channel.GetPostDtoesByCategory(categoryId)
+        End Function
+        
+        Public Function GetPostDtoesByCategoryAsync(ByVal categoryId As Integer) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto)) Implements WcfService.IOrderManagementService.GetPostDtoesByCategoryAsync
+            Return MyBase.Channel.GetPostDtoesByCategoryAsync(categoryId)
+        End Function
+        
+        Public Function GetPostDtoesByTitle(ByVal searchString As String) As System.Collections.Generic.List(Of WcfService.PostDto) Implements WcfService.IOrderManagementService.GetPostDtoesByTitle
+            Return MyBase.Channel.GetPostDtoesByTitle(searchString)
+        End Function
+        
+        Public Function GetPostDtoesByTitleAsync(ByVal searchString As String) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.PostDto)) Implements WcfService.IOrderManagementService.GetPostDtoesByTitleAsync
+            Return MyBase.Channel.GetPostDtoesByTitleAsync(searchString)
+        End Function
+        
+        Public Function AddPostDto(ByVal postDto As WcfService.PostDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.AddPostDto
+            Return MyBase.Channel.AddPostDto(postDto)
+        End Function
+        
+        Public Function AddPostDtoAsync(ByVal postDto As WcfService.PostDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.AddPostDtoAsync
+            Return MyBase.Channel.AddPostDtoAsync(postDto)
+        End Function
+        
+        Public Function UpdatePostDto(ByVal postDto As WcfService.PostDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.UpdatePostDto
+            Return MyBase.Channel.UpdatePostDto(postDto)
+        End Function
+        
+        Public Function UpdatePostDtoAsync(ByVal postDto As WcfService.PostDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.UpdatePostDtoAsync
+            Return MyBase.Channel.UpdatePostDtoAsync(postDto)
+        End Function
+        
+        Public Function DeletePostDto(ByVal postId As Integer) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeletePostDto
+            Return MyBase.Channel.DeletePostDto(postId)
+        End Function
+        
+        Public Function DeletePostDtoAsync(ByVal postId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeletePostDtoAsync
+            Return MyBase.Channel.DeletePostDtoAsync(postId)
+        End Function
+        
+        Public Function PostDtoExists(ByVal postId As Integer) As Boolean Implements WcfService.IOrderManagementService.PostDtoExists
+            Return MyBase.Channel.PostDtoExists(postId)
+        End Function
+        
+        Public Function PostDtoExistsAsync(ByVal postId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.PostDtoExistsAsync
+            Return MyBase.Channel.PostDtoExistsAsync(postId)
+        End Function
+        
+        Public Function GetTagDtoes() As System.Collections.Generic.List(Of WcfService.TagDto) Implements WcfService.IOrderManagementService.GetTagDtoes
+            Return MyBase.Channel.GetTagDtoes
+        End Function
+        
+        Public Function GetTagDtoesAsync() As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.TagDto)) Implements WcfService.IOrderManagementService.GetTagDtoesAsync
+            Return MyBase.Channel.GetTagDtoesAsync
+        End Function
+        
+        Public Function GetTagDto(ByVal tagId As Integer) As WcfService.TagDto Implements WcfService.IOrderManagementService.GetTagDto
+            Return MyBase.Channel.GetTagDto(tagId)
+        End Function
+        
+        Public Function GetTagDtoAsync(ByVal tagId As Integer) As System.Threading.Tasks.Task(Of WcfService.TagDto) Implements WcfService.IOrderManagementService.GetTagDtoAsync
+            Return MyBase.Channel.GetTagDtoAsync(tagId)
+        End Function
+        
+        Public Function GetTagDtoByCondition(ByVal condition As WcfService.TagDto) As System.Collections.Generic.List(Of WcfService.TagDto) Implements WcfService.IOrderManagementService.GetTagDtoByCondition
+            Return MyBase.Channel.GetTagDtoByCondition(condition)
+        End Function
+        
+        Public Function GetTagDtoByConditionAsync(ByVal condition As WcfService.TagDto) As System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of WcfService.TagDto)) Implements WcfService.IOrderManagementService.GetTagDtoByConditionAsync
+            Return MyBase.Channel.GetTagDtoByConditionAsync(condition)
+        End Function
+        
+        Public Function AddTagDto(ByVal tagDto As WcfService.TagDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.AddTagDto
+            Return MyBase.Channel.AddTagDto(tagDto)
+        End Function
+        
+        Public Function AddTagDtoAsync(ByVal tagDto As WcfService.TagDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.AddTagDtoAsync
+            Return MyBase.Channel.AddTagDtoAsync(tagDto)
+        End Function
+        
+        Public Function UpdateTagDto(ByVal tagDto As WcfService.TagDto) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.UpdateTagDto
+            Return MyBase.Channel.UpdateTagDto(tagDto)
+        End Function
+        
+        Public Function UpdateTagDtoAsync(ByVal tagDto As WcfService.TagDto) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.UpdateTagDtoAsync
+            Return MyBase.Channel.UpdateTagDtoAsync(tagDto)
+        End Function
+        
+        Public Function DeleteTagDto(ByVal tagId As Integer) As OrderManagement.Common.ProcessResult Implements WcfService.IOrderManagementService.DeleteTagDto
+            Return MyBase.Channel.DeleteTagDto(tagId)
+        End Function
+        
+        Public Function DeleteTagDtoAsync(ByVal tagId As Integer) As System.Threading.Tasks.Task(Of OrderManagement.Common.ProcessResult) Implements WcfService.IOrderManagementService.DeleteTagDtoAsync
+            Return MyBase.Channel.DeleteTagDtoAsync(tagId)
+        End Function
+        
+        Public Function TagDtoExists(ByVal tagId As Integer) As Boolean Implements WcfService.IOrderManagementService.TagDtoExists
+            Return MyBase.Channel.TagDtoExists(tagId)
+        End Function
+        
+        Public Function TagDtoExistsAsync(ByVal tagId As Integer) As System.Threading.Tasks.Task(Of Boolean) Implements WcfService.IOrderManagementService.TagDtoExistsAsync
+            Return MyBase.Channel.TagDtoExistsAsync(tagId)
         End Function
     End Class
 End Namespace

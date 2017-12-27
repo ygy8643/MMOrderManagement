@@ -4,10 +4,13 @@ Imports System.Data.Entity.Migrations
 Imports System.Data.Entity.Validation
 Imports AutoMapper
 Imports OrderManagement.Common
-Imports OrderManagement.WcfService.Dto
+Imports OrderManagement.WcfService.Dto.OrderBlog
+Imports OrderManagement.WcfService.Dto.OrderManagement
 
 Public Class OrderManagementService
     Implements IOrderManagementService
+
+#Region "OrderManagement"
 
 #Region "Order"
 
@@ -63,6 +66,19 @@ Public Class OrderManagementService
                                      order.OrderDate.Value < conditions.OrderDateTo)).ToList())
 
             Return result
+        End Using
+    End Function
+
+    ''' <summary>
+    ''' タイトルの名称により検索
+    ''' </summary>
+    ''' <param name="searchString"></param>
+    ''' <returns></returns>
+    Public Function GetPostDtoesByTitle(searchString As String) As IEnumerable(Of PostDto) _
+        Implements IOrderManagementService.GetPostDtoesByTitle
+
+        Using db As New OrderBlogDbEntities
+            Return Mapper.Map(Of List(Of PostDto))(db.Posts.Where(Function(p) p.Title.Contains(searchString)).ToList())
         End Using
     End Function
 
@@ -804,6 +820,492 @@ Public Class OrderManagementService
 
         Return result
     End Function
+
+#End Region
+
+#End Region
+
+#Region "OrderBlog"
+
+#Region "Category"
+
+    ''' <summary>
+    '''     追加
+    ''' </summary>
+    ''' <param name="categoryDto"></param>
+    ''' <returns></returns>
+    Public Function AddCategoryDto(categoryDto As CategoryDto) As ProcessResult _
+        Implements IOrderManagementService.AddCategoryDto
+        Dim result As New ProcessResult
+
+        Using db As New OrderBlogDbEntities
+            db.Categories.Add(Mapper.Map(Of Category)(categoryDto))
+
+            Try
+                db.SaveChanges()
+            Catch ex As DbUpdateException
+                result.IsSuccess = False
+
+                If CategoryDtoExists(categoryDto.Id) Then
+                    result.ErrorMessage = "データ重複"
+                Else
+                    result.ErrorMessage = ex.Message
+                End If
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.Message
+            End Try
+        End Using
+        Return result
+    End Function
+
+    ''' <summary>
+    '''     存在チェック
+    ''' </summary>
+    ''' <param name="categoryId"></param>
+    ''' <returns></returns>
+    Public Function CategoryDtoExists(categoryId As Integer) As Boolean _
+        Implements IOrderManagementService.CategoryDtoExists
+        Using db As New OrderBlogDbEntities
+            Return db.Categories.Count(Function(category) category.Id = categoryId) > 0
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     削除
+    ''' </summary>
+    ''' <param name="categoryId"></param>
+    ''' <returns></returns>
+    Public Function DeleteCategoryDto(categoryId As Integer) As ProcessResult _
+        Implements IOrderManagementService.DeleteCategoryDto
+        Dim result As New ProcessResult
+
+        Using db As New OrderBlogDbEntities
+            Dim category = db.Categories.Find(categoryId)
+
+            If IsNothing(category) Then
+                result.IsSuccess = False
+                result.ErrorMessage = "无此数据"
+                Return result
+            End If
+
+            db.Categories.Remove(category)
+
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.Message
+            End Try
+        End Using
+        Return result
+    End Function
+
+    ''' <summary>
+    '''     取得
+    ''' </summary>
+    ''' <param name="categoryId"></param>
+    ''' <returns></returns>
+    Public Function GetCategoryDto(categoryId As Integer) As CategoryDto _
+        Implements IOrderManagementService.GetCategoryDto
+        Using db As New OrderBlogDbEntities
+            Dim category = db.Categories.Find(categoryId)
+            Return Mapper.Map(Of CategoryDto)(category)
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     取得
+    ''' </summary>
+    ''' <param name="condition"></param>
+    ''' <returns></returns>
+    Public Function GetCategoryDtoByCondition(condition As CategoryDto) As IEnumerable(Of CategoryDto) _
+        Implements IOrderManagementService.GetCategoryDtoByCondition
+
+        Using db As New OrderBlogDbEntities
+            With condition
+                Dim result = Mapper.Map(Of List(Of CategoryDto))(
+                    db.Categories.Where(
+                        Function(c) (.Id = 0 OrElse c.Id = .Id) And
+                                    (String.IsNullOrEmpty(.Name) OrElse c.Name = .Name) And
+                                    (String.IsNullOrEmpty(.Description) OrElse c.Name = .Description) And
+                                    (String.IsNullOrEmpty(.UrlSlug) OrElse c.Name = .UrlSlug)).ToList()
+                    )
+                Return result
+            End With
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     全件取得
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function GetCategoryDtoes() As IEnumerable(Of CategoryDto) _
+        Implements IOrderManagementService.GetCategoryDtoes
+
+        Using db As New OrderBlogDbEntities
+            Return Mapper.Map(Of List(Of CategoryDto))(db.Categories.ToList)
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     更新
+    ''' </summary>
+    ''' <param name="categoryDto"></param>
+    ''' <returns></returns>
+    Public Function UpdateCategoryDto(categoryDto As CategoryDto) As ProcessResult _
+        Implements IOrderManagementService.UpdateCategoryDto
+
+        Dim result As New ProcessResult
+
+        Using db As New OrderBlogDbEntities
+
+            db.Entry(Mapper.Map(Of Category)(categoryDto)).State = EntityState.Modified
+
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.ToString()
+            End Try
+        End Using
+
+        Return result
+    End Function
+
+#End Region
+
+#Region "Post"
+
+    ''' <summary>
+    '''     追加
+    ''' </summary>
+    ''' <param name="postDto"></param>
+    ''' <returns></returns>
+    Public Function AddPostDto(postDto As PostDto) As ProcessResult _
+        Implements IOrderManagementService.AddPostDto
+        Dim result As New ProcessResult
+
+        Using db As New OrderBlogDbEntities
+            db.Posts.Add(Mapper.Map(Of Post)(postDto))
+
+            Try
+                db.SaveChanges()
+            Catch ex As DbUpdateException
+                result.IsSuccess = False
+
+                If PostDtoExists(postDto.Id) Then
+                    result.ErrorMessage = "データ重複"
+                Else
+                    result.ErrorMessage = ex.Message
+                End If
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.Message
+            End Try
+        End Using
+        Return result
+    End Function
+
+    ''' <summary>
+    '''     存在チェック
+    ''' </summary>
+    ''' <param name="postId"></param>
+    ''' <returns></returns>
+    Public Function PostDtoExists(postId As Integer) As Boolean _
+        Implements IOrderManagementService.PostDtoExists
+        Using db As New OrderBlogDbEntities
+            Return db.Posts.Count(Function(post) post.Id = postId) > 0
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     削除
+    ''' </summary>
+    ''' <param name="postId"></param>
+    ''' <returns></returns>
+    Public Function DeletePostDto(postId As Integer) As ProcessResult _
+        Implements IOrderManagementService.DeletePostDto
+        Dim result As New ProcessResult
+
+        Using db As New OrderBlogDbEntities
+            Dim post = db.Posts.Find(postId)
+
+            If IsNothing(post) Then
+                result.IsSuccess = False
+                result.ErrorMessage = "无此数据"
+                Return result
+            End If
+
+            db.Posts.Remove(post)
+
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.Message
+            End Try
+        End Using
+        Return result
+    End Function
+
+    ''' <summary>
+    '''     取得
+    ''' </summary>
+    ''' <param name="postId"></param>
+    ''' <returns></returns>
+    Public Function GetPostDto(postId As Integer) As PostDto _
+        Implements IOrderManagementService.GetPostDto
+        Using db As New OrderBlogDbEntities
+            Dim post = db.Posts.Find(postId)
+            Return Mapper.Map(Of PostDto)(post)
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     取得
+    ''' </summary>
+    ''' <param name="condition"></param>
+    ''' <returns></returns>
+    Public Function GetPostDtoByCondition(condition As PostDto) As IEnumerable(Of PostDto) _
+        Implements IOrderManagementService.GetPostDtoByCondition
+
+        Using db As New OrderBlogDbEntities
+            With condition
+                Dim result = Mapper.Map(Of List(Of PostDto))(
+                    db.Posts.Where(
+                        Function(p) (.Id = 0 OrElse p.Id = .Id) And
+                                    (String.IsNullOrEmpty(.Title) OrElse p.Title = .Title) And
+                                    (String.IsNullOrEmpty(.ShortDescription) OrElse
+                                     p.ShortDescription = .ShortDescription) And
+                                    (String.IsNullOrEmpty(.Description) OrElse p.Description = .Description) And
+                                    (String.IsNullOrEmpty(.Meta) OrElse p.Meta = .Meta) And
+                                    (String.IsNullOrEmpty(.UrlSlug) OrElse p.UrlSlug = .UrlSlug) And
+                                    (String.IsNullOrEmpty(.Published) OrElse p.Published = .Published) And
+                                    (String.IsNullOrEmpty(.PostedOn) OrElse p.PostedOn = .PostedOn) And
+                                    (String.IsNullOrEmpty(.Modified) OrElse p.Modified = .Modified) And
+                                    (.CategoryId = 0 OrElse p.CategoryId = .CategoryId) And
+                                    (String.IsNullOrEmpty(.Author) OrElse p.Author = .Author)).ToList()
+                    )
+                Return result
+            End With
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     最新を取得
+    ''' </summary>
+    ''' <param name="size"></param>
+    ''' <returns></returns>
+    Public Function GetLatestPostDtoes(size As Integer) As IEnumerable(Of PostDto) _
+        Implements IOrderManagementService.GetLatestPostDtoes
+
+        Using db As New OrderBlogDbEntities
+            Return Mapper.Map(Of List(Of PostDto))(db.Posts.OrderByDescending(Function(p) p.PostedOn).Take(size))
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     カテゴリによりデータの取得
+    ''' </summary>
+    ''' <param name="categoryId"></param>
+    ''' <returns></returns>
+    Public Function GetPostDtoesByCategory(categoryId As Integer) As IEnumerable(Of PostDto) _
+        Implements IOrderManagementService.GetPostDtoesByCategory
+
+        Using db As New OrderBlogDbEntities
+            Return _
+                Mapper.Map(Of List(Of PostDto))(
+                    db.Posts.Where(Function(p) p.CategoryId = categoryId).OrderByDescending(Function(p) p.PostedOn))
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     全件取得
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function GetPostDtoes() As IEnumerable(Of PostDto) _
+        Implements IOrderManagementService.GetPostDtoes
+
+        Using db As New OrderBlogDbEntities
+            Return Mapper.Map(Of List(Of PostDto))(db.Posts.ToList)
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     更新
+    ''' </summary>
+    ''' <param name="postDto"></param>
+    ''' <returns></returns>
+    Public Function UpdatePostDto(postDto As PostDto) As ProcessResult _
+        Implements IOrderManagementService.UpdatePostDto
+
+        Dim result As New ProcessResult
+
+        Using db As New OrderBlogDbEntities
+
+            db.Entry(Mapper.Map(Of Post)(postDto)).State = EntityState.Modified
+
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.ToString()
+            End Try
+        End Using
+
+        Return result
+    End Function
+
+#End Region
+
+#Region "Tag"
+
+    ''' <summary>
+    '''     追加
+    ''' </summary>
+    ''' <param name="tagDto"></param>
+    ''' <returns></returns>
+    Public Function AddTagDto(tagDto As TagDto) As ProcessResult _
+        Implements IOrderManagementService.AddTagDto
+        Dim result As New ProcessResult
+
+        Using db As New OrderBlogDbEntities
+            db.Tags.Add(Mapper.Map(Of Tag)(tagDto))
+
+            Try
+                db.SaveChanges()
+            Catch ex As DbUpdateException
+                result.IsSuccess = False
+
+                If TagDtoExists(tagDto.Id) Then
+                    result.ErrorMessage = "データ重複"
+                Else
+                    result.ErrorMessage = ex.Message
+                End If
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.Message
+            End Try
+        End Using
+        Return result
+    End Function
+
+    ''' <summary>
+    '''     存在チェック
+    ''' </summary>
+    ''' <param name="tagId"></param>
+    ''' <returns></returns>
+    Public Function TagDtoExists(tagId As Integer) As Boolean _
+        Implements IOrderManagementService.TagDtoExists
+        Using db As New OrderBlogDbEntities
+            Return db.Tags.Count(Function(tag) tag.Id = tagId) > 0
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     削除
+    ''' </summary>
+    ''' <param name="tagId"></param>
+    ''' <returns></returns>
+    Public Function DeleteTagDto(tagId As Integer) As ProcessResult _
+        Implements IOrderManagementService.DeleteTagDto
+        Dim result As New ProcessResult
+
+        Using db As New OrderBlogDbEntities
+            Dim tag = db.Tags.Find(tagId)
+
+            If IsNothing(tag) Then
+                result.IsSuccess = False
+                result.ErrorMessage = "无此数据"
+                Return result
+            End If
+
+            db.Tags.Remove(tag)
+
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.Message
+            End Try
+        End Using
+        Return result
+    End Function
+
+    ''' <summary>
+    '''     取得
+    ''' </summary>
+    ''' <param name="tagId"></param>
+    ''' <returns></returns>
+    Public Function GetTagDto(tagId As Integer) As TagDto _
+        Implements IOrderManagementService.GetTagDto
+        Using db As New OrderBlogDbEntities
+            Dim tag = db.Tags.Find(tagId)
+            Return Mapper.Map(Of TagDto)(tag)
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     取得
+    ''' </summary>
+    ''' <param name="condition"></param>
+    ''' <returns></returns>
+    Public Function GetTagDtoByCondition(condition As TagDto) As IEnumerable(Of TagDto) _
+        Implements IOrderManagementService.GetTagDtoByCondition
+
+        Using db As New OrderBlogDbEntities
+            With condition
+                Dim result = Mapper.Map(Of List(Of TagDto))(
+                    db.Tags.Where(
+                        Function(tag) (.Id = 0 OrElse tag.Id = .Id) And
+                                      (String.IsNullOrEmpty(.Name) OrElse tag.Name = .Name) And
+                                      (String.IsNullOrEmpty(.Description) OrElse tag.Name = .Description) And
+                                      (String.IsNullOrEmpty(.UrlSlug) OrElse tag.Name = .UrlSlug)).ToList()
+                    )
+                Return result
+            End With
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     全件取得
+    ''' </summary>
+    ''' <returns></returns>
+    Public Function GetTagDtoes() As IEnumerable(Of TagDto) _
+        Implements IOrderManagementService.GetTagDtoes
+
+        Using db As New OrderBlogDbEntities
+            Return Mapper.Map(Of List(Of TagDto))(db.Tags.ToList)
+        End Using
+    End Function
+
+    ''' <summary>
+    '''     更新
+    ''' </summary>
+    ''' <param name="tagDto"></param>
+    ''' <returns></returns>
+    Public Function UpdateTagDto(tagDto As TagDto) As ProcessResult _
+        Implements IOrderManagementService.UpdateTagDto
+
+        Dim result As New ProcessResult
+
+        Using db As New OrderBlogDbEntities
+
+            db.Entry(Mapper.Map(Of Tag)(tagDto)).State = EntityState.Modified
+
+            Try
+                db.SaveChanges()
+            Catch ex As Exception
+                result.IsSuccess = False
+                result.ErrorMessage = ex.ToString()
+            End Try
+        End Using
+
+        Return result
+    End Function
+
+#End Region
 
 #End Region
 End Class

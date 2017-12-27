@@ -1,7 +1,7 @@
 ﻿Imports System.Data
 Imports GalaSoft.MvvmLight.CommandWpf
 Imports Microsoft.Win32
-Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Client.Entities.Models.OrderManagement
 Imports OrderManagement.Client.Entities.SearchConditions
 Imports OrderManagement.Common.ExcelExport.Interop
 Imports OrderManagement.WpfClient.Service

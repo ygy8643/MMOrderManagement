@@ -4,8 +4,9 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" />
+      <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" />
       <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.Common" />
+      <xsd:import schemaLocation="http://localhost:3397/OrderManagementService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderBlog" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IOrderManagementService_GetOrderDto_InputMessage">
@@ -224,6 +225,150 @@
   <wsdl:message name="IOrderManagementService_BrandDtoExists_OutputMessage">
     <wsdl:part name="parameters" element="tns:BrandDtoExistsResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetCategoryDtoes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryDtoes" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetCategoryDtoes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryDtoesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetCategoryDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetCategoryDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetCategoryDtoByCondition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryDtoByCondition" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetCategoryDtoByCondition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryDtoByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddCategoryDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategoryDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddCategoryDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCategoryDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateCategoryDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategoryDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateCategoryDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCategoryDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteCategoryDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategoryDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteCategoryDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCategoryDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_CategoryDtoExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:CategoryDtoExists" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_CategoryDtoExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CategoryDtoExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDtoes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDtoes" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDtoes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDtoesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDtoByCondition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDtoByCondition" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDtoByCondition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDtoByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetLatestPostDtoes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestPostDtoes" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetLatestPostDtoes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLatestPostDtoesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDtoesByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDtoesByCategory" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDtoesByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDtoesByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDtoesByTitle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDtoesByTitle" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetPostDtoesByTitle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostDtoesByTitleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddPostDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPostDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddPostDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPostDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdatePostDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePostDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdatePostDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePostDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeletePostDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePostDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeletePostDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeletePostDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_PostDtoExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:PostDtoExists" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_PostDtoExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PostDtoExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetTagDtoes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagDtoes" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetTagDtoes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagDtoesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetTagDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetTagDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetTagDtoByCondition_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagDtoByCondition" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_GetTagDtoByCondition_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagDtoByConditionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddTagDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTagDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_AddTagDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTagDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateTagDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTagDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_UpdateTagDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateTagDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteTagDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTagDto" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_DeleteTagDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteTagDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_TagDtoExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:TagDtoExists" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManagementService_TagDtoExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TagDtoExistsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IOrderManagementService">
     <wsdl:operation name="GetOrderDto">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetOrderDto" message="tns:IOrderManagementService_GetOrderDto_InputMessage" />
@@ -368,6 +513,102 @@
     <wsdl:operation name="BrandDtoExists">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/BrandDtoExists" message="tns:IOrderManagementService_BrandDtoExists_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/BrandDtoExistsResponse" message="tns:IOrderManagementService_BrandDtoExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryDtoes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetCategoryDtoes" message="tns:IOrderManagementService_GetCategoryDtoes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetCategoryDtoesResponse" message="tns:IOrderManagementService_GetCategoryDtoes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetCategoryDto" message="tns:IOrderManagementService_GetCategoryDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetCategoryDtoResponse" message="tns:IOrderManagementService_GetCategoryDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryDtoByCondition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetCategoryDtoByCondition" message="tns:IOrderManagementService_GetCategoryDtoByCondition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetCategoryDtoByConditionResponse" message="tns:IOrderManagementService_GetCategoryDtoByCondition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCategoryDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/AddCategoryDto" message="tns:IOrderManagementService_AddCategoryDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/AddCategoryDtoResponse" message="tns:IOrderManagementService_AddCategoryDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategoryDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateCategoryDto" message="tns:IOrderManagementService_UpdateCategoryDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateCategoryDtoResponse" message="tns:IOrderManagementService_UpdateCategoryDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategoryDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteCategoryDto" message="tns:IOrderManagementService_DeleteCategoryDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteCategoryDtoResponse" message="tns:IOrderManagementService_DeleteCategoryDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CategoryDtoExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/CategoryDtoExists" message="tns:IOrderManagementService_CategoryDtoExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/CategoryDtoExistsResponse" message="tns:IOrderManagementService_CategoryDtoExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDtoes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDtoes" message="tns:IOrderManagementService_GetPostDtoes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDtoesResponse" message="tns:IOrderManagementService_GetPostDtoes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDto" message="tns:IOrderManagementService_GetPostDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDtoResponse" message="tns:IOrderManagementService_GetPostDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDtoByCondition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDtoByCondition" message="tns:IOrderManagementService_GetPostDtoByCondition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDtoByConditionResponse" message="tns:IOrderManagementService_GetPostDtoByCondition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestPostDtoes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetLatestPostDtoes" message="tns:IOrderManagementService_GetLatestPostDtoes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetLatestPostDtoesResponse" message="tns:IOrderManagementService_GetLatestPostDtoes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDtoesByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDtoesByCategory" message="tns:IOrderManagementService_GetPostDtoesByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDtoesByCategoryResponse" message="tns:IOrderManagementService_GetPostDtoesByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDtoesByTitle">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDtoesByTitle" message="tns:IOrderManagementService_GetPostDtoesByTitle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetPostDtoesByTitleResponse" message="tns:IOrderManagementService_GetPostDtoesByTitle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPostDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/AddPostDto" message="tns:IOrderManagementService_AddPostDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/AddPostDtoResponse" message="tns:IOrderManagementService_AddPostDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePostDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/UpdatePostDto" message="tns:IOrderManagementService_UpdatePostDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/UpdatePostDtoResponse" message="tns:IOrderManagementService_UpdatePostDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePostDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/DeletePostDto" message="tns:IOrderManagementService_DeletePostDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/DeletePostDtoResponse" message="tns:IOrderManagementService_DeletePostDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PostDtoExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/PostDtoExists" message="tns:IOrderManagementService_PostDtoExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/PostDtoExistsResponse" message="tns:IOrderManagementService_PostDtoExists_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagDtoes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetTagDtoes" message="tns:IOrderManagementService_GetTagDtoes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetTagDtoesResponse" message="tns:IOrderManagementService_GetTagDtoes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetTagDto" message="tns:IOrderManagementService_GetTagDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetTagDtoResponse" message="tns:IOrderManagementService_GetTagDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagDtoByCondition">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/GetTagDtoByCondition" message="tns:IOrderManagementService_GetTagDtoByCondition_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/GetTagDtoByConditionResponse" message="tns:IOrderManagementService_GetTagDtoByCondition_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTagDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/AddTagDto" message="tns:IOrderManagementService_AddTagDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/AddTagDtoResponse" message="tns:IOrderManagementService_AddTagDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTagDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateTagDto" message="tns:IOrderManagementService_UpdateTagDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/UpdateTagDtoResponse" message="tns:IOrderManagementService_UpdateTagDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTagDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteTagDto" message="tns:IOrderManagementService_DeleteTagDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/DeleteTagDtoResponse" message="tns:IOrderManagementService_DeleteTagDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TagDtoExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManagementService/TagDtoExists" message="tns:IOrderManagementService_TagDtoExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManagementService/TagDtoExistsResponse" message="tns:IOrderManagementService_TagDtoExists_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IOrderManagementService" type="tns:IOrderManagementService">
@@ -689,6 +930,222 @@
     </wsdl:operation>
     <wsdl:operation name="BrandDtoExists">
       <soap:operation soapAction="http://tempuri.org/IOrderManagementService/BrandDtoExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryDtoes">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetCategoryDtoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetCategoryDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryDtoByCondition">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetCategoryDtoByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCategoryDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/AddCategoryDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCategoryDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/UpdateCategoryDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCategoryDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/DeleteCategoryDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CategoryDtoExists">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/CategoryDtoExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDtoes">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetPostDtoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetPostDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDtoByCondition">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetPostDtoByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestPostDtoes">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetLatestPostDtoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDtoesByCategory">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetPostDtoesByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostDtoesByTitle">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetPostDtoesByTitle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPostDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/AddPostDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePostDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/UpdatePostDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePostDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/DeletePostDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostDtoExists">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/PostDtoExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagDtoes">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetTagDtoes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetTagDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagDtoByCondition">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/GetTagDtoByCondition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTagDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/AddTagDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTagDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/UpdateTagDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteTagDto">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/DeleteTagDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TagDtoExists">
+      <soap:operation soapAction="http://tempuri.org/IOrderManagementService/TagDtoExists" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -1,4 +1,4 @@
-﻿@ModelType OrderManagement.Client.Entities.Models.OrderClient
+﻿@ModelType OrderManagement.Client.Entities.Models.OrderManagement.OrderClient
 @Code
     ViewData("Title") = "Edit"
     Layout = "~/Views/Shared/_Layout.vbhtml"

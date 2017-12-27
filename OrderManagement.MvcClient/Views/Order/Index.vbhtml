@@ -1,4 +1,4 @@
-﻿@ModelType IEnumerable(Of OrderManagement.Client.Entities.Models.OrderClient)
+﻿@ModelType IEnumerable(Of OrderManagement.Client.Entities.Models.OrderManagement.OrderClient)
 @Code
 ViewData("Title") = "Index"
 Layout = "~/Views/Shared/_Layout.vbhtml"

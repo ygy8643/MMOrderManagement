@@ -1,4 +1,4 @@
-﻿Imports OrderManagement.Client.Entities.Models
+﻿Imports OrderManagement.Client.Entities.Models.OrderManagement
 Imports OrderManagement.Common
 
 Namespace Service

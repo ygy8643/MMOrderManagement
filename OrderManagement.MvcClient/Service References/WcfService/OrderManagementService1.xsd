@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OrderManagement.WcfService.Dto.OrderManagement" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:complexType name="OrderDto">
     <xs:sequence>
       <xs:element minOccurs="0" name="CustomerDto" nillable="true" type="tns:CustomerDto" />
@@ -48,14 +48,31 @@
   <xs:element name="OrderDetailDto" nillable="true" type="tns:OrderDetailDto" />
   <xs:complexType name="ProductDto">
     <xs:sequence>
+      <xs:element minOccurs="0" name="BrandDto" nillable="true" type="tns:BrandDto" />
       <xs:element minOccurs="0" name="BrandId" type="xs:int" />
       <xs:element minOccurs="0" name="ProductId" type="xs:int" />
       <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ProductNameJp" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SpeciesDto" nillable="true" type="tns:SpeciesDto" />
       <xs:element minOccurs="0" name="SpeciesId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ProductDto" nillable="true" type="tns:ProductDto" />
+  <xs:complexType name="BrandDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BrandId" type="xs:int" />
+      <xs:element minOccurs="0" name="BrandName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BrandNameJp" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BrandDto" nillable="true" type="tns:BrandDto" />
+  <xs:complexType name="SpeciesDto">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SpeciesId" type="xs:int" />
+      <xs:element minOccurs="0" name="SpeciesName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpeciesDto" nillable="true" type="tns:SpeciesDto" />
   <xs:complexType name="ArrayOfOrderDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDto" nillable="true" type="tns:OrderDto" />
@@ -88,25 +105,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfSpeciesDto" nillable="true" type="tns:ArrayOfSpeciesDto" />
-  <xs:complexType name="SpeciesDto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="SpeciesId" type="xs:int" />
-      <xs:element minOccurs="0" name="SpeciesName" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="SpeciesDto" nillable="true" type="tns:SpeciesDto" />
   <xs:complexType name="ArrayOfBrandDto">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="BrandDto" nillable="true" type="tns:BrandDto" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfBrandDto" nillable="true" type="tns:ArrayOfBrandDto" />
-  <xs:complexType name="BrandDto">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="BrandId" type="xs:int" />
-      <xs:element minOccurs="0" name="BrandName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="BrandNameJp" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="BrandDto" nillable="true" type="tns:BrandDto" />
 </xs:schema>

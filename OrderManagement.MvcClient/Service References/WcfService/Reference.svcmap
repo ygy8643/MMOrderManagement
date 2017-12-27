@@ -9,7 +9,9 @@
     <GenerateInternalTypes>false</GenerateInternalTypes>
     <GenerateMessageContracts>false</GenerateMessageContracts>
     <NamespaceMappings />
-    <CollectionMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
@@ -24,6 +26,7 @@
   <Metadata>
     <MetadataFile FileName="OrderManagementService.wsdl" MetadataType="Wsdl" ID="c5522ce9-dd4e-40e9-a75a-d8c54a0e1a48" SourceId="1" SourceUrl="http://localhost:3397/OrderManagementService.svc?wsdl" />
     <MetadataFile FileName="OrderManagementService.disco" MetadataType="Disco" ID="3e613226-d4a6-4592-b534-0d2657b8a294" SourceId="1" SourceUrl="http://localhost:3397/OrderManagementService.svc?disco" />
+    <MetadataFile FileName="OrderManagementService4.xsd" MetadataType="Schema" ID="99dd4d58-c6ff-4987-9d54-4c47e64f0cb1" SourceId="1" SourceUrl="http://localhost:3397/OrderManagementService.svc?xsd=xsd4" />
     <MetadataFile FileName="OrderManagementService.xsd" MetadataType="Schema" ID="62464082-3e99-4c54-86e3-414721aba07c" SourceId="1" SourceUrl="http://localhost:3397/OrderManagementService.svc?xsd=xsd3" />
     <MetadataFile FileName="OrderManagementService1.xsd" MetadataType="Schema" ID="076cd01c-0746-4190-b90a-952d3bbd329a" SourceId="1" SourceUrl="http://localhost:3397/OrderManagementService.svc?xsd=xsd2" />
     <MetadataFile FileName="OrderManagementService2.xsd" MetadataType="Schema" ID="787bfda1-265a-4ab5-9deb-f88d85337092" SourceId="1" SourceUrl="http://localhost:3397/OrderManagementService.svc?xsd=xsd1" />

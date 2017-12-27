@@ -1,5 +1,5 @@
 ﻿Imports AutoMapper
-Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Client.Entities.Models.OrderManagement
 Imports OrderManagement.Client.Entities.SearchConditions
 Imports OrderManagement.WpfClient.WcfService
 

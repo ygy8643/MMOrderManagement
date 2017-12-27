@@ -1,4 +1,4 @@
-﻿@ModelType OrderManagement.Client.Entities.Models.BrandClient
+﻿@ModelType OrderManagement.Client.Entities.Models.OrderManagement.BrandClient
 @Code
     ViewData("Title") = "Delete"
     Layout = "~/Views/Shared/_Layout.vbhtml"

@@ -16,15 +16,7 @@
             </div>
         </div>
         <div class="container">
-            @*<div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Order Management", "Index", "Order", Nothing, New With {.class = "navbar-brand"})
-            </div>*@
-            <div class="navbar-collapse collapse" style="float: right;">
+             <div class="navbar-collapse collapse" style="float: right;">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Order", "Index", "Order", Nothing, New With {.class = "navbar-brand"})</li>
                     <li>@Html.ActionLink("Customer", "Index", "Customer", Nothing, New With {.class = "navbar-brand"})</li>

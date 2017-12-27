@@ -1,7 +1,7 @@
 ﻿Imports System.Net
 Imports System.Web.Mvc
 Imports AutoMapper
-Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Client.Entities.Models.OrderManagement
 Imports OrderManagement.MvcClient.WcfService
 
 Namespace Controllers

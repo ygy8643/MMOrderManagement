@@ -1,5 +1,5 @@
 ﻿Imports System.Globalization
-Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Client.Entities.Models.OrderManagement
 
 Namespace Converters.ToName
     <ValueConversion(GetType(ICollection(Of OrderDetailClient)), GetType(ICollection(Of OrderDetailClient)))>

@@ -1,6 +1,7 @@
 ﻿Imports AutoMapper
-Imports OrderManagement.Entities
 Imports OrderManagement.WcfService.Dto
+Imports OrderManagement.WcfService.Dto.OrderBlog
+Imports OrderManagement.WcfService.Dto.OrderManagement
 
 Namespace Config
 
@@ -16,7 +17,7 @@ Namespace Config
 
             CreateMap(GetType(OrderDto), GetType(Order)) _
             .ForMember("OrderDetails", Sub(opt) opt.MapFrom("OrderDetailDtoes")) _
-            .ForMember("Customer", Sub(opt) opt.MapFrom("CustomerDto"))
+            .ForMember("Customer", Sub(opt) opt.MapFrom("CustomerDto")) 
 
             'OrderDetail
             CreateMap(GetType(OrderDetail), GetType(OrderDetailDto)) _
@@ -49,6 +50,18 @@ Namespace Config
             'Inventory
             CreateMap(GetType(Inventory), GetType(InventoryDto))
             CreateMap(GetType(InventoryDto), GetType(Inventory))
+            
+            'Post
+            CreateMap(GetType(Post), GetType(PostDto))
+            CreateMap(GetType(PostDto), GetType(Post))
+
+            'Category
+            CreateMap(GetType(Category), GetType(CategoryDto))
+            CreateMap(GetType(CategoryDto), GetType(Category))
+
+            'Tag
+            CreateMap(GetType(Tag), GetType(TagDto))
+            CreateMap(GetType(TagDto), GetType(Tag))
 
         End Sub
 

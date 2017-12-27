@@ -1,5 +1,6 @@
 ﻿Imports AutoMapper
-Imports OrderManagement.Client.Entities.Models
+Imports OrderManagement.Client.Entities.Models.OrderBlog
+Imports OrderManagement.Client.Entities.Models.OrderManagement
 Imports OrderManagement.Client.Entities.SearchConditions
 Imports OrderManagement.MvcClient.WcfService
 
@@ -42,6 +43,15 @@ Namespace Config
             'Search Conditions
             CreateMap(GetType(OrderSearchConditionsClient), GetType(OrderSearchConditionsDto))
             CreateMap(GetType(OrderSearchConditionsDto), GetType(OrderSearchConditionsClient))
+
+            'Post
+            CreateMap(GetType(PostClient), GetType(PostDto))
+            CreateMap(GetType(PostDto), GetType(PostClient))
+            
+            'Category
+            CreateMap(GetType(CategoryClient), GetType(CategoryDto))
+            CreateMap(GetType(CategoryDto), GetType(CategoryClient))
+
         End Sub
 
     End Class
